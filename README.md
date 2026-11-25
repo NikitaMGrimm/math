@@ -13,14 +13,14 @@ These manuscripts were produced with AI assistance (research drafting and orches
 - **Priority and attribution:** We defer completely to the mathematics community on priority, credit, and concurrent work. Known partial-access caveats and related literature are documented inside each paper and folder README.
 - **Lean 4:** Future formalizations will live under a shared top-level `lean/` Lake workspace as they are added.
 
-## Preprints (5 manuscripts · 131 pages)
+## Preprints (5 manuscripts · 132 pages)
 
 | # | Title | Pages | Files | Lean |
 |---:|---|---:|---|---|
 | 1 | [Full index prefixes in combinatorial sequences and simultaneous digit windows](preprints/self-prefix-seven-bases/) | 31 | [PDF](preprints/self-prefix-seven-bases/self-prefix-seven-bases.pdf) · [TeX](preprints/self-prefix-seven-bases/self-prefix-seven-bases.tex) | Pending |
 | 2 | [Simultaneous shrinking targets on the diagonal in several integer bases](preprints/multibase-shrinking-targets/) | 21 | [PDF](preprints/multibase-shrinking-targets/multibase-shrinking-targets.pdf) · [TeX](preprints/multibase-shrinking-targets/multibase-shrinking-targets.tex) | Pending |
 | 3 | [Rational approximation to power-sum quotients and simultaneous recurrence](preprints/roth-power-sums-recurrence/) | 34 | [PDF](preprints/roth-power-sums-recurrence/roth-power-sums-recurrence.pdf) · [TeX](preprints/roth-power-sums-recurrence/roth-power-sums-recurrence.tex) | Pending |
-| 4 | [Sharp Fourier decay for simultaneous power targets and recurrence](preprints/fourier-decay-powers-recurrence/) | 21 | [PDF](preprints/fourier-decay-powers-recurrence/fourier-decay-powers-recurrence.pdf) · [TeX](preprints/fourier-decay-powers-recurrence/fourier-decay-powers-recurrence.tex) | Pending |
+| 4 | [Sharp Fourier decay for simultaneous power targets and recurrence](preprints/fourier-decay-powers-recurrence/) | 22 | [PDF](preprints/fourier-decay-powers-recurrence/fourier-decay-powers-recurrence.pdf) · [TeX](preprints/fourier-decay-powers-recurrence/fourier-decay-powers-recurrence.tex) | Pending |
 | 5 | [Fourier decay for shrinking-target centers of hyperbolic toral automorphisms](preprints/hyperbolic-toral-fourier-targets/) | 24 | [PDF](preprints/hyperbolic-toral-fourier-targets/hyperbolic-toral-fourier-targets.pdf) · [TeX](preprints/hyperbolic-toral-fourier-targets/hyperbolic-toral-fourier-targets.tex) | Pending |
 
 ### Highlights

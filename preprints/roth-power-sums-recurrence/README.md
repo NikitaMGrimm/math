@@ -15,8 +15,8 @@ We prove Roth's exponent for quotients of positive integer-root power sums under
 ## SHA-256
 
 ```text
-225cda36549f28b3b295c163555ed4e57cedfbbcdf4eab6ea0de6ad9b6755c91  roth-power-sums-recurrence.tex
-f9752b8c90376b6f3fa1e825031cbacc86a588d653878df40c233fbe35eece27  roth-power-sums-recurrence.pdf
+b329df1e75f086144d38462002391af49bc878cc6d7376f080fe85d1f96e11a7  roth-power-sums-recurrence.tex
+e5f94c6c70b72ebdd91a0a0cf82da0714e733ae0753e3e204f1cf23d96f958b2  roth-power-sums-recurrence.pdf
 ```
 
 ## Citation

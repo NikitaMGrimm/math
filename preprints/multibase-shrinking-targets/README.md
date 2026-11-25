@@ -15,8 +15,8 @@ We determine the local Hausdorff dimension of simultaneous shrinking targets for
 ## SHA-256
 
 ```text
-0b22e4c1abcc1abacf318373a954de8319a9d77c36d95eb8b1c22cfa37513fa0  multibase-shrinking-targets.tex
-7f77bc78c2915e7413b1706c993d28695816c0fdf58c0328a858b04dfec7dcac  multibase-shrinking-targets.pdf
+c000e0c7317642cc752897ecf0758faa401ab4d41d39f2085ce60b8d8bc4ae94  multibase-shrinking-targets.tex
+16bf5b6514c0a47f2fdb4ad1796a17682dc4812f7e71019becd0a6857bdf1b6b  multibase-shrinking-targets.pdf
 ```
 
 ## Citation

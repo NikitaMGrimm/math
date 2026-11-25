@@ -15,8 +15,8 @@ For every fixed pair of integers $s, t$, the binary expansion of $\binom{2n+s}{n
 ## SHA-256
 
 ```text
-a61fe17818a4976ad12a238032a2bd3cc633f32aead13f290de8dd3e90871b0a  self-prefix-seven-bases.tex
-346c26a234885084c27a92d077c2120824f33eeaa88ac010e3d00a3978d45911  self-prefix-seven-bases.pdf
+3b4f0c1d1b5af881c29e821b2fb19a40634cf846ad519c00dee46e35d7380b15  self-prefix-seven-bases.tex
+3f119c9d15471b84996fc7126e8e906cacde4fb13eb3f0ad563813efa54c8120  self-prefix-seven-bases.pdf
 ```
 
 ## Citation

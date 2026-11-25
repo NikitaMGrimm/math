@@ -29,7 +29,7 @@ Checksums: https://nikitamgrimm.github.io/math/SHA256SUMS
 - Main results: Proves optimal Roth exponent 2 for quotients u(n)/v(n) of positive integer-root power sums under the hypothesis of Corvaja-Zannier (JTNB 2005, Remark (v), p. 740), uniformly over 1 <= q <= Q^n for every fixed 1 < Q < 2 (sharp at Q = 2). Arbitrary-rank rational-function subspace descent characterizes sharp simultaneous Schmidt approximation at exponent 1 + 1/m (e.g. ((3^n-1, 5^n-1)/(2^n-1)) primal cutoff 2, dual cutoff sqrt(2)). Extends to repeated algebraic roots and complex embeddings (Fibonacci cutoff phi, cubic Pisot X^3-X-1 trace-ratio cutoff theta in degree 1 and degree 2), higher-degree polynomial cutoffs ((3/2)^n cutoff 3 in every degree d >= 1), and exact local Hausdorff dimension for simultaneous diagonal recurrence across any finite family of pairwise coprime bases with arbitrary moving phases and separate nonmonotone radii.
 - Priority notes & open problems: Partial source access to Corvaja-Zannier (2008 survey) and unretrieved submitted Kumar-Prasad Sena manuscript; general sharp root-distance cutoffs and unrelated overlapping shared-prime recurrence scales remain open.
 
-### 4. Sharp Fourier decay for simultaneous power targets and recurrence (21 pp, 2026-11-25)
+### 4. Sharp Fourier decay for simultaneous power targets and recurrence (22 pp, 2026-11-25)
 - Landing page: https://nikitamgrimm.github.io/math/preprints/fourier-decay-powers-recurrence/
 - PDF: https://nikitamgrimm.github.io/math/preprints/fourier-decay-powers-recurrence/fourier-decay-powers-recurrence.pdf
 - TeX: https://nikitamgrimm.github.io/math/preprints/fourier-decay-powers-recurrence/fourier-decay-powers-recurrence.tex

@@ -15,8 +15,8 @@ For every hyperbolic automorphism $A \in \mathrm{GL}_2(\mathbb{Z})$ of the two-t
 ## SHA-256
 
 ```text
-d85fe680e000d05f28fb5b087d605ad263f916495895de630416acfe8f52fa49  hyperbolic-toral-fourier-targets.tex
-b633e180b20e00a3827075fbeee13de2ed41b2b98a2cc3470a231fa51032c29b  hyperbolic-toral-fourier-targets.pdf
+35c89f95f45a9e3a21afb43ff37034a4ed7a594c9cac7721d7687f9931e3d563  hyperbolic-toral-fourier-targets.tex
+dadd6b6bd016d44527bc4c0e27b641ad6d0c3a3160e6aee13356556514ba570a  hyperbolic-toral-fourier-targets.pdf
 ```
 
 ## Citation
