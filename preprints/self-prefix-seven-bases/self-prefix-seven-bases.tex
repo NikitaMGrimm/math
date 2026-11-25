@@ -1,0 +1,2730 @@
+\documentclass[11pt,reqno,a4paper]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,mathtools,amssymb,amsthm,booktabs,array,enumitem}
+\usepackage[expansion=false]{microtype}
+\usepackage[a4paper,textwidth=153mm,textheight=232mm,centering]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Full index prefixes in combinatorial sequences and simultaneous digit windows},pdfauthor={},pdfkeywords={radix expansion, Subspace Theorem, Hausdorff dimension, open dynamical system}}
+\pdfinfoomitdate=1
+\pdftrailerid{}
+\pdfsuppressptexinfo=15
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newcommand{\companion}[1]{\href{../#1.md}{\nolinkurl{#1.md}}}
+\setlength{\emergencystretch}{1.2em}
+\raggedbottom
+\setlist[enumerate,1]{leftmargin=*,label=\textup{(\roman*)}}
+\title[Full index prefixes and digit windows]{Full index prefixes in combinatorial sequences\\ and simultaneous digit windows}
+\date{}
+\begin{document}
+\begin{abstract}
+For every fixed pair of integers \(s,t\), the binary expansion of
+\(\binom{2n+s}{n+t}\) begins with the entire expansion of \(n\) at a number
+of indices in \([X,X^{3/2+\varepsilon}]\) tending to infinity. An
+analogous result holds for centered, strongly aperiodic planar lattice
+walks with a power of two labeled steps. Up to \(X\) both families have
+at least a constant times \((\log\log X)(\log\log\log X)\) matches.
+For counts asymptotic to
+\(Cb^{hn}n^{1-p}(1-\gamma/n+O(n^{-2}))\), we classify the integer
+radices admitting a zero-entropy survivor for the associated circle
+map. There are exactly seven, each realized by an unshifted count.
+The arithmetic argument also yields exact Hausdorff dimensions for long
+simultaneous zero blocks on an algebraic line. Synchronizing two
+multiplicatively independent radices strictly lowers the critical block
+exponent. For integer-valued polynomials we decide when the index occurs
+as both prefix and suffix infinitely often. In Zeckendorf notation the
+large indices prefixing \(n^2+c\) are exactly the Lucas numbers \(L_k\)
+with \(c+2(-1)^k\ge0\).
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+
+The decimal expansion of \(2^{10}=1024\) begins with the index \(10\).
+Erd\H{o}s asked whether this happens at infinitely many indices; see
+van de Lune~\cite{vdl} and Fang~\cite{fang}. The target changes with
+the index. Prescribing the entire expansion of an integer of size \(n\)
+amounts to prescribing an interval of relative width \(1/n\).
+In this paper a polynomial factor in an exponential count makes it
+possible to convert this shrinking interval into a fixed arc on the
+circle. We first give the resulting prefix theorems, then classify the
+arcs used by the proof and determine the size of the exceptional sets
+in the underlying problem on digit expansions.
+
+For a positive integer sequence \(U=(U_n)\), an integer radix \(b\ge2\),
+and \(X\le Y\), put
+\[
+ H_b(U;X,Y)=\#\{n\in\mathbb N\cap[X,Y]:
+             nb^k\le U_n<(n+1)b^k\ \text{for some integer }k\ge0\}.
+\]
+The block of \(k\) digits following the prefix may begin with zeros. Write \(W_b(U;\sigma)\) if
+\(H_b(U;X,X^{\sigma+\varepsilon})\to\infty\) as \(X\to\infty\)
+for every \(\varepsilon>0\). Set
+\[
+ B_n=\binom{2n}{n},\qquad
+ T_n=[z^n](1+z+z^2)^n,\qquad F_r(n)=\sum_{j=0}^n\binom nj^r.
+\]
+
+\begin{theorem}[Combinatorial prefixes]\label{thm:headline}
+\leavevmode\begin{enumerate}
+\item For every \(s,t\in\mathbb Z\),
+ \(W_2(\binom{2n+s}{n+t};3/2)\) holds on the eventually defined sequence.
+ For \(r=3,5,7\) the assertions \(W_2(F_r;2)\),
+ \(W_2(F_r;3/2)\), \(W_2(F_r;4/3)\) hold, respectively.
+ For integer \(r\ge2\) the corresponding binary survivor has positive
+ entropy exactly at even orders \(r\ge4\) and odd orders \(r\ge9\).
+\item Let a centered list of \(2^h\) lattice steps in the plane have
+ pairwise differences generating its rank-two lattice of positions \(\Lambda\), with \(h\ge1\).
+ For every fixed \(z\in\Lambda\), the count \(U_n(z)\) of
+ \(n\)-step walks from \(0\) to \(z\) satisfies \(W_2(U(z);2)\).
+ Repeated steps count as distinct choices. In ternary, \(W_3(T_n^2;2)\) holds.
+\item There are infinitely many full prefixes for \(B_n^2\) in base four,
+ \(F_3(n)^2\) in base eight, \(T_n^2\) in base nine, and \(F_4(n)^2\)
+ in each of bases two, four and sixteen. In base \(32\) there are
+ infinitely many for the following return count on \(\mathbb Z^8\).
+ Arrange the coordinate labels on a disjoint triangle and pentagon;
+ choose an edge and change both its coordinates by independent signs.
+\end{enumerate}
+\end{theorem}
+
+For example, \(B_4=70=(1000110)_2\) begins with \(4=(100)_2\), and \(2^{-27}B_{17}\in[17,18)\). To see what selects these indices, suppose that \(B_n/2^k=n+f\), \(0\le f<1\). Stirling's formula gives
+\[
+ \pi^{-1/3}4^{(2n-k)/3}=n+\tfrac1{12}+\tfrac23 f+O(1/n).
+\]
+Thus one tests a fixed interval with three interlaced geometric
+sequences. Their common factor \(\pi^{-1/3}\) need not satisfy any
+Diophantine hypothesis for Theorem~\ref{thm:headline}(i).
+Theorem~\ref{thm:app-counting} gives the cumulative lower bound for
+these three branches and the other multibranch examples.
+
+For the general construction suppose that
+\begin{equation}\label{eq:aligned}
+ U_n=Cb^{hn}n^{1-p}\bigl(1-\gamma/n+O(n^{-2})\bigr),
+ \qquad C>0,\ h\in\mathbb N,\quad p=P/Q>1
+\end{equation}
+with \(P,Q\) coprime positive integers. Factor \(b=g^u\) with \(g\)
+an integer which is not a perfect power. Define
+\begin{equation}\label{eq:branch}
+ l=\gcd(P,u),\qquad e=P/l,\qquad \tau=b^{1/p},\qquad B=\tau^e=g^{uQ/l}.
+\end{equation}
+On \(\mathbb R/\mathbb Z\) take \(T_B(x)=Bx\bmod1\).
+For an open arc \(I\) write \(K_B(I)=\{x:T_B^m x\notin I\ (m\ge0)\}\).
+We call it the survivor and use the topological entropy of \(T_B\)
+on this compact forward-invariant set (zero for the empty set).
+Our arc is
+\begin{equation}\label{eq:hole}
+ I=\bigl(\gamma/p,(\gamma+1)/p\bigr)\pmod1
+\end{equation}
+with positive orientation and length \(1/p\).
+
+\begin{theorem}[Radix classification and transfer]\label{thm:transfer}
+For every real \(\gamma\) the survivor \(K_B(I)\) has zero entropy
+exactly in the cases of Table~\ref{tab:zones}. As \(p\) and \(\gamma\)
+vary, the possible numeral radices are precisely
+\[
+                  2,\ 3,\ 4,\ 8,\ 9,\ 16,\ 32 .
+\]
+If \(e>1\), \(\gamma\) is rational, and \(K_B(I)\) has zero entropy,
+then \(W_b(U;e/(e-1))\) holds for every sequence satisfying
+\eqref{eq:aligned}. The same implication holds for real \(\gamma\)
+if an open arc \(J\) with rational endpoints, \(\overline J\subset I\),
+has zero-entropy survivor.
+
+If \(e=1\), assume such an inner arc \(J\) exists and
+\(\alpha=C^{1/p}\) is irrational. There are infinitely many full
+matches. If \(\alpha\) has finite irrationality exponent \(\mu\), let
+\(s\) be the maximum number of cyclic components visited by a path in
+the finite graph for \(J\) defined in Section~\ref{sec:transfer}.
+Every sufficiently large \([X,X^\rho]\) contains a match for
+\(\rho>\max(1,\mu^s)\).
+\end{theorem}
+
+\begin{table}[ht]
+\centering
+\caption{Complete zero-entropy parameters for the branch multiplier \(B\).
+All interval endpoints are included. Each row uses its displayed period
+in \(\gamma\).}\label{tab:zones}
+\begin{tabular}{ccl}
+\toprule
+\(B\)& \(p\)& \(\gamma\)\\
+\midrule
+\(2\)&\(2\)& all real values\\
+\(2\)&\(3\)& \([1/2,3/2]\pmod 3\)\\
+\(2\)&\(4\)& \([1,2]\pmod 4\)\\
+\(2\)&\(5\)& \([23/12,25/12]\pmod 5\)\\
+\(3\)&\(2\)& \([1/3,2/3]\pmod 1\)\\
+\(4\)&\(3/2\)& \([1/8,3/8]\pmod{1/2}\)\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The classification concerns the one-interval criterion in
+\eqref{eq:branch}--\eqref{eq:hole}. Positive survivor entropy leaves
+the behavior of a specific sequence open. The doubling-map part uses the
+asymmetric-hole theorem of Glendinning and Sidorov; its specialization
+to the widths \(1/p\) is detailed in Section~\ref{sec:classification}.
+
+The arithmetic problem behind the transfer also has a metric form.
+Let \(v=(v_1,\ldots,v_d)\) consist of positive real algebraic numbers
+linearly independent over \(\mathbb Q\), with \(d\ge2\). Use digits after
+the radix point, choosing the terminating expansion when available.
+For a base \(B_1\), a start \(u\in\mathbb N\), and \(\rho>1\), a zero
+window for a scale \(c>0\) means that digits \(u+1,\ldots,\lfloor\rho u\rfloor\)
+of every \(cv_i\) vanish. In a second base \(B_2\) synchronize the
+start \(u_2=\lfloor u\log_{B_2}B_1\rfloor\) and end at
+\(\lfloor\rho u_2\rfloor\). Denote the sets of multipliers satisfying
+these conditions for infinitely many \(u\) by \(E_1(\rho)\) in one
+base and \(E_{12}(\rho)\) in both. Write \(x_+=\max(x,0)\).
+
+\begin{theorem}[Simultaneous digit windows]\label{thm:dimension}
+The Hausdorff dimensions in every nonempty open subinterval of
+\((0,\infty)\) are
+\begin{align*}
+ \dim_H E_1(\rho)&=\bigl(d/\rho-(d-1)\bigr)_+,\\
+ \dim_H E_{12}(\rho)&=\rho^{-1}\max\{0,\,2d-(2d-1)\rho,\,
+                                      d\lambda-(d-1)\rho\},\\
+ \lambda&=\sum_{\ell\ {\rm prime}}
+     \min\left\{\frac{\nu_\ell(B_1)\log\ell}{\log B_1},
+                 \frac{\nu_\ell(B_2)\log\ell}{\log B_2}\right\}.
+\end{align*}
+The sets are empty, respectively, above \(d/(d-1)\) and above
+\(\max\{2d/(2d-1),d\lambda/(d-1)\}\). Every multiplicatively
+independent pair strictly lowers the critical exponent.
+At the one-base endpoint \(d/(d-1)\), if the \(v_i\) form a basis
+of a degree-\(d\) number field under a real embedding, the exceptional
+set contains a dense \(G_\delta\) on some half-line.
+
+For \(1<\rho<3/2\), the positive \(g\) for which
+\(H_2(\lfloor gB_n\rfloor;X,X^\rho)=0\) at arbitrarily large \(X\)
+have local dimension \(3/\rho-2\). The same dimension holds if one
+requires only that these counts fail to tend to infinity. At \(\rho=3/2\)
+both dimensions are zero, and the empty-window parameters contain a
+dense \(G_\delta\) in \((0,\infty)\). Above \(3/2\) both sets are empty.
+\end{theorem}
+
+For instance, for the line \(c(1,\sqrt2)\) the cutoff is \(2\) in
+binary alone and \(4/3\) in binary and ternary together. The parameter
+\(\lambda\) measures exactly the size of the common denominator grid.
+When \(N=B_1^u\) and \(M=B_2^{u_2}\), one has \(\gcd(N,M)\asymp N^\lambda\).
+For comparison, still in dimension two, take \(B_1=2^{10}\) and
+\(B_2=3\cdot 2^{10}\). Here \(\lambda=\log(2^{10})/\log(3\cdot 2^{10})>2/3\).
+Their joint cutoff is \(2\lambda\), strictly between \(4/3\) and \(2\).
+
+Section~\ref{sec:polynomials} also tests the last digits of a polynomial.
+For example, \(n^2-n+1\) begins and ends with \(n\) at \(n=b^m+1\)
+for every sufficiently large \(m\), whereas \(n^d+c\) does this only
+finitely often for each fixed \(b,d\ge2\) and integer \(c\).
+Section~\ref{sec:representations} treats changes to the digit word
+itself, including reversal and the Zeckendorf representation.
+
+\section{From leading digits to orbits on the circle}\label{sec:transfer}
+
+Write \(\alpha=C^{1/p}\). For a trial suffix \(k=hn-j\), the natural
+continuous index is \(x=\alpha\tau^j\). If \(x-n\) is bounded, then
+\eqref{eq:aligned} gives, uniformly in this range as \(x\to\infty\),
+\begin{equation}\label{eq:residual}
+ b^{-k}U_n-n=p(x-n)-\gamma+O(x^{-1}).
+\end{equation}
+Indeed \(Cb^j=x^p\), and expansion of
+\(n(x/n)^p(1-\gamma/n+O(n^{-2}))\) gives the formula.
+For \(n=\lfloor x-\gamma/p\rfloor\), the right side is
+\(p\{x-\gamma/p\}+O(x^{-1})\); also \(k\) is eventually positive.
+A phase in a compact subarc of \(I\) therefore gives a match. For
+converse arguments, a genuine match with \(b^{-k}U_n=n+f,\ 0\le f<1\),
+first gives \(x/n=1+O(1/n)\) by taking a \(p\)-th root, and then
+\begin{equation}\label{eq:inverse}
+ x=n+(\gamma+f)/p+O(n^{-1}).
+\end{equation}
+The latter inclusion need not select the same floor at an endpoint.
+
+The positive number \(\tau\) in \eqref{eq:branch} has degree exactly
+\(e\). If its degree is \(d'\), norms in \(\tau^e=B\) give
+\(e\mid d'\nu_\ell(B)\) for each prime \(\ell\mid g\).
+The gcd of the valuations of \(g\) is one and
+\(\gcd(e,uQ/l)=1\), so \(e\mid d'\). The equation \(T^e-B=0\)
+gives \(d'\le e\). Thus in the branches \(j=em+r\), \(0\le r<e\),
+the \(x\)'s at time \(m\) are the coordinates of
+\begin{equation}\label{eq:line}
+             \alpha B^m(1,\tau,\ldots,\tau^{e-1}).
+\end{equation}
+
+\subsection{An arithmetic bound for sparse transitions}
+Digit-change estimates obtained by the Subspace Theorem ordinarily
+concern an individual algebraic irrational; see, for example,
+Bugeaud and Evertse~\cite{be-digits}. In the lemma below the common
+multiplier may be any nonzero real number, and the approximants need
+only stay at bounded distance from the line.
+
+\begin{lemma}\label{lem:transitions}
+Let \(B\ge2,\ d\ge2\) be integers, let \(v_1,\ldots,v_d\) be
+positive real algebraic numbers linearly independent over \(\mathbb Q\),
+and fix \(c\ne0\). If \(W_m\in\mathbb Z^d\) satisfies
+\(W_m=cB^m v+O(1)\) coordinatewise, then for every \(\eta>d/(d-1)\),
+\[
+ \#\{u<m\le\lfloor\eta u\rfloor:W_m\ne BW_{m-1}\}\longrightarrow\infty .
+\]
+\end{lemma}
+\begin{proof}
+Suppose the counts stay bounded along a subsequence and let
+\(w=\lfloor\eta u\rfloor\). Each transition vector \(W_m-BW_{m-1}\)
+belongs to a fixed finite set. Pass to a subsequence fixing the
+number and ordered values of the nonzero transitions. Each gap
+between successive transition times can in turn be held constant
+or made to tend to infinity. Group times separated by constant
+gaps and write \(a_i\) for the last time of each resulting group.
+Telescoping yields
+\[
+ W_w=Y+\sum_{i=1}^s h_i P_i,\qquad
+ Y=B^{w-u}W_u,\qquad P_i=B^{w-a_i}.
+\]
+The vectors \(h_i\) are fixed integers: contributions from earlier
+times of a group are multiplied by fixed nonnegative powers of \(B\).
+Discard zero group contributions. The remaining \(a_i\)'s are ordered
+with pairwise gaps tending to infinity.
+
+We use the \(S\)-adic Subspace Theorem in its integer-product form
+\cite{schlickewei}. For \(m\ge2\) independent algebraic linear forms
+in \(m\) variables at each place of a finite set \(S\) containing
+the real place, integer vectors with
+\(\prod_{\nu\in S}\prod_i |L_{i,\nu}(Z)|_\nu
+ \le \|Z\|_\infty^{-\delta}\), \(\delta>0\), lie in finitely many
+proper rational subspaces. The finite absolute values are normalized
+by \(|\ell|_\ell=\ell^{-1}\). In this proof the finite-place forms
+are the coordinate forms. The version for primitive vectors implies
+this one by dividing out the common gcd (its product over \(S\) is
+at least one).
+
+Take \(Z=(Y_1,\ldots,Y_d,P_1,\ldots,P_s)\), with finite places the
+prime factors of \(B\). At infinity put \(F=Y+\sum h_i P_i\) as
+a vector of forms, and choose
+\[
+ F_1,\quad F_r-(v_r/v_1)F_1\quad(2\le r\le d),
+     \qquad P_1,\ldots,P_s .
+\]
+These forms are independent. The differences evaluated at \(Z\)
+are \(O(1)\); \(F_1=O(B^w)\). Each \(Y_r\) contributes at most
+\(B^{-(w-u)}\) at the finite places, and each \(P_i\) has product
+one over all selected places. Thus the full product is
+\(O(B^{du-(d-1)w})\). Since \(\|Z\|_\infty\asymp B^w\), this is a
+negative power of the height. An infinite subsequence satisfies
+one fixed nontrivial rational linear relation. Divide it by \(B^w\).
+The \(Y\) terms tend to \(cv\), and all \(P_i/B^w\) tend to zero.
+Independence of the \(v_r\)'s kills every coefficient of \(Y\).
+Among the remaining powers, divide by the largest with nonzero
+coefficient. All smaller powers disappear in the limit, a contradiction.
+\end{proof}
+
+\subsection{The endpoint error and the finite graph}
+
+For an open rational arc \(J\), take a common denominator \(D\) of
+its endpoints and partition the circle into the half-open cells
+\([i/D,(i+1)/D)\), \(0\le i<D\). Keep those whose interiors are
+outside \(J\). Draw the edges
+\[
+             i\longrightarrow Bi+t\bmod D,\qquad 0\le t<B,
+\]
+between retained states, retaining multiplicities and labels \(t\).
+Indeed for \(V_m=\lfloor D x_m\rfloor\), \(x_{m+1}=Bx_m\),
+one has \(V_{m+1}=BV_m+t_m\), where \(t_m\) is the next radix digit
+of \(\{D x_m\}\). A cyclic strongly connected component is a component
+containing a directed cycle.
+
+This graph has zero entropy exactly when each cyclic component is a
+simple directed cycle. A branching component admits two distinct return
+words from a vertex with different initial edges, which can be repeated
+to give two distinct equal-length return words. Simple cyclic components
+give polynomially many paths of each length, since a path can change
+components only boundedly often. This criterion gives the entropy-zero
+test for \(K_B(J)\). Indeed an infinite graph path gives a point of the
+closed survivor by intersecting its nested closed itinerary intervals.
+For positive-entropy paths the coding by the digits of \(Dx\) identifies
+at most the two expansions at a radix endpoint for a fixed initial cell.
+Conversely a survivor missing the grid visits only retained cells. Points
+which ever visit the grid form a countable set of eventually periodic
+points. More formally one may code the closed survivor in the full
+one-sided radix shift, using both codes of a terminating expansion.
+The coding is a finite-to-one factor and preserves entropy (the fibers
+carry zero relative entropy). An ergodic positive-entropy measure gives
+no mass to the countable grid preimages. The variational principle
+therefore identifies positivity on either side, including holes which
+wrap around zero.
+
+Suppose first \(e>1\) and \(I\) itself is rational with a zero-entropy
+graph. Work on one of the \(e\) branches \(x_m=\alpha B^m\tau^r\),
+on \([u,w]\) with \(w=\lfloor\eta u\rfloor\) and fixed
+\(\eta>e/(e-1)\). At a failed test in a nonretained cell,
+\eqref{eq:residual} gives distance \(O(B^{-m})\) to a grid endpoint,
+since phases in the interior of the success arc farther than this
+quantity from both ends give a true hit. This includes a grid boundary
+assigned to a nonretained cell. If such a failure occurs at \(a\),
+\(\|D x_a\|_{\mathbb R/\mathbb Z}\ll B^{-a}\). For
+\(a\le m\le\min(2a-K,w)\), the nearest integer to \(D x_m\)
+is \(B^{m-a}\) times that at \(a\); choose \(K\) so that the propagated
+error stays strictly below \(1/2\). Cover these failures in increasing
+order, beginning a new interval at the first uncovered one. New starts
+are at least \(2a-K+1\). Thus \(O_\eta(1)\) intervals suffice.
+
+Delete those intervals and all successful tests for the moment. If at
+most \(H\) tests succeeded, the remaining \(O_\eta(H+1)\) runs follow
+retained paths. On each stretch within a cyclic component let
+\(\theta_i\in[0,1]\) be the radix fraction read by continuing around
+its unique cycle from state \(i\). An edge \(i\to i'\) with digit
+\(t\) satisfies \(\theta_{i'}=B\theta_i-t\), also for the constant
+word of digits \(B-1\), which gives \(\theta_i=1\).
+Let \(A\) be a common multiple of the \(B^q-1\), \(1\le q\le D\).
+Use the integer \(A(V_m+\theta_i)\) at a cyclic state on a retained
+run. It multiplies exactly by \(B\) on each internal cycle edge.
+Use \(A\) times the nearest integer to \(D x_m\) everywhere else.
+Within the deleted endpoint intervals those integers also multiply by
+\(B\). There are at most \(D-1\) component changes per retained run.
+All these approximants have error \(O(1)\) from \(ADx_m\);
+the number of transitions on which multiplication can fail is
+\(O_{\eta,D}(H+1)\).
+
+If the total successes stayed bounded along infinitely many such
+windows, take a disjoint subsequence of windows and use these integer
+approximants on all branches there, filling the gaps by rounding.
+This contradicts Lemma~\ref{lem:transitions} for
+\(AD\alpha(1,\tau,\ldots,\tau^{e-1})\), with the scalar \(AD\alpha\)
+outside the algebraic direction. For a target exponent
+\(e/(e-1)+\varepsilon\) choose \(\eta\) strictly between the two
+exponents, and take \(u=\lceil\log_B(X/\alpha)\rceil+O(1)\) with
+a sufficiently large upward offset. All candidate indices lie in the
+required interval and are eventually distinct because consecutive
+unrounded \(x\)'s grow by the fixed ratio \(\tau>1\).
+If a rational inner arc \(J\) is used in place of \(I\), every point
+in its closure succeeds eventually, and the same argument applies
+without exceptional intervals. This proves the multibranch transfer.
+
+Finally suppose \(e=1\) and use the rational inner arc. If \(\alpha\)
+is irrational, its orbit avoids rational grid points. An infinite
+run of failures must eventually traverse a single periodic cycle.
+The base-\(B\) digits of \(D\alpha\) would then be eventually periodic,
+which is impossible. For a quantitative estimate, a stretch of \(L\)
+cycle edges starting at time \(m\) gives an approximation to
+\(\alpha\) of denominator \(O(B^m)\) and error \(O(B^{-m-L})\)
+by continuing the edge digits periodically. For every \(\delta>0\)
+the definition of \(\mu=\mu(\alpha)\) implies
+\(m+L\le(\mu+\delta)m+O(1)\); bounded reduced denominators also
+satisfy the needed error lower bound after adjustment of its constant.
+Off the cycles at most \(O(D)\) edges occur in a retained run.
+Iterating over at most \(s\) cycles and leaving a strict exponent
+margin proves the last assertion of Theorem~\ref{thm:transfer}.
+
+\section{The survivor classification}\label{sec:classification}
+
+Write \(T_B x=Bx\bmod 1\) on \(\mathbb R/\mathbb Z\). Let \(I\) be the
+open arc from \(\gamma/p\) to \((\gamma+1)/p\) in the positive
+direction, \(J\) its closed complement, and
+\(K=\bigcap_{j\ge0}T_B^{-j}J\). Put \(w=1/p\) and \(L=1-w\).
+For a closed invariant set of \(T_B\), its Hausdorff dimension is
+\(h_{\rm top}/\log B\). This is the constant-derivative case of the
+pressure formula in \cite[Theorem~3]{app-urbanski}. We will use dimension
+and entropy interchangeably when testing positivity.
+
+Translation of \(\gamma\) by \(p\) gives the same hole. Reflection of the
+circle sends \(\gamma\) to \(-\gamma-1\). Translation of the circle by a
+multiple of \(1/(B-1)\) also commutes with \(T_B\), so it gives a period
+\(p/(B-1)\) for the entropy as a function of \(\gamma\).
+
+\subsection{An inverse-image bound}
+
+If \(BL\ge2\), every point has at least \(\lfloor BL\rfloor\) inverse
+images in \(J\), since its \(B\) inverse images are spaced by \(1/B\).
+The arc \(J\) contains a fixed point because
+\(L\ge 2/B\ge1/(B-1)\). Taking the inverse tree of such a point inside
+\(J\) gives at least \(\lfloor BL\rfloor^n\) distinct points of \(K\)
+at depth \(n\). For any two of these points, at the last time before
+their orbits meet they are distinct inverse images of the same point
+and are separated by at least \(1/B\). Thus
+\begin{equation}\label{eq:app-inverse-tree}
+ h_{\rm top}(T_B|_K)\ge \log\lfloor BL\rfloor \qquad(BL\ge2).
+\end{equation}
+
+For an admissible branch multiplier, write \(p=P/Q\) in lowest terms,
+\(b=g^u\) with \(g\) not a perfect power, and \(\ell=\gcd(P,u)\), so that
+\(B=g^{uQ/\ell}\). In particular \(B\) is a \(Q\)-th power. For \(Q\ge3\),
+\[
+ BL\ \ge\ \frac{2^Q}{Q+1}\ \ge\ 2.
+\]
+For \(Q=2\), we have \(P\ge3\) odd. If \(P\ge5\), then
+\(BL\ge4(1-2/5)>2\). If \(P=3\) and \(B\ge9\), then \(BL\ge3\).
+This leaves \((B,p)=(4,3/2)\). For \(Q=1\), \eqref{eq:app-inverse-tree}
+applies to \(B\ge4\) and also to \(B=3,\ p\ge3\). The remaining
+integer-\(p\) cases are tripling at \(p=2\) and doubling.
+
+\subsection{Tripling and the half-integral exception}
+
+For \((B,p)=(3,2)\) and \((4,3/2)\) we have \(L=1/(B-1)\).
+The period in \(\gamma\) given by circle translation is \(pL\),
+which is \(1\) and \(1/2\), respectively. Reflection is
+\(\gamma\mapsto-\gamma\) modulo \(pL\) in both cases. We may therefore
+take \(0\le\gamma\le pL/2\). With \(t=\gamma/p\), the allowed arc has
+the lift \([t-L,t]\), where \(0\le t\le L/2\).
+Consecutive lifts in a surviving orbit satisfy \(z'=Bz+d\) with
+\[
+ d\in\mathbb Z\cap[-(B-1)t-L,\ BL-(B-1)t].
+\]
+Except at \(B=3,\ t=1/4\), this gives \(d\in\{0,1\}\).
+A positive lift then grows until it leaves the allowed arc.
+If \(d=1\), then \(z'\ge Bt-L\). Hence for \(t>L/B\) only \(0\)
+survives, and at \(t=L/B\) any carry \(d=1\) in a surviving orbit
+lands at \(0\). The latter survivor is contained in the preimages of
+\(0\), so it is countable. In the exceptional case \(B=3,\ t=1/4\),
+the nonzero carries are exactly the transitions between the two
+endpoints \(-1/4,1/4\). Any surviving point is \(0\) or eventually
+enters this two-cycle, since a trajectory with all carries zero
+cannot stay bounded from a nonzero lift. This survivor is countable
+as well.
+
+If \(t<L/B\), then \(L-t>1/B\). Choose \(m\) large enough that
+\(B^{-1}/(1-B^{-m})<L-t\). Concatenations of the two base-\(B\)
+words \(0^m\) and \(10^{m-1}\) have every tail in
+\([0,B^{-1}/(1-B^{-m})]\). Their negatives stay in the allowed arc,
+and \(T_B^m\) on the aligned concatenations is conjugate to the full
+shift on two symbols. Thus the entropy is positive. Undoing the
+reflection and translation gives \([1/3,2/3]\bmod 1\) for tripling
+and \([1/8,3/8]\bmod 1/2\) for quadrupling. The closed intervals
+include the terminating-carry cases above.
+
+\subsection{Doubling}
+
+If \(p=2\), the restriction of \(T_2\) to the closed allowed
+semicircle has only one possible image with two allowed preimages,
+the common image of the endpoints. For each \(j\), the set of
+depth-\(j\) preimages of either specified endpoint that stay in \(J\)
+through that time has at most \(j+1\) elements. Indeed each
+backward step adds at most one element, because at most one target
+at the preceding depth can have two allowed preimages. These
+preimages for \(0\le j<n\) divide the set surviving \(n\) tests into
+\(O(n^2)\) intervals and cut points. To see this, on each complementary
+interval the first \(n\) membership tests cannot change from all
+allowed to a failed test without meeting a first boundary preimage.
+On a surviving interval all of its first \(n\) images are arcs in
+\(J\) and have lengths \(2^j\) times its own length. Its length is
+therefore at most \(2^{-n}\). For any fixed \(\delta>0\) it can
+contain only \(O_\delta(1)\) points of an \((n,\delta)\)-separated
+set. The resulting polynomial bound gives entropy zero at every
+\(\gamma\).
+
+Now \(p\ge3\), so \(w\le1/3\). A hole whose closure contains \(0\)
+is contained in one of width \(1/3\) whose closure also contains
+\(0\). After reflection the latter hole has complement
+\([v,v+2/3]\) in \([0,1]\) for some \(0\le v\le1/6\).
+If \(v<1/6\), concatenate the words \(A=01\) and
+\(D=001(01)^M\). No tail exceeds \(0.\overline{10}=2/3\). A tail
+beginning in \(00\) must begin with \(D\), whose value tends to
+\(0.00\overline{10}=1/6\) as \(M\to\infty\). All other tails are
+at least \(1/4\). For sufficiently large \(M\) the two distinct
+equal-length blocks \(AD,DA\) therefore give a full shift for
+an iterate of doubling in the survivor. At \(v=1/6\), use aligned
+concatenations of \(01\) and \(10\). Their aligned tails lie in
+\([1/3,2/3]\) and their other tails in \([1/6,5/6]\). These
+constructions give positive entropy also for holes abutting \(0\).
+
+For the remaining holes write \(I=(a,c)\) with
+\(0<a<c<1,\ c-a=w\). If \(c<1/2\), the two equally long binary
+words \(1^m\) and \(01^{m-1}\), for \(m\) sufficiently large, give
+a full shift for \(T_2^m\) whose tails all exceed \(c\).
+If \(c=1/2\) and \(a>1/4\), use \(0^m\) and \(10^{m-1}\).
+A tail starting in \(0\) has value at most
+\(1/[4(1-2^{-m})]\), which is less than \(a\) for sufficiently large
+\(m\), and every tail starting in \(1\) is at least \(1/2\).
+In contrast, the survivor of \((1/4,1/2)\) is countable. In a
+terminating-convention binary expansion any occurrence of \(01\)
+must have a suffix of all zeros to avoid the hole. An expansion
+with no occurrence of \(01\) is eventually constant. Thus a
+hole ending at \(1/2\) with \(a\le1/4\) has zero entropy.
+Reflection gives the corresponding results on the other side
+of \(1/2\).
+
+For a hole strictly crossing \(1/2\), Glendinning and Sidorov
+characterize positive dimension by \(c<\chi(a)\)
+\cite[Theorems~1.2 and~2.13]{app-glendinning-sidorov}. The interval
+and circle survivors have the same dimension after identifying
+\(0\) and \(1\). Holes with \(a\le1/4\) or \(c\ge3/4\) contain \((1/4,1/2)\) or its reflection
+and have zero entropy. When \(1/4<a<1/2<c<3/4\), the bound
+\(\chi(a)-a\le1/4\) in \cite[Proposition~3.3]{app-glendinning-sidorov}
+gives zero entropy for all the crossing holes at \(p=3,4\).
+The preceding one-sided analysis includes the two abutting cases,
+so the full condition at these two widths is
+\(a\in[1/2-w,1/2]\), or
+\(\gamma\in[p/2-1,p/2]\bmod p\).
+
+At \(p=5\), holes abutting \(1/2\) have positive entropy.
+For strictly crossing holes, reflect if necessary so that
+\(3/10<a\le2/5\). We use the following consequences of the
+plateau description of \(\chi\)
+\cite[Theorem~2.13 and Proposition~3.3]{app-glendinning-sidorov}.
+The first \(1/2\) renormalization interval is
+\([1/3,5/12]\). Outside that interval, either \(\chi(a)-a=1/4\)
+or the first renormalization denominator \(q_1\) is at least \(3\).
+In the latter case the lower bound from the plateau and gap
+formulas is
+\[
+ \chi(a)-a\ \ge\
+ \frac14\prod_{j\ge1}(1-2^{-3\cdot 2^{j-1}})
+ \ \ge\ \frac14\left(1-\sum_{j\ge1}2^{-3j}\right)
+ =\frac{3}{14}>\frac15 .
+\]
+Here the factors in those formulas have exponents \(q_1\cdots q_j\),
+with \(q_i\ge2\) for \(i>1\). On a plateau the smallest width is
+at its right endpoint and equals the product through that level
+times \(1/4\), as in the proof of Proposition~3.3. The gap values
+are finite products of the same factors, and the limiting
+values use the infinite product.
+
+The words \(01,10\) give
+\(\chi(a)=7/12\) on \([1/3,19/48]\), whose endpoints have binary
+expansions \(0.\overline{01}\) and \(0.0110\overline{01}\).
+Thus this plateau gives zero entropy exactly for
+\(a\ge23/60\). The next \(1/2\) substitution uses \(0110,1001\)
+and gives
+\(\chi(2/5)=0.1001\overline{0110}=47/80\).
+Monotonicity then gives \(\chi(a)\le47/80<19/48+1/5\) for
+\(19/48\le a\le2/5\), so this entire subinterval has zero entropy.
+Reflection gives the full range \(23/60\le a\le5/12\).
+The strict positivity inequality at the boundary gives the
+closed range \([23/12,25/12]\bmod 5\) in \(\gamma\).
+
+For \(p\ge6\), the universal positive-dimension width of
+\cite[Corollary~3.9]{app-glendinning-sidorov} is strictly greater
+than \(1/6\). Indeed
+\[
+ \frac14\prod_{j\ge1}(1-2^{-2^j})
+ \ \ge\ \frac14\left(1-\frac14-\frac1{16}
+                         -\sum_{m\ge8}2^{-m}\right)
+ =\frac{87}{512}>\frac16 .
+\]
+This handles every hole with \(0<a<c<1\) in that range, and the
+wrapping argument covers the rest. This proves Table~\ref{tab:zones}.
+
+\subsection{The seven numeral radices}
+
+For \(Q=1\) and \(B=2\), we have \(g=2\) and \(u\mid p\).
+The rows \(p=2,3,4,5\) therefore give
+\(\{2,4\},\{2,8\},\{2,4,16\},\{2,32\}\), respectively.
+For \(Q=1,\ B=3,\ p=2\) the same divisibility gives \(3,9\).
+For \(P=3,\ Q=2,\ B=4\) we have \(g=2\) and \(u\mid3\), giving
+\(2,8\). Their union is \(\{2,3,4,8,9,16,32\}\). The argument
+classifies the entropy of the survivor for admissible branches.
+Actual prefix matches for a specified sequence depend on its
+particular branch orbits.
+
+\section{Combinatorial applications}\label{sec:applications}
+
+\subsection{Fixed shifts of the central binomial coefficient}
+
+Let \(s,t\in\mathbb Z\) be fixed. For any fixed integer \(a\), expansion
+of a finite product or its reciprocal gives
+\[
+ \frac{(N+a)!}{N!}
+ =N^a\left(1+\frac{a(a+1)}{2N}+O_a(N^{-2})\right).
+\]
+Applying this to the three factorials and using Stirling's formula
+for \(\binom{2n}{n}\) gives
+\begin{equation}\label{eq:app-shifted-binomial}
+ \binom{2n+s}{n+t}
+ =\frac{2^s4^n}{\sqrt{\pi n}}
+  \left(1-\frac{\gamma}{n}+O_{s,t}(n^{-2})\right),
+ \qquad
+ \gamma=\frac18+\frac{(s-2t)^2+s}{4}.
+\end{equation}
+For the unshifted expansion with error bounds, see \cite{app-brent}.
+The numerator \((s-2t)^2+s\) is even. Thus
+\(\gamma=1/8\bmod 1/2\), the endpoint of the quadrupling zone.
+For the binary numeral radix, \(p=3/2\), \(e=3\), \(B=4\), and
+Theorem~\ref{thm:transfer} gives the growing hit counts in
+\([X,X^{3/2+\varepsilon}]\) asserted in Theorem~\ref{thm:headline}. Fixed negative shifts are allowed since
+all the factorial arguments are nonnegative for sufficiently large
+\(n\).
+
+\subsection{Lattice walks and the central trinomial square}
+
+\begin{lemma}\label{lem:app-walk-expansion}
+Let \(S\) be chosen uniformly from a finite list of \(m\) steps in a
+full-rank lattice \(\Lambda\subset\mathbb R^d\), with repeated steps
+counted as distinct labels. Suppose \(\mathbb E S=0\) and the
+differences of steps generate \(\Lambda\). For each fixed
+\(a\in\Lambda\), the number \(U_n(a)\) of length-\(n\) walks from
+\(0\) to \(a\) satisfies
+\[
+ U_n(a)=
+ \frac{\operatorname{covol}(\Lambda)\,m^n}
+      {(2\pi n)^{d/2}\sqrt{\det\Sigma}}\,
+ \left(1-\frac{\gamma}{n}+O(n^{-2})\right),
+ \qquad \Sigma=\mathbb E[SS^\top],
+\]
+with \(\gamma\in\mathbb Q\). For a symmetric step law and \(a=0\),
+\begin{equation}\label{eq:app-symmetric-correction}
+ \gamma=\frac d4-\frac18\operatorname{Var}(S^\top\Sigma^{-1}S).
+\end{equation}
+\end{lemma}
+\begin{proof}
+Work first in a lattice basis, so \(\Lambda=\mathbb Z^d\). The
+generation hypothesis makes \(\Sigma\) positive definite. It also
+implies \(|\phi(t)|<1\) off \(0\) on the Fourier torus, where
+\(\phi(t)=\mathbb E e^{it^\top S}\). In fact equality in the triangle
+inequality would make \(e^{it^\top S}\) the same on every step, forcing
+\(t\) to annihilate all of \(\Lambda\). Fourier inversion gives
+\[
+ \frac{U_n(a)}{m^n}
+ =\frac1{(2\pi)^d}\int_{[-\pi,\pi]^d}e^{-it^\top a}\phi(t)^n\,dt .
+\]
+Away from a fixed neighborhood of \(0\) the integral is exponentially
+small. In that neighborhood \(|\phi(t)|\le e^{-c|t|^2}\) for some
+\(c>0\). Write \(t=y/\sqrt n\), let \(M_j(y)=\mathbb E(y^\top S)^j\),
+and put \(A(y)=y^\top a+M_3(y)/6\). On \(|y|\le n^{1/24}\), Taylor
+expansion of the local logarithm of \(\phi\) through degree five and
+then of the exponential gives
+\begin{align*}
+ e^{-it^\top a}\phi(t)^n
+ &=e^{-M_2(y)/2}\biggl[1-\frac{iA(y)}{\sqrt n}
+ +\frac1n\left(\frac{M_4(y)-3M_2(y)^2}{24}
+                -\frac{A(y)^2}{2}\right)\\
+ &\hspace{24mm}
+ +\frac{P_3(y)}{n^{3/2}}
+ +O\!\left(n^{-2}(1+|y|^{M})\right)\biggr].
+\end{align*}
+Here \(P_3\) is an odd polynomial and \(M\) is fixed. The logarithmic
+remainder after scaling is \(O(n^{-2}|y|^6)\), and the remaining
+terms in the exponent beyond the quadratic term tend uniformly to
+zero on this ball. The exponential remainder is therefore bounded
+by \(n^{-2}\) times a polynomial after the Gaussian is factored out.
+The rest of the neighborhood contributes a Gaussian tail. The odd
+terms integrate to zero. For \(Y\) a centered Gaussian of covariance
+\(\Sigma^{-1}\), the relative coefficient is
+\begin{equation}\label{eq:app-walk-correction}
+ -\gamma=\mathbb E_Y\left[
+     \frac{M_4(Y)-3M_2(Y)^2}{24}
+       -\frac12\left(Y^\top a+\frac{M_3(Y)}6\right)^2
+                      \right].
+\end{equation}
+In lattice coordinates the polynomial and the covariance matrix
+have rational coefficients. The Gaussian moment formula then gives
+\(\gamma\in\mathbb Q\), including for nonsymmetric step laws.
+Changing from a lattice basis to Euclidean coordinates multiplies the
+determinant normalization by \(\operatorname{covol}(\Lambda)\).
+
+If the law is symmetric and \(a=0\), then \(A=0\).
+Writing \(R=S^\top\Sigma^{-1}S\), the Gaussian fourth moment gives
+\(\mathbb E_Y M_4(Y)=3\mathbb E R^2\), and
+\(\mathbb E_Y M_2(Y)^2=d(d+2)\). Since \(\mathbb ER=d\),
+\eqref{eq:app-walk-correction} gives \eqref{eq:app-symmetric-correction}.
+The quadratic form defining \(R\) is invariant under the change
+of basis.
+\end{proof}
+
+For \(d=2\) and \(m=2^h\), the lemma gives \(p=2\) and a rational
+\(\gamma\) for each fixed endpoint. Every such correction belongs to
+the doubling zone. In base two, \(e=2\) and Theorem~\ref{thm:transfer}
+gives the claimed \(2+\varepsilon\) window. The argument uses the
+third moments and the fixed displacement in
+\eqref{eq:app-walk-correction}, so it applies to directed step
+lists with zero mean. For the eight king moves in \(\mathbb Z^2\),
+the mean is zero by symmetry and differences of steps include both
+coordinate unit vectors.
+
+For the central trinomial \(T_n=[x^n](1+x+x^2)^n\), take one
+coordinate with step law uniform on \(\{-1,0,1\}\). Its variance
+is \(2/3\) and \(R=3S^2/2\) has variance \(1/2\). By
+\eqref{eq:app-symmetric-correction} the one-coordinate correction is
+\(\gamma=3/16\), in agreement with the trinomial expansion in
+\cite{app-wagner}. The square satisfies
+\begin{equation}\label{eq:app-trinomial}
+ T_n^2=\frac{3\,9^n}{4\pi n}
+       \left(1-\frac{3}{8n}+O(n^{-2})\right).
+\end{equation}
+In base three we have \(p=e=2,\ B=3\), and
+\(3/8\in[1/3,2/3]\). Thus the ternary hit count tends to infinity
+in every window \([X,X^{2+\varepsilon}]\).
+
+\subsection{The binary Franel cutoff}
+
+For fixed \(r\ge2\) let \(F_r(n)=\sum_{j=0}^n\binom nj^r\), the
+Franel family studied in \cite{app-straub-zudilin}. The expansion
+below is a special case of the binomial-sum expansions of
+McIntosh~\cite{app-mcintosh}. We give the calculation of its first
+correction since it determines the hole.
+\begin{equation}\label{eq:app-franel}
+ F_r(n)=
+ \frac{(2/\pi)^{(r-1)/2}}{\sqrt r}\,
+ 2^{rn} n^{-(r-1)/2}
+ \left(1-\frac{(r-1)^2}{4rn}+O_r(n^{-2})\right).
+\end{equation}
+To obtain the correction, put \(y=(j-n/2)/\sqrt n\).
+On \(|y|\le\sqrt{K\log n}\), Stirling's formula gives uniformly
+\begin{align*}
+ \binom nj
+ &=2^n\sqrt{\frac{2}{\pi n}}\,e^{-2y^2}
+ \left(1+\frac{-1/4+2y^2-(4/3)y^4}{n}
+          +O_K\!\left(\frac{1+|y|^{12}}{n^2}\right)\right).
+\end{align*}
+The entropy term contributes \(-4y^4/(3n)\), the square-root
+factor \(2y^2/n\), and the Stirling correction \(-1/(4n)\).
+Off this range, the centered binomial Chernoff bound
+\(2^{-n}\binom nj\le e^{-2y^2}\) follows from
+\(\cosh(t/2)\le e^{t^2/8}\).
+Taking \(K\) sufficiently large makes the omitted tail smaller
+than the stated error after raising to the \(r\)-th power.
+For \(f\) a polynomial times \(e^{-2ry^2}\), Poisson summation on
+the mesh \(1/\sqrt n\) gives
+\[
+ \sum_{j\in\mathbb Z} f((j-n/2)/\sqrt n)
+   =\sqrt n\left(\int_{\mathbb R} f(y)\,dy+O_f(e^{-c_f n})\right)
+\]
+for some \(c_f>0\). The bound is uniform in the mesh translation
+because the nonzero Fourier terms are bounded by a Gaussian
+times a polynomial. The moments of the normalized
+Gaussian weight are \(1/(4r)\) and \(3/(16r^2)\) in degrees two
+and four, respectively. The relative coefficient is therefore
+\[
+ r\left(-\frac14+\frac{2}{4r}-\frac43\frac{3}{16r^2}\right)
+ =-\frac{(r-1)^2}{4r}.
+\]
+The leading Gaussian integral is \(\sqrt{\pi/(2r)}\), giving
+\eqref{eq:app-franel}.
+
+Here \(p=(r+1)/2\) and \(\gamma=(r-1)^2/(4r)\).
+When \(r=2\), Vandermonde's identity gives the unshifted central
+binomial coefficient. For \(r=3,5,7\) the respective pairs
+\((p,\gamma)\) are \((2,1/3),(3,4/5),(4,9/7)\), all in the
+doubling zones. They give \(e=p\) and window exponents
+\(2+\varepsilon,3/2+\varepsilon,4/3+\varepsilon\), respectively.
+For even \(r\ge4\), the branch map is quadrupling and \(p\ge5/2\),
+so \eqref{eq:app-inverse-tree} gives positive entropy. At
+\(r=9\) we have \(p=5,\ \gamma=16/9<23/12\), and for odd \(r\ge11\)
+we have \(p\ge6\). Both cases have positive entropy by
+Table~\ref{tab:zones}. This gives the exact entropy cutoff for
+the unpowered Franel family in base two.
+
+\subsection{Perfect-power numeral radices}
+
+Let \(W_n\) count \(n\)-step returns in the following
+eight-dimensional walk. Partition the coordinate labels into a
+triangle and a pentagon. For each of the eight graph edges
+\(\{i,j\}\), allow the four distinct moves \(\pm e_i\pm e_j\)
+with independent signs. The step lattice consists of integer
+vectors with even coordinate sum on each block. Indeed the edge
+differences \(e_i-e_j\) generate the zero-sum lattice on each
+connected block, and combining two signs on an incident edge
+gives \(2e_i\) for any vertex. The block parity conditions are
+independent, so the lattice has index \(4\) in \(\mathbb Z^8\).
+To check strong aperiodicity, quotient this lattice by the subgroup
+generated by pairwise differences of steps. All steps have the
+same class, which generates the quotient. A step and its negative
+give a two-step return, and the three oriented differences around
+the triangle give a three-step return. These make both twice and
+three times the common class zero, so the quotient is trivial.
+
+The law is symmetric, and \(\Sigma=I_8/4\) since each coordinate is
+changed on two of the eight edges and the two signs are
+independent. Thus \(R=8\) identically and
+Lemma~\ref{lem:app-walk-expansion} gives
+\begin{equation}\label{eq:app-32walk}
+ W_n=\frac{64\,32^n}{\pi^4 n^4}
+       \left(1-\frac2n+O(n^{-2})\right).
+\end{equation}
+In particular the base-\(32\) parameters are \(h=1,p=5,\gamma=2\).
+The other square expansions needed below are
+\begin{align*}
+ \binom{2n}{n}^2&=\frac{16^n}{\pi n}
+                  \left(1-\frac1{4n}+O(n^{-2})\right),\\
+ F_3(n)^2&=\frac{4\,64^n}{3\pi^2 n^2}
+                  \left(1-\frac2{3n}+O(n^{-2})\right),\\
+ F_4(n)^2&=\frac{2\,256^n}{\pi^3 n^3}
+                  \left(1-\frac9{8n}+O(n^{-2})\right).
+\end{align*}
+The last square has \(p=4,\gamma=9/8\), and \((B,e)\) equals
+\((2,4),(2,2),(2,1)\) in numeral bases \(2,4,16\), respectively.
+Its exact success arc is \((9/32,17/32)\), with
+\(\gamma\) in the zero-entropy zone for \(p=4\). Theorem~\ref{thm:transfer}
+gives counts tending to infinity in windows of exponents
+\(4/3+\varepsilon\) in binary and \(2+\varepsilon\) in base four.
+
+In each of the first five rows of Table~\ref{tab:app-inner}, the
+scale ratio \(b^{1/p}\) is the integer \(B\), so \(e=1\).
+The indicated hole has rational endpoints and closure strictly
+inside the exact success arc from the corresponding expansion.
+Each associated \(C^{1/p}\) is irrational since \(C\) is a nonzero
+rational multiple of a negative integral power of \(\pi\)
+\cite{app-lindemann}. Hence the single-branch clause of
+Theorem~\ref{thm:transfer} gives infinitude in all five rows. The
+binary and ternary applications already proved supply the
+realizations in the two smallest radices.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{@{}rcllcl@{}}
+\toprule
+\(b\) & \(B\) & \(U_n\) & \((l,r,D)\) & \(s\) & Cyclic components \\
+\midrule
+4  & 2 & \(\binom{2n}{n}^2\) & \((3,9,16)\)       & 1 & \((0), (15)\) \\
+8  & 2 & \(F_3(n)^2\)        & \((8,17,32)\)      & 1 & \((0), (31)\) \\
+9  & 3 & \(T_n^2\)           & \((8,27,40)\)      & 1 & \((0), (39)\) \\
+16 & 2 & \(F_4(n)^2\)        & \((145,271,512)\)  & 2 & \((0), (34,68,136,273), (511)\) \\
+32 & 2 & \(W_n\)             & \((13,19,32)\)     & 3 & \((0), (6,12,25,19), (10,21), (31)\) \\
+4  & 2 & \(F_4(n)^2\)        & \((9,17,32)\)      & 2 & \((0), (2,4,8,17), (31)\) \\
+\bottomrule
+\end{tabular}
+\caption{Cyclic components for the grid hole \((l/D,r/D)\), listed
+in cycle order. The last row uses the exact success arc. The
+integer \(s\) is the largest number of distinct cyclic components
+on a directed path.}
+\label{tab:app-inner}
+\end{table}
+
+The table can be reproduced by retaining cells
+\(i\in\{0,\ldots,l-1\}\cup\{r,\ldots,D-1\}\) and forming the
+edge list \(i\to(Bi+t)\bmod D\) over \(0\le t<B\), whenever the
+target is retained. For each retained \(i\), start with \(R_i=\{i\}\)
+and repeatedly add targets of outgoing edges from \(R_i\) until
+it stabilizes. The component of \(i\) consists of \(j\in R_i\)
+with \(i\in R_j\). Counting internal labelled edges gives one
+per vertex in each listed component. For \(s\), order distinct
+cyclic components by reachability between representatives and take
+the longest chain. In the first three rows the lower loop reaches
+only lower cells, and the only retained predecessor of cell \(0\)
+is \(0\) itself. Hence neither loop is reachable from the other.
+In base nine, the alternate inner hole \((10/48,32/48)\)
+also has simple cycles but allows both on one directed path,
+so we use the displayed hole for the window estimate.
+
+\subsection{Explicit single-branch window exponents}
+
+If \(\beta=c/\alpha^d\) with \(c>0\) rational and \(d\) a
+positive integer, then
+\(\mu(\alpha)\le d\,\mu(\beta)\) for irrational \(\alpha,\beta>0\).
+Indeed any rational approximant \(a/q\) sufficiently close to
+\(\alpha\) gives an approximant \(c(q/a)^d\) with denominator
+\(O(q^d)\), and the map \(x\mapsto c/x^d\) is locally Lipschitz
+at \(\alpha\). The irrationality-exponent inequality follows by
+applying this to infinitely many approximants. For the base-four
+binomial square and the base-nine trinomial square,
+\(\alpha^2\) is a rational multiple of \(1/\pi\). For the
+base-eight Franel square, \(\alpha^3=4/(3\pi^2)\), so one can
+take \(\beta=\zeta(2)=\pi^2/6\) with \(d=3\). In all three rows
+\(s=1\). The bounds \(\mu(\pi)\le7.103205334137\ldots\)
+\cite{app-zeilberger-zudilin} and
+\(\mu(\zeta(2))\le5.095412\) \cite{app-zudilin}, together with
+Theorem~\ref{thm:transfer}, give at least one hit in every
+sufficiently large \([X,X^\rho]\) for
+\begin{equation}\label{eq:app-single-branch-exponents}
+ \begin{cases}
+  \rho>14.206411,& \binom{2n}{n}^2\text{ in base }4
+                   \text{ and }T_n^2\text{ in base }9,\\
+  \rho>15.286236,& F_3(n)^2\text{ in base }8 .
+ \end{cases}
+\end{equation}
+Taking disjoint power windows gives \(\gg\log\log X\) hits up to
+\(X\) for each of these three examples.
+
+\subsection{A lower bound for the number of prefixes}\label{sec:app-counting}
+
+\begin{theorem}\label{thm:app-counting}
+Suppose \(U\) satisfies \eqref{eq:aligned}, with \(e>1\) in
+\eqref{eq:branch}. Assume that \(I\) has rational endpoints and
+\(K_B(I)\) has zero entropy, or that there is an open arc \(J\) with
+rational endpoints, \(\overline J\subset I\), and \(K_B(J)\) of zero
+entropy. Then for all sufficiently large \(X\),
+\begin{equation}\label{eq:app-counting}
+ H_b(U;1,X)\gg(\log\log X)(\log\log\log X).
+\end{equation}
+In particular this holds in base two for \(B_n\) and its fixed shifts
+\(\binom{2n+s}{n+t}\), and for \(F_3,F_5,F_7\). It holds in base
+three for \(T_n^2\) and in bases two and four for \(F_4^2\).
+It also holds in base two for the length-\(n\) walk count \(U_n(z)\)
+from \(0\) to any fixed \(z\in\Lambda\) for a centered list of
+\(2^h\) steps in a rank-two lattice \(\Lambda\), with integer \(h\ge1\),
+whose pairwise differences generate \(\Lambda\). Repeated steps
+count as distinct choices.
+\end{theorem}
+
+The finite graph in Section~\ref{sec:transfer} already bounds the
+number of transitions by a constant times one plus the number of
+successful tests. We quantify Lemma~\ref{lem:transitions} on
+geometrically spaced windows using the interval theorem of Evertse
+and Ferretti.
+
+\begin{lemma}\label{lem:app-count-transitions}
+Let \(B,d,v\) be as in Lemma~\ref{lem:transitions}. Fix \(E\ge0\),
+a compact set \(\mathcal C\subset\mathbb R\setminus\{0\}\),
+\(\eta>d/(d-1)\), and an integer \(A>\eta\). Put \(u_j=A^j\),
+\(w_j=\lfloor\eta u_j\rfloor\) for \(j\ge0\). In each window choose
+\(c_j\in\mathcal C\) and integer vectors \(W_m\) satisfying
+\(\|W_m-c_j B^m v\|_\infty\le E\) for \(u_j\le m\le w_j\).
+If \(s_j\) is the number of edges \(u_j<m\le w_j\) with
+\(W_m\ne BW_{m-1}\), then there is a constant \(C_0>0\), depending
+only on the fixed data, such that
+\begin{equation}\label{eq:app-count-exceptions}
+ \#\{j:s_j\le k\}\le\exp(C_0(k+1))\qquad(k\ge0,\ k\in\mathbb Z).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Write \(u=u_j,\ w=w_j,\ c=c_j\), and let \(a_1<\cdots<a_s\) be
+the transition times in this window. Set \(h_i=W_{a_i}-BW_{a_i-1}\).
+These vectors belong to a fixed finite set since
+\(\|h_i\|_\infty\le(B+1)E\). Use the vector
+\(Z=(Y_1,\ldots,Y_d,P_1,\ldots,P_s)\) in dimension \(N=d+s\), with
+\(Y=B^{w-u}W_u\) and \(P_i=B^{w-a_i}\). Use the same forms as in
+Lemma~\ref{lem:transitions}, now with one power for each transition.
+At infinity these are \(F_1,\ F_r-(v_r/v_1)F_1\) for \(2\le r\le d\),
+and \(P_i\) for \(1\le i\le s\), where \(F=Y+\sum_i h_iP_i\).
+At finite places take the coordinate forms. All local determinants
+are \(1\). Telescoping gives \(F(Z)=W_w\).
+
+Choose \(1/d<\lambda<1-1/\eta\), put \(\zeta=d\lambda-1\) and
+\(g=\zeta/(4N)\). For large \(u\) we have \((w-u)/w\ge\lambda\).
+Round each \((w-a_i)/w\) down to a multiple \(l_i\) of \(g\).
+For \(\ell\mid B\) write
+\(\beta_\ell=\nu_\ell(B)\log\ell/\log B\), so that
+\(\sum_{\ell\mid B}\beta_\ell=1\). The bounds for the evaluations
+at \(Z\) have the following exponents \(e_{i,p}\) to base \(B^w\),
+with a uniform constant at infinity and unit constant at finite places.
+\[
+ \begin{array}{c|cc}
+ p & \text{first \(d\) forms} & \text{form for \(P_i\)}\\ \hline
+ \infty & 1,0,\ldots,0 & l_i+g\\
+ \ell\mid B & -\beta_\ell\lambda\ \text{each} & -\beta_\ell l_i\\
+ \ell\nmid B & 0\ \text{each} & 0
+ \end{array}
+\]
+Indeed \(F_1(Z)=O(B^w)\), the other \(F\)-forms on \(Z\) are
+\(O(1)\), and \(Y\) is divisible by \(B^{w-u}\). The sum of all
+entries is \(S=-\zeta+sg\le-3\zeta/4\).
+
+
+Take a fixed Galois number field \(K\subset\mathbb C\) containing
+the \(v_r\). For each infinite place \(\nu\), take an embedding
+\(\sigma_\nu\) representing it and apply \(\sigma_\nu^{-1}\) to the
+real form coefficients. The choice between conjugate embeddings is
+immaterial since these coefficients are real. At a place \(\nu\)
+above \(p\), put \(d_\nu=[K_\nu:\mathbb Q_p]/[K:\mathbb Q]\), with
+\(\mathbb Q_\infty=\mathbb R\). Since \(Z\) is rational, the table
+applies to the normalized absolute values \(\|\cdot\|_\nu\) with
+exponents \(d_\nu e_{i,p}\). Let \(\bar e_p=N^{-1}\sum_i e_{i,p}\)
+and set
+\[
+ \kappa_{i,\nu}=\tfrac14 d_\nu(e_{i,p}-\bar e_p),\qquad Q=B^{4w}.
+\]
+The weights have finite support and zero sum at each place.
+Their local maxima sum to at most \((2+g)/4<1\), since
+\(\sum_{\nu\mid p}d_\nu=1\), the range at infinity is at most
+\(1+g\), and the range at \(\ell\mid B\) is at most \(\beta_\ell\).
+In the notation of \cite[(2.4)--(2.15)]{cnt-evertse-ferretti},
+\(\Delta_{\mathcal L}=1\), and the twisted height satisfies
+\[
+ H_{\mathcal L,\kappa,Q}(Z)
+ =\prod_\nu\max_i\bigl(\|L_i^{(\nu)}(Z)\|_\nu Q^{-\kappa_{i,\nu}}\bigr)
+ \ll B^{wS/N}\le B^{-3\zeta w/(4N)}.
+\]
+In particular it is at most \(Q^{-\delta}\) for
+\(\delta=\zeta/(8N)\in(0,1)\) and \(w\) at least a sufficiently
+large constant times \(N\).
+
+There are at most \(R=([K:\mathbb Q]+1)N\) distinct forms.
+Their coefficients have a fixed common integral denominator
+and bounded conjugates, uniformly in \(s\) and the \(h_i\).
+Hadamard's inequality at the infinite places bounds the
+determinants in \(H_{\mathcal L}\) by \((C_1\sqrt N)^N\)
+before local normalization. At finite places clearing the fixed
+denominator bounds their product by its \(N\)-th power.
+Thus \(\log H_{\mathcal L}=O(N\log(2N))\), and the same
+coefficient bounds give \(\max_{\nu,i} H_2(L_i^{(\nu)})\le C_2\sqrt N\)
+for the Euclidean height of \cite[\S6]{cnt-evertse-ferretti}.
+
+Let \(T\) be the distinguished proper subspace in
+\cite[(2.19)--(2.21)]{cnt-evertse-ferretti}. For a subspace \(U\),
+its weight \(w(U)\) sums the minimum weight of a basis of the
+restricted forms at each place. The Galois action permutes the
+places and their systems of forms and weights, by the inverse
+embedding construction at infinity. Since \(T\) is defined over
+\(K\) and uniquely maximizes \(w(U)/(N-\dim U)\) among subspaces
+of minimal dimension attaining the maximum, it is defined over
+\(\mathbb Q\).
+
+Write \(Y_0=\{(Y,0)\}\). If \(U\supseteq Y_0\) is proper and has
+dimension \(r\), select \(r-d\) of the \(P_i\) giving a coordinate
+basis of the dual of the projection of \(U\) onto the \(P\)
+coordinates. Together with the first \(d\) forms, these give a
+basis of restricted forms at each place, because the first \(d\)
+restrict to a basis on \(Y_0\). The terms in \(l_i\) for the
+selected \(P_i\) cancel across places. The resulting total raw
+weight is \(-\zeta+(r-d)g=S-(N-r)g\). After centering,
+\[
+ w(U)\le \tfrac14\bigl(S(1-r/N)-(N-r)g\bigr)<0.
+\]
+Since \(w(0)=0\), we have \(T\not\supseteq Y_0\).
+
+By \cite[Proposition~17.5]{cnt-evertse-ferretti},
+\(H_2(T)\le (C_2\sqrt N)^{4^N}=:D_N\), increasing \(C_2\) to at
+least \(1\) if necessary. There is an integer relation
+\(a\cdot Y+b'\cdot P=0\) on \(T\) with \(a\ne0\) and all
+coefficients of magnitude at most \(D_N\). Indeed, a primitive
+integer Pl\"ucker vector of \(T\) has Euclidean norm \(H_2(T)\).
+Take a coordinate of its wedge with \((Y,P)\) which is nonzero
+on some coordinate vector in \(Y_0\). For \(T=0\) a \(Y\)-coordinate
+itself suffices. By rational independence \(a\cdot v\ne0\).
+After clearing the fixed denominators of the \(v_i\), its
+algebraic norm is a nonzero integer with all other conjugate
+factors \(O(D_N)\). Hence
+\[
+ |a\cdot v|\gg D_N^{-([K:\mathbb Q]-1)}.
+\]
+If \(Z\in T\), dividing the relation by \(B^w\) gives
+\[
+ |c\,a\cdot v|\ll N D_N B^{-u},
+\]
+because \(Y/B^w=cv+O(B^{-u})\) and \(P_i/B^w=B^{-a_i}\).
+The positive lower bound for \(|c|\) on \(\mathcal C\) shows that
+\(Z\notin T\) for \(u>C_3\,4^N\log(2N)\), with a fixed \(C_3\).
+
+For fixed \(s\), a fixed ordered list of the \(h_i\), and a fixed
+profile \((l_i)\), the forms and weights are fixed.
+Evertse and Ferretti's interval theorem
+\cite[Theorem~2.3]{cnt-evertse-ferretti} puts all \(Q\) with a
+point of twisted height at most \(Q^{-\delta}\) outside \(T\) in
+\([1,\max(H_{\mathcal L}^{1/R},N^{1/\delta})]\) and at most
+\[
+ 10^5 4^N N^{10}\delta^{-2}\log(3\delta^{-1}R)
+\]
+intervals of the form \([Q_*,Q_*^\omega]\), where
+\(\omega=\delta^{-1}\log(3R)\). The logarithm of the cutoff for
+the initial interval is \(O(N\log(2N))\). This cutoff, the
+small-height threshold and the threshold for \(Z\notin T\) together
+omit at most \(O(N)\) early starts, since \(u_j=A^j\).
+Each other interval contains at most \(1+\log_A\omega\) of the
+parameters \(B^{4w_j}\), since \(w_{j+1}\ge A w_j\). Thus at most
+\(\exp(O(N))\) starts realize a fixed list and profile.
+
+There are \(\exp(O(s))\) possible lists. Since the grid profile
+is weakly decreasing and has entries in
+\(\{0,g,\ldots,\lfloor1/g\rfloor g\}\), there are at most
+\(\binom{s+\lfloor1/g\rfloor}{s}=\exp(O(N))\) profiles.
+Summing over \(0\le s\le k\) proves \eqref{eq:app-count-exceptions}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:app-counting}]
+Choose \(\eta>e/(e-1)\) and an integer \(A>\eta\). In the windows
+of Lemma~\ref{lem:app-count-transitions}, let \(H_j\) count all
+successful candidate tests across the \(e\) branches. The construction
+in Section~\ref{sec:transfer} gives integer approximants to
+\(c B^m(1,\tau,\ldots,\tau^{e-1})\) with a fixed bounded error and at
+most \(C_4(H_j+1)\) vector transitions in the window. Here \(c\)
+is \(C^{1/p}\) times the grid denominator and the common multiple
+clearing the periodic tails. These factors are fixed across
+windows. The degree calculation preceding \eqref{eq:line} gives
+the required rational independence. By \eqref{eq:app-count-exceptions},
+the number of windows with \(H_j\le k\) is at most
+\(\exp(C_5(k+1))\) for a fixed \(C_5>0\).
+
+All candidate indices in the \(j\)-th window are at most
+\(C_6 B^{w_j}\) for a fixed \(C_6>0\). After a fixed initial
+segment, they are distinct across all times and branches, as the
+continuous indices in \eqref{eq:line} grow in order by the fixed
+factor \(\tau>1\) and the candidate differs from its continuous
+index by \(O(1)\). Thus windows with \(C_6B^{w_j}\le X\) supply
+\(J\asymp\log\log X\) disjoint collections of regular candidate
+tests up to \(X\). The \(r\)-th smallest \(H_j\) among these windows
+is at least \((\log r)/C_5-1\). Summing over \(1\le r\le J\)
+gives \(\gg J\log J\) successful tests, and each is an exact
+prefix hit. The identical summation for \eqref{eq:app-count-exceptions}
+gives \(\gg(\log M)(\log\log M)\) transitions in completed windows
+through branch time \(M\).
+
+The expansions \eqref{eq:app-shifted-binomial},
+\eqref{eq:app-trinomial}, and \eqref{eq:app-franel}, and
+Lemma~\ref{lem:app-walk-expansion} verify the hypotheses for
+the first four families. Their respective \((B,e)\) values
+are \((4,3)\) for the shifted binomial coefficients, \((3,2)\)
+for the trinomial square, \((2,2),(2,3),(2,4)\) for \(F_3,F_5,F_7\),
+and \((2,2)\) for the planar walks. For \(F_4^2\) the parameters
+computed above give \((B,e)=(2,4),(2,2)\) in bases two and four,
+respectively, with its rational hole in the doubling zone.
+\end{proof}
+
+\begin{remark}
+The order \(J\log J\) is sharp for an exponential exceptional-window
+count alone. Indeed, given \(C_7\ge1\) and \(C_8>0\), the abstract
+counts \(h_j=\max(0,\lceil(\log j-\log C_7)/C_8\rceil)\),
+\(j\ge1\), satisfy \(\#\{j:h_j\le k\}\le C_7 e^{C_8 k}\)
+and sum to \(\asymp J\log J\) through \(J\).
+There is also a single event set in integer branch time with
+this order for all fixed multiplicative window ratios. For large
+integers \(m\), put an event at \(m\) whenever
+\(\lfloor f(m)\rfloor>\lfloor f(m-1)\rfloor\), where
+\(f(t)=(\log t)(\log\log t)\). Since \(0<f'(t)<1\) eventually,
+the event count through \(M\) is \(f(M)+O(1)\).
+For every fixed \(\eta>1\), the count in
+\((u,\lfloor\eta u\rfloor]\) is
+\((\log\eta)\log\log u+O_\eta(1)\), by applying the mean value
+theorem to \(y\log y\) with \(y=\log u\).
+On a schedule with consecutive starts in ratio at least
+\(q>1\), a bound of \(k\) on the count therefore forces
+\(\log\log u\ll_\eta k+1\) and permits at most
+\(\exp(O_{\eta,q}(k+1))\) starts. The same upper bound on
+exception counts holds if the window ratios vary with a fixed
+lower bound greater than \(1\), by retaining an initial subwindow
+of fixed ratio. The event count remains of order
+\((\log M)(\log\log M)\), or \((\log\log X)(\log\log\log X)\)
+on the scale \(M\asymp\log X\). This shows sharpness for the
+counting information about windows.
+\end{remark}
+
+\section{Metric spectra on algebraic lines}\label{sec:metric}
+
+Let \(d\geq2\) and let \(v=(v_1,\ldots,v_d)\) have positive real algebraic
+coordinates linearly independent over \(\mathbb Q\). For \(x>0\), its
+\(j\)-th radix-\(B\) digit after the point is
+\(\lfloor B^jx\rfloor-B\lfloor B^{j-1}x\rfloor\). For \(w>u\), a word with
+integer value \(b\) in positions \(u+1,\ldots,w\) is equivalent to
+\[
+ \{B^ux\}\in[bB^{u-w},(b+1)B^{u-w}).
+\]
+Thus a prescribed word in each expansion of \(cv_i\) determines a
+half-open box of fractional parts. Throughout this section \(\rho>1\),
+the end of a radix window starting at \(u\) is \(\lfloor\rho u\rfloor\),
+and the level conditions concern infinitely many integer starts.
+Dimension statements are local on every nonempty bounded open interval
+of \(c>0\), with the empty set assigned dimension zero.
+
+For two bases \(B_1,B_2\geq2\), put
+\[
+ Q=N=B_1^u,\qquad u_2=\lfloor\log_{B_2}Q\rfloor,\qquad M=B_2^{u_2},
+ \qquad G=\gcd(N,M).
+\]
+The two starts are \(u\) and \(u_2\). In particular \(M\asymp Q\), so
+both targets have widths \(\asymp Q^{1-\rho}\) in fractional-part
+coordinates and \(\asymp Q^{-\rho}\) in \(cv_i\). Write
+\begin{equation}\label{eq:met-exponents}
+ \begin{split}
+ \lambda
+ &=\sum_{p\ \mathrm{prime}}\min\left\{
+       \frac{\nu_p(B_1)\log p}{\log B_1},
+       \frac{\nu_p(B_2)\log p}{\log B_2}
+     \right\},\\
+ D_f&=2d-(2d-1)\rho,\qquad
+ D_g=d\lambda-(d-1)\rho.
+ \end{split}
+\end{equation}
+Taking valuations of \(N\) and \(M\) gives
+\(\log G=\lambda\log Q+O(1)\). The two lists of normalized valuations
+each sum to \(1\), so \(0\leq\lambda\leq1\), with \(\lambda=1\) exactly
+when the lists agree. Agreement at any prime in their common support
+then gives \(\log B_1/\log B_2\in\mathbb Q\). Conversely, a common
+positive power gives agreement at every prime. In particular, the
+two-base cutoff
+\[
+ \rho_*=\max\left\{\frac{2d}{2d-1},\frac{d\lambda}{d-1}\right\}
+\]
+is strictly smaller than \(d/(d-1)\) for multiplicatively independent
+bases. 
+\subsection{Dual bounds and counting along a segment}
+
+We apply the Subspace Theorem in the form used in the proof of
+Lemma~\ref{lem:transitions}. The one-denominator estimate uses the
+real place \cite{schmidt}; for two bases we also use the primes dividing
+\(B_1B_2\) \cite{met-schlickewei}.
+
+\begin{lemma}\label{lem:met-dual}
+For every \(\eta>0\) and nonzero \(k\in\mathbb Z^d\),
+\[
+   |k\cdot v|\gg_{\eta,v}\|k\|_\infty^{-(d-1)-\eta}.
+\]
+For the two bases in \eqref{eq:met-exponents}, let \(t=\rho-1\).
+If \(t<1-\lambda\), then for every fixed \(C,\eta>0\) and all
+sufficiently large \(u\), every nonzero \((k,h)\in\mathbb Z^{2d}\)
+with \(\|(k,h)\|_\infty\leq C Q^t\) satisfies
+\begin{equation}\label{eq:met-two-dual}
+  |(Nk+Mh)\cdot v|\ \geq\ Q^{D_f-\eta}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For the first assertion, suppose the bound with constant \(1\) fails
+on infinitely many integer vectors. Use \(k\cdot v\) and all but one of
+the coordinate forms at the real place. The product is
+\(O(\|k\|_\infty^{-\eta})\), so the Subspace Theorem places infinitely
+many of the vectors in a single proper rational subspace. On a
+rational subspace of rank \(m\), use any \(m\) coordinate projections
+giving an isomorphism onto \(\mathbb Q^m\). The new coordinates are
+integers of comparable norm, and the restricted coefficients of the
+form are rationally independent because \(v\) is. The product of the
+restricted form and \(m-1\) coordinate forms still decays by a fixed
+negative power. Repeating the descent gives a contradiction in rank
+one, where a nonzero linear form on integer vectors has positive
+minimum modulus. The finitely many remaining exceptions are absorbed
+in the implicit constant.
+
+For \eqref{eq:met-two-dual} let \(N'=N/G\) and \(M'=M/G\), which are
+coprime and each \(\asymp Q^{1-\lambda}\). Suppose infinitely many
+levels violate the estimate. During the descent the two blocks \(k,h\)
+range in fixed rational subspaces of ranks \(m_1,m_2\), initially
+both \(d\). Project each onto integral coordinates as above, denoted
+by \(k',h'\), and set \(m=m_1+m_2\). Apply the Subspace Theorem to
+\(z=(N'k',M'h')\), for \(m\geq2\). At infinity use the form evaluating
+to \((N'k+M'h)\cdot v\), and all but one coordinate form chosen so
+that the forms are independent. At the primes dividing \(B_1B_2\)
+use the coordinate forms. The full product is bounded by a constant
+times
+\[
+ Q^{1-\lambda-(2d-1)t-\eta}\,
+ Q^{(m-1)(1-\lambda+t)}\,
+ Q^{-m(1-\lambda)}
+ = Q^{-(2d-m)t-\eta}.
+\]
+Here the finite-place bound uses the \(N'\) or \(M'\) dividing every
+coordinate in its block. The height of \(z\) is at most a fixed power
+of \(Q\), so some fixed nontrivial rational relation holds along
+infinitely many of the levels. After clearing denominators it reads
+\(N'A(k')+M'H(h')=0\), where \(A,H\) are integral linear forms.
+Coprimality gives \(M'\mid A(k')\) and \(N'\mid H(h')\). Both values
+are \(O(Q^t)\), hence both vanish for large \(u\) since \(t<1-\lambda\).
+At least one block loses rank. In total rank one the nonzero form has
+modulus \(\gg Q^{1-\lambda}\), which contradicts the first factor of
+the displayed bound. This ends the descent.
+\end{proof}
+
+\begin{lemma}\label{lem:met-segment}
+Let \(Q=Q_u\) grow at least geometrically with \(u\). Suppose
+\(a=a_u\in\mathbb R^k\) has \(\|a\|_\infty\asymp Q^\beta\) with
+\(0<\beta<\rho\). Set
+\[
+ \delta=Q^{\beta-\rho},
+ \qquad D=k\beta-(k-1)\rho.
+\]
+Assume \(D>0\) and, for every fixed \(C,\eta>0\), that
+\[
+ |a\cdot z|\geq Q^{D-\eta}\qquad
+ (0\ne z\in\mathbb Z^k,\ \|z\|_\infty\leq C/\delta)
+\]
+eventually in \(u\). For any compact parameter interval and any
+translate of a box of side lengths \(O(\delta)\) modulo
+\(\mathbb Z^k\), the condition that \(ca\) lands in the box can be
+covered by \(O(Q^D)\) intervals of length \(O(Q^{-\rho})\), uniformly
+in the translation. If one box of side lengths \(\asymp\delta\) is
+specified at each of infinitely many levels, the limsup has local
+dimension at least \(D/\rho\).
+\end{lemma}
+
+\begin{proof}
+Fix \(b>0\) and \(0<\epsilon<D\), put \(L=Q^{-D+\epsilon}\), and
+consider the convex body
+\[
+ K=[-L,L]a+[-b\delta,b\delta]^k.
+\]
+Its width in an integral direction \(z\ne0\) is
+\(2L|a\cdot z|+2b\delta\|z\|_1\). If the second term is at most the
+flatness constant in dimension \(k\), then \(\|z\|_\infty\ll1/\delta\)
+and the first term tends uniformly to infinity by the hypothesis
+with \(\eta<\epsilon\). Hence every translate of \(K\) meets
+\(\mathbb Z^k\) by the flatness theorem \cite{met-flatness}.
+
+For an upper count, take a bounded parameter interval \(I\). For
+some translation vector \(\theta\) and fixed \(C_1\), the relevant
+lattice points lie in
+\[
+ I a-\theta+[-C_1\delta,C_1\delta]^k.
+\]
+Since \(K+\mathbb Z^k=\mathbb R^k\), a measurable fundamental domain
+can be chosen inside \(K\). Indeed, for each \(x\in[0,1)^k\) choose
+the first integer translate \(x+z\) in \(K\) from the finite list of
+possible \(z\). This selects one representative per integer coset
+and preserves volume one. The translates of this domain by the
+relevant lattice points are disjoint and are contained in the
+displayed set plus \(K\). Its extent parallel to \(a\) is
+\(O(Q^\beta)\) and its orthogonal projection is contained in a ball
+of radius \(O(\delta)\). Its volume is therefore
+\(O(Q^\beta\delta^{k-1})=O(Q^D)\). Each lattice point contributes
+at most one interval, since the box is convex, and one coordinate
+with \(|a_i|=\|a\|_\infty\) bounds the length by
+\(O(\delta/\|a\|_\infty)=O(Q^{-\rho})\).
+
+For a lower bound, use the midpoint \(\theta\) of the specified box
+and choose \(b\) uniformly small compared with the side lengths
+divided by \(\delta\). The translate \(ca-\theta+K\) contains an
+integer point. Thus for some \(c'\) with \(|c'-c|\leq L\), the point
+\(c'a\) is within \(b\delta\) of the midpoint modulo
+\(\mathbb Z^k\). An interval centered at \(c'\) with radius
+\(r=\gamma Q^{-\rho}\), for a fixed sufficiently small \(\gamma>0\),
+still lands strictly inside the box. Choose finitely many such
+centers per level by sampling a mesh of spacing at most \(L\) on a
+closed subinterval of the parameter interval. For
+\(0<s<D/\rho\) choose \(\epsilon\) so that \(D-\epsilon>\rho s\).
+Then \(r^s/L\to\infty\), and the intervals enlarged to radius
+\(r^s\) cover the sampled subinterval at every sufficiently large
+selected level. The one-dimensional Mass Transference Principle
+of Beresnevich and Velani \cite[Theorem~2]{met-mtp} gives dimension
+at least \(s\) for the limsup of the original intervals inside it.
+Let \(s\) tend to \(D/\rho\).
+\end{proof}
+
+For \(a=Hv\) and \(H\asymp Q^\beta\), the first assertion of
+Lemma~\ref{lem:met-dual} gives the hypothesis of
+Lemma~\ref{lem:met-segment} with \(k=d\) and
+\(D=d\beta-(d-1)\rho>0\). Indeed for \(\|z\|_\infty\ll1/\delta\)
+it gives
+\[
+ H|z\cdot v|\gg Q^{D-\eta'(\rho-\beta)}
+\]
+for every \(\eta'>0\). This also applies to boxes with a fixed
+additive change in the window's end position because only the
+constants in the side lengths change. For \(a=(Nv,Mv)\),
+Lemma~\ref{lem:met-dual} supplies the same hypothesis with
+\(k=2d\), \(\beta=1\), and \(D=D_f\) in the range
+\(\rho<2-\lambda\) and \(D_f>0\).
+
+\subsection{Proof of the dimension and strict cutoff assertions}
+
+For one base take \(Q=B^u\) and \(H=Q\). When
+\(D=d-(d-1)\rho>0\), Lemma~\ref{lem:met-segment} gives the lower
+bound \(D/\rho\) for any choice of one word per selected level,
+including the zero word. If at most \(\exp(o(u))\) words are
+allowed at level \(u\), the \(s\)-power sum of the interval lengths
+in the upper cover is bounded by a constant times
+\(\sum_u Q^{D-\rho s+o(1)}\). For \(s>D/\rho\) this converges,
+and covering the limsup by arbitrarily late tails gives
+\(\mathcal H^s=0\). For \(\rho\geq d/(d-1)\), truncate each word
+at \(\lfloor\sigma u\rfloor\) with \(1<\sigma<d/(d-1)\), keeping
+at most the same number of words. Letting \(\sigma\) increase
+to \(d/(d-1)\) gives the dimension-zero upper bound. Thus the
+one-base dimension in Theorem~\ref{thm:dimension} is
+\(\max\{0,d/\rho-(d-1)\}\), also for subexponential families
+nonempty at infinitely many levels.
+
+For two bases with \(\rho<2-\lambda\) and \(D_f>0\), the same
+argument with \(a=(Nv,Mv)\) gives dimension \(D_f/\rho\) for
+any subexponential family nonempty at infinitely many levels.
+We next treat \(\rho>2-\lambda\). At a fixed level and for fixed
+words in both bases, let \(c,c_0\) be two solutions with initial
+integer vectors \(p_1,p_2\) and \(p_{1,0},p_{2,0}\), respectively.
+The errors \(cv-p_1/N\) and \(cv-p_2/M\) lie in the prescribed
+scaled boxes. Subtracting the errors for \(c_0\) from those for
+\(c\) cancels the box offsets, so
+\[
+ \frac{M}{G}(p_1-p_{1,0})-\frac{N}{G}(p_2-p_{2,0})
+   = O(Q^{2-\lambda-\rho}).
+\]
+This is an integer vector and hence vanishes at all sufficiently
+large levels. The differences of the rational approximants both
+equal \(p/G\) for some \(p\in\mathbb Z^d\). With \(c_0\) fixed,
+we obtain
+\[
+  G(c-c_0)v-p=O(GQ^{-\rho}).
+\]
+If \(D_g>0\), apply the upper count in
+Lemma~\ref{lem:met-segment} with \(H=G\), \(\beta=\lambda>0\),
+and \(D=D_g\). The parameter interval for \(c-c_0\) has bounded
+length, and the estimate is uniform over the choice of words.
+This gives an upper bound \(D_g/\rho\) for subexponential
+families. Conversely, if \(Gcv\) lies above an integer vector by
+coordinatewise amounts in a box of the form
+\((a_0GQ^{-\rho},a_1GQ^{-\rho})^d\) with
+\(0<a_0<a_1<1/2\), both radix windows are zero. Indeed, the integer
+vector on the \(G\)-grid gives integer vectors on the \(N\)- and
+\(M\)-grids, and in each coordinate the error in \(cv\) is below
+both \(B_1^{-\lfloor\rho u\rfloor}\) and
+\(B_2^{-\lfloor\rho u_2\rfloor}\). The lower bound of
+Lemma~\ref{lem:met-segment} gives dimension at least \(D_g/\rho\)
+for the joint zero windows.
+
+Since \(D_f-D_g=d(2-\lambda-\rho)\), the leading positive term
+in each of these two ranges is the larger of the two. If the
+terms agree at a positive value, use shorter windows for the
+upper bound and longer zero windows for the lower bound, then
+pass to the common exponent by continuity. At and above
+\(\rho_*\), truncate the allowed words to exponents approaching
+\(\rho_*\) from below. Both steps preserve the subexponential
+bound on the number of words in an upper cover. This proves the
+joint zero-window dimension
+\[
+  \frac{\max\{0,D_f,D_g\}}{\rho}.
+\]
+It gives the same upper bound for all subexponential families,
+and equality for families which include the joint zero word
+at infinitely many levels. These lower bounds hold along any
+infinite subsequence of levels. In particular, one or two
+windows with \(o(u)\) nonzero vector positions allowed have the
+same dimension as the corresponding zero windows. To count
+these patterns, if \(L=O(u)\) is the total number of positions
+and \(k=o(u)\) the defect allowance, then for a fixed bound
+\(A\) on the number of symbols at a position the count is at
+most \(\sum_{j=0}^k\binom{L}{j}A^j=\exp(o(u))\). This follows
+from \(\binom{L}{j}\leq(eL/j)^j\) for \(j>0\) and
+\((k/u)\log(u/k)\to0\).
+
+Arbitrary prescribed pairs of words can be incompatible when
+\(\rho>2-\lambda\). In one coordinate take the first word zero.
+Choose the starting point of the second scaled cylinder within
+\(O(Q^{-\rho})\) of \(G/(2NM)\), which is possible because its
+starting points have spacing \(B_2^{-\lfloor\rho u_2\rfloor}\)
+and \(G/(2NM)\leq1/(2M)\). The difference of the two rational
+initial coordinates lies in \((G/(NM))\mathbb Z\), whereas the
+required difference of their errors is a half-step away from
+this grid up to \(O(Q^{-\rho})=o(G/(NM))\). There is then no
+solution for large \(u\). At \(\rho=2-\lambda\) the zero-word
+lower bound follows by monotonicity as above.
+
+The strict cutoff in one base for boundedly many nonzero vector
+digits follows from Lemma~\ref{lem:transitions}, by taking
+\(W_m=\lfloor cB^mv\rfloor\) coordinatewise. A subexponential
+family without a restriction on individual words may have
+dimension zero and still contain a fixed \(c\) at every level,
+by prescribing just the observed word of that \(c\).
+
+For the strict cutoff for joint zero windows, suppose a fixed
+\(c>0\) has infinitely many levels at which the two initial
+vectors satisfy
+\begin{equation}\label{eq:met-joint-primal}
+  p_1/N=cv+O(Q^{-\rho}),\qquad p_2/M=cv+O(Q^{-\rho}).
+\end{equation}
+When \(\rho>2-\lambda\), their difference is in
+\((G/(NM))\mathbb Z^d\), so the two vectors agree for all
+sufficiently large such levels. The following descent also
+handles \(\rho\leq2-\lambda\).
+
+Suppose \(\ell\) independent integer linear projections of the
+two vectors already agree along infinitely many levels. Initially
+take \(\ell=0\). Adjoin integer rows to obtain a basis of
+\(\mathbb Q^d\), and call the transformed direction \(v'\).
+Its coordinates are still linearly independent over \(\mathbb Q\).
+The shared coordinates have denominators dividing \(G\), since
+each has denominators dividing both \(N\) and \(M\). Keep a single
+copy of each of these \(\ell\) coordinates and keep both copies
+of each remaining coordinate. The resulting \(m=2d-\ell\)
+rationals have designated denominators \(H_i=G,N,M\) in the
+indicated blocks. Let \(J=\operatorname{lcm}(N,M)\) and multiply
+the rational vector by \(J\) to obtain \(Y\in\mathbb Z^m\).
+Its limiting direction after division by \(J\) is \(c\widetilde v\),
+where \(\widetilde v\) lists the entries of \(v'\) with those
+multiplicities. All entries of \(v'\) are nonzero.
+
+At infinity use \(Y_1\) and the \(m-1\) independent differences
+\(Y_i-(\widetilde v_i/\widetilde v_1)Y_1\). The real product is
+\(O(J^mQ^{-(m-1)\rho})\) by \eqref{eq:met-joint-primal}. Since
+\(J/H_i\) divides \(Y_i\) and is supported on the primes dividing
+\(B_1B_2\), the finite-place coordinate products give the bound
+\[
+ O\!\left(Q^{\,2(d-\ell)+\lambda\ell-(2d-\ell-1)\rho}\right)
+ = O\!\left(Q^{(1-\ell/d)D_f+(\ell/d)D_g}\right)
+\]
+for the full product. If \(\rho>\rho_*\), both \(D_f,D_g<0\).
+As \(\|Y\|_\infty\asymp J\) grows at most polynomially in \(Q\),
+the Subspace Theorem supplies a fixed nontrivial rational relation
+along an infinite subsequence. Dividing by \(J\) and taking the
+limit, rational independence of \(v'\) forces each shared
+coefficient to vanish, and forces the two coefficients on each
+duplicated coordinate to be opposites. Thus the relation gives
+a further common projection, independent of the previous ones.
+At \(\ell=d\) the limiting rational independence precludes any
+nontrivial relation. This proves the strict cutoff, separately
+from the dimension-zero conclusion at equality.
+
+\subsection{Occupancy at the one-base endpoint}
+
+\begin{proposition}\label{prop:met-critical-field}
+Suppose \(v_1,\ldots,v_d\) form a \(\mathbb Q\)-basis of a
+degree-\(d\) number field \(K\subset\mathbb R\). For every integer
+\(B\geq2\), the simultaneous zero-window set at
+\(\rho=d/(d-1)\) contains a dense \(G_\delta\) subset of some
+half-line \((C,\infty)\), and has Hausdorff dimension zero.
+\end{proposition}
+
+\begin{proof}
+The dimension follows from Theorem~\ref{thm:dimension}. Choose
+one representative of each complex conjugate pair of embeddings.
+Let \(V\) be the hyperplane in the resulting logarithmic
+coordinates with weighted sum zero, using weight \(1\) at real
+and \(2\) at complex places. Use the distinguished real embedding
+as the first coordinate. By Dirichlet's unit theorem
+\cite[Chapter~I, \S7]{met-neukirch}, the logarithms of absolute
+values of squared units form a full lattice \(\Lambda\) in \(V\).
+Put
+\[
+ w=\left(\log B,-\frac{\log B}{d-1},\ldots,
+                  -\frac{\log B}{d-1}\right)\in V.
+\]
+
+Write \(P=\overline{\Lambda+\mathbb Zw}\) and let \(U\) be the
+largest vector subspace contained in \(P\), obtained by adding all
+such subspaces. The closed subgroup \(P\cap U^\perp\) is discrete.
+Otherwise a sequence of its nonzero vectors tending to zero has,
+after normalization and passage to a subsequence, a limiting unit
+direction. Integer multiples of those vectors approximate every
+real multiple of that direction, adding a line to \(U\). Since
+\(U\subset P\), projection to \(U^\perp\) sends \(P\) onto
+\(P\cap U^\perp\). The projection of \(\Lambda\) spans \(U^\perp\),
+so a bounded fundamental parallelepiped of a basis chosen from
+this projection contains only finitely many points of
+\(P\cap U^\perp\). Hence \(P/(U+\Lambda)\) is finite. If the
+first coordinate of \(U\) were zero, the relation \(mw\in
+U+\Lambda\) for some positive integer \(m\) would give a squared
+unit with distinguished value \(B^m\). Injectivity of the real
+embedding would make it the rational integer \(B^m\), which
+cannot be a unit. Choose \(h\in U\) with first coordinate \(1\).
+
+In the compact torus \(V/\Lambda\), the closure of each forward
+tail of \(u w\) equals the closure of the cyclic group generated by
+\(w\). Indeed a convergent subsequence with increasing gaps gives,
+by taking differences, positive integers \(n_j\to\infty\) with
+\(n_j w\to0\) in the torus. Then \((n_j+m)w\to mw\) for every
+integer \(m\). Consequently, for each \(t\in[0,\log B]\) there
+are \(u_j\to\infty\) and squared units \(\epsilon_j\) such that
+their log vectors minus \(u_jw\) tend to \(th\).
+The distinguished values satisfy
+\(\epsilon_j/B^{u_j}\to e^t\), and at every other embedding the
+modulus is \(O(B^{-u_j/(d-1)})\), with an eventual common constant
+for \(0\leq t\leq\log B\).
+
+Choose an integer \(D_0>0\) such that all \(D_0v_i\) are
+algebraic integers. The trace
+\(p_{i,j}=\operatorname{Tr}_{K/\mathbb Q}(D_0\epsilon_jv_i)\)
+is a rational integer and
+\(D_0\epsilon_jv_i-p_{i,j}=O(B^{-u_j/(d-1)})\) by the bounds on
+the other conjugates. Fix an integer \(k\) sufficiently large
+and put \(m_j=u_j-k\), \(c_j=D_0\epsilon_j/B^{m_j}\).
+The possible limits of \(c_j\) fill
+\([D_0B^k,D_0B^{k+1}]\). At the level \(m_j\), the trace errors
+in \(B^{m_j}c_jv_i\) are at most \(O(B^{-k/(d-1)})\) times the
+critical box width \(B^{m_j-\lfloor\rho m_j\rfloor}\).
+Let \(v_{\max}=\max_i v_i\) and \(v_{\min}=\min_i v_i>0\).
+Increasing \(c_j\) by
+\(B^{-\lfloor\rho m_j\rfloor}/(2v_{\max})\) adds between
+\(v_{\min}/(2v_{\max})\) and \(1/2\) times that width in each
+coordinate. For large \(k\) this places every coordinate
+strictly inside the zero box. The shifted centers retain the
+same limits. For each lower cutoff on \(m_j\), the union of all
+such strict zero-window events is open and dense in the tail
+covered by the adjacent intervals
+\([D_0B^k,D_0B^{k+1}]\). Intersecting these unions gives the
+claimed dense \(G_\delta\).
+\end{proof}
+
+The restriction to a tail can matter. For \(v=(1,\sqrt2)\) and
+\(\rho=2\) let \(q=\lfloor B^u c\rfloor\) and
+\(p=\lfloor B^u c\sqrt2\rfloor\). A critical zero window implies
+\(|q\sqrt2-p|\leq\sqrt2/B^u\). At large \(u\), we have
+\(p+q\sqrt2<4q\). The nonzero integer \(p^2-2q^2\) then gives
+\(|q\sqrt2-p|\geq1/(4q)\), which excludes all sufficiently late
+critical windows if \(0<c<1/(4\sqrt2)\).
+
+\subsection{Empty windows for the binomial prefix test}
+
+Let \(B_n=\binom{2n}{n}\), and let \(H_{g,\rho}(X)\) count the
+integers \(X\leq n\leq X^\rho\) for which \(\lfloor gB_n\rfloor\)
+begins with the full binary expansion of \(n\). This is the
+multiplier version of the binary test in
+Theorem~\ref{thm:headline}(i). Put \(c=(g/\sqrt\pi)^{2/3}\) and
+\(\tau=\sqrt[3]{4}\). The change between \(g\) and \(c\) is a
+homeomorphism and is bi-Lipschitz on compact positive intervals.
+
+A hit means that for some integer \(k\geq0\),
+\(2^kn\leq gB_n<2^k(n+1)\), since both thresholds are integers.
+Put \(f=2^{-k}gB_n-n\), \(j=2n-k\), and \(x=c\tau^j\).
+The two-term central-binomial expansion \cite{app-brent} gives
+\[
+ n+f=\frac{x^{3/2}}{\sqrt n}
+       \left(1-\frac{1}{8n}+O(n^{-2})\right).
+\]
+Inverting with \(0\leq f<1\), we obtain
+\begin{equation}\label{eq:met-bin-inverse}
+ x=n+\frac{1}{12}+\frac23 f+O(n^{-1}),\qquad
+ \|x\|_{\mathbb R/\mathbb Z}\geq \frac1{12}-O(n^{-1}),
+\end{equation}
+where the norm is distance to the nearest integer. This is the
+inverse form of the aligned prefix test used in
+Theorem~\ref{thm:transfer}. Conversely, for \(j=3m+r\) with
+\(0\leq r\leq2\), test \(n=\lfloor x\rfloor\) and
+\(k=2n-j\), where \(x=c4^m\tau^r\). On any fixed compact interval
+of positive \(c\), we have \(k\geq0\) for all sufficiently large
+\(m\). Expanding the same formula with \(x=n+\{x\}\) gives
+\begin{equation}\label{eq:met-bin-direct}
+  2^{-k}gB_n-n=\frac32\{x\}-\frac18+O(4^{-m}).
+\end{equation}
+
+\paragraph{Upper bound.}
+Fix \(0<A<B\) so that \(c\in[A,B]\), and consider
+\(1<\rho<3/2\). For a window starting at \(X\), take
+\[
+ u=\left\lceil\log_4((X+1)/A)\right\rceil,\qquad
+ w=\lfloor\rho u\rfloor-L.
+\]
+Choose a fixed integer \(L\) sufficiently large in terms of the
+compact interval and \(\rho\). The candidates
+\(n=\lfloor c4^m\tau^r\rfloor\), \(u\leq m\leq w\),
+\(0\leq r\leq2\), then belong to \([X,X^\rho]\) for all large
+\(X\). Indeed \(c4^u\geq X+1\) and
+\(c4^w\tau^2\leq B\tau^2\,4^{-L}(4(X+1)/A)^\rho\).
+They are distinct for large \(X\), since the unrounded candidates
+in increasing \(j\) have ratio \(\tau>1\).
+
+For a fixed branch \(r\), let \(W_{m,r}\) be the nearest integer to
+\(c4^m\tau^r\) and \(z_m=c4^m\tau^r-W_{m,r}\), with ties resolved
+by choosing the larger integer. By \eqref{eq:met-bin-direct}, on a
+failed test
+\[
+ -\frac14-K4^{-m}\ \leq\ z_m\ \leq\ \frac1{12}+K4^{-m}
+\]
+for a uniform \(K>0\). In a run of consecutive failures, the
+integer \(d_m=z_{m+1}-4z_m\) on every internal edge therefore
+belongs to \(\{0,1\}\) for large \(u\). If two successive nonzero
+internal edges occur at \(m<l\), then
+\[
+ z_{m+1}\geq-4K4^{-m},\qquad
+ z_l=4^{l-m-1}z_{m+1},\qquad z_l=(z_{l+1}-1)/4<-1/5.
+\]
+These bounds force \(l\geq2m-O(1)\). This is impossible for
+\(m\geq u\) and \(l\leq w\) at large \(u\), and the argument
+works for any fixed \(\rho<2\). If there are \(h_r\) successes
+in the branch, there are at most \(h_r+1\) failure runs and
+\(2h_r\) edges touching successes. Thus its integer transitions
+\(W_{m+1,r}-4W_{m,r}=-d_m\) are nonzero at most \(3h_r+1\) times
+in the window.
+
+If \(H_{g,\rho}(X)\leq H\) for some fixed integer \(H\), there are
+at most \(3H+3\) nonzero transitions in the vector \(W_m\) formed
+by the three \(W_{m,r}\). All transition entries are uniformly
+bounded by the rounding rule. For each starting level \(u\)
+there are \(O_H(u^{3H+3})\) lists of nonzero positions and
+values. On a fixed list, telescoping with \(v=(1,\tau,\tau^2)\)
+gives
+\[
+ c4^u v=W_u+
+   \sum_{m=u+1}^{w}4^{u-m}(W_m-4W_{m-1})+O(4^{u-w}).
+\]
+The sum is a fixed translation. The coordinates of \(v\) are
+linearly independent since \(T^3-4\) is an irreducible cubic.
+The upper count of Lemma~\ref{lem:met-segment} with \(Q=4^u\)
+and \(\beta=1\) covers each list by \(O(Q^{3-2\rho})\) intervals
+of length \(O(Q^{-\rho})\). The constant margin \(L\) changes
+only the implicit constants. Consequently the \(s\)-power sum
+over all lists and levels converges for \(s>3/\rho-2\).
+Arbitrarily large real \(X\) yield infinitely many integer
+starts \(u\). Taking the countable union over \(H\) gives the
+upper bound for the set where the counts fail to tend to
+infinity. This includes the empty-window set.
+
+\paragraph{Lower bound.}
+Fix \(\rho<\sigma<3/2\), and prescribe zero base-four digits in
+all three coordinates of \(cv\) from position \(u+1\) through
+\(\lfloor\sigma u\rfloor+K_0\), where \(K_0\) is fixed and
+\(4^{-K_0}<1/24\). By the one-base proof, the limsup of these
+conditions has local dimension \(3/\sigma-2\). At every such
+level the fractional parts of all \(c4^m\tau^r\) with
+\(u\leq m\leq\lfloor\sigma u\rfloor\) are smaller than
+\(4^{-K_0}\). Take \(X=2c4^u\). For a hit in \([X,X^\rho]\),
+\eqref{eq:met-bin-inverse} would give
+\[
+ c4^u < x < c4^{\lfloor\sigma u\rfloor}
+\]
+for all sufficiently large selected starts, because
+\(\rho<\sigma\). The corresponding branch index lies in the
+prescribed range, so its distance to an integer is below
+\(1/24\), in contradiction with \eqref{eq:met-bin-inverse}.
+These parameters have actual empty windows. Letting
+\(\sigma\) decrease to \(\rho\) gives the lower bound
+\(3/\rho-2\) for both sets.
+
+\paragraph{The critical and supercritical exponents.}
+For \(\rho=3/2\), the exceptional sets for bounded counts are
+contained in those for every smaller exponent. The upper bounds
+just proved give dimension zero. For \(\rho>3/2\) choose
+\(3/2<\sigma<\min(\rho,2)\) and apply the candidate construction
+with \(\sigma\) in place of \(\rho\). A bounded count along
+arbitrarily late windows would give boundedly many transitions
+on \([u,\lfloor\sigma u\rfloor-L]\) for
+\(W_m=c4^m(1,\tau,\tau^2)+O(1)\). Restrict to
+\([u,\lfloor\sigma_0u\rfloor]\) for \(3/2<\sigma_0<\sigma\).
+Lemma~\ref{lem:transitions} contradicts a uniform bound on these
+transitions for any fixed \(c>0\). This gives emptiness of both
+exceptional sets above \(3/2\).
+
+At the critical exponent, the set of parameters giving arbitrarily
+late empty windows contains a dense \(G_\delta\) on the whole positive
+half-line. To prove this, put \(a=\sqrt[3]{2}\), so \(\tau=a^2\),
+and work in \(\mathbb Q(a)\). The element
+\[
+ U_0=(1+a+a^2)^2=5+3\tau+2\tau^2
+\]
+is a unit of norm \(1\), since \((a-1)(1+a+a^2)=1\).
+Set \(\eta_0=1/(3\tau^2)\) and \(S_h=\eta_0U_0^h\).
+For \(P\in\mathbb Z[\tau]\), the trace
+\(\operatorname{Tr}(\eta_0P)\) equals the coefficient of \(\tau^2\)
+after reducing \(P\) using \(\tau^3=4\). In fact
+\(\eta_0=\tau/12,\ \eta_0\tau=\tau^2/12,\ \eta_0\tau^2=1/3\),
+and \(\tau,\tau^2\) have trace zero. Thus
+\(\operatorname{Tr}(S_h\tau^r)\) is an integer for \(r=0,1,2\).
+Also \(N(\eta_0)=1/432\), so the nonreal conjugates of \(S_h\)
+both have modulus \(1/\sqrt{432S_h}\). Each trace error satisfies
+\[
+  \big|S_h\tau^r-\operatorname{Tr}(S_h\tau^r)\big|
+       \leq\frac{2\tau^r}{\sqrt{432S_h}} .
+\]
+
+For any integer \(u\geq0\) put \(c_0=S_h/4^u\) and \(X=3S_h/4\).
+If \(x=c_0\tau^j\geq X\), then \(j\geq3u\) because
+\(S_h/\tau<X\). Write \(j=3u+3l+r\) with \(l\geq0\) and
+\(r\in\{0,1,2\}\). Scaling the trace estimate by \(4^l\) gives
+\[
+ \|x\|_{\mathbb R/\mathbb Z}\leq
+    \frac{2x}{\sqrt{432}\,S_h^{3/2}} .
+\]
+For \(X\leq x\leq X^{3/2}+2\), this is at most
+\(1/16+O(S_h^{-3/2})\), since
+\(2(3/4)^{3/2}/\sqrt{432}=1/16\).
+For all sufficiently large \(h\), this excludes any hit in
+\([X,X^{3/2}]\) by \eqref{eq:met-bin-inverse}. It also excludes
+hits on an open neighborhood of \(c_0\). Indeed, for \(c\)
+satisfying \(|c/c_0-1|<1/(1000(X^{3/2}+2))\), a hypothetical
+hit would have \(c\tau^j\in[X+1/24,X^{3/2}+1]\) by
+\eqref{eq:met-bin-inverse}. Then \(c_0\tau^j\in[X,X^{3/2}+2]\)
+and \(|c\tau^j-c_0\tau^j|\leq1/500\). Its distance bound is
+still strictly below the necessary one for large \(h\).
+
+Taking field norms in a putative relation \(U_0^q=4^p\) with
+\(p,q>0\) gives \(1=4^{3p}\), so \(\log_4 U_0\) is irrational.
+The values \(\log_4\eta_0+h\log_4 U_0\) are dense modulo \(1\)
+on every forward tail. Indeed, the cyclic group generated by
+an irrational rotation has nonzero residues arbitrarily close
+to zero by pigeonholing, and multiples of such a residue
+approximate every point of the circle. The forward tail closure
+equals the group closure by the same difference argument as
+in Proposition~\ref{prop:met-critical-field}. Choosing \(u\) to
+account for the integer part gives centers \(S_h/4^u\) in every
+positive open interval for arbitrarily large \(h\).
+For each \(X_0>0\), the union of the neighborhoods just proved
+empty for some \(X>X_0\) is open and dense. The intersection
+over positive integer cutoffs \(X_0\) is the claimed dense
+\(G_\delta\). The bi-Lipschitz change on compact intervals
+transfers the dimension conclusions to \(g\), and its
+homeomorphism transfers the dense \(G_\delta\).
+
+\subsection{Relation to earlier work}
+
+The ambient restricted-denominator dimension problem goes back to
+Borosh and Fraenkel \cite{met-borosh-fraenkel}, with a weighted
+extension by Rynne \cite{met-rynne}. For affine subspaces,
+Huang and Liu \cite[Theorem~7]{met-huang-liu} give a fixed-denominator
+count, and Huang \cite[Theorems~3.1(b) and~3.2(b)]{met-huang}
+gives a shifted upper count. For an algebraic line the latter
+already yields the one-base upper count in the positive-dimension
+range. Baier and Ghosh \cite{met-baier-ghosh} study a different
+restriction on a line through the origin, imposing primality on
+the denominator and one numerator. Dynamical dimension results
+for independently varying coordinates include Wu's simultaneous
+\(\beta\)-system theorem \cite{met-wu}. Bugeaud and Liao
+\cite{met-bugeaud-liao} treat uniform approximation by radix powers,
+and Bugeaud and Kim \cite{met-bugeaud-kim} treat block complexity
+of two expansions of one real number.
+
+Li, Liao, Velani, and Zorin discuss two shrinking targets on a
+bi-Lipschitz planar graph \cite[Eq.~(75)]{met-li-liao}. On the
+scalar diagonal they report dimension \((1-\theta)/(1+\theta)\)
+for the maximum of the errors at \(2^n\) and \(3^n\) bounded by
+\(3^{-n\theta}\) infinitely often, for \(0\leq\theta\leq1\).
+Their proof is conditional on \(abc\) when
+\(\theta>1-\log 2/\log 3\) \cite[Remark~13]{met-li-liao}.
+Li, Li, and Wu \cite[Theorem~1.3 and \S4]{met-li-li-wu} obtain a
+general scalar maximum-norm convergence bound with a denominator-size
+term and a gcd term. For equal-index powers \(a^n,b^n\), with \(b>a\),
+and errors of size \(b^{-n\theta}\) for \(\theta>1\), their exact
+dimension formula is \(\log_b\gcd(a,b)/(1+\theta)\).
+Zhang and L\"u \cite{met-zhang-lu} treat the product of errors
+for equal-index powers of \(2\) and \(3\). Tapia
+\cite[Theorem~1]{met-tapia} gives a gcd-sensitive convergence
+criterion for inhomogeneous products with integer denominators. The additional feature of Theorem~\ref{thm:dimension}
+is the exact competition between the two terms on a line with
+\(d\geq2\) rationally independent algebraic coordinates in its
+direction and comparable physical starting scales, with one shared
+scalar parameter.
+
+\section{Prefixes and suffixes of polynomial values}\label{sec:polynomials}
+
+\subsection{Unshifted polynomial prefixes}\label{subsec:polynomial-prefixes}
+
+Let \(P\in\mathbb Q[X]\) be eventually integer-valued, with
+\(P(X)=aX^{q+1}+A X^q+O(X^{q-1})\), \(a>0\), and \(q\ge2\).
+For a trial suffix length \(k\), write
+\[
+ Q=b^k,\qquad x=(Q/a)^{1/q},\qquad t=A/(qa).
+\]
+If \(P(n)=Q(n+u)\) with \(0\le u<1\), division by \(n+u\)
+gives \(x^q=n^q(1+O(1/n))\), hence \(n=x+O(1)\).
+Uniformly in that range,
+\begin{equation}\label{eq:pol-prefix-residual}
+ P(n)/Q-n=q(n-x+t)+O(x^{-1}).
+\end{equation}
+In the branch \(k=qm+r\), \(0\le r<q\), put
+\(\beta_r=(b^r/a)^{1/q}\), so \(x=\beta_r b^m\). If \(\beta_r\)
+is irrational then, for all sufficiently large \(m\), a prefix
+match occurs precisely when
+\begin{equation}\label{eq:pol-irrational-arc}
+ x\bmod 1\in (t-1/q,t)\bmod 1,
+ \qquad n=\lceil x-t\rceil\ \text{on a match}.
+\end{equation}
+Indeed, being within \(O(x^{-1})\) of either rational endpoint
+infinitely often would approximate \(\beta_r\) to
+\(O(b^{-2m})\) by rationals with reduced denominators dividing
+\(M b^m\), for a fixed common denominator \(M\).
+These denominators are unbounded along any such sequence and use
+only a fixed set of primes. Ridout's theorem~\cite{pol-ridout}
+excludes such approximations, since for any fixed \(0<\eta<1\)
+the error is eventually smaller than the reduced denominator
+to the power \(-1-\eta\). Equation~\eqref{eq:pol-prefix-residual}
+then gives the exact test. If \(\beta_r\) is rational, the
+fractional parts of \(x\) follow an eventual finite cycle. For
+each cycle value there is at most one integer \(n\) with
+\(0\le n-x+t\le1/q\), and the gap to all other candidates is
+bounded below. For the possible candidate, substitute its fixed
+offset \(n-x\) into \(P(n)-a x^q n\) and \(P(n)-a x^q(n+1)\).
+The eventual signs decide the weak lower and strict upper
+inequalities, including the endpoints.
+
+\begin{proposition}\label{prop:pol-power-prefix}
+For \(P(n)=n^d+c\), \(c\in\mathbb Z\), \(d\ge2\), the following
+classifies infinitude of prefix matches:
+\begin{enumerate}
+\item If \(c\ge0\), every radix has infinitely many matches.
+\item If \(d=2\) and \(c<0\), every radix has infinitely many
+matches for \(c\le-2\). For \(c=-1\) there are no matches.
+\item If \(d\ge3\) and \(c<0\), write \(q=d-1\).
+Every perfect \(q\)-th power radix gives finitely many matches,
+and none for \(c=-1\). In any other radix there are infinitely
+many matches if and only if at least one irrational branch
+\(b^{r/q}b^m\), \(0\le r<q\), visits \((1-1/q,1)\) modulo one
+infinitely often. This criterion is independent of the
+negative value of \(c\).
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+For \(c\ge0\), take \(n=b^m\) and \(Q=b^{(d-1)m}>c\).
+For \(d=2\), \(c<0\), any match requires \(n>Q\), and the
+residual \(n(n-Q)+c\) at \(n=Q+1\) equals \(Q+1+c\).
+It lies in \([0,Q)\) for large \(Q\) if \(c\le-2\).
+For \(c=-1\) it is already \(Q\) there and increases for
+larger \(n\).
+
+For \(q\ge2\), every rational \(x=b^{k/q}\) is integral.
+At a match the lower bound forces \(n\ge x+1\), so
+\[
+ (n+1)Q\le(n^2-1)(n-1)^{q-1}
+ \le n^{q+1}-n^{q-1}\le n^{q+1}+c
+\]
+when \(n^{q-1}\ge |c|\), contradicting the strict upper bound.
+Thus a rational scale gives no large matches, and none at
+all for \(c=-1\). For irrational scales apply
+\eqref{eq:pol-irrational-arc} with \(t=0\).
+There are finitely many candidates at each fixed \(k\) since
+\(P(n)/n\to\infty\), and the prefix intervals for different
+\(k\) at a fixed \(n\) are disjoint.
+\end{proof}
+
+For \(d=3\) and \(c<0\) the test simplifies for \(n>|c|\) to
+\(n^2-n+1\le Q<n^2\): the lower prefix bound gives \(Q<n^2\),
+and \(P(n)/(n+1)=n^2-n+1+(c-1)/(n+1)\) lies strictly between
+the two consecutive integers \(n^2-n\) and \(n^2-n+1\).
+Equivalently \(n-\tfrac12<\sqrt Q<n\). For \(c=-1\) this covers
+every possible matching index. In radix \(2\) the odd lengths
+give scales \(2^m\sqrt2\), and the digit \(1\) recurs in every
+irrational binary expansion. In radix \(3\), infinitude is
+equivalent to recurrence of the ternary digit \(2\) in
+\(\sqrt3\). A tail beginning with \(2\) exceeds
+\(1/2=0.\overline{1}_3\), whereas a tail consisting only of \(0\)
+and \(1\) cannot exceed it. This entry remains open. An eventual
+tail over \(0,1\) would yield a quadratic irrational in the
+middle-third Cantor set upon doubling that tail, a special
+case of the issue raised by Mahler~\cite[\S2]{pol-mahler}.
+The conjecture that every finite word recurs in each irrational
+algebraic expansion would give infinitude in precisely the
+non-perfect-\(q\)-th-power radices in part~(iii).
+For example, when \(d=5\) and \(b=4\), the odd lengths give
+\(2^m\sqrt2\) and the arc is \((3/4,1)\). This entry asks
+whether \(11\) recurs in the binary expansion of \(\sqrt2\).
+
+\begin{proposition}\label{prop:pol-pascal-prefix}
+For \(d=3,5\) put \(q=d-1\), \(H=d!\), and \(x=(H b^k)^{1/q}\).
+The radices admitting an integral scale are exactly
+\(b\in 6(\mathbb Q_{>0})^2\) for \(d=3\), and
+\(b\in 120(\mathbb Q_{>0})^4\cup120^3(\mathbb Q_{>0})^4\)
+for \(d=5\), in each case restricted to integer radices.
+These scales never give a match. On the remaining lengths the
+eventual arcs are \((0,1/2)\) for \(d=3\) and \((1/4,1/2)\)
+for \(d=5\), with \(n=\lceil x+d/2\rceil\). The cubic arc test
+holds at every length. In particular, \(\binom n3\) has
+infinitely many matches in radices \(2,4\), and \(\binom n5\)
+has infinitely many in radices \(2,4,16\).
+\end{proposition}
+\begin{proof}
+The coefficient ratio gives \(t=-d/2\).
+An integral scale occurs exactly when \(k v_p(b)+v_p(H)\)
+is divisible by \(q\) at every prime \(p\), where \(v_p\) is
+the usual prime valuation. A prime with \(v_p(H)=1\) forces
+\(k\) to be a unit modulo \(q\). The congruences are thus
+equivalent to \(b/H^u\) being a rational \(q\)-th power,
+with \(u\equiv-k^{-1}\pmod q\). Thus for each listed radix
+the integral scales are precisely the lengths in the class
+\(k\equiv-u^{-1}\pmod q\). The possible units \(u\) are \(1\)
+for \(q=2\) and \(1,3\) for \(q=4\).
+
+For \(d=3\), the exact inequalities at \(n\ge3\) read
+\[
+ (n-2)^2+2-\frac{6}{n+1}<6Q\le(n-1)(n-2).
+\]
+The integer \((n-2)^2+1\) is never divisible by \(3\), so
+these are equivalent to \(n-2<x<n-\tfrac32\). This excludes
+integral \(x\) and gives the exact arc. For \(d=5\), the
+arithmetic and geometric mean inequality on \(n-1,\ldots,n-4\)
+forces \(n>x+5/2\) at a match. If \(x\) is integral, it is
+divisible by \(30\) and \(n\ge x+3\). At \(n=x+3\),
+\[
+ \frac{120\binom n5}{n+1}
+ =\frac{x+3}{x+4}\,x(x+1)(x-1)(x+2)>x^4.
+\]
+The expression on the left increases for \(n\ge5\), so
+the upper prefix inequality fails. The eventual arc at the
+irrational scales follows from~\eqref{eq:pol-irrational-arc}.
+
+The listed radices give a branch \(x=2^m H^{1/q}\), by taking
+\(k=qm/\log_2 b\). The fractional part of \(H^{1/q}\)
+is irrational. The cubic arc reads a binary \(0\), which
+recurs, and the quintic arc reads \(01\), whose eventual
+absence would force an eventually constant binary tail.
+\end{proof}
+
+These positive cases leave other radices subject to their
+irrational-branch tests. For example, for \(\binom n3\) in
+radix \(9\), infinitude is equivalent to recurrence of the
+ternary digit \(0\) in \(\sqrt6\), using
+\(1/2=0.\overline{1}_3\). In radix \(3\) the two branches give
+the same question for at least one of \(\sqrt6,\sqrt2\).
+
+\begin{proposition}\label{prop:pol-necklace-complement}
+Fix \(h\ge1\), and let \(L_{b^h}(n)\) count primitive necklaces
+of length \(n\) on \(b^h\) letters. For nonsquare \(b\), the
+prefix matches of \(n^3-1\) and of \(L_{b^h}(n)\) eventually
+partition the nearest integers to \(b^m\sqrt b\), \(m\ge0\).
+Their combined count up to \(X\) is \(\log_b X+O_{b,h}(1)\).
+For square \(b\) both match sets are finite.
+\end{proposition}
+\begin{proof}
+Each primitive necklace has \(n\) rotations. An imprimitive
+word repeats a block of length at most \(n/2\), and constant
+words are imprimitive for \(n\ge2\). Thus
+\(nL_{b^h}(n)=b^{hn}(1-\epsilon_n)\), where
+\(0<\epsilon_n\le n b^{-hn/2}\).
+The prefix bounds are \(n^2\le T(1-\epsilon_n)<n(n+1)\)
+for \(T=b^{hn-k}\). Necessarily \(T>n^2\), so \(T\) is integral.
+For large \(n\), \(\epsilon_n(n(n+1)+1)<1\). Consequently
+the two bounds are equivalent to \(n^2<T\le n(n+1)\).
+This interval contains no square, so when \(b\) is nonsquare
+the only possible exponents are \(hn-k=2m+1\).
+Integrality of \(T\) makes the test equivalent to
+\(n<b^m\sqrt b<n+\tfrac12\), and the resulting \(k\) is
+nonnegative for large \(m\). The cube test gives the other
+half, \(n-\tfrac12<b^m\sqrt b<n\). The scales are irrational,
+so there are no ties. They grow by a factor of \(b\), which
+gives the count and eventual disjointness of the indices.
+In a square radix all scales are integral, so neither test
+gives a large match.
+\end{proof}
+
+\subsection{Deciding simultaneous prefix and suffix matches}
+\label{subsec:polynomial-joint}
+
+Let \(\ell_b(n)\) be the number of digits of \(n\) in radix \(b\).
+A joint match for \(P\) satisfies the prefix inequalities and
+\(P(n)\equiv n\pmod{b^{\ell_b(n)}}\).
+
+\begin{theorem}\label{thm:pol-joint}
+Let \(P\in\mathbb Q[X]\) be eventually integer-valued, of
+degree \(D\ge2\) with leading coefficient \(a>0\). Set \(q=D-1\),
+\(F(X)=P(X)-X\), and \(\beta_r=(b^r/a)^{1/q}\) for
+\(0\le r<q\). Apart from finitely many exceptions, a joint
+match at \(k=qm+r\) has
+\begin{equation}\label{eq:pol-joint-families}
+ n=\beta_r b^m+\gamma,\qquad
+ \beta_r,\gamma\in\mathbb Q,\quad F(\gamma)=0.
+\end{equation}
+A finite calculation decides whether there are infinitely
+many joint matches. For each family in
+\eqref{eq:pol-joint-families}, the successful sufficiently large
+values of \(m\) form a computable union of residue classes.
+\end{theorem}
+\begin{proof}
+The prefix gives \(b^k=a n^q+O(n^{q-1})\), so
+\(n=\beta_r b^m+O(1)\) and \(\ell_b(n)=m+O(1)\).
+At one fixed prime \(p\mid b\), the suffix gives
+\(|F(n)|_p\le p^{-\ell_b(n)v_p(b)}\). Factoring \(F\) over
+\(\overline{\mathbb Q_p}\) and taking the smallest of the
+\(D\) root distances gives a root \(\alpha\) with
+\[
+ |n-\alpha|_p\le |a|_p^{-1/D}p^{-\ell_b(n)v_p(b)/D}.
+\]
+For each fixed \(r,\alpha\), use the following independent
+rows of linear forms on the primitive vector \(z=(b^m,n,1)\):
+\[
+ \begin{array}{c|ccc}
+  \infty & X & Y-\beta_r X & Z\\
+  p & X & Y-\alpha Z & Z\\
+  p'\mid b,\ p'\ne p & X & Y & Z .
+ \end{array}
+\]
+These forms and the cancellation of the \(X\)-factors are
+those used by Adamczewski and Bugeaud in their proof of
+Theorem~2~\cite[\S5]{pol-sym}. Here the polynomial congruence
+supplies the local coefficient \(\alpha\). The \(X\)-factors
+have product one, the real difference is bounded, and all
+remaining finite factors except \(Y-\alpha Z\) have norm at
+most one. The full product is \(O(p^{-\ell_b(n)v_p(b)/D})\),
+a negative power of \(\|z\|_\infty\asymp b^m\).
+The \(S\)-adic Subspace Theorem~\cite{schlickewei}
+in the integer-product form used in Section~\ref{sec:transfer}
+therefore places the vectors in finitely many proper rational
+subspaces. The choices of \(r\) and \(\alpha\) are finite.
+
+On a subspace containing an unbounded sequence of \(m\),
+take a fixed rational relation \(U b^m+V n+W=0\). We have
+\(V\ne0\). Dividing by \(b^m\) and taking the real limit
+gives \(\beta_r=-U/V\), and substitution gives
+\(\gamma=-W/V\). At \(p\), \(b^m\to0\) and \(F(n)\to0\),
+so \(F(\gamma)=0\) by continuity. Bounded \(m\) gives
+only finitely many prefix matches. This proves the restriction.
+
+To perform the decision, enumerate the rational \(\beta_r\)
+and rational roots \(\gamma\) of \(F\). For each pair, use
+the following three tests.
+\begin{enumerate}
+\item For a common denominator \(M\) of \(\beta_r,\gamma\),
+integrality of \(n\) is the condition
+\(M\beta_r b^m+M\gamma\equiv0\pmod M\).
+Powers of \(b\) modulo \(M\) follow an eventual finite cycle.
+\item Put \(N(T)=\beta_r T+\gamma\). The two prefix tests
+are the eventual signs of
+\(P(N(T))-b^r T^qN(T)\) and \(P(N(T))-b^r T^q(N(T)+1)\).
+As \(T=b^m\to\infty\), these must be nonnegative and
+strictly negative, respectively. The leading nonzero
+coefficient determines the sign, with sign zero for the
+zero polynomial.
+\item Eventually \(\ell_b(n)=m+J\). If
+\(b^{J-1}<\beta_r<b^J\), this determines \(J\). At
+\(\beta_r=b^j\) use \(J=j\) for \(\gamma<0\) and \(J=j+1\)
+otherwise. Let \(h\) be the multiplicity of \(\gamma\)
+and \(C_h\) the coefficient of \(u^h\) in \(F(\gamma+u)\).
+For every \(p\mid b\) that term has uniquely smallest
+valuation for large \(m\), so
+\[
+ v_p(F(n))=hm\,v_p(b)+v_p(C_h\beta_r^h).
+\]
+The suffix test eventually always passes for \(h\ge2\).
+For \(h=1\) it passes exactly when
+\(v_p(F'(\gamma)\beta_r)\ge Jv_p(b)\) for all \(p\mid b\).
+\end{enumerate}
+Thus infinitude is equivalent to passing the sign and
+valuation tests on a family whose integrality cycle
+contains a success.
+\end{proof}
+
+The decision determines the eventual residue classes on
+the rational families. The Subspace Theorem argument gives
+no effective cutoff for the exceptional matches outside them.
+
+\begin{corollary}\label{cor:pol-joint-powers}
+For every fixed \(b\ge2\), \(d\ge2\) and \(c\in\mathbb Z\),
+the polynomial \(n^d+c\) has only finitely many joint matches.
+For \(n^2\) the only joint match is \(n=1\).
+\end{corollary}
+\begin{proof}
+On a family from Theorem~\ref{thm:pol-joint}, a rational
+\(\beta_r=b^{r/(d-1)}\) is integral, so integrality of \(n\)
+forces \(\gamma\in\mathbb Z\). Put \(x=\beta_r b^m\).
+The prefix residual at \(n=x+\gamma\) tends to
+\((d-1)\gamma\in[0,1]\). Thus \(\gamma=0\) except
+possibly when \(d=2,\gamma=1\). In that case \(F(1)=0\)
+gives \(c=0\), and \((x+1)^2>(x+2)x\) violates the
+upper bound. If \(\gamma=0\) then \(F(0)=0\) gives \(c=0\).
+For large \(m\), each \(p\mid b\) divides \(n=x\) and
+\(v_p(n^d-n)=v_p(n)\). The suffix would force
+\(b^{\ell_b(n)}\mid n\), impossible for \(n>0\) of that length.
+For \(n^2\), the prefix inequalities force \(n=b^k\)
+at every match. When \(k\ge1\) the same valuation argument
+excludes it, and \(n=1\) is a joint match.
+\end{proof}
+
+For \(n^2+c\) the finite set is computable by restricting
+to \(b^k\le |c|+1\). Indeed, for \(Q=b^k>|c|+1\), the
+prefix condition \(0\le n(n-Q)+c<Q\) forces
+\(n\in\{Q,Q+1\}\). On either index \(P(n)-n\equiv c\pmod Q\),
+and \(Q\mid b^{\ell_b(n)}\). The suffix forces \(c=0\), and
+then the sole prefix candidate \(n=Q\) fails the suffix.
+
+\begin{example}\label{ex:pol-joint-quadratic}
+The polynomial \(P(n)=n^2-n+1\) has infinitely many joint
+matches in every radix \(b\). For \(T=b^m\), \(m\ge1\),
+take \(n=T+1\). Then \(P(n)/T=n+1/T\) and \(P(n)-n=T^2\)
+is divisible by \(b^{m+1}=b^{\ell_b(n)}\).
+\end{example}
+
+Constants and eventually nonpositive polynomials have only
+finitely many joint matches. For an eventually integer-valued
+linear polynomial \(P(n)=an+c\) with \(a>0\), both coefficients
+are integers. Infinitude of prefix matches requires \(a=b^k\)
+and \(0\le c<a\), since the possible \(k\) are bounded and
+the prefix residual is \((a-b^k)n+c\). For \(a=1\) this
+gives \(P(n)=n\), with every index a joint match. For
+\(a=b^k>1\), \(c=0\) fails the suffix because \(a-1\) is
+coprime to \(b\). If \(c=a-1\), then \(n=b^\ell-1\) works
+for every \(\ell\ge1\). For \(0<c<a-1\), choose a cyclic
+rotation \(j\) of the \(k\)-digit padded word of \(c\) with
+nonzero leading digit. Multiplication by \(b\) modulo \(a-1\)
+rotates the word, so \(jb^\ell\equiv c\pmod{a-1}\) for
+infinitely many \(\ell\). The index
+\(n=(jb^\ell-c)/(a-1)\) then has \(\ell\) digits for large
+\(\ell\), since \(1/b<j/(a-1)<1\), and satisfies the suffix
+as well as the prefix.
+
+\section{Digit reversal and Fibonacci representations}\label{sec:representations}
+
+\subsection{Reversals of full length}
+Let \(R_b(n)\) denote the integer obtained by reversing the base-\(b\)
+digits of \(n\). We require \(b\nmid n\) when asking for a reversal
+of full length. Otherwise \(n=b^t\) already gives the fixed reversed
+prefix \(1\) for every power \(n^d\).
+
+\begin{proposition}\label{prop:reversal}
+For every sufficiently large \(L\) there is a nonpalindromic binary
+integer \(n\) of length \(L\) such that \(n^2\) begins with the entire
+word for \(R_2(n)\). In base four, \((2\cdot4^t+1)^4\) begins with
+\(4^t+2=R_4(2\cdot4^t+1)\) for all sufficiently large \(t\).
+\end{proposition}
+\begin{proof}
+Put \(N=2^L\), \(E=A2^t\), and \(n=N-1-E\).
+Choose \(A=3\) for odd \(L\) and \(A=5\) for even \(L\), and set
+\(L=2t+a+1\), where \(a\) is the binary length of \(A\).
+The word for \(E\), padded to length \(L\), consists of \(t+1\) zeros,
+the palindromic word for \(A\), and \(t\) zeros. Its reversal represents
+\(2E\). Complementing all digits commutes with reversal, so
+\(R_2(n)=N-1-2E\). Both ends of \(n\) are ones for \(t\ge1\), and the
+reversal differs from \(n\). Now
+\[
+ \left\lfloor n^2/N\right\rfloor
+ =N-2(E+1)+\left\lfloor(E+1)^2/N\right\rfloor.
+\]
+The last quotient tends to \(9/8\) or \(25/16\); hence its floor is
+one in both parities. In base four, putting \(u=4^t\) gives
+\((2u+1)^4/(16u^3)=u+2+3/(2u)+1/(2u^2)+1/(16u^3)\).
+Its integer part is \(u+2\) for large \(t\), as required.
+\end{proof}
+
+\begin{proposition}\label{prop:palindromes}
+Fix \(b,d\ge2\). Among the positive integers \(n\le X\) for which
+\(n^d\) begins with \(n\) in base \(b\), the number of palindromes
+is \(o(\log\log X)\).
+\end{proposition}
+\begin{proof}
+Write \(q=d-1\), \(k=qm+r\), \(0\le r<q\), for the number of digits
+removed at the right. Set \(x=b^{k/q}\). The prefix inequality implies
+\(n\ge x\). If \(n\ge x+1\), then
+\((n+1)x^q\le(n+1)(n-1)^q<n^{q+1}\), contrary to the strict upper
+inequality. Thus \(n=\lceil x\rceil\). When \(x\) is integral and
+\(k\ge q\), \(b\mid x\), as is seen from the prime valuations.
+Such an \(n\) cannot be a palindrome.
+
+On any remaining irrational branch,
+\(\zeta=b^{r/q-1}\) lies strictly between \(1/b\) and \(1\).
+Write its base-\(b\) digits as \(0.a_1a_2\ldots\).
+Eventually \(L=m+1\) is the length of \(n\) and
+\(n-1=\lfloor b^L\zeta\rfloor\). For large \(m\) the leading digit
+of \(n\) is \(a_1>0\), since \(b\zeta\) is irrational and adding
+\(b^{-m}\) cannot cross the next integer. If \(n\) is palindromic,
+its last digit is also \(a_1\). Subtracting one changes only that
+digit. Consequently \(a_2\ldots a_{L-1}\) is a palindromic prefix of
+the digit word for the algebraic irrational \(\{b\zeta\}\).
+
+Suppose two such prefix lengths \(u<v\) tend to infinity with
+\(v/u\le C\) for a fixed \(C>1\). The shorter palindrome is both
+a prefix and a suffix of the longer, giving the latter period \(v-u\).
+If these periods stay bounded on a subsequence, one fixed period holds
+for arbitrarily long prefixes, contradicting irrationality. Otherwise
+take a subsequence with periods increasing to infinity. The digit word
+then starts with at least \(v/(v-u)\ge C/(C-1)>1\) copies, allowing
+a final partial copy, of its block of length \(v-u\). The stammering
+criterion of Adamczewski and Bugeaud excludes this for algebraic
+irrational numbers in an integer base
+\cite[Theorem~5]{rev-complexity}; see also their symmetric-pattern
+criterion \cite[Theorem~4 and \S6]{pol-sym}.
+
+On each infinite branch successive such lengths therefore have ratio
+tending to infinity. Above a branch-dependent cutoff they increase
+by at least any prescribed factor \(K>1\). Since \(L\ll\log X\),
+their count is at most \(O_K(1)+\log\log X/\log K\) on each branch.
+There are only \(q\) branches. Letting \(K\to\infty\) proves the claim.
+\end{proof}
+
+The count permits infinitely many very sparse hits on an irrational
+branch. The classification of full-length nonpalindromic reversal
+prefixes for general pairs \((b,d)\) also remains open here. For
+\(\binom{2n}{n}\), even in binary, we do not determine whether
+infinitely many indices occur as both prefix and suffix, or whether
+infinitely many palindromic indices occur as full prefixes.
+
+\subsection{Quadratic prefixes in Zeckendorf numeration}\label{sec:zeckendorf}
+
+Use \(F_0=0,\ F_1=1\), with the Fibonacci recurrence. The
+Zeckendorf word of \(n>0\) represents \(n=\sum_{j\ge2}e_j F_j\),
+where \(e_j\in\{0,1\}\) and adjacent digits cannot both be \(1\).
+Read the digits from the highest occupied place down to \(F_2\).
+We call \(n\) a hit of \(P\) if \(P(n)\) is a positive integer whose
+word begins with the entire word of \(n\). The suffix length \(k\ge0\)
+is the difference of the two word lengths. Put
+\[
+ \phi=\tfrac{1+\sqrt5}{2},\qquad \psi=-\phi^{-1},\qquad
+ L_k=\phi^k+\psi^k\quad(k\ge0),
+\]
+so that \(L_0=2\) and \(L_1=1\). Chang and Miller use consecutive
+zero-padded endpoints for fixed leading blocks and study a fixed
+six-digit block of squares~\cite[Lemma~4.4, proof, and Example~4.11]{zec-chang-miller}.
+
+\begin{theorem}[Quadratic Zeckendorf classification]\label{thm:zeck-quadratic}
+Let \(P(n)=(An^2+Bn+C)/D\) be eventually integer-valued, with
+\(A,D\) positive integers and \(B,C\) integers. There are computable
+integers \(N,K\ge1\), an even modulus \(m\ge2\), and a finite computable
+set \(\mathcal E\subset\mathbb Z\times\{0,\ldots,m-1\}\) such that for
+\(n\ge N\) the hits and their suffix lengths are exactly
+\begin{equation}\label{eq:zeck-lucas-families}
+ n=\frac{D L_k+s}{A},\qquad
+ k\ge K,\qquad k\equiv i\pmod m,\qquad (s,i)\in\mathcal E .
+\end{equation}
+In particular, infinitude is decidable. The number of hits up to \(Y\)
+is \(\lvert\mathcal E\rvert\log Y/(m\log\phi)+O_P(1)\).
+\end{theorem}
+
+\begin{proof}
+Write \(S_k(n)=\sum_{j\ge2}e_j F_{j+k}\), the value obtained by
+appending \(k\) zeros. The legal strings on places \(F_2,\ldots,F_{j-1}\)
+give each integer from \(0\) to \(F_j-1\) exactly once. This follows
+by induction, splitting according to the digit at \(F_{j-1}\).
+A zero gives \([0,F_{j-1})\), and a one forces the next digit to
+zero and gives \([F_{j-1},F_{j-1}+F_{j-2})\). The empty string and
+the single place \(F_2\) start the induction. The same bound on
+lower places shows that the highest differing digit of two strings
+determines their order, padding on the left with zeros as needed.
+Deleting the last \(k\) places is therefore nondecreasing in the
+integer order, and the first integer whose shortened string represents
+\(n>0\) is \(S_k(n)\). Thus a hit with suffix length \(k\) is equivalent to
+\begin{equation}\label{eq:zeck-cylinder}
+ S_k(n)\le P(n)<S_k(n+1).
+\end{equation}
+This also applies when \(n+1\) has a longer word than \(n\).
+
+Let \(z(n)=\sum_{j\ge2}e_j\psi^j\). Summing the odd and even powers
+separately bounds \(z(n)\) strictly between \(-\phi^{-2}\) and
+\(\phi^{-1}\). The identity \(F_{j+1}-\phi F_j=\psi^j\) gives
+\begin{equation}\label{eq:zeck-shift}
+ S_1(n)=\lfloor\phi n+\phi^{-1}\rfloor,\qquad
+ S_k(n)=F_{k-1}n+F_k S_1(n)=\phi^k n+F_k z(n)
+ \quad(k\ge1).
+\end{equation}
+The formula for \(k\ge1\) follows from the Fibonacci recurrence.
+For the floor formula, see also the Fibonacci shift
+in Northshield~\cite[\S6]{zec-northshield}.
+
+At a hit put \(X=\phi^k\). Since \(F_k\le X\) for \(k\ge1\),
+\eqref{eq:zeck-cylinder} gives \(\lvert P(n)-Xn\rvert\le2X\).
+The bound holds for \(k=0\) as well since then \(P(n)=n\).
+With \(Q=|B|+|C|\), for \(n\ge 4+\lceil 2Q/A\rceil\) we have
+\[
+ \frac{A n^2}{2D}\le P(n)\le\frac{2A}{D}n(n-2).
+\]
+Thus \(X/n\le2A/D\) and \(n\le4DX/A\) at such a hit. In particular,
+\[
+ |An-DL_k|\le |B|+|C|/n+2DX/n+D|\psi|^k
+ \le M,\qquad M=Q+4A+D.
+\]
+It suffices to enumerate the integers \(|s|\le M\).
+
+The pair \((L_k,L_{k+1})\bmod A\) is purely periodic, since
+\((a,b)\mapsto(b,a+b)\) is invertible modulo \(A\). An even period
+\(m\) is found by iterating from \((2,1)\bmod A\) until the pair
+returns, then taking the least common multiple of the period and \(2\).
+Fix \(s\) and \(i\) and take \(k\equiv i\pmod m\). Retain for testing
+only integral \(n=(D L_k+s)/A\), an integrality test independent of \(k\)
+on the class. Eventual integrality of \(P\) implies integrality at every
+integer since its numerator is periodic modulo \(D\).
+
+Let \(r\in\{0,\ldots,A-1\}\) be the residue of \(D L_{k+1}\), and
+\(\varepsilon=(-1)^i\). For \(j=0,1\), use
+\(\phi L_k-L_{k+1}=\sqrt5\,\psi^k\) to write
+\[
+ \phi(n+j)+\phi^{-1}
+ =\frac{D L_{k+1}-r}{A}+\theta_j+
+   \frac{\varepsilon D\sqrt5}{AX},\qquad
+ \theta_j=\frac{r+\phi(s+Aj)}{A}+\phi^{-1}.
+\]
+For large \(k\), the floor of the last two terms is \(\lfloor\theta_j\rfloor\),
+decreased by \(1\) exactly when \(\theta_j\) is integral and
+\(\varepsilon=-1\). Denote this integer by \(h_j\). The rule is
+valid once \(D\sqrt5/(AX)\) is less than the distance from
+\(\theta_j\) to the nearest integer distinct from it. Consequently
+\(S_1(n+j)=(D L_{k+1}-r)/A+h_j\).
+
+Substituting in \eqref{eq:zeck-shift} makes both differences
+\(P(n)-S_k(n+j)\), \(j=0,1\), Laurent polynomials in \(X\) over
+\(\mathbb Q(\sqrt5)\). Indeed \(n=(D(X+\varepsilon/X)+s)/A\),
+and \(F_k,F_{k-1},L_{k+1}\) are linear combinations of \(X\)
+and \(X^{-1}\) by Binet's formula. Each nonzero polynomial has
+the sign of its highest-degree nonzero coefficient once \(X>1\)
+and \(X\) exceeds the sum of the absolute values of all lower
+coefficients divided by the absolute value of that coefficient.
+An identically zero difference meets the lower inequality and
+fails the strict upper inequality. Exact comparisons in
+\(\mathbb Q(\sqrt5)\) therefore determine whether to include
+\((s,i)\) in \(\mathcal E\).
+
+Take \(K\ge1\) large enough that all the computed floor and sign
+bounds hold and \(D(\phi^K-1)>M\), ensuring positivity of each
+candidate. Then take \(N\ge 4+\lceil 2Q/A\rceil\) with
+\(N>4D\phi^K/A\), so every hit at \(n\ge N\) has \(k\ge K\).
+These bounds are found by exact comparison and finite search.
+Each retained residue class contributes
+\(\log Y/(m\log\phi)+O_P(1)\) indices since
+\(n=(D/A)\phi^k+O_P(1)\). There is no double counting for \(n\ge N\),
+since \(n\) and \(P(n)\) determine \(k\), and \(n,k\) determine \(s\).
+\end{proof}
+
+\begin{corollary}[Shifted squares]\label{cor:zeck-square}
+For fixed \(c\in\mathbb Z\), the sufficiently large hits of \(n^2+c\)
+are exactly \(n=L_k\) with \(c+2(-1)^k\ge0\), with suffix length \(k\).
+For every \(k\ge6\), \(n=L_k\) is a hit with suffix length \(k\)
+if and only if \(0\le c+2(-1)^k<F_{k+2}\).
+There are infinitely many hits exactly when \(c\ge-2\). The eventual
+family uses only even \(k\) for \(-2\le c<2\) and both parities
+for \(c\ge2\).
+\end{corollary}
+
+\begin{proof}
+At a sufficiently large hit, \(s=n-L_k\) is bounded and
+\((n^2+c)/X-n=s+O_c(X^{-1})\) with \(X=\phi^k\).
+By \eqref{eq:zeck-cylinder} and \eqref{eq:zeck-shift}, this quantity
+lies between \(-\phi^{-2}\) and \(1+\phi^{-1}\).
+These bounds leave only \(s=0,1\) as \(k\to\infty\).
+
+The identities \(L_k=F_{k+1}+F_{k-1}\) and
+\(L_k^2=L_{2k}+2(-1)^k\) follow from Binet's formula
+(see also~\cite[\S2, (11) and Lemma~2.2]{zec-stoll}).
+For \(k\ge6\), adding \(1=F_2\) or \(2=F_3\) to \(L_k\) preserves
+the separation of occupied places. Hence
+\[
+ S_k(L_k)=L_{2k},\qquad S_k(L_k+1)=L_{2k}+F_{k+2},\qquad
+ S_k(L_k+2)=L_{2k}+F_{k+3}.
+\]
+For \(s=0\), the excess over the first endpoint is \(c+2(-1)^k\),
+and the gap \(F_{k+2}\) tends to infinity. For \(s=1\), the excess
+over \(L_{2k}\) is \(2L_k+c+1+2(-1)^k\), which eventually exceeds
+\(F_{k+3}\) since \(2>\phi^3/\sqrt5\). The latter is the excluded
+upper endpoint after subtracting \(L_{2k}\), so this branch gives
+no sufficiently large hits.
+\end{proof}
+
+\section{Complementary regimes and open questions}\label{sec:complements}
+
+Other growth laws lead to different index sets. We record the precise
+scope of four comparisons. The linked companion notes give the proofs.
+
+\paragraph{Euler products.}
+Fix \(b\ge2,\ q=b^h,\ h\ge1\), and let \(E_q=\prod_{i\ge1}(1-q^{-i})\).
+For the Gaussian binomial \(\genfrac{[}{]}{0pt}{}{2n}{n}_{\!q}\) and the Dyck-path
+area polynomial \(\sum_P q^{\operatorname{area}(P)}\) of semilength
+\(n\), all sufficiently large base-\(b\) matching indices are exactly
+\(\lfloor b^j/E_q\rfloor\), one for each sufficiently large \(j\).
+MacMahon's polynomial \(\genfrac{[}{]}{0pt}{}{2n}{n}_{\!q}/[n+1]_q\) has the corresponding
+list \(\lfloor(1-q^{-1})b^j/E_q\rfloor\). These statements use polynomial
+evaluation also when \(q\) is not a prime power.
+If \(R\) is a finite associative unital ring of order \(b\ge2\), the
+number of matching dimensions \(n\le X\) for \(|\mathrm{GL}_n(R)|\)
+is \(\log_b X+O_R(\log^* X)\), as it is for singular matrix counts.
+To recover the invertible list, write the quotient by the Jacobson
+radical as \(R/J(R)=\prod_i M_{d_i}(\mathbb F_{q_i})\), and put
+\[
+ r_n=\prod_i\prod_{t=1}^{d_i n}(1-q_i^{-t}),\qquad C_R=\prod_i E_{q_i}.
+\]
+At each sufficiently large scale \(j=n^2-k\) put
+\(s=\lceil C_R b^j\rceil,\ \Delta=s-C_Rb^j\), and
+\(a_n=b^j(r_n-C_R)\). The list includes \(s-1\) exactly when
+\(\Delta>a_{s-1}\) and \(s\) exactly when \(\Delta\le a_s\).
+These two candidates exhaust the scale.
+For \(R=\mathbb F_q\) in radix \(q\) the two complete
+eventual lists are \(\lfloor E_q q^j\rfloor\) and
+\(\lfloor(1-E_q)q^j\rfloor\). See
+\companion{gaussian-and-catalan-prefixes} and
+\companion{matrix-and-parking-prefixes}.
+
+\paragraph{Irreducible polynomials.}
+For primes \(p\), let \(U_n\) count monic irreducibles of degree \(n\)
+over \(\mathbb F_{p^r}\), \(r\ge1\). In radix \(p^v,\ v\ge1\), the
+matching degrees \(n\ge2\) are exactly those with
+\[
+ n=\lfloor p^m\sqrt p\rfloor,\qquad
+ \{p^m\sqrt p\}<\tfrac12,\qquad
+ rn-(2m+1)\in v\mathbb Z_{\ge0}\quad(m\ge0).
+\]
+Degree one matches precisely when \(v\mid r\). For \(p=2,v=1\) the
+test reads a zero digit in the binary expansion of \(\sqrt2\).
+In this binary case, for every extension degree \(r\ge1\) and every
+\(\varepsilon>0\), the number of matches in \([X,X^{1+\varepsilon}]\)
+tends to infinity as \(X\to\infty\). In odd
+characteristic and radix \(p\), infinitude amounts to infinitely many
+digits of \(\sqrt p\) strictly below \((p-1)/2\). Already \(p=3\)
+asks about infinitely many ternary zeros in \(\sqrt3\). See
+\companion{necklace-prefixes}.
+
+\paragraph{The \(n\)th prime.}
+Let \(P_n\) denote the \(n\)th prime and
+\(H(y)=\#\{n:yn\le P_n<y(n+1)\}\). For \(0<a<13/30\) and
+\(\eta=\exp(-aQ)\), the local mean at every large real \(Q\) satisfies
+\[
+           \eta^{-1}\int_Q^{Q+\eta}H(y)\,dy\sim Q .
+\]
+The proof applies the short-interval prime number theorem of Guth and
+Maynard~\cite{gm} at the first crossing of \(P_n\ge Qn\). For an
+integer \(Q\ge3\), \(H(Q)+1\) is the number of solutions of
+\(\pi(Qn-1)=n-1\). The value \(H(16)=0\) illustrates the distinction
+between the local mean and its value at a prescribed power. At each sufficiently large power \(Q=b^k\), the short-interval lower bound of Li~\cite{li-primes} yields a growing cluster of indices sharing any fixed fraction below \(0.48\) of their leading digits with their primes. Infinitude
+for the unscaled primes in a fixed radix remains unresolved here.
+See \companion{nth-prime-prefix-crossings}.
+
+\paragraph{Three fixed sequences and the decimal obstruction.}
+For \(B_n\) in radix four the branch multiplier is \(16\), and the
+method leaves infinitude open. For the ordinary Catalan number
+\(B_n/(n+1)\), finiteness in binary is equivalent to all five numbers
+\(\pi^{-1/5}4^{r/5}\), \(0\le r<5\), eventually using only \(0,1\)
+in base four. Finiteness in ternary for \((3n)!/(n!)^3\) is equivalent
+to both \(3^{1/4}/\sqrt{2\pi}\) and \(3^{3/4}/\sqrt{2\pi}\) eventually
+using only ternary digits \(1,2\) with no adjacent ones. Neither
+digit condition has been decided here. See
+\companion{walk-and-trinomial-prefixes} and
+\companion{radix-entropy-and-walks}.
+
+Finally, in the decimal \(p=2\) model the common multiplier really
+can keep both branches away from success. Inside the complementary
+semicircle choose a closed arc of width \(w\) satisfying
+\(1/(\sqrt{10}-1)<w<1/2\). On the real line the dilation by \(\sqrt{10}\)
+of each lifted interval contains an integer translate of the entire
+interval, since the range of eligible translates has length greater
+than one. Nesting gives \(c>0\) with \(c(\sqrt{10})^j\bmod1\) confined
+to the arc for every \(j\ge0\). Equation~\eqref{eq:inverse} then
+excludes large matches for the integer part of the model with \(C=c^2\)
+and any given correction \(\gamma\). Behavior of individual decimal
+walk counts requires more information about their constants.
+See \companion{seven-base-priority}.
+
+\begin{thebibliography}{99}
+\bibitem{pol-sym}
+B. Adamczewski and Y. Bugeaud,
+\href{https://doi.org/10.1155/IMRN/2006/75968}{Real and \(p\)-adic expansions involving symmetric patterns},
+Int. Math. Res. Not. \textbf{2006}, Art. ID 75968, 17 pp.
+
+\bibitem{rev-complexity}
+B.~Adamczewski and Y.~Bugeaud,
+\href{https://doi.org/10.4007/annals.2007.165.547}{On the complexity of algebraic numbers I. Expansions in integer bases},
+Ann. of Math. (2) \textbf{165} (2007), 547--565.
+
+\bibitem{met-baier-ghosh}
+S. Baier and A. Ghosh,
+\href{https://doi.org/10.1093/qmath/hau016}{Diophantine approximation on lines with prime constraints},
+Q. J. Math. \textbf{66} (2015), 1--12.
+
+\bibitem{met-mtp}
+V. Beresnevich and S. Velani,
+\href{https://doi.org/10.4007/annals.2006.164.971}{A mass transference principle and the Duffin--Schaeffer conjecture for Hausdorff measures},
+Ann. of Math. (2) \textbf{164} (2006), 971--992.
+
+\bibitem{met-borosh-fraenkel}
+I. Borosh and A. S. Fraenkel,
+\href{https://doi.org/10.1016/1385-7258(72)90055-8}{A generalization of Jarn\'ik's theorem on Diophantine approximations},
+Indag. Math. \textbf{34} (1972), 193--201.
+
+\bibitem{app-brent}
+R.~P. Brent, \emph{Asymptotic approximation of central binomial
+coefficients with rigorous error bounds}, Open J. Math. Sci.
+\textbf{5} (2021), 380--386.
+\href{https://doi.org/10.30538/oms2021.0173}{doi:10.30538/oms2021.0173}.
+
+\bibitem{be-digits}
+Y. Bugeaud and J.-H. Evertse,
+\href{https://doi.org/10.4064/aa133-3-3}{On two notions of complexity of algebraic numbers},
+Acta Arith. \textbf{133} (2008), 221--250.
+
+\bibitem{met-bugeaud-kim}
+Y. Bugeaud and D. H. Kim,
+\href{https://doi.org/10.5802/aif.3134}{On the expansions of real numbers in two integer bases},
+Ann. Inst. Fourier (Grenoble) \textbf{67} (2017), 2225--2235.
+
+\bibitem{met-bugeaud-liao}
+Y. Bugeaud and L. Liao,
+\href{https://doi.org/10.1017/etds.2014.66}{Uniform Diophantine approximation related to \(b\)-ary and \(\beta\)-expansions},
+Ergodic Theory Dynam. Systems \textbf{36} (2016), 1--22.
+
+\bibitem{zec-chang-miller}
+S.~Chang and S.~J.~Miller,
+\href{https://arxiv.org/abs/2309.00090}{Benford's law under Zeckendorf expansion},
+Fibonacci Quart. \textbf{63} (2025), no.~2, 304--335.
+
+\bibitem{cnt-evertse-ferretti}
+J.-H. Evertse and R. G. Ferretti,
+\href{https://annals.math.princeton.edu/2013/177-2/p04}{A further improvement of the Quantitative Subspace Theorem},
+Ann. of Math. (2) \textbf{177} (2013), no.~2, 513--590.
+
+\bibitem{fang}
+Z. Fang,
+\href{https://arxiv.org/abs/2607.23662}{Self-referential leading digits of exponential sequences: arithmetic structure and certified search},
+arXiv:2607.23662 (2026).
+
+\bibitem{app-glendinning-sidorov}
+P.~Glendinning and N.~Sidorov, \emph{The doubling map with asymmetrical
+holes}, Ergodic Theory Dynam. Systems \textbf{35} (2015), no.~4,
+1208--1228.
+\href{https://doi.org/10.1017/etds.2013.98}{doi:10.1017/etds.2013.98}.
+Numbered results are cited from \href{https://arxiv.org/abs/1302.2486v2}
+{arXiv:1302.2486v2}.
+
+\bibitem{gm}
+L. Guth and J. Maynard,
+\href{https://doi.org/10.4007/annals.2026.203.2.6}{New large value estimates for Dirichlet polynomials}, Ann. of Math. (2) \textbf{203} (2026), 623--675.
+
+\bibitem{met-huang-liu}
+J.-J. Huang and J. J. Liu,
+\href{https://doi.org/10.1093/imrn/rnz190}{Simultaneous approximation on affine subspaces},
+Int. Math. Res. Not. IMRN (2021), 14905--14921.
+
+\bibitem{met-huang}
+J.-J. Huang,
+\href{https://doi.org/10.1007/s00039-024-00665-y}{Extremal affine subspaces and Khintchine--Jarn\'ik type theorems},
+Geom. Funct. Anal. \textbf{34} (2024), 113--163.
+
+\bibitem{met-flatness}
+R. Kannan and L. Lov\'asz,
+\href{https://doi.org/10.2307/1971436}{Covering minima and lattice-point-free convex bodies},
+Ann. of Math. (2) \textbf{128} (1988), 577--602.
+
+\bibitem{li-primes}
+R. Li, \href{https://arxiv.org/abs/2308.04458v8}{The number of primes in short intervals and numerical calculations for Harman's sieve}, arXiv:2308.04458v8 (2025).
+
+\bibitem{met-li-li-wu}
+B. Li, R. Li, and Y.-F. Wu,
+\href{https://doi.org/10.1088/1361-6544/add833}{Multiplicative Diophantine approximation with restricted denominators},
+Nonlinearity \textbf{38} (2025), 065012.
+
+\bibitem{met-li-liao}
+B. Li, L. Liao, S. Velani, and E. Zorin,
+\href{https://doi.org/10.1016/j.aim.2023.108994}{The shrinking target problem for matrix transformations of tori: revisiting the standard problem},
+Adv. Math. \textbf{421} (2023), 108994.
+
+\bibitem{app-lindemann}
+F.~Lindemann, \emph{\"Uber die Zahl \(\pi\)}, Math. Ann. \textbf{20}
+(1882), no.~2, 213--225.
+\href{https://doi.org/10.1007/BF01446522}{doi:10.1007/BF01446522}.
+
+\bibitem{pol-mahler}
+K. Mahler,
+\href{https://doi.org/10.1017/S0004972700021316}{Some suggestions for further research},
+Bull. Austral. Math. Soc. \textbf{29} (1984), 101--108.
+
+\bibitem{app-mcintosh}
+R.~J. McIntosh, \emph{An asymptotic formula for binomial sums},
+J. Number Theory \textbf{58} (1996), no.~1, 158--172.
+\href{https://doi.org/10.1006/jnth.1996.0072}{doi:10.1006/jnth.1996.0072}.
+
+\bibitem{met-neukirch}
+J. Neukirch,
+\href{https://doi.org/10.1007/978-3-662-03983-0}{Algebraic Number Theory},
+Grundlehren der mathematischen Wissenschaften, vol.~322, Springer, Berlin, 1999.
+
+\bibitem{pol-ridout}
+D. Ridout,
+\href{https://doi.org/10.1112/S0025579300001182}{Rational approximations to algebraic numbers},
+Mathematika \textbf{4} (1957), 125--131.
+
+\bibitem{zec-northshield}
+S.~Northshield,
+\href{https://www.mathstat.dal.ca/FQ/Papers1/60-5/northshield.pdf}{Some generalizations of a formula of Reznick},
+Fibonacci Quart. \textbf{60} (2022), no.~5, 299--315.
+
+\bibitem{met-rynne}
+B. P. Rynne,
+\href{https://doi.org/10.1112/S0024609398004536}{Hausdorff dimension and generalized simultaneous Diophantine approximation},
+Bull. London Math. Soc. \textbf{30} (1998), 365--376.
+
+\bibitem{met-schlickewei}
+H. P. Schlickewei,
+\href{https://gdz.sub.uni-goettingen.de/download/pdf/PPN365956996_0018/PPN365956996_0018.pdf}{Linearformen mit algebraischen Koeffizienten},
+Manuscripta Math. \textbf{18} (1976), 147--185.
+
+\bibitem{schlickewei}
+H. P. Schlickewei,
+\href{https://doi.org/10.1016/0022-314X(77)90073-7}{On linear forms with algebraic coefficients and Diophantine equations},
+J. Number Theory \textbf{9} (1977), 381--392.
+
+\bibitem{schmidt}
+W. M. Schmidt, \href{https://doi.org/10.1007/BF02392334}{Simultaneous approximation to algebraic numbers by rationals}, Acta Math. \textbf{125} (1970), 189--201.
+
+\bibitem{app-straub-zudilin}
+A.~Straub and W.~Zudilin, \emph{Sums of powers of binomials, their
+Ap\'ery limits, and Franel's suspicions}, Int. Math. Res. Not. IMRN
+(2023), no.~11, 9861--9879.
+\href{https://doi.org/10.1093/imrn/rnac125}{doi:10.1093/imrn/rnac125}.
+
+\bibitem{zec-stoll}
+T.~Stoll,
+\href{https://arxiv.org/abs/1009.5360}{Extremal orders of the Zeckendorf sum of digits of powers},
+arXiv:1009.5360 (2010).
+
+\bibitem{met-tapia}
+L. Tapia,
+\href{https://arxiv.org/abs/2602.22512}{Multiplicative Diophantine approximation on planar lines with restricted denominators},
+arXiv:2602.22512 (2026).
+
+\bibitem{app-urbanski}
+M.~Urba\'nski, \emph{On Hausdorff dimension of invariant sets for
+expanding maps of a circle}, Ergodic Theory Dynam. Systems \textbf{6}
+(1986), no.~2, 295--309.
+\href{https://doi.org/10.1017/S0143385700003461}{doi:10.1017/S0143385700003461}.
+
+\bibitem{vdl}
+J. van de Lune,
+\href{https://ir.cwi.nl/pub/7417/}{A note on a problem of Erd\H{o}s},
+Stichting Mathematisch Centrum, ZN 87/78, Amsterdam, 1978.
+
+\bibitem{app-wagner}
+S.~Wagner, \emph{Asymptotics of generalised trinomial coefficients},
+\href{https://arxiv.org/abs/1205.5402v3}{arXiv:1205.5402v3}, 2012.
+
+\bibitem{met-wu}
+Y.-F. Wu,
+\href{https://doi.org/10.1016/j.jmaa.2022.126781}{Inhomogeneous and simultaneous Diophantine approximation in beta dynamical systems},
+J. Math. Anal. Appl. \textbf{519} (2023), 126781.
+
+\bibitem{app-zeilberger-zudilin}
+D.~Zeilberger and W.~Zudilin, \emph{The irrationality measure of
+\(\pi\) is at most \(7.103205334137\ldots\)}, Mosc. J. Comb. Number
+Theory \textbf{9} (2020), no.~4, 407--419.
+\href{https://doi.org/10.2140/moscow.2020.9.407}{doi:10.2140/moscow.2020.9.407}.
+
+\bibitem{met-zhang-lu}
+Y. Zhang and M. L\"u,
+\href{https://doi.org/10.1142/S0218348X21501024}{Multiplicative Diophantine approximation of the expansions under different bases on a line},
+Fractals \textbf{29} (2021), 2150102.
+
+\bibitem{app-zudilin}
+W.~Zudilin, \emph{Two hypergeometric tales and a new irrationality
+measure of \(\zeta(2)\)}, Ann. Math. Qu\'ebec \textbf{38} (2014),
+no.~1, 101--117.
+\href{https://doi.org/10.1007/s40316-014-0016-0}{doi:10.1007/s40316-014-0016-0}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,51 @@
+# NikitaMGrimm/math — Mathematical Preprints & Proof Notes
+
+> Public collection of AI-assisted mathematical preprints and reviewed proof notes in Diophantine approximation, digit expansions, shrinking targets, dynamical recurrence, and harmonic analysis. All five preprints passed independent adversarial LLM audits on the delivered TeX/PDF pairs (not yet human peer-reviewed or Lean-formalized).
+
+Site: https://nikitamgrimm.github.io/math/
+Repository: https://github.com/NikitaMGrimm/math
+Checksums: https://nikitamgrimm.github.io/math/SHA256SUMS
+
+## Preprints
+
+### 1. Full index prefixes in combinatorial sequences and simultaneous digit windows (31 pp, 2026-11-25)
+- Landing page: https://nikitamgrimm.github.io/math/preprints/self-prefix-seven-bases/
+- PDF: https://nikitamgrimm.github.io/math/preprints/self-prefix-seven-bases/self-prefix-seven-bases.pdf
+- TeX: https://nikitamgrimm.github.io/math/preprints/self-prefix-seven-bases/self-prefix-seven-bases.tex
+- Main results: Binary C(2n+s, n+t) begins with the full binary expansion of n in every [X, X^{3/2+eps}] and >> (log log X)(log log log X) times up to X. Complete seven-base classification {2, 3, 4, 8, 9, 16, 32} of zero-entropy circle-map survivors for C b^{hn} n^{1-p}(1 - gamma/n + O(n^{-2})). Exact Hausdorff dimensions for synchronized zero-digit windows on algebraic lines. Finite decision algorithm for joint prefix-suffix infinitude of integer-valued polynomials (universal finiteness for n^d + c). Effective Zeckendorf classification for n^2 + c: large hits are exactly Lucas numbers L_k with c + 2(-1)^k >= 0.
+- Open problems: Joint prefix-suffix infinitude for binary central binomial coefficients; general full-length reversal base-exponent classification.
+
+### 2. Simultaneous shrinking targets on the diagonal in several integer bases (21 pp, 2026-11-25)
+- Landing page: https://nikitamgrimm.github.io/math/preprints/multibase-shrinking-targets/
+- PDF: https://nikitamgrimm.github.io/math/preprints/multibase-shrinking-targets/multibase-shrinking-targets.pdf
+- TeX: https://nikitamgrimm.github.io/math/preprints/multibase-shrinking-targets/multibase-shrinking-targets.tex
+- Main results: Unconditional local Hausdorff dimension (1-tau)/(1+tau) (0 <= tau < 1) and 0 (tau >= 1) for binary-ternary diagonal shrinking targets E_{2,3}(y; psi) for every target y in T^2 and every positive nonmonotone radius psi <= 1, removing the abc conjecture from Li-Liao-Velani-Zorin (Adv. Math. 2023, Section 5.5 Remark 13). Explicit counterexamples to both sides of printed Eq. (75) at (2,17) and (2,6). Arbitrary-speed k-base homogeneous partition formula and translated-overlap formula for shared primes (e.g. (2,6) sweeping [0, log 2 / log 18]). Exact exceptional-slope spectrum for x -> (x, theta x), refuting the all-bi-Lipschitz suspicion at tau = 1 (crediting Tapia's Lemma 2 for the universal upper bound).
+- Priority notes & open problems: Liao (2021 slides) gives slow-shrinking bounds; matched homogeneous (1, sqrt(2)) critical occupancy at rho = 4/3 remains open.
+
+### 3. Rational approximation to power-sum quotients and simultaneous recurrence (34 pp, 2026-11-25)
+- Landing page: https://nikitamgrimm.github.io/math/preprints/roth-power-sums-recurrence/
+- PDF: https://nikitamgrimm.github.io/math/preprints/roth-power-sums-recurrence/roth-power-sums-recurrence.pdf
+- TeX: https://nikitamgrimm.github.io/math/preprints/roth-power-sums-recurrence/roth-power-sums-recurrence.tex
+- Main results: Proves optimal Roth exponent 2 for quotients u(n)/v(n) of positive integer-root power sums under the hypothesis of Corvaja-Zannier (JTNB 2005, Remark (v), p. 740), uniformly over 1 <= q <= Q^n for every fixed 1 < Q < 2 (sharp at Q = 2). Arbitrary-rank rational-function subspace descent characterizes sharp simultaneous Schmidt approximation at exponent 1 + 1/m (e.g. ((3^n-1, 5^n-1)/(2^n-1)) primal cutoff 2, dual cutoff sqrt(2)). Extends to repeated algebraic roots and complex embeddings (Fibonacci cutoff phi, cubic Pisot X^3-X-1 trace-ratio cutoff theta in degree 1 and degree 2), higher-degree polynomial cutoffs ((3/2)^n cutoff 3 in every degree d >= 1), and exact local Hausdorff dimension for simultaneous diagonal recurrence across any finite family of pairwise coprime bases with arbitrary moving phases and separate nonmonotone radii.
+- Priority notes & open problems: Partial source access to Corvaja-Zannier (2008 survey) and unretrieved submitted Kumar-Prasad Sena manuscript; general sharp root-distance cutoffs and unrelated overlapping shared-prime recurrence scales remain open.
+
+### 4. Sharp Fourier decay for simultaneous power targets and recurrence (21 pp, 2026-11-25)
+- Landing page: https://nikitamgrimm.github.io/math/preprints/fourier-decay-powers-recurrence/
+- PDF: https://nikitamgrimm.github.io/math/preprints/fourier-decay-powers-recurrence/fourier-decay-powers-recurrence.pdf
+- TeX: https://nikitamgrimm.github.io/math/preprints/fourier-decay-powers-recurrence/fourier-decay-powers-recurrence.tex
+- Main results: At radius 3^{-tau n} (0 < tau < 1), simultaneous powers (2^n, 3^n) and shifted-power recurrence (2^n-1, 3^n-1) have identical Hausdorff dimension (1-tau)/(1+tau) and Fourier dimension 0, yet separate by an exponential scale in optimal Rajchman Fourier decay for regular decreasing gauges h(log(e+|xi|)): divergence of sum h(n)/n (critical o(1/log log |xi|)) for powers versus sum h(n) (critical o(1/log |xi|)) for recurrence. Both criteria hold for completely arbitrary deterministic moving targets and extend to finite pairwise coprime families with anisotropic exponential widths, with single compactly supported measures attaining all subcritical s-energies. Includes absolute normality contrast via PVZZ Cor. DEL and L^1 phase averaging, exceptional-slope measures, shared (2,6), and tau = 1 limits.
+- Open problems: Optimal gauge for the full homogeneous critical recurrence set at tau = 1.
+
+### 5. Fourier decay for shrinking-target centers of hyperbolic toral automorphisms (24 pp, 2026-11-25)
+- Landing page: https://nikitamgrimm.github.io/math/preprints/hyperbolic-toral-fourier-targets/
+- PDF: https://nikitamgrimm.github.io/math/preprints/hyperbolic-toral-fourier-targets/hyperbolic-toral-fourier-targets.pdf
+- TeX: https://nikitamgrimm.github.io/math/preprints/hyperbolic-toral-fourier-targets/hyperbolic-toral-fourier-targets.tex
+- Main results: For every hyperbolic A in GL_2(Z) and tau > 1, target centers D subset P subset V with dense, nonempty, or varying-witness hitting fibers on a prescribed arc share local Hausdorff dimension 1 + 1/tau and Fourier dimension 0, yet optimal full-time Fourier decay splits three ways by arc geometry: o(1/log log |xi|) on unstable eigenlines, o(1/log |xi|) on mixed lines, and o((log |xi|)^{-3/2}) on regular C^2 arcs with nonzero curvature somewhere in every interval (even at isolated eigentangencies). A glued mixed-flat and curved arc separates D (power 1) from P and V (power 3/2). Also proves sparse-time criteria, totally real cubic Pisot d = 3 dichotomy, and a simultaneous all-transverse-line exclusion at tau = 1.
+- Open problems: Full sparse curved-arc series criterion, full-time iterated-log refinements at exponent 3/2, complex-pair d >= 3 mixed case, and optimal gauge for Haar-typical critical centers.
+
+## Standalone Reviewed Notes
+
+- Weighted products: https://nikitamgrimm.github.io/math/notes/weighted-products.md
+- Parabola & Veronese curves: https://nikitamgrimm.github.io/math/notes/parabola.md
+- Additive structure (3-APs & quadratic triples): https://nikitamgrimm.github.io/math/notes/additive-structure.md
+- Thresholds (uniform parabola gap closed for tau < 1/2; quadratic triples narrowed to ((1-log_3 2)/2, 1/2)): https://nikitamgrimm.github.io/math/notes/thresholds.md

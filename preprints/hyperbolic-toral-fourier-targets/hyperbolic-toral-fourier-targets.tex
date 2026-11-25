@@ -1,0 +1,1860 @@
+\documentclass[11pt,a4paper,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,mathtools,amssymb,amsthm,mathrsfs,booktabs}
+\usepackage[expansion=false]{microtype}
+\usepackage[a4paper,textwidth=156mm,textheight=237mm,centering]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Fourier decay for shrinking-target centers of hyperbolic toral automorphisms},pdfauthor={}}
+\pdfinfoomitdate=1
+\pdftrailerid{}
+\pdfsuppressptexinfo=15
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+\setlength{\emergencystretch}{1.5em}
+\raggedbottom
+\title[Fourier decay for shrinking-target centers]{Fourier decay for shrinking-target centers of hyperbolic toral automorphisms}
+\date{}
+\begin{document}
+\begin{abstract}
+For a hyperbolic automorphism of the two-torus, we study the centers of
+exponentially shrinking balls hit infinitely often from a dense set of
+parameters on a prescribed arc. The unstable eigenline, a mixed line and
+a curved arc give three different sharp Fourier decay scales at the same
+Hausdorff dimension. A straight subarc can distinguish centers with dense
+fibers from those with nonempty fibers. We also obtain sparse-time criteria
+and a critical center whose fibers on every transverse line exclude a
+prescribed decay rate.
+\end{abstract}
+\maketitle
+
+\section{Centers and hitting parameters}\label{sec:intro}
+Let \(A\in{\rm GL}_2(\mathbb Z)\) be hyperbolic, let \(\lambda>1\) be its
+spectral radius, and fix \(c>0\). For a parametrized arc
+\(\gamma:I\to\mathbb T^2=\mathbb R^2/\mathbb Z^2\) on a nondegenerate
+compact interval and times \(S\subset\mathbb N\), put
+\[
+ E_y=\{x\in I:\operatorname{dist}(A^n\gamma(x),y)<r_n
+                  \text{ for infinitely many } n\in S\},
+ \qquad r_n=c\lambda^{-\tau n}.
+\]
+Denote by \(D\) the centers with \(E_y\) dense in \(I\), by \(P\) those with
+\(E_y\ne\varnothing\), and by \(V\) the centers within \(r_n\) of
+\(A^n\gamma(I)\) infinitely often. Thus \(D\subseteq P\subseteq V\).
+Only \(V\) allows the witness to change at every visit.
+
+\begin{theorem}[Three sharp scales]\label{thm:planar}
+Let \(\tau>1\), \(S=\mathbb N\), and \(d_0=1+1/\tau\).
+For each geometry below, \(D,P,V\) have Hausdorff dimension \(d_0\) in
+every nonempty open target patch and Fourier dimension zero. Write \(L=L(\xi)=
+\log(e+|\xi|)\). In every patch there is a probability on a compact
+subset of \(D\) attaining the middle column at all real frequencies in a
+local lift, with finite \(s\)-energy simultaneously for all \(0<s<d_0\).
+For any \(\epsilon>0\), every finite positive torus measure satisfying the
+last column on integer frequencies gives \(V\) zero mass.
+\[
+\begin{array}{lll}
+\toprule
+\text{Initial arc} & \text{Attainable decay} & \text{Zero-mass bound}\\
+\midrule
+\text{Affine unstable line} & o((\log L)^{-1}) & O((\log L)^{-1-\epsilon})\\
+\text{Affine mixed line} & o(L^{-1}) & O(L^{-1-\epsilon})\\
+\text{Curved } C^2\text{ arc} & o(L^{-3/2}) & O(L^{-3/2-\epsilon})\\
+\bottomrule
+\end{array}
+\]
+A mixed direction has two nonzero eigencomponents. In the third row the
+arc is regular and its curvature is nonzero somewhere in every open
+parameter interval. Isolated tangencies to either eigendirection are allowed.
+\end{theorem}
+
+The dimensions in Theorem~\ref{thm:planar} persist for every infinite
+\(S\), even though each individual fiber \(E_y\) has dimension zero
+(with \(\dim_H\varnothing=0\)). With
+\(U_n(J)=\bigcup_{x\in J}B(A^n\gamma(x),r_n)\) and \(\mathcal J\)
+a countable basis of open intervals in the interior of \(I\), one has
+\begin{equation}\label{eq:dense}
+ D=\bigcap_{J\in\mathcal J}\bigcap_{N\ge1}
+       \bigcup_{\substack{n\in S\\ n\ge N}}U_n(J).
+\end{equation}
+Indeed every open tail union in parameter space is dense for such \(y\).
+Their intersection is dense by Baire's theorem. This identity allows the
+construction to visit a different parameter interval at each stage while
+retaining infinitely many visits by each parameter in a dense set.
+
+A \emph{regular gauge} \(h\) is positive and bounded on \([1,\infty)\),
+nonincreasing and tending to zero, with \(h(2t)\asymp h(t)\) at infinity;
+eventual monotonicity suffices after a bounded initial redefinition. Write
+\(H(\xi)=h(L(\xi))\), and let \(\mathcal B(S)\) be the indices of the
+dyadic time blocks \([2^j,2^{j+1})\) meeting \(S\). Fourier transforms use
+\(e(t)=\exp(2\pi i t)\) and the negative sign in the exponent. We use
+\(I_s(\mu)=\iint |y-z|^{-s}\,d\mu(y)d\mu(z)\) in a local Euclidean chart. Fourier
+dimension is the supremum of \(s\) up to the ambient dimension for which a
+nonzero measure carried by the set has decay \(O((1+|\xi|)^{-s/2})\).
+
+\begin{theorem}[Available times]\label{thm:sparse}
+Assume \(\tau>1\), use the three arc classes of Theorem~\ref{thm:planar},
+and set \(d_0=1+1/\tau\). Fix any infinite \(S\) and a regular \(h\).
+For the unstable and mixed lines the respective tests are
+\begin{equation}\label{eq:tests}
+        \sum_{j\in\mathcal B(S)}h(2^j),\qquad \sum_{n\in S}h(n).
+\end{equation}
+Divergence gives a compactly supported probability as in
+Theorem~\ref{thm:planar} with decay \(o(H)\) and the same energies.
+Convergence forces every finite positive measure with decay \(O(H)\)
+to give \(V\) zero mass.
+
+For curved arcs, convergence of \(\sum_{n\in S}h(n)^{2/3}\) forces the
+same zero-mass conclusion. Either of the following conditions gives the
+compact probability with decay \(o(H)\) and all the stated energies:
+\begin{enumerate}
+\item \(\sum_{n\in S}h(n)=\infty\);
+\item for each \(K>0\) there is \(T\subseteq S\) with
+\(\sum_{n\in T}h(n)^{2/3}=\infty\) and \(m-n\ge K\log(e+n)\)
+at successive \(n<m\) in \(T\).
+\end{enumerate}
+In particular, \(\sum_{n\in S}h(n)^{2/3}/\log(e+n)=\infty\)
+suffices. All three local Hausdorff dimensions are \(d_0\).
+\end{theorem}
+
+For all times the first test in \eqref{eq:tests} is equivalent to
+divergence of \(\sum_n h(n)/n\) by dyadic summation. For the curved
+endpoint \(h(n)=n^{-3/2}\), the last sufficient sum is the divergent
+harmonic logarithmic series. The distinction between \(D\) and \(P\)
+becomes visible on a single regular \(C^2\) arc: in eigenvector coordinates
+take a small positive dilation of \(t\mapsto(t,t+\varepsilon(t-1/2)_+^3)\)
+on \([0,1]\) with \(\varepsilon>0\). Its straight half forces the sharp logarithmic power
+on \(D\) to be 1. Its curved half attains power \(3/2\) on \(P\) and \(V\).
+We prove these assertions in Section~\ref{sec:curves}.
+
+\begin{theorem}[One critical center]\label{thm:critical}
+Fix \(A\), an infinite \(S\), and a positive nonincreasing function
+\(g(t)\to0\). There exists a center \(y\) such that for every affine
+segment transverse to the stable direction the parameter fiber along \(S\)
+at radius \(c\lambda^{-n}\), for every \(c>0\), is a dense \(G_\delta\)
+of dimension zero. Every nonempty open subinterval of the parameter interval
+contains a compact subset of the fiber carrying a Rajchman probability.
+Every finite positive measure on the parameter line with
+\(\widehat\mu(\xi)=O(g(L(\xi)))\) gives the fiber zero mass. The same
+\(y\) works for open eigenrectangles of stable half-width \(c_s\lambda^{-n}\)
+and unstable half-width \(c_u e^{-\alpha n}\), for all \(c_s,c_u,\alpha>0\).
+\end{theorem}
+
+A Rajchman measure has Fourier transform tending to zero. The measure
+in Theorem~\ref{thm:critical} lives in parameter space. The first two
+theorems construct measures in target space. The change of variable is
+substantial: the centers hit from a single fixed parameter have dimension
+zero for every positive exponential shrinking rate, simply by covering
+with one ball per level.
+
+\subsection{Relation to earlier work}
+Hill and Velani~\cite{HV} introduced matrix shrinking-target dimension
+problems on tori. Hu, Persson, Wu and Zhang~\cite[Theorem~2.1 and
+Remark~2.2]{HPWZ} give the planar saddle law for ambient starting points
+and describe critical dependence on moving centers in the unimodular case.
+Their local subcritical ball result gives the transverse slice dimension
+by stable saturation, as explained below. General mass transference
+principles concern Hausdorff measure of neighborhoods of resonant sets
+under local scaling assumptions~\cite{BV,AB}.
+
+There is a direct target-space antecedent when the line through the origin
+traverses a whole closed rational geodesic. At level \(n\) its image is the
+kernel modulo one of a primitive integer normal \(q_n\), and the swept
+event is \(\|q_n\cdot y\|<|q_n|r_n\), where \(\|\cdot\|\) denotes distance
+to the nearest integer. In the unimodular case \(|q_n|\asymp\lambda^n\).
+Squeezing the right side between powers of \(|q_n|\) with exponents
+\(1-\tau\pm\epsilon\), Rynne's restricted-vector theorem
+\cite[p.~70]{Rynne} gives \(\dim_H V=1+1/\tau\). The upper-bound
+argument of Cai and Hambrook~\cite[Theorem~1.4.1 and \S3.3]{CH}
+applies to measures carried by \(V\) and gives \(\dim_F V=0\):
+\(\sum_n |q_n|r_n<\infty\) and \(\sum_n r_n^s<\infty\) for every \(s>0\).
+These dimension calculations for \(V\) leave open the rates of decay and
+the effect of requiring a dense parameter fiber.
+
+Chow and Zhou~\cite[Theorems~4, 8, 11 and Corollary~7]{CZ} vary the
+target for a fixed starting point and prove metric laws for almost every
+starting point. Their nonsingular-differences condition in Theorems~8
+and~11 holds here: \(A^m(A^{n-m}-I)\) is invertible for \(n>m\).
+Their Theorem~4 uses growth of the least singular values of differences,
+and Corollary~7 uses successive expansion and Fourier decay of the
+starting measure. A stable eigenvector prevents this expansion for saddle
+powers. Our positive estimates concern a measure on centers for a
+prescribed initial arc.
+
+For the Fourier obstructions, Pollington, Velani, Zafeiropoulos and
+Zorin~\cite[Theorem~2]{PVZZ} give a scalar fixed-shift convergence test
+for summable widths and summable Fourier suprema. Salem's covering
+criterion, as presented by Kahane~\cite[Ch.~VII, \S8, p.~97]{Kahane},
+uses simultaneous approximation of interval centers. Lyons
+\cite[Theorems~4--5, p.~608, and Lemma~9, pp.~613--614]{Lyons}
+proved the inverse-log-log obstruction for lacunary sequences and
+attained this scale on the set of base-two non-normal numbers.
+Smooth product constructions of measures on approximation sets
+go back to Kaufman and Bluhm~\cite{Kaufman,Bluhm}; see also
+Fraser and Nguyen~\cite{FN} and Polasek and Rela~\cite{PR}.
+The finite phase majorant and weighted averaging argument used for power
+targets in~\cite{Power} will be proved here in the forms needed for lines.
+For curved arcs a positive correction to those averages is needed to
+reach the exponent \(3/2\).
+
+\section{Measures on centers with dense fibers}\label{sec:construction}
+We work on \(\mathbb T^m\), with normalized Haar measure \(dy\). It
+suffices to construct measures in arbitrarily small patches. In a chart
+of diameter less than \(1/4\) Euclidean and torus distances coincide.
+For smooth densities \(F\), use the two norms
+\[
+ \|F\|_H=\sup_{k\in\mathbb Z^m}\frac{|\widehat F(k)|}{H(k)},\qquad
+ \|F\|_s^2=\sum_{k\in\mathbb Z^m}(1+|k|)^{s-m}|\widehat F(k)|^2,
+ \qquad 0<s<m.
+\]
+The latter squared norm is comparable, for positive measures, to energy
+with kernel \(1+\operatorname{dist}(x,y)^{-s}\). Indeed integrate the
+periodized heat kernel at times \(0<t<1\) against \(t^{(m-s)/2-1}dt\).
+Termwise Fourier transformation gives coefficients comparable to the
+weights above. In its Gaussian representation, substitution
+\(u=\operatorname{dist}(x,y)^2/t\) in the nearest translate gives the
+singularity of order \(s\); the remaining translates give a bounded
+contribution away from lattice points. Truncation of the time integral
+and monotone convergence justify the comparison for measures.
+
+\begin{lemma}[Localization and compact support]\label{lem:compact}
+Suppose \(0<d_0\le m\). For every basis interval \(J\), time tail,
+\(s\in(0,d_0)\) and \(\delta>0\), suppose there is a smooth nonnegative
+\(Q\) supported in a finite union of \(U_n(J)\) from that tail with
+\(\|Q-1\|_H+\|Q-1\|_s<\delta\). In every open target patch there is a
+probability on a compact subset of \(D\) with \(\widehat\mu(\xi)=o(H(\xi))\)
+and finite \(I_s\) simultaneously for \(0<s<d_0\).
+\end{lemma}
+\begin{proof}
+Multiplication by a fixed smooth function \(F\) is bounded on each norm.
+For the first norm use \(H(k-\ell)/H(k)\ll(1+|\ell|)^C\), from doubling
+and \(L(k)\le L(k-\ell)+\log(1+|\ell|)\). For the second norm the ratio
+of the square-root weights has polynomial growth in \(\ell\), so Young's
+inequality applies to convolution with the rapidly decreasing coefficients
+of \(F\).
+
+Start with a smooth probability in a compact subpatch. Let \(s_j\uparrow d_0\)
+and choose a sequence of basis intervals containing every member
+infinitely often. At step \(j\) replace the previous density \(F\) by
+\(FQ/\int FQ\), using the next interval and levels later than all earlier
+ones. Evaluation at zero bounds the change in mass. By choosing \(\delta\)
+after \(F,s_j\), the mass stays positive and normalization leaves errors
+at most \(2^{-j}\) in both norms. The new smooth densities have nested
+compact supports. The transforms converge in the weighted supremum norm,
+so their limit divided by \(H\) vanishes at infinity. A weak cluster
+probability has exactly these coefficients. The \(s_j\)-norm bounds the
+\(s\)-norm whenever \(s\le s_j\), hence the summable errors and Fatou give
+every asserted energy. The limit support meets the condition in
+\eqref{eq:dense} point by point, since it lies in every stage support.
+
+For \(\xi=k+t\) with \(t\in[0,1]^m\), multiply the measure in its local
+lift by a chart cutoff equal to one on the support times \(e(-t\cdot y)\).
+Its multiplier has uniformly rapidly decreasing Fourier coefficients.
+Split convolution into a bounded range of shifts and its uniformly
+summable tail to transfer the little-\(o\) bound to real \(\xi\).
+\end{proof}
+
+\begin{lemma}[Averaging]\label{lem:average}
+Fix \(J\). Let \(G_n\) be smooth probability densities supported in
+\(U_n(J)\). Suppose their ball masses satisfy
+\(\int_{B(y,R)}G_n\ll_J R^{d_0}\) for \(0<R\le1\). If bounded
+nonnegative weights of divergent sum satisfy
+\begin{equation}\label{eq:weighted}
+ \sum_{n\in S}w_n\big|\widehat G_n(k)-{\bf1}_{k=0}\big|
+       \ll_J H(k)\qquad(k\in\mathbb Z^m),
+\end{equation}
+then these levels provide the multipliers in Lemma~\ref{lem:compact}.
+\end{lemma}
+\begin{proof}
+A normalized finite average \(Q=\sum w_nG_n/\sum w_n\) in a fresh tail
+has \(\|Q-1\|_H\ll_J1/\sum w_n\). For \(s<s'<d_0\) its ball bound gives
+a uniform \(s'\)-energy bound by integration in the radius. Above
+frequency \(K\) the squared \(s\)-norm of the error is \(O_J(K^{s-s'})\).
+Take \(K\) large, then the sum of weights large to control the remaining
+finite set of modes.
+\end{proof}
+
+\subsection{Planar tube measures}
+Use unit right eigenvectors \(e_u,e_s\) for the real signed eigenvalues
+\(a,b\), where \(|a|=\lambda\), \(|b|=\lambda^{-1}\).
+A complex conjugate pair would have modulus one. A rational
+eigenvalue would be an integral unit, so the characteristic polynomial
+is irreducible. Write \(z=z_u e_u+z_s e_s\) in primal coordinates and
+write \(k_u=k\cdot e_u,\ k_s=k\cdot e_s\) for integer characters.
+The two coordinate systems are dual even when the eigenvectors are oblique.
+For nonzero \(k,z\in\mathbb Z^2\),
+\begin{equation}\label{eq:norm}
+             |k_u k_s|\gg_A1,\qquad |z_u z_s|\gg_A1.
+\end{equation}
+Indeed \(\det[z,Az]\) is a fixed nonzero multiple of \(z_u z_s\),
+and is a nonzero integer by irreducibility. Apply the same argument to
+\(A^{\mathsf T}\) in the dual eigenbasis for the character estimate.
+
+On a graph portion \(u\mapsto u e_u+f(u)e_s\) of an arc, choose a
+probability \(\sigma\) with a smooth compactly supported density in \(u\).
+For a nonnegative smooth probability \(\chi\) supported in the Euclidean
+ball of radius \(1/4\), write \(\chi_r\) for its periodized rescaling.
+Define
+\begin{equation}\label{eq:tube}
+ G_n=\chi_{r_n}*(A^n_*\sigma),\qquad
+ \widehat G_n(k)=\widehat\chi(r_n k)\widehat\sigma((A^n)^{\mathsf T} k).
+\end{equation}
+Here the transform of \(\chi\) on the right is Euclidean. The support
+lies compactly inside the tube from the chosen parameter interval.
+
+\begin{lemma}[Ball mass of a graph tube]\label{lem:ball}
+For \(\tau\ge1\) these densities have ball mass \(O_\sigma(R^{1+1/\tau})\)
+for every radius \(0<R\le1\), uniformly in \(n\) and the center.
+\end{lemma}
+\begin{proof}
+The possible integer translates of a ball of radius \(R\) met by the
+unsmoothed graph lie, in primal coordinates, in a translated box with
+extents \(O(\lambda^n)\) and \(O(R+\lambda^{-n})\). Add to each lattice
+point a translate of the unit-area fundamental parallelogram
+\(A^n[0,1)^2\), whose coordinate extents are \(O(\lambda^n)\) and
+\(O(\lambda^{-n})\). The interiors are disjoint, so area bounds the count
+by \(O(1+R\lambda^n)\). Each passage has parameter mass
+\(O_\sigma(R\lambda^{-n})\) by projection on the unstable coordinate.
+Thus the total mass is \(O_\sigma(R^2+R\lambda^{-n})\).
+For \(R\ge r_n\) smoothing costs only a fixed enlargement, and
+\(\lambda^{-n}\ll R^{1/\tau}\). At smaller \(R\) the unsmoothed estimate
+at \(r_n\) bounds the smoothed density by \(O_\sigma(r_n^{1+1/\tau-2})\);
+multiplication by \(O(R^2)\) finishes the proof.
+\end{proof}
+
+\subsection{Dimension and localization in the parameter}
+The image of any fixed compact \(C^1\) arc has length \(O(\lambda^n)\).
+Its tube is covered by \(O(1+\lambda^n/r_n)\) balls of radius \(2r_n\).
+The resulting Hausdorff sum gives the upper dimension \(d_0\) for \(V\).
+Conversely any infinite schedule admits a regular \(h\) for which even
+the occupied-block sum in \eqref{eq:tests} diverges: take successive
+ranges of dyadic indices containing at least \(2^i\) occupied blocks
+and set \(h=2^{-i}\) on the corresponding time ranges. Doubling crosses
+at most one boundary. The positive constructions below with this \(h\)
+give local dimension at least \(d_0\) on \(D\) by finite energy. A convergent
+gauge such as \(h(t)=(1+t)^{-3}\) bounds every positive power of Fourier
+decay, so the converses give Fourier dimension zero. For a fixed center
+when \(\tau>1\), pulling back its ball gives width
+\(O(\lambda^{-(\tau-1)n})\) even along the longer inverse axis.
+Only boundedly many lifts can meet the bounded lifted arc. A regular
+compact \(C^1\) parametrization has a finite cover by locally bi-Lipschitz
+charts. The exponential diameter bound therefore gives dimension zero
+for each individual parameter fiber.
+
+\section{Affine lines and integer normals}\label{sec:lines}
+Write \(\gamma(x)=p+xv\) with \(v_u\ne0\). A single normal direction
+can test many consecutive tubes when \(v_s=0\). For affine translates
+the scalar phases can still change at every time.
+
+\begin{lemma}[A finite phase majorant]\label{lem:majorant}
+Let \(z_1,\ldots,z_m\in\mathbb T\), \(0<\eta<1/16\), and
+\(1\le M\le(16\eta)^{-1}\) an integer. For an integer character
+\(k\ne0\) of a torus and a finite positive measure \(\nu\) on it,
+\[
+ \nu\{y:\min_i\|k\cdot y-z_i\|<\eta\}
+ \ \ll\ 16^m M^{-1}\|\nu\|
+             +\sup_{1\le j<M}|\widehat\nu(jk)|.
+\]
+The estimate holds also with \(k\cdot y\) replaced by \(Qx\) on
+the real line, using frequencies \(jQ\). For \(M=1\) take the supremum
+to be zero.
+\end{lemma}
+\begin{proof}
+Partition \(\mathbb T^m\) into \(16^m\) cubes of side \(1/16\).
+At least \(M/16^m\) of the indices \(j=1,\ldots,M\) put
+\(j(z_1,\ldots,z_m)\) in the same cube. Denote them by \(F\). For
+\(t\) in any test interval the phases \((j-j_0)t\), \(j,j_0\in F\),
+are within \(1/8\) of zero modulo one. Thus
+\(\left||F|^{-1}\sum_{j\in F}e(jt)\right|^2\ge1/2\).
+This polynomial has nonnegative coefficients of sum one and constant
+term \(1/|F|\). Integration at \(t=k\cdot y\), or at \(t=Qx\), gives
+the estimate.
+\end{proof}
+
+\subsection{The obstruction}
+For a mixed line take \(0<\delta<\tau-1\). For any \(w\ne0\) and \(T>2\),
+Dirichlet approximation to the ratio of its smaller coordinate to its
+larger gives \(k\in\mathbb Z^2\setminus\{0\}\) with \(|k|\ll T\) and
+\(|k\cdot w|\ll |w|/T\). Apply this with \(w=A^nv\) and
+\(T=\lambda^{(1+\delta)n}\). For \(|k|\le\lambda^{n/3}\) the fast
+term \(|a^nv_uk_u|\gg_v\lambda^{2n/3}\) dominates the slow term
+by \eqref{eq:norm}; hence our normal has \(|k|>\lambda^{n/3}\) eventually.
+Throughout \(U_n(I)\),
+\[
+ \|k\cdot(y-A^np)\|\ll_I
+          \lambda^{-\delta n}+\lambda^{-(\tau-1-\delta)n}.
+\]
+Lemma~\ref{lem:majorant} with one phase and \(M\) comparable to the
+inverse width bounds the mass by \(O(e^{-cn}+h(n))\) under the stated
+Fourier hypothesis (here and below exponential savings may use different
+positive constants). Summing over \(S\) proves the mixed converse.
+
+When \(v=v_u e_u\), fix \(\kappa=(\tau-1)/2\). Apply the same
+Dirichlet approximation to \(e_u\) at \(T=\lambda^{(1+\kappa)N}\).
+The resulting \(k\) has \(|k|\asymp T\) by \eqref{eq:norm}.
+For \(N\le n\le(1+\delta)N\), its error on \(U_n(I)\) is
+\[
+ \|k\cdot(y-A^np)\|\ll_I
+      \lambda^{-(\kappa-\delta)N}+\lambda^{-\kappa N}.
+\]
+Choose \(\delta<\kappa/2\) small enough that
+\(\delta\log16<\kappa\log\lambda/4\). Now one character tests the
+whole block with at most \(\lfloor\delta N\rfloor+1\) phases.
+Lemma~\ref{lem:majorant} with \(M=\lfloor\lambda^{\kappa N/3}\rfloor\)
+bounds the block mass by \(O(e^{-c'N}+h(N))\). Each occupied dyadic
+block costs only boundedly many such shorter blocks with comparable
+starts. This proves the occupied-block converse by Borel--Cantelli.
+
+\subsection{Supporting measures}
+Take a smooth parameter density \(f_J\) of integral one compactly
+supported in \(J\). The coefficients of the tube density \eqref{eq:tube}
+are
+\begin{equation}\label{eq:linefourier}
+ e(-k\cdot A^np)\,\widehat\chi(r_nk)\,
+ \widehat f_J(a^n v_u k_u+b^n v_s k_s).
+\end{equation}
+For \(0<|k|\le\lambda^{n/3}\) the fast term gives an exponentially
+growing gap as above. For \(|k|\ge \lambda^{(\tau+1)n}\) the bump gives
+\(O((1+|k|)^{-3})\) by taking sufficiently many derivatives. The two
+outer ranges therefore contribute \(O(H(k))\) to the sum of absolute
+coefficients with any bounded weights: in the first range the exponential
+tail starts at \(n\gg L(k)\); in the second there are \(O(L(k))\)
+terms. Regularity gives \(h(t)\gg t^{-C}\).
+
+In the intervening range \(n\asymp L(k)\). On an unstable line use
+one representative of each occupied dyadic block, weighted by \(h(n)\).
+There are \(O(1)\) representatives in this middle range. On a mixed line
+use all available levels with weight \(h(n)\). To bound their contribution
+put \(X=v_uk_u,\ Y=v_sk_s\), and \(t_*=\tfrac12\log_\lambda|Y/X|\).
+The larger of \(|a^n X|\) and \(|b^nY|\) equals
+\(\sqrt{|XY|}\lambda^{|n-t_*|}\), with \(|XY|\gg_v1\).
+For \(|n-t_*|\ge1\) their signed sum has modulus at least
+\(1-\lambda^{-2}\) times this maximum. The bounded number of remaining
+terms and rapid decay away from this balance time give
+\(\sup_{k\ne0}\sum_n|\widehat f_J(a^nX+b^nY)|<\infty\).
+Since \(h(n)\asymp H(k)\) on the middle range, \eqref{eq:weighted}
+holds in both cases. Lemmas~\ref{lem:ball} and~\ref{lem:average}
+complete the line assertions of Theorems~\ref{thm:planar}
+and~\ref{thm:sparse}.
+
+\section{Curved arcs}\label{sec:curves}
+Keep the planar eigenvector coordinates of Section~\ref{sec:construction}.
+In particular, the dual coordinates of \((A^n)^{\mathsf T}k\) are
+\((a^n k_u,b^n k_s)\), and \eqref{eq:norm} gives
+\(\min(|k_u|,|k_s|)\gg_A |k|^{-1}\) for each nonzero integer \(k\).
+The eigenvalues may have either sign. Fix any \(c>0\), and write
+\(d_0=1+1/\tau\). We use \(\tau>1\) for the obstruction and
+\(\tau\ge1\) for the constructions.
+
+We will use two consequences of gauge regularity. Iterating
+\(h(2t)\ge c_h h(t)\) and using monotonicity between dyadic arguments
+gives \(h(t)\gg (1+t)^{-\beta}\) for some \(\beta>0\) and all large
+\(t\). Also, \(h(t)\asymp h(t')\) when \(t,t'\) are large and their
+ratio stays between two positive constants. Both comparisons concern
+only the tail of \(h\).
+
+\subsection{A majorant for the entire arc}
+\begin{lemma}[Fourier mass of a smoothed neighborhood]\label{lem:arc-majorant}
+Let \(\Gamma\subset\mathbb T^2\) be the image of a rectifiable arc.
+For all sufficiently small \(\rho>0\), there is a smooth nonnegative
+\(F_\rho\) that equals one on the open \(\rho\)-neighborhood of \(\Gamma\)
+and satisfies
+\begin{equation}\label{eq:curve-majorant}
+ \widehat F_\rho(0)\ll \rho,\qquad
+ \sum_{\ell\in\mathbb Z^2}|\widehat F_\rho(\ell)|\ll \rho^{-1/2},
+ \qquad
+ \sum_{|\ell|>X}|\widehat F_\rho(\ell)|
+       \ll_M \rho^{-1/2}(1+\rho X)^{-M}
+ \quad(X\ge0).
+\end{equation}
+\end{lemma}
+\begin{proof}
+Write \(N_t(\Gamma)\) for the open \(t\)-neighborhood. An arclength cover
+uses \(O_\Gamma(\rho^{-1})\) balls of radius \(O(\rho)\), so
+\(|N_{2\rho}(\Gamma)|\ll_\Gamma\rho\). For a smooth probability bump
+\(\psi\) supported in the Euclidean unit ball, let
+\(F_\rho=\mathbf 1_{N_{2\rho}(\Gamma)}*\psi_{\rho/2}\), with periodized
+rescaling. Every translate by a vector of length at most \(\rho/2\)
+of a point of \(N_\rho(\Gamma)\) belongs to \(N_{2\rho}(\Gamma)\).
+This gives the asserted value on \(N_\rho(\Gamma)\), and the mean is
+\(|N_{2\rho}(\Gamma)|\).
+
+Parseval gives an \(\ell^2\)-norm \(O(\rho^{1/2})\) for the Fourier
+coefficients of the indicator. The bump coefficients satisfy
+\(|\widehat\psi(\rho\ell/2)|\ll_M(1+\rho|\ell|)^{-M-2}\).
+The sum of \((1+\rho|\ell|)^{-4}\) over the lattice is \(O(\rho^{-2})\):
+the ball of radius \(\rho^{-1}\) and the shells with radii
+\(2^j/\rho\) each contain \(O((2^j/\rho)^2)\) points. Thus the
+\(\ell^2\)-norm of the bump coefficients over \(|\ell|>X\) is
+\(O_M(\rho^{-1}(1+\rho X)^{-M})\). Cauchy--Schwarz applied to the
+product of the two sets of coefficients proves the tail bound.
+Including the mean gives the full sum.
+\end{proof}
+
+\begin{proposition}[Zero mass on the swept limsup]\label{prop:curve-upper}
+Let \(\tau>1\) and let \(\gamma\) have finite length. For a finite
+positive measure \(\mu\) on the torus with \(\widehat\mu(k)=O(H(k))\),
+there is \(\nu>0\) such that, for all sufficiently large \(n\),
+\begin{equation}\label{eq:curve-upper}
+               \mu(U_n(I))\ll h(n)^{2/3}+e^{-\nu n}.
+\end{equation}
+Consequently \(\mu(V)=0\) if \(\sum_{n\in S}h(n)^{2/3}<\infty\).
+\end{proposition}
+\begin{proof}
+Put \(\Gamma=\gamma(I)\). Since \(\|A^{-n}\|\ll\lambda^n\), the
+pullback \(A^{-n}U_n(I)\) lies in a neighborhood of \(\Gamma\) of
+width \(O(c\lambda^{-(\tau-1)n})\). With \(\rho=h(n)^{2/3}\), this
+width is less than \(\rho\) for large \(n\), by the polynomial lower
+bound on \(h\). Test against \(F_\rho\circ A^{-n}\).
+The automorphism makes \((A^{-n})^{\mathsf T}\ell\) integral. For
+\(0<|\ell|\le\lambda^{n/2}\), its stable dual coordinate and
+\eqref{eq:norm} give
+\[
+  |(A^{-n})^{\mathsf T}\ell|
+       \gg \lambda^n|\ell_s|
+       \gg \lambda^n/|\ell|
+       \ge \lambda^{n/2}.
+\]
+Thus \(L((A^{-n})^{\mathsf T}\ell)\gg n\), and monotonicity and doubling
+give a bound \(O(h(n))\) for the corresponding coefficients of \(\mu\).
+The Fourier series of the test function is absolutely convergent by
+\eqref{eq:curve-majorant}. The constant term contributes \(O(\rho)\),
+and the nonzero terms up to the cutoff contribute
+\(O(h(n)\rho^{-1/2})\). Above the cutoff use the mass of \(\mu\) to
+bound its coefficients. The tail in \eqref{eq:curve-majorant} there is
+exponentially small, since \(\rho^{-1}\) grows at most polynomially in
+\(n\). Substituting \(\rho=h(n)^{2/3}\) yields \eqref{eq:curve-upper}.
+Borel--Cantelli gives the claim on \(V\).
+\end{proof}
+
+\subsection{Graph estimates and the unthinned construction}
+Assume now that \(\gamma\) is regular and \(C^2\) and has a point of
+nonzero curvature in every open parameter interval. Fix a basis
+interval \(J\). In a lift, curvature is nonzero on some open subinterval
+of \(J\). On that subinterval, a stable tangency
+\(\widetilde\gamma'_u=0\) has \(\widetilde\gamma''_u\ne0\), by the
+nonvanishing determinant of the first two derivatives. Such a tangency
+is isolated there. We can therefore choose a smaller graph portion
+\(u\mapsto u e_u+f(u)e_s\), on which \(|f''|\) is bounded below. This
+follows also from the determinant of the two derivatives of the graph.
+An unstable tangency corresponds to \(f'=0\) and is allowed on this
+portion. Take a nonnegative smooth density \(g(u)\) of integral one,
+compactly supported in the graph interval, and let \(\sigma\) be its
+image measure. For the graph transform we use the lift, so at real
+\(\ell\),
+\[
+ \widehat\sigma(\ell)=\int g(u)e(-\ell_u u-\ell_s f(u))\,du .
+\]
+At integer frequencies this agrees with the transform on the torus.
+
+\begin{lemma}[Oscillation on a curved graph]\label{lem:curve-oscillation}
+There is a constant \(C\) such that
+\begin{equation}\label{eq:curve-oscillation}
+|\widehat\sigma(\ell)|\ll
+\begin{cases}
+ (1+|\ell_s|)^{-1/2},&|\ell_u|\le C(1+|\ell_s|),\\
+ (1+|\ell_u|)^{-1},&|\ell_u|> C(1+|\ell_s|).
+\end{cases}
+\end{equation}
+In particular, \(|\widehat\sigma(\ell)|\ll(1+|\ell|)^{-1/2}\).
+\end{lemma}
+\begin{proof}
+Let \(\phi(u)=\ell_u u+\ell_s f(u)\). For \(|\ell_s|\ge1\),
+\(\phi'\) is monotone and \(|\phi''|\gg|\ell_s|\). In the classical
+second-derivative argument \cite{VdC,Stein}, the set where
+\(|\phi'|\le|\ell_s|^{1/2}\) has length \(O(|\ell_s|^{-1/2})\).
+On each of its at most two complementary intervals, integrate by parts
+using \(1/\phi'\). The boundary terms and the term with \(g'\) are
+\(O(|\ell_s|^{-1/2})\). The term with the derivative of \(1/\phi'\)
+has the same bound, since its integral in absolute value is the
+variation of the monotone function \(1/\phi'\) on that interval.
+For \(|\ell_s|<1\) the first estimate follows from the mass of \(\sigma\).
+
+In the second region choose \(C>2\|f'\|_\infty+2\). Then
+\(|\phi'|\ge|\ell_u|/2\) on the support interval, and integration by
+parts on the full interval bounds the transform by
+\(O(|\ell_u|^{-1}+|\ell_s||\ell_u|^{-2})=O(|\ell_u|^{-1})\).
+Equivalence of the Euclidean and dual-coordinate norms gives the radial
+estimate in both regions.
+\end{proof}
+
+Let \(G_n=\chi_{r_n}*((A^n)_*\sigma)\) as in \eqref{eq:tube}.
+It is a smooth probability density compactly supported in \(U_n(J)\),
+since the parameter density is compactly supported in the chosen portion
+of \(J\) and the smoothing radius is at most \(r_n/4\). The ball bound
+of Lemma~\ref{lem:ball} gives
+\begin{equation}\label{eq:curve-balls}
+   \int_{B(y,R)}G_n\ll R^{d_0}\qquad(0<R\le1,\ \tau\ge1).
+\end{equation}
+It is preserved by convolution with any probability, by integrating
+the bound over translates of the ball. The original graph measure
+satisfies \(\sigma(B(y,R))\ll R\) for \(0<R\le1\). Indeed only boundedly
+many lifts of such a ball can meet its bounded lifted graph, and each
+ball projects to an interval of length \(O(R)\) in the \(u\)-coordinate.
+
+Here is the energy consequence of \eqref{eq:curve-balls} that we will
+use for both positive densities and signed errors. If a positive
+density \(F\) of bounded mass satisfies the ball bound and
+\(|f_0|\le qF\), then \(\|f_0\|_s\ll_s q\) for \(0<s<d_0\), with the
+norms of Section~\ref{sec:construction}. In fact its positive heat
+kernel representation bounds \(\|f_0\|_s^2\) by a constant times
+\(q^2\iint (1+\operatorname{dist}(x,y)^{-s})F(x)F(y)\,dx\,dy\).
+The integral is bounded by the ball estimate, since the singular part
+is controlled by \(\int_0^1 R^{d_0-s-1}\,dR\).
+
+For the unthinned lower bound, fix \(k\ne0\) and put
+\[
+ t_k=\frac{\log |k_s/k_u|}{2\log\lambda},\qquad
+ \max(\lambda^n|k_u|,\lambda^{-n}|k_s|)
+       =\sqrt{|k_u k_s|}\,\lambda^{|n-t_k|}.
+\]
+Equations \eqref{eq:norm}, \eqref{eq:tube}, and the radial estimate
+give \(\sum_n|\widehat G_n(k)|\ll1\) uniformly in \(k\ne0\), by
+summing \(\lambda^{-|n-t_k|/2}\). To obtain the weighted bound
+\begin{equation}\label{eq:curve-weighted}
+                  \sum_n h(n)|\widehat G_n(k)|\ll H(k),
+                  \qquad k\ne0,
+\end{equation}
+write \(L=L(k)\) and fix \(\kappa>0\) small and \(C_2>0\) large.
+If \(n\le\kappa L\), with \(\kappa\tau\log\lambda<1/2\), then
+\(r_n|k|\gg_c e^{L/2}\) for large \(L\). The Schwartz bound for the
+bump gives \(O(e^{-\nu L})\) per term for some \(\nu>0\) across
+these \(O(L)\) times. If \(n\ge C_2 L\), with \(C_2\log\lambda>2\),
+then \(\lambda^n|k_u|\gg \lambda^n/|k|\gg e^{n\log\lambda/2}\).
+The radial graph estimate gives an exponentially summable tail.
+The polynomial lower bound on \(H(k)\) absorbs both contributions.
+On the intervening range \(h(n)\asymp H(k)\), so the uniform unweighted
+sum suffices. The bounded range of \(L\) follows from the same
+unweighted sum and positivity of \(H\) at each of the finitely many
+corresponding lattice points.
+
+Suppose \(\sum_{n\in S}h(n)=\infty\). In any time tail, normalize a
+finite sum of the densities \(h(n)G_n\) by its total weight to obtain
+\(Q\). Its support is compact in the union of the corresponding
+\(U_n(J)\), and \eqref{eq:curve-weighted} gives
+\(\|Q-1\|_H\ll(\sum h(n))^{-1}\). To see convergence in the second norm
+of Lemma~\ref{lem:compact}, fix \(0<s<s'<d_0\). The ball bound for
+the average gives a uniform \(s'\)-norm bound. Above frequency \(X\),
+the \(s\)-norm of \(Q-1\) is then \(O((1+X)^{-(s'-s)/2})\).
+At bounded frequencies the \(H\)-norm controls the \(s\)-norm of
+the error. Taking \(X\) large and then the total weight large makes
+both errors small, as in Lemma~\ref{lem:average}. Lemma~\ref{lem:compact}
+gives the compact probability on \(D\) with decay \(o(H)\) at real
+frequencies and all subcritical energies.
+
+\subsection{A square sum over a thin frequency strip}
+\begin{lemma}[Thin strips in dual coordinates]\label{lem:curve-strip}
+For \(B\in\mathbb R\), \(0\le w\le1\), and \(0<p\le1\), set
+\[
+ W(B,w,p)^2
+  =\sum_{\substack{0\ne\ell\in\mathbb Z^2\\|\ell_s-B|\le w}}
+      |\widehat\sigma(\ell)|^2\min\{1,p|\ell|\}^2.
+\]
+Then
+\begin{equation}\label{eq:curve-strip}
+ W(B,w,p)\ll \sqrt w+\sqrt p
+ \begin{cases}
+      |B|^{1/2}, & |B|<1,\\
+      \min\{(p|B|)^{1/2},(p|B|)^{-1/2}\}, & |B|\ge1 .
+ \end{cases}
+\end{equation}
+For all sufficiently small \(|B|+w\), one also has
+\begin{equation}\label{eq:curve-strip-small}
+                  W(B,w,p)\ll |B|+w .
+\end{equation}
+\end{lemma}
+\begin{proof}
+For \(w>0\), applying \eqref{eq:norm} to differences of distinct
+lattice points in the strip gives separation \(\gg w^{-1}\) of their
+unstable coordinates. A zero-width strip contains at most one lattice
+point. Put \(X=1+|B|\), so \(1+|\ell_s|\asymp X\) on the strip.
+In \(|\ell_u|\le C'X\) there are \(O(1+wX)\) points, and
+\eqref{eq:curve-oscillation} bounds each transform by \(O(X^{-1/2})\).
+Since \(|\ell|\ll X\) in this region, its contribution to \(W^2\) is
+\[
+               O\bigl(\min(1,pX)^2(X^{-1}+w)\bigr).
+\]
+Choose \(C'\) large enough that \(|\ell_u|>C'X\) is in the nonstationary
+region of \eqref{eq:curve-oscillation}. There \(|\ell|\asymp|\ell_u|\),
+and the compensated transform is \(O(\min\{p,|\ell_u|^{-1}\})\).
+On either side of the origin a sum of a decreasing function of
+\(|\ell_u|\) is at most its first possible value plus \(O(w)\) times
+its tail integral, by the separation. For the squares this yields
+\[
+ O\bigl(\min\{p^2,X^{-2}\}+w\min\{p,X^{-1}\}\bigr),
+\]
+because \(\int_X^\infty\min\{p^2,u^{-2}\}\,du\le2\min\{p,X^{-1}\}\).
+The argument with just the first possible value also covers \(w=0\).
+
+For \(x=|B|+w\) small, \eqref{eq:norm} instead gives
+\(|\ell_u|\gg x^{-1}\) at every nonzero point. These points are all
+nonstationary. Summing \(O(|\ell_u|^{-2})\) without the compensating
+factor gives \(W^2\ll x^2+wx\ll x^2\), with an empty sum when \(x=0\).
+This proves \eqref{eq:curve-strip-small}. For \(|B|\ge1\), the square
+roots of the preceding general bounds are
+\(O(\sqrt w+X^{-1/2}\min\{1,pX\})\), giving the second profile in
+\eqref{eq:curve-strip}. For \(|B|<1\), the general bound is
+\(O(p+\sqrt w)\). Together with \eqref{eq:curve-strip-small} it gives
+\(O(\sqrt w+\min\{p,x\})\), also when \(x\) is bounded below since
+\(p\le1\). Finally \(\min\{p,x\}\le\sqrt{px}\le\sqrt p\,|B|^{1/2}
++\sqrt w\), giving the first profile.
+\end{proof}
+
+\subsection{Compensated multipliers on separated schedules}
+Take a nonnegative Schwartz probability \(\eta\) on \(\mathbb R^2\)
+with compactly supported Fourier transform. For example, normalize the
+squared modulus of the inverse transform of a nonzero smooth
+compactly supported function. The transform of this square is a
+convolution of two compactly supported functions. For \(0<p\le1\), let
+\(\eta_p\) be the periodized rescaling and set
+\[
+ D_{n,p}=G_n*((A^n)_*\eta_p),\qquad
+ \widehat D_{n,p}(k)=\widehat G_n(k)\,
+                         \widehat\eta(p(A^n)^{\mathsf T}k).
+\]
+These are smooth probability densities with the ball bound
+\eqref{eq:curve-balls}. The density of the pullback convolution
+\(\sigma*\eta_p\) is \(O(p^{-1})\). Indeed, for \(M>2\), the
+periodized kernel is
+\(O_M(p^{-2}(1+\operatorname{dist}(z,0)/p)^{-M})\).
+To see this, keep the nearest lattice translates and sum the remaining
+Schwartz bounds \(O_M(p^{M-2}(1+|m|)^{-M})\) over lattice translates
+\(m\). Annuli of radii \(2^j p\), together with
+\(\sigma(B(y,R))\ll R\), bound the convolution by
+\(O(p^{-1}\sum_{j\ge0}2^{j(1-M)})\). Pushing forward by \(A^n\)
+preserves the density bound, and convolution with \(\chi_{r_n}\)
+preserves it again. Thus \(\|D_{n,p}\|_\infty\le C_0/p\).
+The Fourier support is contained in \(|(A^n)^{\mathsf T}k|\ll p^{-1}\).
+In particular,
+\begin{equation}\label{eq:curve-band}
+ |k|\ll\lambda^n/p,\qquad
+ |k_s|\gg\lambda^n p \quad\text{if }k\ne0
+ \text{ and }\widehat D_{n,p}(k)\ne0.
+\end{equation}
+The second bound follows from \(|k_u|\ll\lambda^{-n}/p\) and
+\eqref{eq:norm}. The finite first moment of \(\eta\) gives
+\begin{equation}\label{eq:curve-cancel}
+                 |1-\widehat\eta(p\ell)|\ll\min\{1,p|\ell|\}.
+\end{equation}
+
+At a single level, \(1+c_0p(G_n-D_{n,p})\) is a probability density
+for \(c_0 C_0\le 1/2\), and its mass on \(U_n(J)\) is at least \(c_0p\).
+Its nonzero coefficients are \(O(p^{3/2})\), since
+\(\min\{1,p|\ell|\}(1+|\ell|)^{-1/2}\le\sqrt p\) in the radial
+estimate. The following construction allocates these corrections to
+successive levels of a finite multiplier.
+
+\begin{proposition}[Positive multipliers from logarithmic gaps]
+\label{prop:curve-compensation}
+Let \(\tau\ge1\). Suppose that for every \(K>0\) there is
+\(T\subseteq S\) with \(\sum_{n\in T}h(n)^{2/3}=\infty\) and with
+successive gaps \(m-n\ge K\log(e+n)\).
+Then the hypotheses of Lemma~\ref{lem:compact} hold for \(d_0=1+1/\tau\).
+\end{proposition}
+\begin{proof}
+Fix \(J\), \(0<s<s'<d_0\), and a positive scalar \(v\). Choose
+\(p_0\in(0,1)\) and \(c_0>0\) so that \(c_0 C_0\le1/2\) and
+\(\theta=(1-c_0p_0)^{-1/3}<\lambda\).
+We will take a large gap constant \(K\) and use \(T\) starting at a
+late threshold \(N\). At a trial time \(n\), let \(R_{<n}\) be the
+product of the factors \(1-c_0p_m D_{m,p_m}\) at earlier used times
+\(m<n\), starting with the constant one. Set
+\begin{equation}\label{eq:curve-adapt}
+        M_n=\int R_{<n},\qquad
+        p_n=v h(n)^{2/3}M_n^{-1/3}.
+\end{equation}
+Stop before using the first trial with \(p_n>p_0\). At all used
+levels write \(D_n=D_{n,p_n}\). Each factor lies between \(1/2\)
+and one, so \(M_n>0\), \(0\le R_{<n}\le1\), and
+\(\|R_{<n}\|_2\le\sqrt{M_n}\) at every trial. In particular
+\(p_n\ge v h(n)^{2/3}\).
+
+\medskip
+\noindent\emph{Separation and exact mass.}
+By \eqref{eq:curve-band}, both the norm and the absolute stable
+coordinate of every index in the Fourier support of \(R_{<n}\) are
+at most
+\[
+        Y_n=C_3\sum_{\substack{m<n\\m\ {\rm used}}}\frac{\lambda^m}{p_m},
+        \qquad w_n=\lambda^{-n}Y_n ,
+\]
+with a fixed sufficiently large \(C_3\). For any prescribed
+\(L_0>2\beta/3\), we can arrange
+\begin{equation}\label{eq:curve-width}
+                         w_n\le n^{-L_0}
+\end{equation}
+at every trial, including the stopping trial. In fact, if \(m_*\) is
+the preceding time, monotonicity and the geometric sum give
+\(Y_n\ll v^{-1}h(n)^{-2/3}\lambda^{m_*}\).
+If \(m_*\ge n/2\), the gap gives
+\(\lambda^{m_*-n}\le(e+n/2)^{-K\log\lambda}\).
+If \(m_*<n/2\), the same factor is exponentially small in \(n\).
+With no preceding time the support bound is zero. The polynomial
+bound \(h(n)^{-2/3}\ll n^{2\beta/3}\) therefore gives
+\eqref{eq:curve-width} by choosing \(K\) large and then \(N\) large
+for fixed \(v\). We may increase \(L_0\) before choosing \(K\) and
+\(N\), as needed in the estimates below.
+
+At a used level, \(w_n\) is smaller than the fixed constant in the
+lower bound \(|k_s|\gg\lambda^n p_n\) of \eqref{eq:curve-band}, times
+\(p_n\), by \eqref{eq:curve-adapt} and \eqref{eq:curve-width}.
+Thus the Fourier pairing \(\int R_{<n}D_n\) has just the constant
+term \(M_n\). For the next trial \(n'\) this gives
+\[
+          \int R_{<n}D_n=M_n,\qquad M_{n'}=(1-c_0p_n)M_n .
+\]
+Concavity of the cube root shows
+\(M_{n'}^{1/3}\le M_n^{1/3}-(c_0v/3)h(n)^{2/3}\).
+If there were no stop, divergence on \(T\) would contradict positivity
+of these masses. Write \(n_*\) for the stopping time. Its defining
+inequality gives
+\begin{equation}\label{eq:curve-residual-mass}
+                   M_{n_*}<(v/p_0)^3 h(n_*)^2.
+\end{equation}
+The starting threshold can also be chosen so that the first trial
+satisfies \(p_n\le p_0\).
+
+Set
+\[
+   Q=\sum_{n\ {\rm used}} c_0p_n R_{<n}G_n,\qquad
+   E_n=c_0p_n R_{<n}(G_n-D_n).
+\]
+This \(Q\) is smooth, nonnegative, and supported compactly in the
+finite union of the selected \(U_n(J)\). Telescoping the successive
+differences of \(R_{<n}\) gives
+\begin{equation}\label{eq:curve-telescope}
+                       Q-1=\sum_{n\ {\rm used}} E_n-R_{<n_*}.
+\end{equation}
+On the residual Fourier support, \(|k|\le Y_{n_*}\le\lambda^{n_*}\),
+so \(H(k)\gg h(n_*)\) by gauge regularity. Nonnegativity of the
+residual bounds each coefficient by \(M_{n_*}\). Its \(s\)-norm
+is at most its \(L^2\)-norm since \(s<2\). In particular
+\begin{equation}\label{eq:curve-residual}
+ \|R_{<n_*}\|_H\ll v^3 h(n_*),\qquad
+ \|R_{<n_*}\|_s\le\sqrt{M_{n_*}}\ll v^{3/2}h(n_*).
+\end{equation}
+
+\medskip
+\noindent\emph{Weighted Fourier bound.}
+In the Fourier convolution for \(E_n\), let \(l\) be an index of
+\(R_{<n}\) and put \(\ell=(A^n)^{\mathsf T}(k-l)\) and
+\(B_n=b^n k_s\). These \(\ell\) are distinct integer points with
+\(|\ell_s-B_n|\le w_n\). The term \(\ell=0\) vanishes by compensation.
+Using \eqref{eq:curve-cancel}, Cauchy--Schwarz, and Parseval gives
+\begin{equation}\label{eq:curve-error-coeff}
+ |\widehat E_n(k)|\ll p_n\sqrt{M_n}\,W(B_n,w_n,p_n)
+       \sup_{|l|\le Y_n}|\widehat\chi(r_n(k-l))|.
+\end{equation}
+Here \(\sqrt{M_n}\) bounds the \(\ell^2\)-norm of the coefficients of
+\(R_{<n}\). The bump supremum is always at most one.
+
+Use \(L=L(k)\) and the constants \(\kappa,C_2\) from the weighted
+graph sum, enlarging \(C_2\) if needed. For \(n\le\kappa L\),
+\(Y_n\le\lambda^n\) implies \(|k-l|\ge|k|/2\) for all relevant \(l\)
+and all large \(L\). Then \(r_n|k-l|\gg_c e^{L/2}\), and the bump
+supremum is \(O(e^{-\nu L})\) for some \(\nu>0\). The strip bound
+is uniform, so the sum in this range divided by \(H(k)\) is
+\(O(L^{1+\beta}e^{-\nu L})\). A nonempty early range has
+\(L\ge N/\kappa\), hence this tends to zero uniformly as \(N\) increases.
+
+For \(n\ge C_2 L\), \(|B_n|\le |k|\lambda^{-n}\ll e^{-\nu' n}\)
+for some \(\nu'>0\). The small-strip estimate
+\eqref{eq:curve-strip-small} gives
+\(W(B_n,w_n,p_n)\ll e^{-\nu'n}+n^{-L_0}\). Since \(H(k)^{-1}\ll n^\beta\)
+in this range, the sum divided by \(H(k)\) is bounded by the tail of
+\(\sum_n n^\beta(e^{-\nu'n}+n^{-L_0})\), convergent for
+\(L_0>\beta+1\).
+
+In the middle range \(\kappa L<n<C_2 L\), \(h(n)\asymp H(k)\).
+The \(\sqrt{w_n}\) term in \eqref{eq:curve-strip}, after division by
+\(H(k)\), contributes at most a constant times the tail of
+\(\sum_n n^{\beta-L_0/2}\). For the remaining terms,
+\[
+                   p_n^{3/2}\sqrt{M_n}=v^{3/2}h(n)
+\]
+by \eqref{eq:curve-adapt}. The profiles accompanying this factor have
+bounded sum over the used times, uniformly in \(k\). For \(|B_n|<1\),
+the sum of \(|B_n|^{1/2}\) is geometric because \(|B_n|\) decreases
+by at least the factor \(\lambda^{-1}\) at each successive time.
+For the other profile let \(z_n=p_n|B_n|\). At consecutive used
+times \(n<n'\), monotonicity of \(h\) and the exact mass recurrence
+give \(p_{n'}\le\theta p_n\), hence \(z_{n'}\le(\theta/\lambda)z_n\).
+The sum of \(\min\{z_n^{1/2},z_n^{-1/2}\}\) on \(|B_n|\ge1\) is
+bounded by the geometric sums before and after \(z_n\) crosses one.
+Taking \(L_0>2(\beta+1)\) in these three ranges gives
+\begin{equation}\label{eq:curve-error-H}
+              \left\|\sum_{n\ {\rm used}}E_n\right\|_H
+                 \ll v^{3/2}+o_{N\to\infty}(1).
+\end{equation}
+The convergence of the error is uniform in the stopping time for
+fixed \(v\).
+
+\medskip
+\noindent\emph{Energy bound.}
+The pointwise inequality \(|E_n|\le c_0p_n(G_n+D_n)\) and the
+positive kernel estimate following \eqref{eq:curve-balls} give
+\(\|E_n\|_{s'}\ll p_n\). Fix \(J_0>0\). On \(|k|>n^{J_0}\), the
+comparison of the two Fourier weights bounds the \(s\)-norm of these
+modes by \(O(p_n n^{-J_0(s'-s)/2})\). For \(|k|\le n^{J_0}\),
+\eqref{eq:curve-strip-small} and \eqref{eq:curve-error-coeff} give
+\[
+           |\widehat E_n(k)|\ll
+              p_n(\lambda^{-n}n^{J_0}+n^{-L_0}).
+\]
+The sum of \((1+|k|)^{s-2}\) over these \(k\) is \(O(n^{J_0s})\)
+by dyadic lattice counting. The \(s\)-norm of the low modes is
+therefore \(O(p_n n^{J_0s/2}(\lambda^{-n}n^{J_0}+n^{-L_0}))\).
+Choose \(J_0(s'-s)/2>2\) and then \(L_0>J_0s/2+2\), also meeting
+the earlier requirements. With \(p_n\le p_0\), both norm bounds
+are summable over \(n\), and their tails tend to zero uniformly in
+the stopping time.
+
+First choose \(v\) small, then take \(N\) large in the subsequence
+corresponding to the required \(K\). Equations
+\eqref{eq:curve-telescope}--\eqref{eq:curve-error-H} and the energy
+bound make \(\|Q-1\|_H+\|Q-1\|_s\) as small as desired. The choice of
+\(N\) can place the finite support union inside any specified time
+tail. This proves the proposition.
+\end{proof}
+
+\subsection{The logarithmic endpoint and a mixed arc}
+\begin{corollary}[Thinning a schedule]\label{cor:curve-log-gaps}
+For \(\tau\ge1\), the compact-support conclusion on \(D\) with decay
+\(o(H)\) and all \(0<s<d_0\) energies holds whenever
+\[
+                   \sum_{n\in S}\frac{h(n)^{2/3}}{\log(e+n)}=\infty .
+\]
+\end{corollary}
+\begin{proof}
+For fixed \(K>0\), choose successive times greedily, taking after \(n\)
+the first available time at least \(n+\lceil K\log(e+n)\rceil\).
+Every group consisting of a chosen \(n\) and the skipped times before
+the next choice has \(O_K(\log(e+n))\) elements. For every \(m\) in the
+group one has
+\(h(m)^{2/3}/\log(e+m)\le h(n)^{2/3}/\log(e+n)\). Thus the group
+contributes \(O_K(h(n)^{2/3})\) to the divergent sum. The chosen
+times retain divergence of \(\sum h(n)^{2/3}\).
+Proposition~\ref{prop:curve-compensation} and Lemma~\ref{lem:compact}
+give the conclusion. The latter uses nested compact supports in fresh
+time tails, so each point of the limit support belongs to the
+intersection in \eqref{eq:dense}. It supplies all the subcritical
+energies on the same measure and transfers the decay to real
+frequencies in its local lift.
+\end{proof}
+
+For \(S=\mathbb N\), take \(h(t)=t^{-3/2}\). The thinning sum is
+the divergent harmonic logarithmic series. For \(\tau>1\) and
+\(q>3/2\), the gauge \(h(t)=t^{-q}\) gives a convergent obstruction
+sum in Proposition~\ref{prop:curve-upper}. This proves the sharp
+power in Theorem~\ref{thm:planar}, including its little-\(o\) endpoint.
+For schedules whose successive gaps divided by \(\log(e+n)\) tend
+to infinity, every prescribed gap condition holds on a tail of \(S\).
+Consequently convergence or divergence of \(\sum_{n\in S}h(n)^{2/3}\)
+decides the corresponding alternatives of Theorem~\ref{thm:sparse}
+on these schedules. The estimates leave open the full-time
+refinements \(h(t)=t^{-3/2}(\log(e+t))^{-q}\) for \(0<q\le3/2\),
+as well as the general case where thinning loses divergence.
+
+For any infinite \(S\), choose breakpoints \(N_j\) with
+\(N_{j+1}>2N_j\) and \(S\cap[N_j,N_{j+1})\ne\varnothing\).
+The gauge equal to \(1/j\) on each of these intervals, and to one
+before the first, is regular since doubling crosses at most one
+breakpoint. Its sum over \(S\) diverges. The unthinned construction
+gives local Hausdorff dimension at least \(d_0\) for \(D\) by finite
+energy. The length cover in Section~\ref{sec:construction} bounds the
+dimension of \(V\) by \(d_0\), and the pullback cover there gives
+\(\dim_H E_y=0\) for all \(y\) when \(\tau>1\), with the stated
+convention for empty fibers. Proposition~\ref{prop:curve-upper}
+excludes any positive power Fourier decay for a measure carried by
+\(V\), since it implies the bound for every \(h(t)=t^{-q}\).
+These observations give the asserted dimensions for \(D,P,V\).
+
+\begin{example}[A mixed straight portion joined to a curved portion]
+\label{ex:curve-mixed}
+Let \(S=\mathbb N\), \(\tau>1\), and \(\varepsilon>0\). Use the lift
+\[
+ t\longmapsto \eta\left[t e_u+
+        \bigl(t+\varepsilon(t-\tfrac12)_+^3\bigr)e_s\right],
+ \qquad 0\le t\le1,\qquad x_+=\max\{x,0\}.
+\]
+Choose \(\eta>0\) so that the lifted graph lies in a ball of radius
+less than \(1/4\). It projects to an embedded \(C^2\) arc with mixed
+straight first half and nonzero curvature on \((1/2,1)\).
+
+Fix a closed interval \(J\) of positive length inside the straight
+half. Every dense fiber meets \(J\), so \(D\) lies in the swept
+limsup for the mixed segment \(\gamma(J)\). By Theorem~\ref{thm:sparse},
+every finite positive torus measure with decay \(O(L^{-q})\), \(q>1\), gives that limsup
+zero mass. Conversely, every open parameter interval contains a smaller
+curved or mixed straight portion. The curved portion gives
+\eqref{eq:curve-weighted}; on the straight portion the mixed-line
+estimate in Section~\ref{sec:lines} gives the same bound with
+\(w_n=h(n)\). Both have the ball bound of Lemma~\ref{lem:ball}.
+For \(h(t)=t^{-1}\) the weights sum to infinity. Cycling these portions
+in Lemmas~\ref{lem:average} and~\ref{lem:compact} gives \(o(L^{-1})\)
+on compact dense-fiber support.
+
+Applying the curved construction on a compact subinterval of
+\((1/2,1)\) gives power \(3/2\) on a compact subset of \(P\), since
+its dense-fiber centers have a nonempty fiber for the full arc.
+Proposition~\ref{prop:curve-upper} for the entire arc excludes all
+larger powers already on \(V\). Both constructions give all the
+subcritical energies, so the distinction between the sharp powers
+persists in every target patch at the same local Hausdorff dimension.
+\end{example}
+
+\subsection{The radius \texorpdfstring{\(\tau=1\)}{tau = 1}}
+For the curved arcs of Theorem~\ref{thm:planar}, at \(\tau=1\) the
+sets \(D,P,V\) are Haar-conull along any fixed infinite \(S\). To see
+this, in each basis interval \(J\) take a transverse graph portion.
+Its translates by stable displacements \(u e_s\) with \(|u|<c/2\)
+form a nonempty open strip in the pullback torus, using an open
+graph interval. Call its projection \(O_J\). If \(A^{-n}y\in O_J\),
+then \(y\in U_n(J)\), since the displacement after applying \(A^n\)
+has Euclidean length less than \((c/2)\lambda^{-n}\).
+
+Write \(m\) for Haar probability. The nonzero dual orbits of \(A^{-1}\)
+grow in norm by \eqref{eq:norm}, so \(A^{-1}\) is mixing. Indeed, for
+trigonometric polynomials the only correlations that persist are
+those of the constant terms, and \(L^2\)-approximation extends this
+to all \(L^2(m)\) functions. Enumerate \(S=\{n_1<n_2<\cdots\}\).
+The averages of \(\mathbf 1_{O_J}(A^{-n_j}y)\) over the first \(N\)
+times converge in \(L^2(m)\) to \(m(O_J)>0\): for every tolerance
+\(\epsilon>0\), mixing bounds the covariances in the variance sum
+with \(|n_i-n_j|\ge K\) by \(\epsilon\) for large enough \(K\).
+The remaining ordered pairs number \(O(KN)\) because the \(n_i\)
+are distinct integers. Dividing by \(N^2\) and taking \(N\) large
+gives convergence. An almost everywhere convergent subsequence of
+the averages then implies infinitely many visits for almost every
+center. Intersecting over the countable basis yields the claim by
+\eqref{eq:dense}.
+
+Every smooth probability density in a target patch therefore gives
+\(D\) full mass. Inner regularity gives a compact subset of \(D\) of
+positive Haar measure in each patch. Its normalized Haar restriction
+has bounded density and every \(0<s<2\) energy. The multiplier proofs
+also give their compact Fourier lower conclusions at \(\tau=1\),
+with \(d_0=2\) by Lemma~\ref{lem:ball}. The optimal decay for compact
+supports at this radius remains open here.
+
+\begin{remark}[Fibers at the critical radius]
+When the stable tangencies are countable, every fiber at \(\tau=1\)
+has Hausdorff dimension zero. The inverse image of a target ball has
+stable width \(O(1)\) and unstable width \(O(\lambda^{-2n})\).
+It has only \(O(1)\) lattice lifts meeting the bounded lifted arc.
+On each parameter chart where \(|\widetilde\gamma'_u|\) is bounded
+below, the hits at time \(n\) are covered by \(O(1)\) intervals of
+length \(O(\lambda^{-2n})\), by projection onto the unstable axis.
+A countable cover by such charts and the countable set of
+tangencies therefore give dimension zero.
+\end{remark}
+
+\section{A fixed center at the stable threshold}\label{sec:critical}
+
+Throughout this section \(A\in GL_2(\mathbb Z)\) is hyperbolic,
+\(\lambda>1\) is its expanding modulus, and \(\chi=\log\lambda\).
+Write \(a,b\) for the signed eigenvalues, so that
+\(|a|=\lambda\) and \(|b|=\lambda^{-1}\), and \(e_u,e_s\) for unit right
+eigenvectors. For \(z=z_u e_u+z_s e_s\), the subscripts denote
+coordinates in this basis. Let the lift of the segment be \(p+xv\),
+\(x\in I\), where \(I\) is a nondegenerate compact interval.
+Transversality means \(v_u\ne0\). Use open eigenrectangles of
+half-widths \(c_u e^{-\alpha n}\), \(c_s e^{-\beta n}\), with all
+four constants positive. For visits to centers \(y_n\) along \(S\),
+write \(H_n\) for the set of hitting parameters at time \(n\) and
+\(E=\limsup_{n\in S} H_n\). For fixed centers and balls this is \(E_y\).
+Balls of radius \(c e^{-\alpha n}\) contain and are contained in
+such rectangles with \(\beta=\alpha\), by equivalence of the
+Euclidean and eigen-coordinate norms.
+
+\subsection{Slice dimension and access}
+
+\begin{proposition}\label{prop:transverse-slices}
+For every transverse affine segment, every center sequence and every
+infinite \(S\), one has
+\[
+\dim_H E=
+\begin{cases}
+(\chi-\beta)/(\chi+\alpha),&0<\beta<\chi,\\
+0,&\beta\ge\chi .
+\end{cases}
+\]
+We use \(\dim_H\varnothing=0\). In the positive-dimensional case
+\(\mathcal H^{(\chi-\beta)/(\chi+\alpha)}(E\cap J)=\infty\) for every
+nonempty relatively open subinterval \(J\) of \(I\).
+For balls \(B(y_n,c\lambda^{-\tau n})\) the corresponding dimension
+is \((1-\tau)/(1+\tau)\) for \(0<\tau<1\), and zero for \(\tau\ge1\).
+\end{proposition}
+
+\begin{proof}
+Unimodularity gives \(A^{-n}\mathbb Z^2=\mathbb Z^2\). Thus \(H_n\)
+is the intersection, in parameter coordinates, with rectangles
+about the lifts of \(q_n=A^{-n}y_n\) of half-widths
+\begin{equation}\label{eq:inverse-slice-widths}
+ u_n=c_u e^{-(\chi+\alpha)n},\qquad W_n=c_s e^{(\chi-\beta)n}.
+\end{equation}
+For bounded \(W_n\) there are only
+boundedly many relevant lifts, uniformly in \(q_n\), since the lifts
+lie in a fixed bounded neighborhood of the segment. Each gives a
+parameter interval of length at most \(2u_n/|v_u|\).
+
+For \(W_n\to\infty\), any two relevant lifts have stable
+separation \(O(W_n)\). For a nonzero lattice vector \(z\), the
+integer \(\det[z,Az]=(b-a)\det[e_u,e_s]z_u z_s\) is nonzero,
+since a contracting eigenvalue cannot be a nonzero rational
+algebraic integer and the characteristic polynomial is irreducible.
+Thus \(|z_u z_s|\gg1\), so the unstable coordinates of relevant
+lifts are separated by \(\gg W_n^{-1}\). Their unstable range is
+bounded, yielding \(O(W_n)\) parameter intervals of diameter
+\(O(u_n)\). These covers give both upper bounds.
+
+For the lower bound take a covering radius \(C_0\) of the lattice in
+the eigen-coordinate maximum norm. Choose \(m\) so that
+\(C_0\lambda^m\le W_n/4\) and \(\lambda^m\asymp W_n\).
+Apply \(A^m\) to \(p+xv\) and to the translated lattice of lifts of
+\(q_n\). The resulting lattice translate still has covering radius
+\(C_0\). Undoing \(A^m\) at a nearest lift gives a center with
+unstable discrepancy \(O(W_n^{-1})\) and stable discrepancy at most
+\(W_n/4\). Moving the parameter to the exact unstable match changes
+the stable coordinate by \(O_v(W_n^{-1})\). On compact intervals in
+the interior of \(I\) this yields an \(O(W_n^{-1})\)-net of
+parameters around which intervals of radius \(u_n/(2|v_u|)\) lie
+in \(H_n\) for large \(n\). The net centers have separation
+\(\gg W_n^{-1}\) by the preceding lattice bound.
+
+For \(d=(\chi-\beta)/(\chi+\alpha)\), raising the interval radii to
+the power \(d\) makes them comparable to \(W_n^{-1}\). The enlarged
+intervals cover a uniform positive fraction of each fixed subinterval
+at every sufficiently late \(n\in S\). Apply the net bound inside
+the middle of the subinterval and use separation to bound overlap.
+The same fraction bounds the measure of their limsup there by
+continuity from above for tail unions. The Lebesgue density theorem
+then gives a full-measure enlarged limsup. The one-dimensional mass
+transference principle gives the claimed infinite Hausdorff measure
+for the original intervals \cite[Theorem~2]{BV}. The ball statements
+follow by the rectangle inclusions.
+\end{proof}
+
+For full times the subcritical ball dimension also follows by stable
+saturation from the ambient theorem of Hu, Persson, Wu and Zhang
+\cite[Theorem~2.1]{HPWZ}. Let \(F_\eta\) be the ambient limsup for
+balls of radius \(e^{-\eta n}\) with the given centers. Fix
+\(0<\alpha<\chi\) and a small stable flow box over a transverse
+subinterval. Stable shifts in this box change the forward images
+by \(O(e^{-\chi n})\). For sufficiently small \(\varepsilon>0\), the
+saturation of the slice at radius \(c e^{-\alpha n}\) is contained
+in \(F_{\alpha-\varepsilon}\). Conversely, \(F_{\alpha+\varepsilon}\)
+in the box is contained in that saturation. In the bi-Lipschitz
+product coordinates the saturation has dimension equal to the slice
+dimension plus one. The ambient dimension and local lower bound
+from the large-intersection conclusion squeeze this sum between
+\(2\chi/(\chi+\alpha+\varepsilon)\) and
+\(2\chi/(\chi+\alpha-\varepsilon)\). Letting \(\varepsilon\downarrow0\)
+gives the formula. The cover and net above supply the sparse-time
+version.
+
+At \(\beta=\chi\), for a fixed center \(y\), put \(q_n=A^{-n}y\).
+If \(q_n\) is dense along \(S\), the critical fiber on every
+transverse segment is dense \(G_\delta\). Indeed, each open parameter
+interval \(J\) gives a nonempty open set
+\begin{equation}\label{eq:critical-open-box}
+ \{p+xv+t e_s:x\in J,\ |t|<c_s/2\}\pmod{\mathbb Z^2}.
+\end{equation}
+A visit of \(q_n\) to this set gives a hit with exact unstable
+match and strict stable margin. Removing finitely many points from
+a dense orbit sample in the torus leaves it dense. Every parameter
+tail union is consequently open and dense, and Baire's theorem
+applies. An inscribed critical rectangle gives the same assertion
+for balls.
+
+For any one prescribed \(S=\{n_1<n_2<\cdots\}\), Haar-almost every
+\(y\) has this density property. For \(T=A^{-1}\), every nonzero
+dual integer frequency escapes under
+\((T^{\mathsf T})^n\), which proves mixing first for trigonometric
+polynomials and then in \(L^2\). For an open basis set \(O\), the
+variance of the mean of \(\mathbf 1_O(T^{n_j}y)\), \(j\le m\),
+tends to zero. For any fixed \(K\), there are \(O(Km)\) pairs with
+gap at most \(K\), and the covariances for larger gaps tend uniformly
+to zero as \(K\to\infty\). A subsequence of the means thus converges
+almost surely to the positive Haar measure of \(O\), and a countable
+basis gives density. The same argument applies to forward samples
+of \(A\).
+
+In the dense case the ambient critical limsup has dimension one.
+Its inverse rectangles are covered at each time by \(O(u_n^{-1})\)
+balls of radius \(O(u_n)\). A hit infinitely often for a narrower
+stable half-width gives a short stable segment hitting infinitely
+often for the original width, since a stable displacement \(t e_s\)
+becomes \(b^n t e_s\). The same proof works for balls by sandwiching.
+This is consistent with the critical dependence on the centers in
+\cite[Remark~2.2]{HPWZ}.
+
+If \(y\) is periodic, retain the residues of
+its period that occur infinitely often in \(S\). At \(\beta=\chi\),
+the fiber consists exactly of the finitely many parameters with an
+exact unstable match to a lift of a retained orbit point and stable
+discrepancy strictly less than \(c_s\). For critical balls the exact
+stable threshold is \(c\), since \(e_s\) is a unit vector. For
+\(\beta>\chi\) both coordinates must match. To see necessity, pass
+to one residue and one bounded lift along infinitely many hits, and
+use \eqref{eq:inverse-slice-widths}. After an exact unstable match,
+equality at the critical stable boundary fails the open test.
+Sufficiency follows at every sufficiently late time of the retained
+residue.
+
+For general \(y\), a critical hitting parameter must satisfy
+\(p+xv\in\omega_S(q)+[-c_s,c_s]e_s\pmod{\mathbb Z^2}\), where
+\(\omega_S(q)\) is the set of subsequential limits along \(S\).
+The rate in the unstable coordinate is essential. For example, let
+\(y=y_*+t e_u\pmod{\mathbb Z^2}\) with \(y_*\) periodic and \(t\ne0\).
+Infinitely many hits would force an exact unstable match to a fixed
+lift of \(A^{-n}y_*\) on a subsequence of one residue. On that
+subsequence the actual discrepancy is \(|t|\lambda^{-n}\),
+whereas \eqref{eq:inverse-slice-widths} requires the strictly smaller
+scale \(u_n\). These critical fibers are empty.
+
+\subsection{One target for a prescribed schedule and envelope}
+
+The following bound applies to arbitrary center sequences, with
+\(\|\cdot\|_{\mathbb R/\mathbb Z}\) denoting distance to the nearest
+integer.
+
+\begin{lemma}\label{lem:parameter-block}
+Let \(N\le K\le(1+\delta)N\) and
+\(Q_K=(A^Kv)_i\), where \(i\) is an ordinary coordinate for which
+\((e_u)_i\ne0\). There is a \(\delta>0\) depending on the exponents
+such that, for some \(\eta>0\) and all sufficiently large \(N\),
+\[
+ \mu\left(\bigcup_{n\in S\cap[N,K]}H_n\right)
+ \ll e^{-\eta N}\mu(\mathbb R)
+      +\sup_{\ell\in\mathbb Z\setminus\{0\}}
+             |\widehat\mu(\ell Q_K)|
+\]
+for every finite positive parameter measure \(\mu\), uniformly in
+the centers.
+\end{lemma}
+
+\begin{proof}
+Set \(\gamma=\min(\alpha,\beta)\). A hit is a torus error of size
+\(O(e^{-\gamma n})\). Propagate the whole error by the integer map
+\(A^{K-n}\) and take coordinate \(i\). The result is
+\[
+ \|Q_Kx-(A^{K-n}y_n-A^Kp)_i\|_{\mathbb R/\mathbb Z}
+ \ll e^{-(\gamma-\chi\delta)N}.
+\]
+There are at most \(\lfloor\delta N\rfloor+1\) phases. Choose
+\(\delta\) small and \(\eta_0\) with
+\(\delta\log16<\eta_0<\gamma-\chi\delta\).
+Apply Lemma~\ref{lem:majorant} to \(Q_Kx\) with
+\(M=\lfloor e^{\eta_0 N}\rfloor\). Its constant term gives the
+exponential error, and its other coefficients bound the integral by
+the displayed Fourier supremum. Transversality ensures
+\(|Q_K|\asymp_v\lambda^K\) for large \(K\), also for negative \(a\).
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:critical}]
+Write \(g\) for the prescribed positive nonincreasing envelope
+tending to zero, evaluated at \(L(t)=\log(e+|t|)\). Choose open
+basis balls \(O_j\) in the torus, repeating each ball infinitely
+often, and choose \(\epsilon_j\downarrow0\). In a single dense
+forward orbit of \(T=A^{-1}\), find a finite excursion
+\(z_{j,0},\ldots,z_{j,\ell_j}\) starting within \(\epsilon_j\) of
+zero, visiting \(O_j\) at index \(i_j\), and ending within
+\(\epsilon_j/(1+\|T\|)\) of zero. Such excursions exist by density
+of all tails. Place the visit at a time \(m_j\in S\) and put
+\(N_j=m_j-i_j\). Since \(S\) is unbounded, the windows
+\([N_j,N_j+\ell_j]\) can be chosen successively disjoint, with
+\[
+ N_j\ge j(\ell_j+1),\qquad N_j/j\ge j,\qquad
+ g(N_j/j)\le2^{-j}.
+\]
+
+Put the excursions at these windows to define a sequence \(z_n\)
+on the torus, and put \(z_n=0\) at all other integer times. Write
+\(z_{n+1}=Tz_n+\eta_n\pmod{\mathbb Z^2}\) with \(\eta_n\) a
+vector lift of the jump error. The errors are bounded, vanish
+between jumps, and tend to zero as \(n\to+\infty\).
+Use superscripts \(c,e\) for the contracting and expanding
+components for \(T\), and let \(T_c,T_e\) be the corresponding
+restrictions. Define
+\[
+ w_n^c=-\sum_{r\ge0}T_c^r\eta_{n-1-r}^c,\qquad
+ w_n^e=\sum_{r\ge0}T_e^{-r-1}\eta_{n+r}^e.
+\]
+The series converge absolutely by geometric bounds and retain the
+signs of the eigenvalues. Reindexing gives
+\(w_{n+1}=Tw_n-\eta_n\) for \(w_n=w_n^c+w_n^e\).
+Geometric domination and \(\eta_n\to0\) give \(w_n\to0\) as
+\(n\to+\infty\). Therefore \(q_n=z_n+w_n\pmod{\mathbb Z^2}\)
+is the orbit \(T^n y\) of \(y=q_0\). It tends to zero outside
+the excursion windows. At the visit times \(m_j\in S\), the
+corrections tend to zero. Each nonempty open set contains the
+closure of a basis ball visited infinitely often, so \(q_n\) is
+dense along \(S\).
+
+Fix any transverse affine segment and any critical widths and
+unstable exponent. By \eqref{eq:critical-open-box} and
+Proposition~\ref{prop:transverse-slices}, its fiber is dense
+\(G_\delta\) of dimension zero. Critical hits infinitely often
+outside the windows force
+\(p+xv\in[-c_s,c_s]e_s\pmod{\mathbb Z^2}\) by
+\eqref{eq:inverse-slice-widths} and \(q_n\to0\) there. This is a
+finite set of parameters, since only finitely many lifts of the
+stable segment meet the given bounded transverse segment.
+If \(|\widehat\mu(t)|=O(g(L(t)))\), then \(\mu\) is atomless.
+Averaging \(e^{2\pi i tx}\widehat\mu(t)\) over \([-R,R]\) gives
+\(\mu(\{x\})\) in the limit by dominated convergence, and the
+decay makes the average tend to zero. For infinitely many hits
+inside the windows, Lemma~\ref{lem:parameter-block} applies for
+all sufficiently large \(j\), since \(\ell_j/N_j\to0\).
+The mass bound is \(O_\mu(e^{-\eta N_j}+g(c_1N_j))\) for some
+\(c_1>0\). It is summable because \(c_1N_j\ge N_j/j\) eventually.
+Borel--Cantelli proves zero mass for the whole fiber. The choice
+of \(y\) preceded the choices of segment, affine origin, and
+critical dimensions of the rectangles. Inscribed and circumscribed
+critical rectangles give the ball assertions.
+
+For the qualitative assertion, restrict to a nondegenerate closed
+interval inside any prescribed open parameter subinterval. The
+fiber is comeager there, and that closed interval is the support
+of a Rajchman measure, namely interval Lebesgue measure.
+Matheron and Zelený's category result implies that the fiber
+carries a nonzero Rajchman measure
+\cite[Corollary~4.5]{MZ}. Take a compact subset of positive
+measure and restrict and normalize. Restriction preserves Rajchman
+decay, by approximation in \(L^1\) of the restricting density by
+finite linear combinations of characters. This gives a compactly
+supported Rajchman probability in each open parameter subinterval.
+\end{proof}
+
+\subsection{Stable slices and affine origins}
+
+If \(v=v_s e_s\) with \(v_s\ne0\) and \(p=0\), the iterated segment
+converges uniformly to zero. For a fixed nonzero center the fiber
+is empty. For \(y=0\) it is \(I\) when \(\beta<\chi\), the set
+\(\{x\in I:|xv_s|<c_s\}\) when \(\beta=\chi\), and \(I\cap\{0\}\)
+when \(\beta>\chi\). These statements follow from the exact forward
+stable displacement \(b^n x v_s e_s\). For balls the exponent
+\(\beta\) is the radius exponent and the critical test is
+\(|xv_s|<c\).
+
+At a general affine origin, any sufficiently late hit forces
+\(y_n-A^n p\) modulo the lattice to have norm less than \(1/4\).
+If it has such a short lift \(d_n\), the exact rectangle test at
+all sufficiently late times is
+\[
+ |(d_n)_u|<c_u e^{-\alpha n},\qquad
+ \left|x-\frac{b^{-n}(d_n)_s}{v_s}\right|
+ <\frac{c_s}{|v_s|}\,e^{-(\beta-\chi)n}.
+\]
+The sign of \(b^{-n}\) enters the center of this window. At
+criticality the window has fixed width, and both its availability
+and its location depend on the affine base orbit.
+
+In the target variable, each swept ball neighborhood for a stable
+segment lies in a single ball about \(A^n p\) of radius
+\(O(\lambda^{-n}+r_n)\), where \(r_n=c\lambda^{-\tau n}\).
+Thus \(V\), and hence \(D,P\), have Hausdorff dimension zero.
+If \(A^n p\) is dense along \(S\), each open parameter subinterval
+gives a dense target tail union, since one fixed parameter in that
+subinterval has forward images within \(o(1)\) of \(A^n p\).
+Consequently \(D\) is dense \(G_\delta\) in the torus and has local
+compact Rajchman probabilities by \cite[Corollary~4.5]{MZ} and
+Fourier localization. When \(p=0\) and \(\tau>1\), \(D\) is empty
+and \(P=V=\{0\}\) if \(0\in I\), while \(P=V=\varnothing\) if
+\(0\notin I\).
+
+\section{A cubic example and the limits of the planar law}
+\label{sec:higher}
+
+\begin{example}
+The companion matrix of \(X^3-3X^2+1\) has three real eigenvalues, one in each of \((-1,0)\), \((0,1)\), and \((2,3)\), by the signs at the endpoints. The rational root test gives irreducibility. No two roots have the same modulus, since a pair of opposite roots would force the third root to be \(3\) by the sum of the roots. The expanding root is a Pisot unit. The product of the two contracting moduli is the reciprocal of the expanding root, so each contraction exponent is strictly less than \(1\) on the logarithmic scale of the expanding root.
+
+For every \(\tau>1\), consider lines with nonzero expanding component. A line using exactly one contracting eigendirection has the occupied-block criterion from the planar unstable line. A line using both contracting eigendirections has the individual-level criterion from the planar mixed line. In full time these criteria give the respective attainable bounds \(o((\log L(\xi))^{-1})\) and \(o(L(\xi)^{-1})\), where \(L(\xi)=\log(e+|\xi|)\). Increasing either decay exponent from \(1\) to \(1+\varepsilon\), \(\varepsilon>0\), in the corresponding big-\(O\) bound forces zero \(V\)-mass. The inverse companion matrix illustrates the theorem with two expanding eigenvalues at the stated large rates.
+\end{example}
+
+\begin{theorem}\label{thm:higher}
+Let \(A\in\mathrm{GL}_d(\mathbb Z)\), \(d\ge3\), have an irreducible characteristic polynomial with all roots real, distinct in modulus, and off the unit circle. Choose unit eigenvectors \(e_i\) with eigenvalues \(\lambda_i\), ordered by decreasing modulus. Set \(\Lambda=|\lambda_1|\), \(a_i=\log_{\Lambda}|\lambda_i|\), \(b_*=-a_d\), and \(\sigma=(1-a_2)/(4d)\). Consider the affine segment \(\gamma(x)=z+xv\pmod{\mathbb Z^d}\), \(x\in[0,1]\), with \(v=\sum_i v_i e_i\) and \(v_1\ne0\). Use the same sets \(D\subset P\subset V\) of target centers, defined on \(\mathbb T^d\) with open balls of radius \(c\Lambda^{-\tau n}\), \(c>0\), along any infinite schedule \(S\subseteq\mathbb N\).
+
+With exactly one expanding eigenvalue assume \(\tau>b_*\). With several expanding eigenvalues assume
+\[
+ \tau>\max\left\{b_*,\frac{b_*}{(d-1)\sigma},\frac1{d-1}\right\}.
+\]
+All three sets have Hausdorff dimension \(s_0=1+1/\tau\) in every nonempty open target patch and Fourier dimension zero. For a regular gauge \(h\), the criterion is
+\[
+\begin{cases}
+ \displaystyle\sum_{n\in S}h(n), & v_i\ne0\text{ for every }i,\\[4pt]
+ \displaystyle\sum_{\substack{j\ge0:\ S\cap[2^j,2^{j+1})\ne\varnothing}} h(2^j), & v_i=0\text{ for some }i.
+\end{cases}
+\]
+If the relevant series converges, every finite positive torus measure with \(|\widehat\mu(k)|=O(h(L(k)))\) on integer frequencies satisfies \(\mu(V)=0\). If it diverges, each nonempty open target patch contains a compact subset of \(D\) supporting a probability with \(|\widehat\mu(\xi)|=o(h(L(\xi)))\) at real frequencies in a local lift and finite \(s\)-energy for every \(0<s<s_0\), simultaneously.
+\end{theorem}
+
+The proof is in Appendix~\ref{app:higher}. The rate condition with several expanding directions is sufficient. The optimal range for several expanding directions and the case of an irreducible polynomial with complex conjugate roots remain open here.
+
+\begin{example}[A reducible automorphism]\label{ex:higher-reducible}
+Let \(C=\left(\begin{smallmatrix}2&1\\1&1\end{smallmatrix}\right)\) be the cat matrix, and use \(A=\operatorname{diag}(C,C)\) on \(\mathbb T^4\). A through-origin segment with direction \((v',0)\), where \(v'\in\mathbb R^2\) has a nonzero expanding component for \(C\), stays in \(\mathbb T^2\times\{0\}\) at every time. For any radii tending to zero, \(V\) is contained in this rational subtorus. Every nonzero positive measure carried by \(V\) has Fourier coefficient equal to its mass on every character \((0,k')\), \(k'\in\mathbb Z^2\). Consequently there is no probability carried by \(V\) with Fourier transform tending to zero at infinity, including in a local lift.
+\end{example}
+
+\subsection{Non-unimodular planar saddles}\label{sec:nonunit}
+
+Let \(A\) be a nonsingular integer \(2\times2\) matrix with signed
+eigenvalues \(a,b\) satisfying \(0<\rho=|b|<1<\lambda=|a|\), and let
+\(\Delta=|\det A|=\lambda\rho>1\) and \(\chi=\log\lambda\).
+Its characteristic polynomial is irreducible, since \(b\) cannot
+be a nonzero rational algebraic integer. We use the same unit
+eigenvectors, affine lifts \(p+xv\), and notation \(D,P,V\) as
+before, with \(\tau>1\) and \(r_n=c\lambda^{-\tau n}\).
+Write \(\mathcal B(S)=\{j:S\cap[2^j,2^{j+1})\ne\varnothing\}\).
+
+\begin{proposition}\label{prop:nonunit-gauge}
+For a pure unstable line \(v_s=0\), \(v_u\ne0\), the sharp gauge
+series is \(\sum_{j\in\mathcal B(S)}h(2^j)\). For a mixed line
+\(v_uv_s\ne0\), it is \(\sum_{n\in S}h(n)\). Specifically,
+convergence forces \(\mu(V)=0\) for every finite positive torus
+measure with \(|\widehat\mu(k)|=O(h(L(k)))\) for a regular gauge
+\(h\). Under divergence, every open target patch contains a compact
+subset of \(D\) carrying a probability with
+\(|\widehat\mu(\xi)|=o(h(L(\xi)))\) at real frequencies in a lift
+and finite \(s\)-energy simultaneously for all \(0<s<d_*\), where
+\[
+ d_*=
+ \begin{cases}
+ 1+1/\tau,&v_s=0,\\[2pt]
+ 1+(\chi-\tfrac12\log\Delta)/(\tau\chi),&v_uv_s\ne0.
+ \end{cases}
+\]
+In every open patch the Hausdorff dimensions of \(D,P,V\) lie
+between \(d_*\) and \(1+1/\tau\), and their Fourier dimensions
+are zero.
+\end{proposition}
+
+\begin{proof}
+The determinant bounds \eqref{eq:norm} hold by irreducibility.
+For \(0<|k|\le\lambda^{n/3}\), the unstable term has modulus
+\(\gg_v\lambda^{2n/3}\), whereas the stable term is
+\(O_v(\rho^n\lambda^{n/3})\). This is the dominance needed
+in the Dirichlet strip test of Section~\ref{sec:lines}.
+The remaining ingredients there are the bound
+\(|A^n v|\ll_v\lambda^n\), and, on the pure line, the single
+normal to \(e_u\) on each short block. Both estimates apply
+here. Lemma~\ref{lem:majorant} therefore gives the same mixed
+level bound \(O_\mu(e^{-\eta n}+h(n))\) and pure block bound
+\(O_\mu(e^{-\eta N}+h(N))\), proving convergence.
+
+Use the tube densities \(G_n\) of \eqref{eq:tube} formed with
+\(f_J(x)\,dx\) on the segment. The low and high frequency
+estimates from \eqref{eq:linefourier} apply by the same dominance
+and bump decay. In the middle range \(n\asymp L(k)\), the
+pure-line count of selected dyadic representatives is unchanged.
+For a mixed line put
+\(X=v_u k_u,\ Y=v_s k_s\), and
+\(t_*=\log(|Y/X|)/\log(\lambda/\rho)\). The larger term in the
+parameter frequency has magnitude
+\[
+ \sqrt{|XY|}\,\Delta^{n/2}(\lambda/\rho)^{|n-t_*|/2}.
+\]
+Here \(\sqrt{|XY|}\gg_v1\) and \(\Delta^{n/2}\ge1\). At distance
+at least one from \(t_*\), the smaller term is at most
+\(\rho/\lambda\) times the larger. Thus the sum of the magnitudes
+of the parameter Fourier factors over all \(n\) is bounded
+uniformly in \(k\ne0\). Doubling compares \(h(n)\) and
+\(h(L(k))\) in the middle range. Thus \eqref{eq:weighted}
+holds with weights \(w_n=h(n)\) on all of \(S\) for mixed
+lines, and on one representative of each occupied dyadic
+block for pure lines.
+
+We give the ball estimates needed for the energy assertion.
+For the unsmoothed pushforward, each passage through a ball of
+radius \(R\) corresponds to a lattice lift of its center within
+\(R\) of the lifted segment. If \(x,x'\) witness two distinct
+passages and \(t=|x-x'|\), the product bound yields
+\begin{equation}\label{eq:nonunit-passage}
+ c_0\le |(z-z')_u(z-z')_s|
+ \ll_v \Delta^n t^2+\lambda^nRt+R^2
+\end{equation}
+for the two center lifts \(z,z'\). For \(R\) sufficiently small
+this forces \(t\gg(\Delta^{n/2}+\lambda^nR)^{-1}\). A passage
+occupies a parameter interval of length \(O(R\lambda^{-n})\),
+by the unstable projection. With bounded parameter density the
+ball mass is therefore \(O_J(R^2+R\lambda^{-n}\Delta^{n/2})\).
+For a pure line the quadratic term vanishes and the ball mass
+is \(O_J(R^2+R\lambda^{-n})\), allowing one passage when
+\(\lambda^nR<1\). These bounds extend to \(R\le1\) by increasing
+constants.
+
+For \(R\ge r_n\), the same bounds for \(G_n\) follow by
+enlarging the ball by \(r_n/4\). In either case the mass is
+\(O_J(R^{d_*})\) since the second term has the form
+\(R\) times \(O(r_n^{d_*-1})\). At \(R<r_n\) use the density
+bound \(O_J(r_n^{d_*-2})\), obtained from the unsmoothed mass
+at scale \(r_n\) and the maximum of the bump density. This gives
+the same \(O_J(R^{d_*})\) estimate. Apply Lemma~\ref{lem:average}
+to the weighted coefficient bound and these uniform ball
+bounds. Divergence gives arbitrarily large total weight in
+every tail. Lemma~\ref{lem:compact} then gives the probability
+on \(D\), with all the claimed energies, by cycling the parameter
+intervals \(J\).
+
+The \(r_n\)-neighborhood of the segment is covered by
+\(O(\lambda^n/r_n)\) balls of radius \(2r_n\), proving the
+dimension upper bound. For each infinite \(S\) one can choose a
+regular gauge with divergent occupied-block sum. Group successive
+dyadic indices into finite consecutive ranges with at least \(2^j\)
+occupied indices in the \(j\)-th range, and put
+\(h(t)=2^{-j}\) when the dyadic index of \(t\) is in that range.
+Doubling crosses at most one boundary, so this is a regular
+gauge. Both series then diverge and the energy lower bound
+gives the local Hausdorff lower bound for every \(S\).
+Every positive power of Fourier decay implies the convergent
+bound for \(h(t)=t^{-2}\), giving Fourier dimension zero.
+\end{proof}
+
+\begin{corollary}\label{cor:nonunit-fiber-bound}
+For the same supercritical balls, every fixed-center transverse
+fiber on a mixed line has Hausdorff dimension at most
+\(\log\Delta/(2(\tau+1)\chi)\). On a pure unstable line it has
+dimension zero.
+\end{corollary}
+
+\begin{proof}
+With \(R=r_n\), \eqref{eq:nonunit-passage} gives
+\(O(\Delta^{n/2})\) passages, each a window of length
+\(O(r_n\lambda^{-n})\). The pure-line count is bounded.
+The Hausdorff sum gives the stated upper bounds.
+\end{proof}
+
+\begin{proposition}\label{prop:rational-winding}
+If \(v=t w\), where \(w\) is a primitive integer vector and
+\(t\ne0\), put \(g_n=\gcd((A^nw)_1,(A^nw)_2)>0\) and
+\[
+ \gamma_A=\sum_{\mathfrak p\mid\Delta}
+ \min\left\{v_{\mathfrak p}(\operatorname{tr} A),
+            \tfrac12 v_{\mathfrak p}(\det A)\right\}
+ \log\mathfrak p ,
+\]
+where the sum is over primes and \(v_{\mathfrak p}(0)=+\infty\).
+Then \(\log g_n=n\gamma_A+O_{A,w}(1)\). In every open target
+patch the Hausdorff dimensions of \(D,P,V\) all equal
+\begin{equation}\label{eq:rational-winding-dimension}
+ d_{\mathrm{rat}}=1+\frac{\chi-\gamma_A}{\tau\chi}.
+\end{equation}
+For the divergent mixed series the probability in
+Proposition~\ref{prop:nonunit-gauge} can be taken to have finite
+\(s\)-energy for all \(0<s<d_{\mathrm{rat}}\).
+\end{proposition}
+
+\begin{proof}
+Cyclicity of \(w\) over \(\mathbb Q\) gives the comparison
+\(\|A^n w\|_{\mathfrak p}\asymp_{A,w,\mathfrak p}
+\|A^n\|_{\mathfrak p}\) in entrywise maximum norms.
+Indeed, \(B_w=[w,Aw]\) is invertible and
+\(A^n B_w=[A^nw,A(A^nw)]\).
+Diagonalize over a finite \(\mathfrak p\)-adic splitting field.
+The two roots are distinct, so the matrix norm is comparable
+to \(\max(|a|_{\mathfrak p},|b|_{\mathfrak p})^n\).
+This gives
+\[
+ v_{\mathfrak p}(g_n)
+ =n\min\{v_{\mathfrak p}(a),v_{\mathfrak p}(b)\}+O(1).
+\]
+For unequal valuations the smaller is the trace valuation.
+For equal valuations their common value is half the determinant
+valuation and the trace valuation is at least as large.
+Only primes dividing \(\Delta\) can divide \(g_n\), since \(w\)
+is primitive and \(A\) is invertible modulo every other prime.
+Summation gives the formula for \(\log g_n\). For the gcd of the
+entries of matrix powers, Noferini identifies the slope with the
+minimum eigenvalue valuation and proves eventual periodicity of the
+valuation increments \cite[Theorems~2.4--2.5]{Noferini}.
+
+The primitive vector \(w_n=A^nw/g_n\) has length comparable
+to \(e^{(\chi-\gamma_A)n}\), since \(w_u\ne0\). In particular
+\(0\le\gamma_A\le\tfrac12\log\Delta<\chi\).
+The closed geodesic in direction \(w_n\) has lifts spaced by
+\(1/|w_n|\), from the primitive integer normal to \(w_n\).
+Its normalized length measure gives a ball of radius \(R\)
+mass \(O(R^2+R/|w_n|)\). Indeed, at most
+\(O(1+R|w_n|)\) lifts meet the ball and each chord has length
+at most \(2R\).
+The pushforward of a fixed \(f_J\) is dominated by a constant
+times normalized length measure. The circle parameter is
+\(t g_n x\bmod 1\), whose density is bounded uniformly because
+\(|t|g_n\ge |t|>0\). The smoothing argument in
+Proposition~\ref{prop:nonunit-gauge} now gives the ball bound
+\(O_J(R^{d_{\mathrm{rat}}})\), and the same Fourier estimates
+and construction give the asserted energies. The tube of the
+whole geodesic is covered by \(O(|w_n|/r_n)\) balls of radius
+\(2r_n\), giving the upper bound. This proof works for any affine
+origin, nondegenerate segment, and infinite schedule.
+\end{proof}
+
+For the whole closed geodesic through the origin the earlier
+restricted-linear-form results also give the dimensions of \(V\).
+If \(q_n\) is the primitive integer normal, its width in the
+linear-form test is \(|q_n|r_n\). Squeezing this width by powers
+with exponents \(1-\tau\chi/(\chi-\gamma_A)\pm\varepsilon\)
+and using convergence exponent zero for the exponentially
+growing \(|q_n|\) gives
+\eqref{eq:rational-winding-dimension} by Rynne's theorem
+\cite[p.~70]{Rynne}. The upper-bound proof of Cai and Hambrook
+\cite[Theorem~1.4.1 and \S3.3]{CH} gives Fourier dimension zero, since
+the widths sum and \(\sum_{n\in S}r_n^s<\infty\) for all \(s>0\).
+If \(\gcd(\operatorname{tr}A,\Delta)=1\), then \(\gamma_A=0\)
+and every rational direction has the full dimension \(1+1/\tau\).
+For general irrational mixed directions the exact Hausdorff
+dimension remains open here.
+
+\begin{example}\label{ex:nonunit-cat}
+Take \(A=2A_{\mathrm{cat}}\) where
+\[
+ A_{\mathrm{cat}}=\begin{pmatrix}2&1\\1&1\end{pmatrix},
+ \qquad \lambda_{\mathrm{cat}}=(3+\sqrt5)/2 .
+\]
+Here \(\lambda=2\lambda_{\mathrm{cat}}\), \(\rho=2/\lambda_{\mathrm{cat}}<1\),
+and \(\Delta=4\). For \(w=(1,0)\), \(g_n=2^n\) exactly,
+since \(A_{\mathrm{cat}}^nw\) stays primitive.
+The rational dimension in \eqref{eq:rational-winding-dimension}
+attains the mixed lower bound in Proposition~\ref{prop:nonunit-gauge}
+and is strictly smaller than \(1+1/\tau\).
+
+For \(p=y=0\) and \(v=w\), the bound in
+Corollary~\ref{cor:nonunit-fiber-bound} is attained too.
+Writing \(w_n=A_{\mathrm{cat}}^n w\), every lattice point off
+\(\mathbb R w_n\) is at distance at least \(1/|w_n|\) from
+that line. As \(r_n|w_n|\to0\), the hits for all large \(n\)
+are exactly
+\[
+ \|2^n x\|_{\mathbb R/\mathbb Z}<r_n/|w_n|.
+\]
+The parameter intervals have spacing \(2^{-n}\) and radii
+comparable to \(\lambda^{-(\tau+1)n}\). They give
+\[
+ \dim_H E_0=\frac{\log 2}{(\tau+1)\log\lambda}
+\]
+for every infinite \(S\). The upper bound is the Hausdorff sum.
+For the lower bound, raising the radii to this power gives a
+fixed positive multiple of the spacing. The enlarged intervals
+then cover a fixed positive fraction of every subinterval at
+each sufficiently late \(n\in S\). The density theorem gives
+full measure for their limsup, and mass transference gives the
+lower bound \cite[Theorem~2]{BV}.
+
+The stable multiplier gives the contraction threshold \(r_n=c\rho^n\).
+For this map it occurs at \(\tau=-\log\rho/\chi<1\).
+Fix any center \(y\) and take
+\(p=0,\ v=w\). The distance from \(y\) to the closed geodesic
+in direction \(w_n\) is \(O(|w_n|^{-1})=o(r_n)\). Let \(u_n\)
+be the circle coordinate of a nearest point. For a fixed
+sufficiently small \(C>0\), hits contain all the windows
+\(\|2^n x-u_n\|_{\mathbb R/\mathbb Z}<C r_n/|w_n|\) at large
+times. For every regular gauge \(g\) with
+\(\sum_{j\in\mathcal B(S)} g(2^j)=\infty\), these windows give a
+compactly supported probability in the fiber in every open
+parameter subinterval, with real-frequency decay \(o(g(L))\).
+In particular, on full times a single such gauge works for every
+\(y\), so the prescribed-envelope obstruction of
+Theorem~\ref{thm:critical} fails for this map at its contraction
+threshold.
+
+To prove the decay claim, take a smooth unit-integral bump on
+the circle supported within distance
+\(\delta_n=C r_n/(2|w_n|)\) of zero, obtained by rescaling one
+fixed profile. Evaluate it at \(2^n x-u_n\) and denote the
+result by \(P_n(x)\). Its constant coefficient is one, its
+other frequencies are nonzero multiples of \(2^n\), and the
+absolute coefficient sum is \(O(\delta_n^{-1})\). For a fixed
+smooth compactly supported probability density \(f\) in the
+parameter interval, this gap and rapid decay of \(\widehat f\)
+give \(\widehat{fP_n-f}(s)=O_{f,M}(e^{-Mn})\) for every \(M\)
+on \(|s|\le e^{\kappa n}\), \(0<\kappa<\log2\). At
+\(|s|\ge e^{Kn}\) for \(K\) sufficiently large the difference
+is \(O_f((1+|s|)^{-2})\) by repeated integration by parts.
+Indeed the order-\(j\) derivative is bounded in \(L^1\)
+by \(O_{f,j}(\delta_n^{-1}(2^n/\delta_n)^j)\).
+In between, positivity and the mass estimate at zero give a
+constant bound.
+
+Select one time from each occupied dyadic block with weights
+\(g(n)\). Only boundedly many selected times satisfy
+\(e^{\kappa n}<|s|<e^{Kn}\), and there \(g(n)\asymp g(L(s))\).
+The two tails are summable with error \(O_f(g(L(s)))\), by the
+exponential estimates and doubling. Therefore normalized
+multiplication of \(f\) by a finite weighted average of the
+\(P_n\) changes its Fourier transform in the weighted supremum
+norm by \(O_f(W^{-1})\), where \(W\) is the total weight.
+Normalization preserves this estimate by evaluating first at
+zero. Divergence allows arbitrarily large \(W\) in each tail.
+Iterating with summable errors gives nested compact supports
+in successive finite unions of hit windows at advancing times.
+The weak limit has support in the fiber. The weighted Fourier
+transforms converge uniformly, and the quotient for every
+smooth stage vanishes at infinity. This proves the little-\(o\)
+bound for the limit.
+\end{example}
+
+\subsection{Questions at the boundary}
+The sparse straight-line criteria classify every regular gauge. For a
+curved arc an arbitrary schedule may lose divergence of
+\(\sum h(n)^{2/3}\) on passage to logarithmically separated times.
+It remains to decide whether divergence of the unthinned series suffices.
+Even at full time the estimates leave open the refinements
+\(h(t)=t^{-3/2}(\log(e+t))^{-q}\), \(0<q\le3/2\).
+
+The critical center in Theorem~\ref{thm:critical} is chosen for a
+specified envelope. The optimal parameter-space decay for a Haar-typical
+critical center remains undetermined. For a non-unimodular saddle the
+dimension of the center set for an arbitrary irrational mixed direction
+is another open case of these estimates. Finally a nonreal conjugate pair
+introduces rotating phases of equal modulus. The distinct-real-modulus
+argument below leaves the sharp mixed-direction gauge for such spectra open.
+
+\appendix
+\section{Proof of Theorem~\ref{thm:higher}}
+\label{app:higher}
+
+Write \(\rho_n=\Lambda^{-\tau n}\), so the target radius is \(c\rho_n\). Throughout, constants may depend on the fixed map, segment, and radius parameters. We use the right eigenbasis for positions and write \(k_i=k\cdot e_i\) for the dual pairings. In particular, \(k\mapsto(k_i)_{i=1}^d\) is a fixed invertible real linear change of coordinates.
+
+\subsection{Algebraic norm and the frequency gap}
+
+Choose a nonzero right eigenvector for \(\lambda_1\) with entries in \(K=\mathbb Q(\lambda_1)\), and multiply by an integer so its entries are algebraic integers. Each embedding of \(K\) gives a real conjugate eigenvector, and each eigendirection occurs once since the characteristic polynomial is irreducible. The resulting columns are independent. If their pairing with an integer \(k\) vanished for one embedding, the pairing would vanish for every embedding, giving \(k=0\). For \(k\ne0\) the product of the unnormalized pairings is thus a nonzero integer, the field norm of an algebraic integer. Normalizing the columns yields
+\begin{equation}\label{eq:higher-norm}
+ \prod_{i=1}^d |k_i|\gg 1,\qquad
+ |k_1|\gg |k|^{-(d-1)}\quad(0\ne k\in\mathbb Z^d).
+\end{equation}
+Since \(\sum_i a_i=0\), we have \(a_2\ge-1/(d-1)\). Consequently \(1-2\sigma(d-1)>0\), and \(1-2\sigma(d-1)-(a_2+2\sigma)=(1-a_2)/2>0\). For \(0<|k|\le\Lambda^{2\sigma n}\), the first term of \(k\cdot A^n v\) has modulus \(\gg\Lambda^{[1-2\sigma(d-1)]n}\) by \eqref{eq:higher-norm} and \(v_1\ne0\). The rest have total modulus \(O(\Lambda^{(a_2+2\sigma)n})\). Hence for all sufficiently large \(n\) there is a fixed \(\kappa>0\) such that
+\begin{equation}\label{eq:higher-gap}
+ |k\cdot A^n v|\gg\Lambda^{\kappa n}
+ \qquad (0<|k|\le\Lambda^{2\sigma n}).
+\end{equation}
+This comparison uses moduli and holds with either sign of each eigenvalue.
+
+\subsection{Upper bounds for target mass}
+
+In both rate ranges \(\tau>1/(d-1)\). In the one-expanding case this follows because the \(d-1\) contraction exponents sum to \(1\). Fix \(1/(d-1)<t<\tau\) and \(0<\eta<(d-1)t-1\). In a real orthonormal frame with first axis parallel to \(A^n v\), use the centered box with first half-width \(\Lambda^{-\eta n}/|A^n v|\) and the other half-widths \(\Lambda^{tn}\). Since \(|A^n v|\asymp\Lambda^n\), its volume grows as \(\Lambda^{((d-1)t-1-\eta)n}\) up to constants. Minkowski's convex body theorem gives a nonzero integer point \(k\) for large \(n\), with \(|k|\ll\Lambda^{tn}\) and \(|k\cdot A^n v|\le\Lambda^{-\eta n}\). By \eqref{eq:higher-gap}, \(|k|>\Lambda^{2\sigma n}\). Each \(y\in U_n([0,1])\) satisfies
+\begin{equation}\label{eq:higher-one-phase}
+ \|k\cdot y-k\cdot A^n z\|_{\mathbb R/\mathbb Z}
+ \le \Lambda^{-\eta n}+c\rho_n|k|\ll e^{-\beta n}
+\end{equation}
+for some \(\beta>0\). The single-phase instance of Lemma~\ref{lem:majorant} gives mass \(O(e^{-\beta' n}\|\mu\|+\sup_{\ell\ne0}|\widehat\mu(\ell k)|)\) for some \(\beta'>0\). Under the stated Fourier bound this is \(O(e^{-\beta' n}\|\mu\|+h(n))\), using the lower bound on \(|k|\), eventual monotonicity and doubling. The sum over \(S\) gives the individual-level converse. The same test applies to any direction under consideration, so a positive power bound on \(|\widehat\mu(k)|\) makes the masses summable for every schedule and proves zero Fourier dimension.
+
+For the occupied-block converse, put \(I_v=\{i:v_i\ne0\}\) and suppose \(I_v\ne\{1,\ldots,d\}\). Fix \(b_*<t<\tau\). Choose \(\eta>0\) small enough that \(\sum_{i\notin I_v}(a_i+t)-|I_v|\eta>0\). In the dual coordinates take the box
+\[
+ |k_i|\le
+ \begin{cases}
+ \Lambda^{(-a_i-\eta)N},&i\in I_v,\\
+ \Lambda^{tN},&i\notin I_v .
+ \end{cases}
+\]
+The exponent of its volume is the positive number just displayed, by \(\sum_i a_i=0\). The coordinate change contributes only a fixed determinant. Minkowski gives a nonzero integer vector for large \(N\). Since every \(-a_i\le b_*<t\), its norm is \(O(\Lambda^{tN})\). Also \(1\in I_v\), so \eqref{eq:higher-norm} and \(|k_1|\le\Lambda^{-(1+\eta)N}\) give \(|k|\gg\Lambda^{(1+\eta)N/(d-1)}\).
+
+Choose \(\delta>0\) with \(\delta\max_i |a_i|\le\eta/2\). For every integer \(N\le n\le(1+\delta)N\) the cap on each active coordinate gives \(|k_i\lambda_i^n|\le\Lambda^{-\eta N/2}\), and \(c\rho_n|k|\ll\Lambda^{-(\tau-t)N}\). Thus the phase test in \eqref{eq:higher-one-phase} holds throughout the block with error \(\epsilon_N\ll e^{-\beta N}\), where \(\beta>0\) is independent of further decreases in \(\delta\). The phases \(\theta_n=k\cdot A^nz\bmod 1\) can vary with \(n\).
+
+To apply Lemma~\ref{lem:majorant}, let \(M=\lfloor e^{\beta N/2}\rfloor\) and let \(m\le\delta N+1\) be the number of times tested in the block. The vectors \((q\theta_n)_n\) modulo one, \(1\le q\le M\), fall into \(16^m\) boxes of side \(1/16\). In the most populated box the indices form a set \(F\) of size at least \(M/16^m\). Taking \(\delta\log16<\beta/4\) makes \(|F|\) exponentially large. On any of the tests \(\|u-\theta_n\|_{\mathbb R/\mathbb Z}\le\epsilon_N\), the points \(qu\bmod1\) for \(q\in F\) lie within \(M\epsilon_N\) of an arc of length \(1/16\). Thus \(\big|\,|F|^{-1}\sum_{q\in F}e^{2\pi iqu}\big|^2\) has a fixed positive lower bound there. This polynomial has constant coefficient \(|F|^{-1}\) and absolute coefficient sum \(1\). Applied to \(u=k\cdot y\) and integrated, it bounds the mass of the union by
+\[
+ O\!\left(e^{-\beta' N}\|\mu\|+
+             \sup_{\ell\ne0}|\widehat\mu(\ell k)|\right)
+ =O\!\left(e^{-\beta' N}\|\mu\|+h(N)\right)
+\]
+for some \(\beta'>0\). Each dyadic block \([2^j,2^{j+1})\) is a union of \(O_\delta(1)\) such short blocks or their truncations, with \(N\asymp2^j\). Keeping only the occupied dyadic blocks gives a summable bound when the block series converges. In both converses the tail-sum estimate gives zero mass to the limsup \(V\).
+
+\subsection{Weighted level densities}
+
+Fix an open parameter interval \(J\) from a countable basis in \((0,1)\). Choose a smooth nonnegative probability density \(f_J\) on \(\mathbb R\), compactly supported in \(J\), and a smooth nonnegative probability bump \(\chi\) on \(\mathbb R^d\) supported in \(B(0,c/4)\). Let \(G_{n,J}\) be the density obtained by pushing \(f_J(x)\,dx\) forward by \(x\mapsto A^n(z+xv)\bmod\mathbb Z^d\) and convolving with the periodization of \(\rho_n^{-d}\chi(\cdot/\rho_n)\). It has integral one and compact support in \(U_n(J)\). Its Fourier coefficients are
+\begin{equation}\label{eq:higher-density}
+ \widehat G_{n,J}(k)
+ =e^{-2\pi i k\cdot A^nz}\widehat\chi(\rho_n k)
+                   \widehat f_J(k\cdot A^n v).
+\end{equation}
+For \(0<|k|\le\Lambda^{2\sigma n}\), the gap \eqref{eq:higher-gap} and rapid decay of \(\widehat f_J\) give \(O_B(\Lambda^{-Bn})\) for any \(B>0\). For \(|k|\ge\Lambda^{(\tau+1)n}\) we have \(\rho_n|k|\ge |k|^{1/(\tau+1)}\), so the bump factor gives \(O_B(|k|^{-B})\). For a fixed \(k\ne0\) there are \(O(L(k))\) times in the latter range, and the low-frequency estimate sums over a geometric tail starting at \(n\gg L(k)\) for large \(|k|\). A regular gauge has a polynomial lower bound as a function of its argument, by doubling. With bounded weights the sum of the two tails is therefore \(O(h(L(k)))\).
+
+In the intermediate range \(n\asymp L(k)\), doubling gives \(h(n)\asymp h(L(k))\). If a component of \(v\) vanishes, choose one representative from \(S\) in each occupied dyadic block. Only boundedly many representatives can lie in the intermediate range for a fixed \(k\). Give each representative weight \(h(n)\). The coefficient bound \(|\widehat G_{n,J}(k)|\le1\) handles this range.
+
+If all components of \(v\) are nonzero, use every \(n\in S\) with weight \(h(n)\). For fixed \(k\ne0\) put \(T_i(n)=|v_i k_i|\Lambda^{a_i n}\) and \(M(n)=\max_i T_i(n)\). The product of the \(T_i(n)\) is uniformly bounded below by a positive constant by \eqref{eq:higher-norm} and \(\sum_i a_i=0\). For each pair \(i\ne j\), the condition \(T_i(n)/T_j(n)\in[1/(2d),2d]\) holds on a real interval of bounded length, since the slope of the logarithm of that ratio is nonzero and independent of \(k\). Thus outside \(O_A(1)\) integer times the largest term exceeds each other by a factor \(2d\), giving
+\[
+ |k\cdot A^n v|\ge M(n)/2 .
+\]
+If \(M(n)\le H\), \(H\ge2\), then \(T_1(n)\in[c_v H^{-(d-1)},H]\) for a fixed \(c_v>0\). As \(T_1(n)\) grows by a factor \(\Lambda\) each time, this accounts for \(O_{A,v}(1+\log H)\) integer times. Summing the rapid decay of \(\widehat f_J\) on dyadic ranges of \(M(n)\), and bounding the exceptional times by \(1\), yields \(\sum_{n\ge1}|\widehat f_J(k\cdot A^n v)|\ll_{A,J,v}1\) uniformly in \(k\ne0\). This controls the weighted intermediate range in the all-component case as well.
+
+Writing \(S'\) for the selected times in either case, we have obtained
+\begin{equation}\label{eq:higher-average}
+ \sum_{n\in S'}h(n)|\widehat G_{n,J}(k)|
+       \ll_{A,J,v,h} h(L(k))\qquad(k\ne0).
+\end{equation}
+The zero mode is exactly \(1\) at each level, as required for the normalized averages of Lemma~\ref{lem:average}. In the block case the sum of the weights on \(S'\) diverges precisely when the occupied-block series does, by doubling.
+
+\subsection{Volume bounds and the compact construction}
+
+Let \(\nu_{n,J}\) be the pushforward of \(f_J(x)\,dx\) before smoothing. We first prove \(\nu_{n,J}(B(y,R))\ll_J R^{s_0}\) for \(\rho_n\le R\le1\). In the lift, consider the lattice translates of an \(R\)-ball that meet the swept segment. Their translation vectors lie in an eigenbasis box of widths \(O(|\lambda_i|^n+R)\). The cells obtained by adding \(A^n[0,1)^d\) to these lattice vectors have disjoint interiors because \(A\) is unimodular. Each has volume one and eigenbasis extents \(O(|\lambda_i|^n)\). The enlarged box thus has volume \(O(\prod_i(|\lambda_i|^n+R))\), bounding the number of translates. Each translate contributes \(O_J(R\Lambda^{-n})\) in parameter mass since \(|A^n v|\asymp\Lambda^n\).
+
+With one expanding eigenvalue, set \(b_i=-a_i>0\) for \(i>1\). The product bound just proved gives mass
+\[
+ \ll_J R\Lambda^{-n}\prod_{i>1}(1+R\Lambda^{b_i n}).
+\]
+For \(R=\Lambda^{-tn}\), \(0\le t\le\tau\), this is \(O_J(R\Lambda^{-n\sum_{i>1}\min(b_i,t)})\), because \(\sum_{i>1}b_i=1\). Since \(b_i\le b_*<\tau\), each \(\min(b_i,t)\ge b_it/\tau\). The resulting bound is \(O_J(R^{s_0})\).
+
+With several expanding eigenvalues, write \(R_0=\Lambda^{-\sigma n}\). At scales \(R_0\le R\le1\), we show an \(O_J(R^d)\) estimate, also for the pushforward of a smooth nonnegative compactly supported density \(g\) on \(\mathbb R\) majorizing the indicator of \([-1,2]\). Use a periodized smooth ball majorant with mean \(O(R^d)\) and coefficients \(O_B(R^d(1+R|k|)^{-B})\). Such a majorant follows by translating and dilating a fixed bump which is at least one on the unit ball. Up to \(\Lambda^{2\sigma n}\), the nonzero coefficients of the pushforward measure are \(O_M(\Lambda^{-Mn})\) for every \(M>0\), by \eqref{eq:higher-gap} and smoothness. The number of these frequencies is \(O(\Lambda^{2d\sigma n})\). Above \(\Lambda^{2\sigma n}\), use the boundedness of the pushforward coefficients and sum the majorant coefficients, using
+\[
+ \sum_{|k|>\Lambda^{2\sigma n}}(1+R|k|)^{-B}
+ \ll \Lambda^{2d\sigma n}(R\Lambda^{2\sigma n})^{-B}
+ \le \Lambda^{(2d-B)\sigma n}
+\]
+for \(B>d\). Choosing \(M\) and \(B\) sufficiently large proves the asserted ball estimate for both parameter densities. Since \(s_0<d\), it also proves the needed \(R^{s_0}\) bound at these scales.
+
+If \(R<R_0\), each lifted \(R\)-ball that meets the segment with \(x\in[0,1]\) contributes \(\gg R_0\Lambda^{-n}\) of parameter mass for \(g\) in the concentric \(2R_0\)-ball, using an interval around a meeting parameter contained in \([-1,2]\) for large \(n\). Those enlarged balls over distinct lattice translates are disjoint for large \(n\). Their total \(g\)-mass is bounded by the large-scale estimate \(O(R_0^d)\). Thus \(O(\Lambda^nR_0^{d-1})\) original translates can meet the segment, and their total mass for \(f_J\) is \(O_J(RR_0^{d-1})\). When \(R\ge\Lambda^{-b_*n}\), the rate assumption gives \(R_0^{d-1}\le R^{1/\tau}\). When \(R\le\Lambda^{-b_*n}\), every \(|\lambda_i|^n\ge R\), so the cell-volume bound gives \(O(1)\) translates by \(\prod_i|\lambda_i|^n=1\). Their mass \(O_J(R\Lambda^{-n})\) is \(O_J(R^{s_0})\) for \(R\ge\rho_n\). Enlarging constants handles finitely many initial levels.
+
+For the smoothed density \(G_{n,J}\), ball mass at \(R\ge\rho_n\) is bounded by the unsmoothed mass at \(R+c\rho_n/4\), hence is \(O_J(R^{s_0})\). At smaller \(R\), the unsmoothed estimate at a fixed multiple of \(\rho_n\) and the bump's sup norm give density \(O_J(\rho_n^{s_0-d})\). Ball mass is then \(O_J(R^d\rho_n^{s_0-d})\), which is \(O_J(R^{s_0})\). All these estimates are uniform in the center \(y\).
+
+Now take a regular gauge satisfying the corresponding divergence condition. Each finite weighted mean \(Q\) from a fresh tail of \(S'\) has the same ball bounds. Its mass is one, and \eqref{eq:higher-average} bounds the weighted Fourier norm of \(Q-1\) by a constant divided by the total weight. For \(0<s<s'<s_0\), integrating the ball masses against \(R^{-s'-1}\,dR\) gives a uniform bound on the \(s'\)-energy. In the torus energy norm of Lemma~\ref{lem:average} this bounds the contribution of \(|k|>K\) to the squared \(s\)-norm of \(Q-1\) by \(O(K^{s-s'})\), using \((1+|k|)^{s-d}\le (1+K)^{s-s'}(1+|k|)^{s'-d}\) there. The low modes tend to zero as the total weight grows. This verifies the averaging hypotheses in dimension \(d\).
+
+Lemma~\ref{lem:compact} now gives a probability in any lifted target chart inside the prescribed open patch. The compact support lies in \(D\), since each support point has hits in every basis interval in every time tail and the corresponding parameter tail unions are open. The same probability has finite energy at each \(s<s_0\) and little-\(o\) decay at real frequencies by the energy iteration and chart localization in that lemma.
+
+Finally the \(n\)-th tube can be covered by \(O(\Lambda^n/\rho_n)\) balls of radius \(O(\rho_n)\) because the lifted segment has length \(O(\Lambda^n)\). The resulting Hausdorff sum converges at every order above \(s_0\). For the lower bound along any infinite schedule, there is a regular gauge for which even the occupied-block sum diverges. Choose successive cutoffs \(2^{j_m}\), \(j_{m+1}\ge j_m+2\), so the intervening range contains at least \(2^m\) occupied dyadic blocks. Assign \(h(t)=2^{-m}\) on that range and a fixed positive value below the first cutoff. Doubling holds since doubling \(t\) crosses at most one cutoff, and each range contributes at least one to the block series. This also implies divergence of the individual-level sum. The compact probability just constructed in any patch gives the dimension lower bound by its energies. The inclusions \(D\subset P\subset V\) complete the dimension claims.
+
+\begin{thebibliography}{99}
+\bibitem{AB} D. Allen and S. Baker, \href{https://doi.org/10.1007/s00029-019-0484-9}{A general mass transference principle}, Selecta Math. (N.S.) \textbf{25} (2019).
+
+\bibitem{BV} V. Beresnevich and S. Velani, \href{https://doi.org/10.4007/annals.2006.164.971}{A mass transference principle and the Duffin--Schaeffer conjecture for Hausdorff measures}, Ann. of Math. (2) \textbf{164} (2006), 971--992.
+
+\bibitem{Bluhm} C. Bluhm, \href{https://doi.org/10.1090/S0002-9939-00-05276-X}{Liouville numbers, Rajchman measures, and small Cantor sets}, Proc. Amer. Math. Soc. \textbf{128} (2000), 2637--2640.
+
+\bibitem{CH} T. Cai and K. Hambrook, \href{https://arxiv.org/abs/2403.19410}{On the exact Fourier dimension of sets of well-approximable matrices}, arXiv:2403.19410.
+
+\bibitem{CZ} S. Chow and Q.-L. Zhou, \href{https://arxiv.org/html/2511.14954v1}{Twisted Diophantine approximation for matrix transformations of tori}, arXiv:2511.14954.
+
+\bibitem{FN} R. Fraser and T. Nguyen, \href{https://arxiv.org/abs/2409.02854}{Sharp Fourier decay estimates for measures supported on the well-approximable numbers}, arXiv:2409.02854.
+
+\bibitem{HV} R. Hill and S. L. Velani, \href{https://doi.org/10.1112/S0024610799007681}{The shrinking target problem for matrix transformations of tori}, J. Lond. Math. Soc. (2) \textbf{60} (1999), 381--398.
+
+\bibitem{HPWZ} Z.-N. Hu, T. Persson, W. Wu and Y. Zhang, \href{https://doi.org/10.1112/jlms.70287}{On shrinking targets for linear expanding and hyperbolic toral endomorphisms}. Numbering follows \href{https://arxiv.org/html/2405.02582v1}{arXiv:2405.02582v1}.
+
+\bibitem{Kahane} J.-P. Kahane, \href{https://doi.org/10.1007/978-3-662-59158-1}{S\'eries de Fourier absolument convergentes}, Ergebnisse der Mathematik \textbf{50}, Springer, 1970.
+
+\bibitem{Kaufman} R. Kaufman, \href{https://doi.org/10.4064/aa-39-3-265-267}{On the theorem of Jarn\'ik and Besicovitch}, Acta Arith. \textbf{39} (1981), 265--267.
+
+\bibitem{Lyons} R. Lyons, \href{https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0083/LOG_0050.pdf}{The measure of non-normal sets}, Invent. Math. \textbf{83} (1986), 605--616.
+
+\bibitem{MZ} \'E. Matheron and M. Zelen\'y, \href{https://doi.org/10.4064/fm185-2-1}{Rudin-like sets and hereditary families of compact sets}, Fund. Math. \textbf{185} (2005), 97--116.
+
+\bibitem{Noferini} V. Noferini, \href{https://arxiv.org/html/2511.22814v2}{Eventual periodicity of the Smith forms of integer matrix powers}, arXiv:2511.22814v2.
+
+\bibitem{PR} I. Polasek and E. Rela, \href{https://arxiv.org/abs/2602.15267}{Slowly decaying Rajchman measures and a restriction theorem for the Fourier transform at the limit case of zero Fourier dimension}, arXiv:2602.15267.
+
+\bibitem{PVZZ} A. D. Pollington, S. Velani, A. Zafeiropoulos and E. Zorin, \href{https://doi.org/10.1093/imrn/rnaa307}{Inhomogeneous Diophantine approximation on \(M_0\)-sets with restricted denominators}, Int. Math. Res. Not. IMRN (2022), 8571--8643. Numbered results refer to \href{https://arxiv.org/abs/1906.01151}{arXiv:1906.01151}.
+
+\bibitem{Rynne} B. P. Rynne, \href{https://matwbn.icm.edu.pl/ksiazki/aa/aa61/aa6115.pdf}{The Hausdorff dimension of certain sets arising from Diophantine approximation by restricted sequences of integer vectors}, Acta Arith. \textbf{61} (1992), 69--81.
+
+\bibitem{Stein} E. M. Stein, \href{https://doi.org/10.1515/9781400883929}{Harmonic Analysis: Real-Variable Methods, Orthogonality, and Oscillatory Integrals}, Princeton Math. Ser. \textbf{43}, 1993.
+
+\bibitem{VdC} J. G. van der Corput, \href{https://www.numdam.org/item/CM_1935__1__15_0/}{Zur Methode der station\"aren Phase. Erste Mitteilung: einfache Integrale}, Compositio Math. \textbf{1} (1935), 15--38.
+
+\bibitem{Power} \emph{Sharp Fourier decay for simultaneous power targets and recurrence}, companion manuscript.
+\end{thebibliography}
+\end{document}

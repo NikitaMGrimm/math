@@ -1,0 +1,1515 @@
+\documentclass[11pt,a4paper,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,mathtools,amssymb,amsthm,mathrsfs,booktabs}
+\usepackage[expansion=false]{microtype}
+\usepackage[a4paper,textwidth=156mm,textheight=237mm,centering]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Sharp Fourier decay for simultaneous power targets and recurrence},pdfauthor={}}
+\pdfinfoomitdate=1
+\pdftrailerid{}
+\pdfsuppressptexinfo=15
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+\setcounter{tocdepth}{1}
+\setlength{\emergencystretch}{1.5em}
+\raggedbottom
+\title[Fourier decay for power targets and recurrence]{Sharp Fourier decay for simultaneous power targets and recurrence}
+\date{}
+\begin{document}
+\begin{abstract}
+At radius \(3^{-\tau n}\), \(0<\tau<1\), simultaneous targets for
+\(2^n,3^n\) and \(2^n-1,3^n-1\) have Hausdorff dimension
+\((1-\tau)/(1+\tau)\) and Fourier dimension zero. We distinguish
+them by the rates at which the Fourier
+transforms of measures supported on them can tend to zero. For a
+regular decreasing gauge \(h\), the sharp tests for the envelope
+\(h(\log(e+|\xi|))\) are divergence of \(\sum h(n)/n\) for powers and
+of \(\sum h(n)\) for recurrence. The tests hold for arbitrary moving
+targets throughout the positive-dimensional range, including
+anisotropic windows for finite pairwise coprime families. Convergence
+forces zero limsup mass for every finite positive measure satisfying
+the big-\(O\) bound.
+Under divergence, each open interval contains a compact subset
+of the limsup carrying a probability with little-oh decay and
+every subcritical energy.
+The proof uses a trigonometric majorant for a block of moving power
+targets and a uniform bound on the number of nearby recurrence levels
+representing one frequency. We also obtain absolute normality
+statements, construct measures on exceptional slope fibers, and
+exhibit the dependence on phases at the zero-dimensional boundary.
+\end{abstract}
+\maketitle
+\tableofcontents
+
+\section{Two sharp summability tests}\label{sec:intro}
+Fix two sequences of points \(y_{1,n},y_{2,n}\) on the circle
+\(\mathbb T=\mathbb R/\mathbb Z\), and write \(\|x\|\) for distance to
+the nearest integer. For \(\sigma\in\{0,1\}\) consider
+\[
+ E_\sigma=\left\{x\in\mathbb R:
+  \max\big\{\|(2^n-\sigma)x-y_{1,n}\|,\|(3^n-\sigma)x-y_{2,n}\|\big\}
+  <3^{-\tau n}\ \text{for infinitely many } n\right\}.
+\]
+At \(\sigma=0\) these are two power orbits hitting their targets at a
+common time. At \(\sigma=1\) and zero phases both orbits return close
+to the starting point. We permit deterministic shifts at every level
+in both systems. Although the two integer frequencies on each axis
+differ by one, the attainable Fourier decay on the parameter line
+obeys different summability laws.
+
+Use \(e(t)=\exp(2\pi i t)\) and
+\(\widehat\mu(\xi)=\int e(-\xi x)\,d\mu(x)\) for \(\xi\in\mathbb R\).
+A \emph{Rajchman} measure has \(\widehat\mu(\xi)\to0\) as
+\(|\xi|\to\infty\). Write
+\[
+ I_s(\mu)=\iint |x-z|^{-s}\,d\mu(x)\,d\mu(z),\qquad
+ L(\xi)=\log(e+|\xi|).
+\]
+We call \(h:[1,\infty)\to(0,\infty)\) a \emph{regular gauge} if it is
+bounded, eventually nonincreasing, tends to zero, and
+\(h(2u)\asymp h(u)\) for all sufficiently large \(u\). Its values on
+bounded frequency ranges can be fixed to a positive constant.
+Comparability then holds under any fixed positive rescaling at infinity.
+
+\begin{theorem}[Binary--ternary dichotomy]\label{thm:binary}
+Let \(0<\tau<1\), \(H=(1-\tau)/(1+\tau)\), and let \(h\) be a regular
+gauge. Both \(E_0\) and \(E_1\) have Hausdorff dimension \(H\) in
+every nonempty open interval and Fourier dimension zero. For each row
+of the following table the indicated series is decisive:
+\[
+\begin{array}{lcc}
+\toprule
+ &\text{series}&\text{attained critical power of the logarithm}\\
+\midrule
+ E_0 & \displaystyle\sum_{n\ge1}h(n)/n & o(1/\log\log|\xi|)\\[2pt]
+ E_1 & \displaystyle\sum_{n\ge1}h(n)   & o(1/\log|\xi|)\\
+\bottomrule
+\end{array}
+\]
+If the series diverges, every nonempty open interval contains a
+compact subset of \(E_\sigma\) carrying a probability \(\mu\) with
+\(\widehat\mu(\xi)=o(h(L(\xi)))\) and \(I_s(\mu)<\infty\) for all
+\(0<s<H\). If the series converges, every positive finite measure
+with \(\widehat\mu(\xi)=O(h(L(\xi)))\) gives \(E_\sigma\) measure zero.
+\end{theorem}
+The measures may depend on the gauge and the interval. The table
+displays one choice on the divergence side of each threshold.
+Replacing the logarithm in either denominator by its power
+\(1+\epsilon\), for any \(\epsilon>0\), gives convergence. The series
+also decide refinements involving further iterated logarithms.
+
+\subsection{Finite families and available levels}
+Take pairwise coprime integers \(b_1,\dots,b_k\ge2\), fixed
+\(c_i>0\), and exponents \(g_i\ge0\), at least one of them positive.
+Given an infinite set \(S\subset\mathbb N\) and phases
+\(y_{i,n}\in\mathbb T\), let \(E_\sigma(S)\) be the set defined by
+\begin{equation}\label{eq:levels}
+ \|(b_i^n-\sigma)x-y_{i,n}\|<c_i e^{-g_i n}
+ \quad (1\le i\le k),\qquad \text{infinitely often for }n\in S .
+\end{equation}
+Order the axes by increasing \(t_i=\kappa_i+g_i\), where
+\(\kappa_i=\log b_i\), and put
+\begin{equation}\label{eq:dimension}
+ D_j=\kappa_j-\sum_{i<j}g_i,\quad
+ m=\min_j D_j,\quad T=\max_j t_j,\quad
+ d=\left[\min_j D_j/t_j\right]_+ .
+\end{equation}
+At tied terminals \(t_j\), the last index has the smallest quotient,
+since \(D_j=t_j-\sum_{i\le j}g_i\). Let
+\(\mathcal B(S)=\{\ell\ge0:S\cap[2^\ell,2^{\ell+1})\ne\varnothing\}\).
+
+\begin{theorem}[Finite coprime families]\label{thm:main}
+Suppose \(d>0\). The local Hausdorff dimension of \(E_\sigma(S)\) is
+\(d\) and its Fourier dimension is zero. The conclusions on
+divergence and convergence in Theorem~\ref{thm:binary} hold with \(d\)
+in place of \(H\), with the respective series
+\begin{equation}\label{eq:series}
+ \sum_{\ell\in\mathcal B(S)} h(2^\ell)
+ \quad(\sigma=0),\qquad
+ \sum_{n\in S}h(n)\quad(\sigma=1).
+\end{equation}
+\end{theorem}
+For \(S=\mathbb N\) the first series has the convergence behavior of
+\(\sum_n h(n)/n\) by condensation. For a common positive exponent \(g\),
+the dimension in \eqref{eq:dimension} reduces to the positive part of
+\(\min_j(\kappa_j-(j-1)g)/(\kappa_j+g)\) with the bases in increasing
+order. In particular \(2\log 2>\log3\) gives \(d=H\) in
+Theorem~\ref{thm:binary}. A supported probability on which almost
+every point hits every sufficiently late level of the \emph{same}
+subsequence has Fourier coefficients of modulus tending to one on
+the corresponding positive-rate axis, by dominated convergence.
+The support in Theorem~\ref{thm:main} allows different points to hit
+different members of each finite block.
+
+\subsection{Relation to earlier work}
+The Hausdorff dimension calculations build on the companion
+manuscripts \cite{Diagonal,Quotients}. Appendix~\ref{sec:descent}
+derives the polynomial box filtration used in \cite{Quotients} and
+extends the descent to coefficients that vary with the offsets between
+levels. Appendix~\ref{app:counts} proves the local counting estimates
+needed here.
+
+Pollington, Velani, Zafeiropoulos and Zorin
+\cite[Theorem~2, (26) and (28)]{PVZZ} treat a fixed shift and
+restricted denominators. The limsup has measure zero if the radii
+are summable and the Fourier suprema over nonzero multiples of each
+denominator form a summable sequence. Their lacunary specialization gives
+the inverse-log-power obstruction with exponent greater than one.
+Cai and Hambrook \cite[Theorem~1.4.1]{CH} compute the Fourier
+dimension for fixed-shift matrix approximation with summable target
+volumes. On a single axis in \eqref{eq:levels} with \(g_i>0\) their
+scalar formula gives zero for fixed shifts. The elementary estimate
+in Lemma~\ref{lem:axis} gives the same conclusion for moving shifts.
+Our comparison takes place within this common zero value.
+
+Lyons \cite[Theorems~4--5 and Lemma~9]{Lyons} obtained a sharp
+lacunary normality criterion and constructed biased digit blocks;
+the one-base homogeneous inverse-log-log scale is present in that
+work. Pramanik and Zhang \cite{PZ} treat Rajchman measures with
+specified normal and non-normal bases. Salem's entropy criterion for
+uniqueness uses simultaneous approximation of the centers of an
+interval cover \cite[Ch.~VII, \S8]{Kahane}. In our block estimate a
+large family of such multipliers gives a positive trigonometric
+polynomial with exponentially small mean.
+
+The smooth averaging construction belongs to the line of work of
+Kaufman \cite{Kaufman} and Bluhm \cite{Bluhm}. Fraser and Nguyen
+\cite[Theorems~2.1 and 2.6]{FN} obtain Fourier bounds and compact
+Rajchman support for rational approximation with a different supply of
+denominators. Polasek and Rela study admissible gauges on the
+Liouville numbers and construct zero-Fourier-dimensional supports
+with polylogarithmic decay \cite{PR,PR2}. For our two systems the
+arithmetic input to averaging is the number of levels that can
+contribute at a given Fourier frequency. For shifted powers,
+Theorem~\ref{thm:overlap} bounds that number independently of the
+frequency in the relevant range of levels.
+
+Related metric theorems of Tan and Zhou \cite[Theorems~1.8 and~1.10]{TZ} and
+Pavlenkov and Zorin \cite{PaZ} start with a measure satisfying a
+decay hypothesis and count approximations. Here the measure must be
+constructed inside the prescribed common-time exceptional set.
+Ekstr\"om and Persson \cite{EP} study Hausdorff dimension for random
+limsup covers with independent centers. Baker and Sahlsten
+\cite{BS} obtain Fourier decay for self-conformal measures under a
+nonlinearity hypothesis. The deterministic phases in
+\eqref{eq:levels} allow neither independence nor nonlinearity as an
+assumption. Sections~\ref{sec:normal} and~\ref{sec:limits} examine
+normality, slopes, shared primes, and the critical radius.
+
+\section{Convergence and the propagation of moving targets}\label{sec:upper}
+\begin{lemma}[One axis]\label{lem:axis}
+For \(q\ne0\) real, \(y\in\mathbb T\), \(0<\rho<1/4\), and any
+positive finite measure on the line,
+\[
+ \mu\{x:\|qx-y\|<\rho\}
+ \ll \rho\,\mu(\mathbb R)+\sup_{j\in\mathbb Z\setminus\{0\}}
+                                      |\widehat\mu(jq)|.
+\]
+\end{lemma}
+\begin{proof}
+Periodize the function \(\phi((t-y)/\rho)\), where
+\(\phi\in C_c^\infty(\mathbb R)\) is nonnegative and at least one
+on \([-1,1]\). Its coefficients are
+\(\rho e(-jy)\widehat\phi(\rho j)\). Their absolute sum is uniformly
+bounded, and the constant coefficient is \(O(\rho)\). Integrate
+after substituting \(t=qx\).
+\end{proof}
+Apply the lemma with \(q=b_i^n-\sigma\) on a positive-rate axis.
+For a positive power Fourier bound the resulting series of masses
+converges, proving zero Fourier dimension (the Fourier dimension is
+the supremum of \(s\le1\) allowed by decay \(O(|\xi|^{-s/2})\)).
+For the second series of \eqref{eq:series}, regularity and
+\(L(b_i^n-1)\asymp n\) give convergence by Borel--Cantelli.
+
+\begin{lemma}[A block of power targets]\label{lem:block}
+Fix \(b\ge2\) integral, \(v\ne0\) real, \(\gamma,c_0>0\), and any
+sequence \(y_n\). Put \(A_n=\{x:\|vb^n x-y_n\|<c_0e^{-\gamma n}\}\).
+There are \(\delta,\lambda,c>0\) such that for all sufficiently large
+\(N\), \(K=\lfloor(1+\delta)N\rfloor\), \(Q=\lfloor e^{\lambda N}\rfloor\),
+\[
+ \mu\Big(\bigcup_{N\le n\le K} A_n\Big)
+ \ll e^{-cN}\mu(\mathbb R)+
+     \max_{1\le l<Q}|\widehat\mu(lvb^K)|.
+\]
+\end{lemma}
+\begin{proof}
+Choose \(\delta\log16<\lambda<\gamma-\delta\log b\). For a hit at
+level \(n\), \(vb^Kx\) is within
+\(\rho=c_0 e^{-(\gamma-\delta\log b)N}\) modulo one of
+\(z_n=b^{K-n}y_n\). Put \(M=K-N+1\) and partition \(\mathbb T^M\)
+into \(16^M\) congruent boxes. Among the vectors
+\((qz_n)_{N\le n\le K}\), \(1\le q\le Q\), some box contains those
+indexed by a set \(B\) of at least \(Q/16^M\ge e^{cN}\) integers.
+For each hit, each \(q\in B\), and a fixed \(q_0\in B\),
+\[
+     \|(q-q_0)vb^Kx\|\le 1/16+Q\rho<1/8 .
+\]
+Rotate by \(e(-q_0vb^Kx)\) and take real parts. This gives
+\[
+ F(vb^Kx)\ge1/2,\qquad F(t)=\left|\frac1{|B|}\sum_{q\in B}e(qt)\right|^2 .
+\]
+The coefficients of \(F\) are nonnegative and sum to one; its mean
+is \(1/|B|\) and its degree is less than \(Q\). Integrating \(2F\)
+gives the result.
+\end{proof}
+Each dyadic block is covered by a bounded number of blocks of the
+lemma with starting points comparable to its left endpoint.
+Summing over occupied dyadic blocks proves the first convergence
+assertion in Theorem~\ref{thm:main}. For the full sequence, a
+decreasing radial majorant \(f\) with
+\(\int^\infty f(t)\,dt/(t\log t)<\infty\) already suffices, without a
+doubling hypothesis: use the integral test at the geometric sequence
+of values of \(K\), after the substitution \(t=|v|b^K\).
+
+\section{Bounded frequency overlap for shifted powers}\label{sec:overlap}
+
+A Fourier mode of a product of the level-\(n\) bumps for shifted
+powers has frequency \(\sum_j(b_j^n-1)a_j\). Truncating the expansion
+at slightly enlarged coefficient caps reduces the middle-frequency
+estimate to counting the levels that represent a fixed nonzero
+integer.
+
+\subsection{The close-pair argument and its limit}
+
+For \(b_1=2,b_2=3\), write \(\alpha=\log 2\), \(\beta=\log 3\)
+and \(g=\tau\beta\). Let \(n'\) be a second level in
+\((n,(1+\delta)n]\). Equating representations of the same frequency
+gives
+\[
+  2^n(a_n-2^{n'-n}a_{n'})+
+  3^n(b_n-3^{n'-n}b_{n'})
+     =a_n+b_n-a_{n'}-b_{n'}.
+\]
+When \(g<\beta/2\), take \(g<v<\min(\alpha,\beta/2)\). If the
+coefficient caps are enlarged only slightly and \(\delta\) is
+small, the two coefficients on the left and the right-hand side
+are \(O(e^{vn})\). Lemma~\ref{lem:onelevel} for powers, with
+\(u=v\), makes all three expressions zero. Thus across all
+representations in a short block the quantities
+\(a_n2^n=U\), \(b_n3^n=V\), and \(a_n+b_n=S_0\) are fixed.
+The equation \(U2^{-x}+V3^{-x}=S_0\) has at most two real
+solutions: its derivative has at most one root when
+\((U,V)\ne(0,0)\), as holds for a nonzero common frequency.
+
+At \(\tau=1/2\) the separation condition \(2v<\beta\) is already
+incompatible with \(v>g\). In fact close-pair rigidity can fail
+at the cap \(O(3^{n/2})\). Set \(H=\lceil 3^{n/2}\rceil\).
+Put the \(H+1\) residues of \(a2^n\bmod 3^n\), \(0\le a\le H\),
+into \(H\) equal subintervals of \([0,3^n)\). Two residues in
+one subinterval give integers \(A\ne0,B,C\) with
+\[
+  A2^n+B3^n=C,\qquad |A|\le H,\quad |C|\le 3^n/H,
+  \quad |B|\le H+1 .
+\]
+For \(b_{n+1}\in\{0,1\}\), set
+\[
+  a_{n+1}=C-A-B-2b_{n+1},\qquad
+  a_n=A+2a_{n+1},\qquad b_n=B+3b_{n+1}.
+\]
+These give equal shifted-power frequencies at \(n,n+1\), with
+coefficients \(O(H)\) and \(a_n-2a_{n+1}=A\ne0\). The two choices
+of \(b_{n+1}\) give different frequencies because
+\((3^{n+1}-1)-2(2^{n+1}-1)\ne0\), so one choice gives a nonzero
+frequency.
+
+\subsection{The many-level bound}
+
+For pairwise coprime bases \(b_j\ge2\) and caps \(g_j\ge0\), write
+\[
+\begin{gathered}
+  \kappa_j=\log b_j,\qquad t_j=\kappa_j+g_j,\qquad
+  D_j=\kappa_j-\sum_{a<j}g_a,\\
+  m=\min_j D_j,\qquad T=\max_j t_j .
+\end{gathered}
+\]
+Increasing \(t_j\) gives the order for the dimension formula
+\[
+                    d=\max\{0,\min_j D_j/t_j\}.
+\]
+The arithmetic bound holds in any order with \(m>0\).
+
+\begin{theorem}[Bounded overlap]\label{thm:overlap}
+Suppose the bases \(b_1,\ldots,b_k\) are pairwise coprime and
+\(m>0\). For each \(C>0\) there are \(\delta>0\), \(N_0\), and
+\(L_0<\infty\) such that for every \(N\ge N_0\) and every nonzero
+integer \(q\) the representation
+\[
+  q=\sum_{j=1}^k (b_j^n-1)a_j,\qquad
+  a_j\in\mathbb Z,\quad |a_j|\le C e^{g_j n}
+\]
+is possible at at most \(L_0\) distinct integer levels
+\(n\in[N,(1+\delta)N]\).
+\end{theorem}
+
+Here is the binary argument behind the bound. A counterexample
+with many levels in a short block gives equations
+\(q=F_i a_i+G_i b_i\), where \(F_i=2^{s_i}X-1\),
+\(G_i=3^{s_i}Y-1\) and \(s_i=o(N)\) are the offsets from \(N\).
+The coefficients \(2^{s_i},3^{s_i}\) are viewed in the field
+of slow sequences constructed below. Take a minimal-rank space
+\(W\) of solutions containing the representations along an
+infinite subsequence. If \(P\) is its primitive polynomial
+Pl\"ucker vector, the contraction \(Q=\iota_q P\) spans the
+Pl\"ucker line of \(W\cap\ker q\). On this kernel, projection
+to the \(b_i\)'s is injective, and some minor \(Q_{b_J}\) on
+\(r-1\) distinct blocks is nonzero, where \(r=\dim W\).
+Replacing each selected \(b_i\) by \(a_i\) multiplies this
+minor, up to sign, by \(\prod_{i\in J}G_i/\prod_{i\in J}F_i\).
+The products are coprime. The resulting polynomial \(Q_{a_J}\)
+is divisible by \(\prod_{i\in J}G_i\). For a common cap
+\(g<\beta\), Lemma~\ref{lem:identity} thus gives
+\[
+   (r-1)\beta\le w(Q_{a_J})\le \beta+rg .
+\]
+Here \(w(X)=\alpha\) and \(w(Y)=\beta\). This bounds the number
+of selected blocks independently of the number of representations.
+Every unselected row forces the same bounded-weight minor to
+vanish at that row's common zero. The following lemma makes
+both steps work for general polynomial rows.
+
+\begin{lemma}[Polynomial rows]\label{lem:row-overlap}
+Let \(B_1,\ldots,B_\ell\ge2\) be pairwise coprime, write
+\(X=(X_1,\ldots,X_\ell)\), and use the weights
+\[
+                   w(X^\nu)=\sum_{j=1}^{\ell}\nu_j\log B_j .
+\]
+Let \(R\) be a row of \(k\) nonzero rational polynomials in \(X\)
+whose entries vanish at \((1,\ldots,1)\).
+Fix \(g_1,\ldots,g_k\ge0\). Suppose there is \(\eta>0\) such
+that over every coefficient extension \(K/\mathbb Q\), the
+primitive polynomial Pl\"ucker vector \(P'\) of every positive-rank
+subspace of \(\ker R\) over \(K(X)\) satisfies
+\[
+   \max_J\left(w(P'_J)-\sum_{j\in J}g_j\right)\ge\eta .
+\]
+Then the conclusion of Theorem~\ref{thm:overlap} holds for
+representations with these caps and with frequency
+\[
+                    q=\sum_j R_j(B_1^n,\ldots,B_\ell^n)a_j .
+\]
+\end{lemma}
+
+\begin{proof}
+Set \(T_R=\max_j(w(R_j)+g_j)\). For a fixed integer \(L\) to
+be chosen, suppose there are no \(\delta,N_0\) for which every
+nonzero \(q\) has fewer than \(L\) representing levels in
+\([N,(1+\delta)N]\) for \(N\ge N_0\). Successively take
+\(\delta\) tending to zero and \(N\) tending to infinity to
+obtain \(L\) distinct offsets \(s_i(N)=o(N)\) with a common
+frequency \(q_N\ne0\) at the levels \(N+s_i(N)\).
+
+Write \(c_{ij}(N)=B_j^{s_i(N)}\). A diagonal subsequence
+over the countable rational polynomials in the \(c_{ij}\)
+makes each polynomial evaluation eventually zero or eventually
+nonzero. Take the fraction field \(K\) of the ring these
+sequences generate modulo eventual equality. Every element
+of \(K\) is a fixed rational expression in inputs of height
+\(o(N)\), so its height is \(o(N)\); restriction to any infinite
+subsequence is injective. Over \(F=K(X_1,\ldots,X_\ell)\)
+write \(R_i(X)=R(c_{i1}X_1,\ldots,c_{i\ell}X_\ell)\).
+The equations for \(z_N=((a_{ij,N})_{i,j},q_N)\) are the
+specializations of
+\[
+                       R_i(X)a_i=q\qquad(1\le i\le L).
+\]
+Choose \(W\) of minimal rank containing infinitely many of the
+\(z_N\) upon specialization and restrict to those indices.
+It lies in the joint kernel of these equations, since otherwise
+intersection with that kernel would lower its rank. This
+uses rank stability in Lemma~\ref{lem:identity}. The bounds
+for \(z_N\) have slopes \(g_j\) on each \(a_{ij}\) and \(T_R\)
+on \(q\). Lemma~\ref{lem:identity} applies with generators \(B_j\).
+
+Let \(P\) be the primitive polynomial Pl\"ucker vector of
+\(W\). As \(q_N\ne0\), the contraction \(Q=\iota_q P\) is
+a nonzero polynomial Pl\"ucker vector for \(W_0=W\cap\ker q\).
+Filter \(W_0\) by zeroing the blocks \(a_i\) successively:
+put \(K_0=W_0\), \(K_i=K_{i-1}\cap\ker\pi_i\), where
+\(\pi_i\) projects to block \(i\). Then \(K_L=0\). The image
+\(V_i=\pi_i(K_{i-1})\) lies in \(\ker R_i\) and has rank
+\(r_i=\dim K_{i-1}-\dim K_i\le k-1\).
+Let \(E=\{i:r_i>0\}\). Diagonal substitution \(X_j\mapsto
+c_{ij}X_j\) preserves weights and polynomial primitivity, so
+the rank condition applies to the primitive Pl\"ucker vectors
+\(P^{(i)}\) of \(V_i\).
+
+For minors using exactly \(r_i\) slots \(J_i\) from each
+block \(i\), a basis adapted to the filtration makes the
+determinants block triangular. For \(I=\bigcup_i\{(i,j):j\in
+J_i\}\), it gives
+\[
+                 Q_I=\pm f\prod_{i\in E}P^{(i)}_{J_i}
+\]
+with a common nonzero \(f\in F\). Indeed the projected basis
+in each block has Pl\"ucker vector proportional to \(P^{(i)}\).
+The products of all the choices have joint gcd one: for each
+irreducible polynomial, pick a minor avoiding it in each
+primitive tuple. As all \(Q_I\) are polynomial, \(f\) is
+polynomial as well. Choose the maximizing \(J_i\) separately
+in each \(i\in E\); the empty product is allowed. By the cap
+on \(P_{\{q\}\cup I}\) and additivity of weights under products,
+\[
+      |E|\eta\ \le\ w(Q_I)-\sum_{(i,j)\in I}g_j\ \le\ T_R .
+\]
+In particular \(w(Q_I)\le A_R:=T_R+(k-1)(T_R/\eta)\max_j g_j\).
+
+For each \(i\notin E\), the forms \(q\) and \(R_i(X)a_i\)
+agree on \(W\); their contractions with \(P\) are equal.
+Consequently \(Q_I\) is a signed sum of terms
+\(R_{ij}(X)P_{I\cup\{(i,j)\}}\), where \(R_{ij}\) is entry
+\(j\) of \(R_i\). It vanishes at the node \(X_j=c_{ij}^{-1}\)
+because every entry of \(R\) vanishes at \((1,\ldots,1)\).
+Specialize all coefficients at one sufficiently late \(N\) so
+that \(Q_I\) remains nonzero and the node identities hold.
+Its restriction to \((B_1^{-x},\ldots,B_\ell^{-x})\) is a
+nonzero real sum of at most
+\[
+                M_R=\#\{\nu\in\mathbb Z_{\ge0}^{\ell}:
+                                  w(X^\nu)\le A_R\}
+\]
+exponentials with distinct exponents, by pairwise coprimality.
+A sum of \(M'\) exponentials with distinct real exponents and
+nonzero coefficients has at most \(M'-1\) distinct real zeros.
+Indeed, divide by one exponential and apply Rolle's theorem
+and induction to the derivative; a single exponential has
+no zeros. The \(L-|E|\) distinct offsets of the unselected
+blocks are among the zeros. Choosing \(L>T_R/\eta+M_R-1\)
+contradicts this count.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:overlap}]
+Apply Lemma~\ref{lem:row-overlap} with \(B_j=b_j\),
+\(R_j=X_j-1\), and \(\eta=m\). To verify the rank condition,
+suppose a positive-rank subspace of the kernel, with primitive
+polynomial Pl\"ucker vector \(P'\) of rank \(r'\), had smaller
+surplus. For every \(I\subseteq\{1,\ldots,j-1\}\) of size \(r'\),
+\[
+         w(P'_I)<m+\sum_{a<j}g_a\le\kappa_j .
+\]
+These minors omit \(X_j\). In the component \(J\) of
+\(\iota_R P'=0\) with \(|J|=r'-1\) and
+\(J\subseteq\{1,\ldots,j-1\}\), all terms indexed below \(j\)
+omit \(X_j\) as well. Starting at \(j=k\) and descending,
+the terms indexed above \(j\) have already vanished. The
+remaining term with index \(j\) is, up to sign,
+\((X_j-1)P'_{J\cup\{j\}}\), which has positive degree in
+\(X_j\) if the minor is nonzero. Hence that minor is zero.
+The downward induction kills every minor, a contradiction.
+\end{proof}
+
+If \(m>0\), increasing all \(g_j\) by a sufficiently small positive
+constant preserves \(m>0\). Thus the theorem applies after the
+strict enlargement needed for smooth Fourier truncation. A range
+\(n\asymp\log(e+|q|)\), with fixed comparison constants, is covered
+by a fixed number of blocks of ratio \(1+\delta\). For sufficiently
+large \(|q|\), the number of representing levels in the whole
+range is therefore uniformly bounded.
+\section{Construction of the endpoint measures}\label{sec:construction}
+
+\subsection{Weighted averaging and compact support}
+Write \(L(\xi)=\log(e+|\xi|)\) and \(H(\xi)=h(L(\xi))\). By changing \(h\) on a bounded interval we may assume it is bounded and nonincreasing on \([1,\infty)\). Doubling gives constants \(a,A>0\) with \(h(t)\ge a t^{-A}\) for \(t\ge1\) and
+\begin{equation}\label{eq:gauge-shifts}
+  H(\xi-\eta)\le C(1+|\eta|)^A H(\xi).
+\end{equation}
+Indeed \(h(s)/h(t)\ll(t/s)^A\) for \(1\le s\le t\), and \(L(\xi)\le L(\xi-\eta)+L(\eta)\).
+
+\begin{lemma}[Weighted averaging]\label{lem:averaging}
+Work on \(\mathbb T=\mathbb R/\mathbb Z\) or on \(\mathbb R\), and let \(U\) be an open coordinate interval of length less than \(1/4\). For an infinite set of positive integer indices \(n\), let \(P_n\) be smooth and nonnegative, with \(\operatorname{supp}P_n\cap U\subset V_n\) for open level sets \(V_n\). Suppose there are bounded positive weights \(w_n\) with \(\sum_n w_n=\infty\), and for every smooth \(f\) of compact support in \(U\),
+\begin{equation}\label{eq:localized-averaging}
+  \sum_n w_n\big|\widehat{fP_n}(\xi)-\widehat f(\xi)\big|\le C_f H(\xi)
+\end{equation}
+on the corresponding frequency space (\(\mathbb Z\) or \(\mathbb R\)). Then some compact subset of \(U\cap\limsup_n V_n\) carries a probability \(\mu\) with \(\widehat\mu(\xi)=o(H(\xi))\) at real frequencies, using the lift to \(U\) in the torus case.
+
+If for some \(0<d\le1\) and every \(0<r<d\) one also has
+\begin{equation}\label{eq:averaging-frostman}
+  \int_I P_n(x)\,dx\le C_{K,r}|I|^r
+  \qquad (I\subset K,\ K\text{ a compact subinterval of }U)
+\end{equation}
+uniformly in \(n\), the same \(\mu\) has finite \(s\)-energy for every \(0<s<d\). If instead one assumes local weak convergence \(P_n\,dx\to dx\) and \eqref{eq:averaging-frostman}, there is such a compactly supported probability with all these energies and \(\widehat\mu(\xi)\to0\).
+\end{lemma}
+
+\begin{proof}
+For a finite set \(F\) of indices, define its weight and weighted average by
+\[
+     W_F=\sum_{n\in F}w_n,\qquad G_F=W_F^{-1}\sum_{n\in F}w_nP_n .
+\]
+The Fourier norm of \(fG_F-f\), given by
+\(\sup_\xi |\widehat{fG_F-f}(\xi)|/H(\xi)\), is at most \(C_f/W_F\).
+Arbitrarily large \(W_F\) are available in every tail.
+
+For \(0<s<1\), use the norm with square
+\[
+  \|\lambda\|_s^2=\int(1+|\xi|)^{s-1}|\widehat\lambda(\xi)|^2\,d\sigma(\xi),
+\]
+where \(\sigma\) is counting measure on \(\mathbb Z\) or Lebesgue measure on \(\mathbb R\). On positive measures supported in \(U\) this is comparable to the \(s\)-energy. To see this, integrate the triangular kernels \((1-|x|/t)_+\) against \(t^{-s-1}\,dt\) over \(0<t<1/2\), periodizing in the torus case. On differences of points in \(U\) the integrated kernel is comparable to \(|x|^{-s}\). Its Fourier weights are
+\[
+  \int_0^{1/2}t^{-s}\left(\frac{\sin(\pi t\xi)}{\pi t\xi}\right)^2dt
+     \asymp (1+|\xi|)^{s-1},
+\]
+with the quotient interpreted as \(1\) at zero. For each \(t>0\) the Fourier kernel is integrable or summable, and Tonelli applies to the nonnegative weights in the energy identity.
+
+Given \(0<s<s'<d\), \eqref{eq:averaging-frostman} at an exponent \(r>s'\) bounds \(\|fG_F\,dx\|_{s'}\) uniformly for fixed nonnegative \(f\). Indeed, integrating ball masses against \(v^{-s'-1}\,dv\) bounds the \(s'\)-energy. One may take a compact subinterval \(K\subset U\) containing the support of \(f\) in its interior when estimating small balls. The squared \(s\)-norm of the difference from \(f\,dx\) above frequency \(R\) is \(O_f((1+R)^{s-s'})\). Below \(R\), the Fourier norm bound tends to zero as \(W_F\to\infty\). Thus \(fG_F\,dx\to f\,dx\) in the \(s\)-norm as \(W_F\to\infty\).
+
+Start with a smooth probability density \(f_0\ge0\) of compact support in \(U\). Inductively choose a finite \(F_j\) beyond all previously used indices and set
+\[
+ f_j=\frac{f_{j-1}G_{F_j}}{\int f_{j-1}G_{F_j}} .
+\]
+For \(f=f_{j-1}\) the denominator tends to \(1\) by the bound at \(\xi=0\), and normalization preserves convergence in the Fourier and energy norms. Choose \(W_{F_j}\) so large that the normalized difference has both norms at most \(2^{-j}\), using the \(s_j\)-norm with \(s_j\uparrow d\) when energies are required. The supports are nested compact sets, and \(\operatorname{supp} f_j\subset \bigcup_{n\in F_j}V_n\). A weak limit of a subsequence of the probabilities \(f_j\,dx\) is supported on their intersection. Its weighted Fourier transform is the uniform limit of \(\widehat f_j/H\), so vanishes at infinity by smoothness of each \(f_j\) and the polynomial lower bound on \(h\). For each \(s<d\), the \(s\)-norms are bounded by summing the differences, since \(s_j\ge s\) eventually. Fatou's lemma yields finite \(s\)-norm for the limit.
+
+Under the qualitative hypotheses, for fixed \(f\) the transforms \(\widehat{fP_n}-\widehat f\) tend weakly to zero in \(c_0(\mathbb Z)\) or \(C_0(\mathbb R)\): they converge pointwise and are uniformly bounded, and one can test against summable sequences or finite measures, respectively. Mazur's lemma supplies finite convex combinations arbitrarily small in the supremum norm in every tail. Local weak convergence and the same high-frequency truncation in the energy norm give \(\|fP_n-f\|_s\to0\), and this remains true for mixtures from a sufficiently late tail. Use these convex combinations in place of \(G_{F_j}\) in the iteration, with the ordinary Fourier supremum norm in place of the weighted norm.
+
+Finally, in the torus case let \(\chi\) be a fixed smooth cutoff in \(U\) equal to one on \(\operatorname{supp} f_0\). For \(\xi=k+t\), \(k\in\mathbb Z\), \(0\le t<1\), the real-frequency transform of the lifted measure at \(\xi\) is the \(k\)-th torus coefficient of \(\chi(x)e^{-2\pi i t x}\mu\). The smooth periodic multipliers have rapidly decreasing Fourier coefficients, uniformly in \(t\). By \eqref{eq:gauge-shifts} the convolution divided by \(H(k)\) has uniformly small tails, and each fixed shift of the weighted transform tends to zero. This proves the little-\(o\) estimate uniformly in \(t\) since \(H(k+t)\asymp H(k)\). The same argument with weight \(1\) gives the qualitative limit.
+\end{proof}
+
+The construction also permits a different family of densities at each stage if their level supports lie in the same prescribed \(V_n\). At stage \(j\) it suffices to have \eqref{eq:localized-averaging} with divergent weights for that family and \eqref{eq:averaging-frostman} for one exponent \(r_j>s_j\). The choice of finite sets advancing to infinity and the summability of the two errors are unchanged.
+
+For periodic \(P_n\) of integral one, it suffices to prove the estimate on their unlocalized coefficients,
+\begin{equation}\label{eq:unlocalized-averaging}
+ \sum_n w_n\big|\widehat P_n(k)-\mathbf 1_{\{k=0\}}\big|\ll H(k)
+ \qquad(k\in\mathbb Z).
+\end{equation}
+Convolving with \(\widehat f\) and applying \eqref{eq:gauge-shifts} gives \eqref{eq:localized-averaging}. For either estimate, a bound \(O((1+|\xi|)^{-2})\) when \(|\xi|\ge e^{Cn}\) sums over \(O(L(\xi))\) indices with bounded weights. For the remaining indices, \(n\ge cL(\xi)\) for a fixed \(c>0\) and all sufficiently large \(|\xi|\). An error of size \(O(e^{-an})\) there for some \(a>0\) also sums to \(O(H(\xi))\), as does the first bound, by the polynomial lower bound for \(h\). It suffices to bound the difference uniformly on any exceptional indices and to show that their total weight is \(O(H(\xi))\).
+
+\subsection{The level multipliers}
+Order the axes by \(t_i=\kappa_i+g_i\), where \(\kappa_i=\log b_i\), and put
+\[
+ \begin{aligned}
+ D_j&=\kappa_j-\sum_{i<j}g_i, & m&=\min_j D_j,\\
+ T&=\max_i t_i, & d&=\left[\min_j D_j/t_j\right]_+.
+ \end{aligned}
+\]
+Assume \(m>0\). Write \(Q_{i,n}=b_i^n\) for powers or \(Q_{i,n}=b_i^n-1\) for recurrence. Let \(\rho_{i,n}=c_i e^{-g_i n}\) and take \(\phi\ge0\) smooth, of integral one, supported in \((-1/4,1/4)\). Define
+\[
+ B_n(x)=\prod_i\sum_{a\in\mathbb Z}\rho_{i,n}^{-1}
+      \phi\!\left(\frac{Q_{i,n}x-y_{i,n}-a}{\rho_{i,n}}\right).
+\]
+Its support is inside the open simultaneous hit set. Each factor has a Fourier expansion with coefficients \(\widehat\phi(\rho_{i,n}\ell_i)e^{-2\pi i\ell_i y_{i,n}}\) at frequencies \(Q_{i,n}\ell_i\), and absolute coefficient sum \(O(e^{g_i n})\). Fix \(0<u<m\) and choose \(\varepsilon>0\) sufficiently small that \(u+\sum_{i<j}(g_i+\varepsilon)<\kappa_j\) for all \(j\). Omitting terms with any \(|\ell_i|>e^{(g_i+\varepsilon)n}\) costs \(O_A(e^{-An})\) in total absolute coefficient mass for every \(A>0\). This follows from the Schwartz bound on \(\widehat\phi\), because each omitted coordinate satisfies \(\rho_{i,n}|\ell_i|>c_i e^{\varepsilon n}\), and the remaining factors have at most exponential absolute coefficient sums.
+
+For large \(n\), Lemma~\ref{lem:onelevel} excludes nonzero retained vectors of frequency at most \(e^{un}\) in absolute value. Define
+\[
+   Z_n=\widehat B_n(0)=1+O_A(e^{-An}),\qquad P_n=B_n/Z_n .
+\]
+This probability density has \(|\widehat P_n(k)|\le1\) and satisfies
+\begin{equation}\label{eq:level-frequency-bounds}
+ \begin{aligned}
+ |\widehat P_n(k)|&\ll_A e^{-An} &&(0<|k|\le e^{un}),\\
+ |\widehat P_n(k)|&\ll |k|^{-2} &&(|k|\ge e^{Cn}),
+ \end{aligned}
+\end{equation}
+where \(C>T\) is fixed. For the second estimate, derivatives of order \(J\) have \(L^1\) norm \(O_J(e^{(\sum_i g_i+JT)n})\). Each periodized factor has only a bounded number of nonzero translates at any point, also when \(g_i=0\). Integrate by parts with \(J\) such that \(J(C-T)>2C+\sum_i g_i\). In the intermediate range, if \(k\) has no retained representation, the truncation bound is still \(O_A(e^{-An})\). All these estimates are uniform in the phases.
+
+The densities satisfy \(P_n\ll e^{(\sum_i g_i)n}\), so Lemma~\ref{lem:counts} gives \eqref{eq:averaging-frostman} for \(0<r<d\). The first estimate in \eqref{eq:level-frequency-bounds} gives weak convergence to Haar measure. By the qualitative assertion of Lemma~\ref{lem:averaging}, every infinite sequence of available levels gives compactly supported probabilities with all \(s\)-energies for \(0<s<d\). The energy criterion for Hausdorff dimension gives the local lower bound \(d\). The prefix covers in Appendix~\ref{app:counts} give the upper bound.
+
+For the binary--ternary rate \(g_1=g_2=\tau\log3\), the second ratio is the smaller one since \(2\log2>\log3\). It equals \((1-\tau)/(1+\tau)\).
+
+\subsection{The two weight sums}
+Let \(S\subset\mathbb N\) be the set of available levels. For powers, fix geometric blocks \([N_j,N_{j+1})\) as in Lemma~\ref{lem:block}. From each occupied block select one \(n\in S\) and give it weight \(h(n)\). The sum of the weights diverges precisely when
+\begin{equation}\label{eq:sparse-powers-construction}
+    \sum_{j:\,S\cap[N_j,N_{j+1})\ne\varnothing} h(N_j)=\infty.
+\end{equation}
+For each \(k\ne0\) the intermediate range in \eqref{eq:level-frequency-bounds} is contained in an interval \(a_0 L(k)\le n\le a_1 L(k)\) for fixed \(0<a_0<a_1\). This interval meets a bounded number of geometric blocks. Each selected level in it carries weight \(O(H(k))\). The two frequency bounds therefore give \eqref{eq:unlocalized-averaging}. Any two fixed geometric partitions give equivalent occupancy criteria: each block in one meets a bounded number in the other, and the weights of intersecting blocks are comparable. For \(S=\mathbb N\), each block contributes \(\asymp h(N_j)\) to \(\sum_{n\ge1}h(n)/n\) by monotonicity and doubling.
+
+For recurrence, give every \(n\in S\) weight \(h(n)\), and require
+\begin{equation}\label{eq:sparse-recurrence-construction}
+          \sum_{n\in S} h(n)=\infty.
+\end{equation}
+Take \(\varepsilon\) in the truncation small enough also to use Theorem~\ref{thm:overlap} with the enlarged rates \(g_i+\varepsilon\), which still have positive minimum \(m\) in the chosen order. The intermediate range of levels meets a bounded number of the short multiplicative blocks in that theorem, so at most a bounded number of levels there have a retained representation of \(k\ne0\). Each carries weight \(O(H(k))\). The other intermediate levels and the low and high ranges give the summable errors in \eqref{eq:unlocalized-averaging}.
+
+For either divergent sum, Lemma~\ref{lem:averaging} produces one compactly supported probability in every open parameter interval with the asserted little-\(o\) bound and every subcritical energy. With a shrinking coordinate \(g_i>0\), Lemma~\ref{lem:block} gives a summable mass bound over the occupied blocks when \eqref{eq:sparse-powers-construction} converges, and Lemma~\ref{lem:axis} gives one over \(S\) when \eqref{eq:sparse-recurrence-construction} converges. Thus convergence in either case forces zero mass under the big-\(O\) bound. The one-axis estimate also excludes power Fourier decay on either limsup, by summability of \(e^{-g_i n}\) and of \(Q_{i,n}^{-\delta}\) for every \(\delta>0\). This completes the proof of Theorem~\ref{thm:main}.
+\section{Absolute normality and exceptional slopes}\label{sec:normal}
+\subsection{Radial decay and Weyl sums}
+For integers \(b\ge2\) and \(a\ne0\), define the nonnegative function
+\[
+ D_{a,b}(x)=\sum_{N\ge1}\frac1{N^3}
+       \left|\sum_{n=1}^N e(ab^nx)\right|^2 .
+\]
+Finiteness implies that the inner sum is \(o(N)\): a deviation of size
+\(\epsilon N\) persists at size at least \(\epsilon N/2\) over the
+next \(\lfloor\epsilon N/2\rfloor\) indices. Infinitely many
+deviations give disjoint such intervals, each contributing a fixed
+positive amount. By Weyl's criterion, finiteness for every \(a,b\)
+implies absolute normality.
+
+Take \(h(u)=1/u\) on the recurrence side of Theorem~\ref{thm:main}
+with all levels available. Its measure is almost everywhere
+absolutely normal. Indeed, the decreasing Fourier majorant
+\(f(t)\ll1/\log(e+t)\) satisfies \(\sum_{m\ge2}f(m)/(m\log m)<\infty\).
+Periodization and \cite[Corollary DEL and Appendix A]{PVZZ} apply
+in each base. In contrast, Lemma~\ref{lem:block} excludes every
+decreasing radial majorant satisfying this sum for a measure giving
+positive mass to the powers limsup. If an active power axis has fixed
+phase \(p/q\in\mathbb Q\), \(q\ge1\), then \(D_{q,b}(x)=\infty\)
+at every hitting point. In fact, along successful levels \(n\), all
+\(e(qb^{n+j}x)\) tend uniformly to \(1\) for \(0\le j\le cn\)
+and \(0<c<g/\log b\). Their block sums contradict the difference
+of two \(o(n)\) prefix sums. For other fixed phases, direct control
+of the Weyl sums gives a different conclusion.
+
+\begin{theorem}[Typical fixed phases]\label{thm:del}
+Fix \(0<\tau<1\) and a regular \(h\) with \(\sum_n h(n)/n=\infty\).
+For Haar-almost every fixed \(y\in\mathbb T^2\), in every open
+interval the power measure of Theorem~\ref{thm:binary} can also
+satisfy \(\int D_{a,b}\,d\mu_y<\infty\) for all \(a,b\) above.
+\end{theorem}
+\begin{proof}
+Work on a short arc that lifts into the interval by an integer
+translation. For positive summable \(c_{a,b}\), put
+\(D=\sum c_{a,b}D_{a,b}\). This lower semicontinuous function
+belongs to \(L^1(\mathbb T)\), since orthogonality gives
+\(\int D_{a,b}\,dx=\sum_N N^{-2}\). The unnormalized product
+\(B_n(x;y)\) of Section~\ref{sec:construction} satisfies
+\(\int_{\mathbb T^2}B_n(x;y)\,dy=1\), and
+\(Z_n(y)=\int B_n(x;y)\,dx\to1\) uniformly in \(y\).
+For a fixed jointly smooth stage density \(f(x,y)\), normalized on
+each fiber, put
+\[
+ m_n(x)=\int_{\mathbb T^2} f(x,y)B_n(x;y)/Z_n(y)\,dy,\qquad
+ m(x)=\int_{\mathbb T^2} f(x,y)\,dy .
+\]
+The level measures tend weakly to Lebesgue measure on each fiber,
+so \(m_n\,dx\to m\,dx\) weakly by dominated convergence.
+Also \(0\le m_n\le2\|f\|_\infty\) eventually, by averaging the
+unnormalized bumps in the phase. Approximation in \(L^1(dx)\) by
+continuous functions gives \(\int Dm_n\,dx\to\int Dm\,dx\).
+
+Use identical levels and convex weights for all \(y\) in each
+application of Lemma~\ref{lem:averaging}. Its Fourier bounds and
+intermediate energy bounds are uniform for this compact smooth family
+of \(f(\cdot,y)\): the low modes converge uniformly, the ball
+estimates are independent of \(y\), and the smooth seminorms are
+bounded. For any mixture sufficiently far out, its fiber masses
+\(B(y)\) before the final division tend uniformly to one. This
+division changes the averaged integral against \(D\) by at most
+\(2\|f\|_\infty\|D\|_1\sup_y|1/B(y)-1|\). Thus, at stage \(j\)
+one can take the lower cutoff so large that the averaged integral
+increases by at most \(2^{-j}\), retaining the usual energy
+tolerances. Then take enough terms to meet the Fourier tolerance.
+The new density is again jointly smooth. The fiberwise weak limits
+are measurable in \(y\), as can be seen by testing against continuous
+functions. Lower semicontinuity and Fatou's lemma give
+\(\int\!\int D\,d\mu_y\,dy\le\int Dm_0\,dx+\sum_j2^{-j}\).
+The countable intersection over an interval basis proves the claim.
+\end{proof}
+
+\subsection{Power targets on a line of prescribed slope}
+Write \(\alpha=\log2,\ \beta=\log3,\ c=\beta-\alpha\), and replace
+the two power frequencies by \(2^n,\theta3^n\), \(\theta>0\), with
+common window \(e^{-\gamma n}\). Put \(r=\beta+\gamma\).
+\begin{theorem}[Slope fibers]\label{thm:slopes}
+For each positive algebraic \(\theta\), and for Lebesgue-almost
+every \(\theta>0\), the powers conclusion of
+Theorem~\ref{thm:binary} holds for arbitrary moving phases and
+every \(0<\gamma<\beta\), with \(H=(\beta-\gamma)/r\).
+There is also a residual set of positive transcendental slopes on
+which, for zero phases and every \(\gamma>c\), the local Hausdorff
+dimension is \(\alpha/r\). In every interval these latter fibers
+support a compactly supported probability with
+\(\widehat\mu(\xi)=o(1/\log\log|\xi|)\) and all energies below
+\(\alpha/r\).
+\end{theorem}
+\begin{proof}
+First we prove the one-level separation needed for the typical and
+algebraic slopes. Fix \(0<u<\alpha,\ v>0,\ u+v<\beta\).
+A violation has
+\[
+ X=2^na,\quad Y=3^nb,\quad |a|,|b|\ll e^{vn},\qquad
+                 |X+\theta Y|\ll e^{un},\quad(a,b)\ne(0,0).
+\]
+The coordinate axes are impossible eventually. For algebraic
+\(\theta\), use the forms \(X+\theta Y,X\) at infinity and the two
+coordinate forms at both 2 and 3. Their product of local absolute
+values is \(O(e^{(u+v-\beta)n})\). Since the height is at most
+exponential in \(n\), the \(S\)-adic Subspace Theorem
+\cite{Schlickewei} confines solutions to finitely many rational
+lines. Dividing by a common integer factor only reduces this product,
+by the product formula outside these places. On a line where
+\(X+\theta Y\) does not vanish, its modulus is a fixed positive
+multiple of \(|X|\ge2^n\). A cancelling rational line requires
+\(\theta=P/Q\in\mathbb Q\), and \(3^n\mid Qa\) is impossible for
+large \(n\).
+
+On a compact positive slope interval, a violation requires
+\(0<|b|\ll e^{(v-c)n}\). For each such \(b\) there are
+\(O(|b|e^{cn})\) possible \(a\)'s, each cutting out a slope
+interval of length \(O(e^{(u-\beta)n}/|b|)\). The total length
+is \(O(e^{(u+v-\beta)n})\). Borel--Cantelli and a countable choice
+of rational margins and integer constants yield the stated
+separation simultaneously for all admissible exponents at almost
+every slope.
+
+The tube argument in Appendix~\ref{app:counts} takes lattice points
+in numerator coordinates and permits real direction vectors.
+For the two-coordinate tube one can take any
+\(u<\min(\alpha,\beta-\gamma)\) and \(v>\gamma\) sufficiently close
+to \(\gamma\); for a single coordinate the gap follows from its
+spacing. Thus the same prefix covers and ball estimates give the
+upper dimension and all subcritical uniform Frostman bounds. On
+the line multiply the bump product \(P_n\) by any smooth compactly
+supported \(f\). Its Fourier transform is a sum of translates of
+\(\widehat f\) at \(2^na+\theta3^nb\). Truncate at \(e^{vn}\);
+the sum of the omitted amplitudes is exponentially small to
+arbitrary order by smoothness. The retained absolute sum is
+\(O(e^{2\gamma n})\). Below \(e^{un/2}\) all nonconstant modes
+are at distance \(\gg e^{un}\), so
+\(|\widehat{fP_n}-\widehat f|\ll_{f,A} e^{-An}\) for every \(A\).
+Above \(e^{C n}\), integration by parts gives \(O_f(|\xi|^{-2})\)
+on choosing \(C\) sufficiently large. Between these ranges use
+bounded local mass. At a fixed frequency the middle levels satisfy
+\(n\asymp L(\xi)\); their weights \(h(n)/n\) sum to \(O(h(L(\xi)))\).
+The summable tails satisfy the same bound by regularity.
+Lemma~\ref{lem:averaging} gives sufficiency and Lemma~\ref{lem:block}
+gives necessity on the first axis.
+
+For the second assertion, the binary windows have length
+\(O(e^{-(\alpha+\gamma)n})=o(3^{-n})\); each therefore meets only
+\(O_\theta(1)\) ternary windows. On a bounded interval this gives
+\(O(2^n)\) covers of length \(O_\theta(e^{-rn})\), hence dimension
+at most \(\alpha/r\); compare \cite[\S3.1.1, Lemma~2]{Tapia}.
+For an integer \(\Gamma\ge\gamma\) call a level good if, for some
+positive integer \(p_n\),
+\[
+       |\theta-p_n(2/3)^n|<e^{-(\alpha+\Gamma)n}/n .
+\]
+Choose \(\eta>0\) with \(\eta\alpha<c\), let \(B_m=\lfloor\eta m\rfloor\),
+and use the net \(q2^{B_m}(2/3)^m,\ q\ge1\). Its mesh is at most
+\(e^{-(c-\eta\alpha)m}\) and its centers are exact at all
+\(m\le n\le m+B_m\), with integers \(p_n=q2^{B_m-(n-m)}3^{n-m}\).
+For \(C_1>(1+\eta)(\alpha+\Gamma)\), slope intervals of radius
+\(e^{-C_1m}\) about the centers keep the whole block good for large
+\(m\). Inside any slope interval these blocks can be nested with
+\(m'=\lceil C_2m\rceil,\ C_2>1+\eta,\ C_2(c-\eta\alpha)>C_1\):
+the next mesh is smaller than one third the current radius. With
+weights \(w_n=1/(n\log(n+2))\) each block contributes
+\(\gg1/\log m\); the successive logarithms grow linearly in the
+block number. The condition that some finite tail of good indices
+has total weight exceeding a given bound is therefore open and
+dense. Intersect over integral bounds, starting indices and
+\(\Gamma\ge1\), and remove the countable algebraic slopes.
+
+On a bounded parameter interval at a good level, the centers
+\(x_j=jp_n/(3^n\theta)\) differ from \(j/2^n\) by
+\(O_\theta(e^{-(\alpha+\Gamma)n}/n)\) for \(j=O(2^n)\).
+Bumps of sufficiently small fixed radius times \(e^{-rn}\) around
+them lie strictly inside both tests. Give each bump mass equal to
+the period \(\Delta_n=p_n/(3^n\theta)\asymp2^{-n}\).
+The mass of an interval of length \(\ell\ge e^{-rn}\) is
+\(O(\ell+2^{-n})\), and the density on finer scales is
+\(O(e^{(r-\alpha)n})\). These bounds give every ball exponent below
+\(\alpha/r\). Nonzero Fourier modes of the periodic multiplier are
+multiples of \(1/\Delta_n\) and their total absolute amplitude is
+\(O(e^{(r-\alpha)n})\). Localizing by \(f\) gives the preceding
+low and high bounds with \(u=\alpha\) in the low range. The middle
+weights sum to \(O(1/\log L(\xi))\). Apply Lemma~\ref{lem:averaging}
+on the divergent set of good levels. The finite energies give the
+matching lower dimension.
+\end{proof}
+\section{Where the hypotheses matter}\label{sec:limits}
+
+\subsection{The shared-prime pair (2,6)}
+
+Write $\alpha=\log 2$, $\kappa=\log 3$, $\beta=\log 6$, and take
+common fractional radius $\delta_n=e^{-gn}$ with $g>0$. Put
+\[
+ d(g)=\min\left\{\frac{\alpha}{\alpha+g},
+                          \frac{\beta-g}{\beta+g}\right\}.
+\]
+For shifted powers, the local Hausdorff dimension is $d(g)$ for every
+phase sequence and $0<g<\beta$. In this range the sharp criterion is
+$\sum_n h(n)=\infty$. Divergence gives a probability on a compact subset
+in every open interval with $\widehat\mu(\xi)=o(h(\log(e+|\xi|)))$
+and finite $s$-energy for all $0<s<d(g)$. Convergence forces zero limsup
+mass for every finite positive measure with the corresponding big-$O$
+decay, by Lemma~\ref{lem:axis}.
+
+For the level estimates, let $A_n=2^n-1$, $B_n=6^n-1$, and write
+$B_n=3^n A_n+(3^n-1)$. Choose $g<v<\beta$. If $|a|,|b|\ll e^{vn}$ and
+$|A_na+B_nb|\ll e^{un}$ for $0<u<\min(\alpha,\beta-v)$, then
+$|b|\ll e^{(v-\kappa)n}$. For $v<\kappa$ this gives $b=a=0$ eventually.
+For $v\ge\kappa$ rewrite the frequency as
+\[
+ (3^n-1)b+(2^n-1)(a+3^nb).
+\]
+In the order $(3,2)$ the coefficient exponents are $v-\kappa,v$.
+The inequalities $u<\kappa$ and $u+v-\kappa<\alpha$ allow a strict
+margin in Lemma~\ref{lem:onelevel}, so both coefficients vanish.
+The same gap on singletons follows from their grid frequencies. The
+gaps give the low-frequency estimate for the smooth product bumps,
+and integration by parts gives their high-frequency estimate. The
+same gaps on enlarged transverse boxes give the
+two-grid counts of Lemma~\ref{lem:counts} with terminals
+$\alpha+g,\beta+g$ and count exponents $\alpha,\beta-g$. Thus the
+prefix covers give the upper dimension bound, and the level
+probabilities have the uniform subcritical energy estimates used in
+Lemma~\ref{lem:averaging}.
+
+For bounded frequency overlap, apply Lemma~\ref{lem:row-overlap}
+from the proof of Theorem~\ref{thm:overlap} with coprime generators
+$2,3$ and base row $(X-1,XZ-1)$, which vanishes at $(1,1)$.
+In the short-block setup $n_i=N+d_i$, the independent variables
+$(X,Z)=(2^N,3^N)$ for Lemma~\ref{lem:identity} give the rows
+\[
+ F_i=2^{d_i}X-1,\qquad G_i=6^{d_i}XZ-1.
+\]
+The rows have maximal weight $\beta$. Their coefficients have
+logarithmic heights $o(N)$ in the moving field when $d_i=o(N)$.
+The entries are coprime over every extension of that field, since
+substituting $X=2^{-d_i}$ in $G_i$ gives
+$3^{d_i}Z-1$. Each nonzero projected kernel in the level filtration
+has rank one and primitive vector $(G_i,-F_i)$. Its maximum weighted
+degree minus the coordinate cap is $\beta-v>0$, and the common
+frequency has cap $\beta+v$. The row vanishes at
+$(2^{-d_i},3^{-d_i})$. On the resulting node curve
+$(2^{-t},3^{-t})$, distinct monomials give distinct real exponential
+weights by multiplicative independence of $2$ and $3$. These are the
+surplus and node conditions of the criterion, giving bounded overlap
+with room to truncate above $g$. At each nonzero frequency $k$ only
+$O(1)$ levels with $n\asymp\log(e+|k|)$ contribute retained modes.
+With weights $h(n)$ and the low- and high-frequency estimates,
+Lemma~\ref{lem:averaging} now gives the claimed decay and energies for
+the same measure. The energy lower bound gives the stated dimension.
+For $g\ge\beta$ the dimension is zero by monotonicity and the limit
+$d(g)\to0$ as $g\uparrow\beta$.
+
+For powers, the grids have periods $2^{-n}$ and $6^{-n}$, and their
+joint level is $2^{-n}$-periodic. If $0<g<\kappa$, each first-grid
+window contains $\asymp e^{(\kappa-g)n}$ fine centers in its interior
+half, uniformly in the phases. Equal-mass smooth bumps of radius
+$\asymp e^{-(\beta+g)n}$ at these centers give a level probability.
+For intervals of length $r$, the mass bounds on the four ranges cut
+out by $e^{-\alpha n},e^{-(\alpha+g)n},e^{-\beta n}$ and
+$e^{-(\beta+g)n}$, in descending order, are
+$O(r)$, $O(e^{-\alpha n})$, $O(e^{gn}r)$ and $O(e^{-(\beta-g)n})$.
+At smaller scales the density is $O(e^{2gn})$. These estimates give
+$O_s(r^s)$ for all $0<s<d(g)$. The coarse-window and fine-window
+covers give the two upper bounds defining $d(g)$. At $g=\kappa$ the
+nearest fine center is within half the first-window radius, so one
+bump per period works and gives $d(g)=\alpha/(\beta+g)$. For zero
+phases and $g>\kappa$, the same single-bump construction works, with
+dimension $\alpha/(\beta+g)$ by the fine-window cover. In each case
+periodicity kills the nonzero modes below $2^n$, and smoothness gives
+the high-frequency bound by integration by parts. The intermediate
+levels have total weight $O(h(\log(e+|k|)))$ for weights $h(n)/n$.
+Lemma~\ref{lem:averaging}
+with weights $h(n)/n$ gives the power criterion with all subcritical
+energies, and Lemma~\ref{lem:block} gives its converse.
+
+For $g>\kappa$ the maximal dimension $\alpha/(\beta+g)$ can also
+occur for a fixed phase pair whose limsup excludes any specified
+regular gauge $h$. To see this, set the second phase to zero and
+choose the first phase $y$ by its ternary digits. Put
+$\lambda=g/\kappa-1>0$. Choose increasing $N_j$ with
+$\sum_j h(N_j)<\infty$ and put runs of $L_j=\lceil\lambda N_j\rceil+4$
+zeros at positions $N_j+1$ through $N_j+L_j$, separated by at least
+one digit $1$. All other digits are $1$. A necessary condition for
+compatibility at level $n$ is
+\[
+ \|3^ny\|<(3^n+1)\delta_n\le 2\cdot 3^{-\lambda n}.
+\]
+At $n=N_j$ one has $\|3^{N_j}y\|\le 3^{-L_j}/2$, so the fine
+windows closest to the coarse centers lie wholly inside the coarse
+windows for large $j$. Their radii are $e^{-(\beta+g)N_j}$ and their
+mesh is $2^{-N_j}$. For $s<\alpha/(\beta+g)$, their $s$-power
+enlargements cover the line at all sufficiently late $N_j$.
+Mass transference gives the lower dimension bound locally
+\cite[Theorem~2]{MTP}. For any phases there is at most one fine
+window meeting each coarse window at late levels, giving the
+matching upper bound. If $n=N_j+p$ with $0\le p<L_j$, the next digit
+$1$ at the end of the run gives $\|3^ny\|\ge 3^{-(L_j-p+1)}$.
+Compatibility forces $(1+\lambda)p\le L_j-\lambda N_j+1+\log_3 2$.
+Outside the runs the next digit is $1$ and $\|3^ny\|\ge 1/3$.
+The eligible late levels therefore lie in $N_j+O_g(1)$. Applying
+Lemma~\ref{lem:axis} on those levels gives zero limsup mass for
+every finite positive measure with the big-$O$ gauge bound.
+
+\subsection{Critical binary--ternary recurrence}
+
+Now let $A_n=2^n-1$, $B_n=3^n-1$, $\rho_n=3^{-n}$ and
+$D_n=\gcd(A_n,B_n)$. For phases $(y_{1,n},y_{2,n})$, the two
+parameter intervals indexed by integers $a,b$ intersect exactly
+when
+\begin{equation}\label{eq:critical-determinant}
+ |B_na-A_nb+B_ny_{1,n}-A_ny_{2,n}|<(A_n+B_n)\rho_n.
+\end{equation}
+The determinants $B_na-A_nb$ run over $D_n\mathbb Z$. Each admissible
+value supplies a translated $D_n^{-1}$-grid of intervals of length at
+most $2\rho_n/B_n$. The right side of
+\eqref{eq:critical-determinant} is between $1$ and $3/2$ eventually,
+so there are at most $3D_n$ intervals per unit period. The estimate
+$\log D_n=o(n)$ of Bugeaud, Corvaja and Zannier gives Hausdorff
+dimension zero for every nonempty critical limsup, independently of
+the phases \cite{BCZ}.
+
+For zero phases, every point of $p^{-1}\mathbb Z$ is an exact hit
+at level $p-1$ for every prime $p\ge5$, by Fermat's theorem. Thus the homogeneous limsup
+is a dense $G_\delta$. Density also holds for a residual set of fixed
+phase pairs. For any bounded open interval $J$, the pushforward of
+normalized Lebesgue measure on $J$ by $x\mapsto (A_nx,B_nx)\bmod 1$
+tends weakly to Haar measure, since $|aA_n+bB_n|\to\infty$ for each
+nonzero integer pair $(a,b)$. The phase pairs admitting a hit in $J$
+in a given tail form an open dense set. Intersect over all tails and
+a countable interval basis, then use Baire's theorem on the parameter
+line.
+
+Moving phases can give an empty limsup. Choose
+$B_ny_{1,n}-A_ny_{2,n}=D_n/2$. Since $D_n$ is odd, levels with
+$D_n>1$ are eventually empty, and each $D_n=1$ level consists of two
+arcs of lengths at most $b_n=2\rho_n/B_n$ on the circle. Adding
+$(A_nt,B_nt)$ to a phase pair translates its level set by $t$.
+Starting at a large $N$, choose these translations so the closures
+of arcs from different levels are disjoint. At step $n$ the
+forbidden translations have measure at most
+$4\sum_{m=N}^{n-1}b_m+4(n-N)b_n<1$.
+
+A dense $G_\delta$ limsup has compact Rajchman support locally, by
+applying the category theorem to a closed subinterval with Lebesgue measure
+\cite[Corollaries~4.4--4.5]{MZ}. For any prescribed positive envelope
+$H(T)\to0$, there is nevertheless a dense moving-phase limsup that
+has zero mass for every finite positive measure with
+$\widehat\mu(\xi)=O(H(|\xi|))$. Choose increasing primes $p_j\ge5$
+with $\sup_{T\ge p_j}H(T)\le2^{-j}$, use zero phases at $n_j=p_j-1$,
+and use the preceding disjoint-level construction at other indices.
+The chosen levels alone give the limsup and make it dense. Since
+$D_{n_j}\ge p_j$, each chosen level consists of windows of radius
+$\rho_{n_j}/B_{n_j}$ on the $D_{n_j}^{-1}$-grid.
+Lemma~\ref{lem:axis} with frequency $D_{n_j}$ gives a summable mass
+bound because $D_{n_j}\rho_{n_j}/B_{n_j}\le\rho_{n_j}$ and the
+Fourier term is $O(2^{-j})$.
+
+The failure of bounded overlap at the critical cap occurs for the
+actual level probabilities. Take $N$ a multiple of four and
+$n=N+4j$ for $0\le j<\ell(N)$, with $\ell(N)\to\infty$ sufficiently
+slowly that $\ell(N)=o(N)$ and the least common multiple $M_N$ of
+these $D_n$ has $\log M_N=o(N)$. This is possible by the estimate
+for each $D_n$ and $\log M_N\le\sum_j\log D_{N+4j}$.
+Then $k_N=M_N\lceil3^N/M_N\rceil\sim3^N$. At each of these levels,
+choose a solution of $A_na+B_nb=k_N$ with $|a|\le B_n/(2D_n)$.
+It has $|b|\le k_N/B_n+A_n/(2D_n)$, so $|a|,|b|\le 3^n$ for
+large $N$. Also $5\mid D_n$ at these levels. Their homogeneous
+windows have radius $\rho_n/B_n$ on the $D_n^{-1}$-grid, so any
+probability on one of those level sets has Fourier coefficient
+$1+o(1)$ at $k_N$, uniformly over the block.
+
+For a sharp quantitative result at this endpoint, restrict the
+homogeneous limsup to
+\[
+ E_{\rm prime}=\limsup_{\substack{p\to\infty\\p\text{ prime}}}
+ \left\{x:\operatorname{dist}(x,p^{-1}\mathbb Z)<R_p\right\},
+ \qquad R_p=\tfrac18 3^{-2(p-1)}.
+\]
+Fermat's theorem and the radii put these windows inside the critical
+level $p-1$ for $p\ge5$. The sharp criterion on $E_{\rm prime}$ is
+$\sum_n h(n)/n=\infty$, with local compact support and little-$o$
+decay on the divergence side and zero mass under the corresponding
+big-$O$ bound on the convergence side.
+
+Indeed the mean-one smooth bump density on the prime grid has
+integer coefficients of modulus at most one, vanishing unless
+$p\mid k$, and coefficients $O(|k|^{-2})$ when $|k|\ge e^{Cp}$ for
+any fixed $C>2\log 3$. The latter follows by rescaling a single
+smooth bump and integrating by parts sufficiently many times. Give
+prime $p$ weight $h(p)\log p/p$, whose total diverges exactly when
+$\sum_n h(n)/n$ does, by the prime number theorem on dyadic blocks.
+For $L=\log(e+|k|)$ and a sufficiently small fixed $c>0$, the
+contribution from $p<cL$ is $O(L|k|^{-2})$ for large $|k|$. The
+remaining weighted contribution for $k\ne0$ is bounded by
+\[
+ \sum_{\substack{p\mid k\\p\ge cL}} h(p)\frac{\log p}{p}
+ \ll \frac{h(L)}{L}\sum_{p\mid k}\log p\ll h(L).
+\]
+The weighted Fourier part of Lemma~\ref{lem:averaging} therefore
+gives the local compact probability and the little-$o$ rate at real
+frequencies, in particular $o(1/\log\log|\xi|)$ for $h(t)=1/\log(e+t)$.
+
+For the converse, take dyadic blocks $N\le p<2N$, and put
+$Q_N=\prod_{N\le p<2N}p$ over primes. The prime number theorem gives
+$\log Q_N=(1+o(1))N$. A hit in the block implies
+$\|Q_Nx\|\le Q_N\max_{p\ge N}R_p\ll e^{-c_0N}$ for some $c_0>0$,
+since $2\log 3>1$. Lemma~\ref{lem:axis} bounds the mass of the
+whole block by $O(e^{-c_0N}+h(N))$, which is summable over dyadic
+$N$ when $\sum_n h(n)/n<\infty$. For the entire homogeneous
+critical limsup, the prime-grid construction supplies the lower
+bound and the one-axis argument excludes gauges with $\sum_nh(n)<\infty$.
+The optimal Fourier decay gauge for that full set remains open.
+\appendix
+\section{Identity-chart descent and the one-level gap}\label{sec:descent}
+
+\subsection{A polynomial box filtration}
+
+For a field \(K\), put
+\[
+             \mathcal P=K[X_1,\ldots,X_\ell],\qquad
+             F=K(X_1,\ldots,X_\ell).
+\]
+The primitive polynomial
+Pl\"ucker vector of a subspace of \(F^p\) is an exterior
+generator with entries in \(\mathcal P\) having joint gcd one.
+It is unique up to multiplication by \(K^\times\). For the
+zero subspace we use the entry \(P_\varnothing=1\).
+
+Give monomial slots \(X^\nu e_i\) weights
+\(\lambda\cdot\nu+\rho_i\), for fixed real \(\lambda_j,\rho_i\).
+The weight of a nonzero polynomial vector is the maximum weight
+of its terms. For a finite-dimensional space of polynomial
+vectors, the pivot weights are the jumps of the filtration by
+weight at most \(t\), with their dimension multiplicities.
+Equivalently they are the weights of the leading slots in row
+echelon form with the largest-weight slots first.
+
+\begin{lemma}[Box filtration]\label{lem:identity-filtration}
+Let \(A\subseteq F^p\) have rank \(c\), with primitive polynomial
+Pl\"ucker vector \(P\). Let \(A_H\) be its vectors supported in
+the monomial box \([0,H]^\ell\), \(D_H=\dim_K A_H\),
+\(M_H=(H+1)^\ell\), and \(\bar w_H=(H/2)\sum_j\lambda_j\).
+Put \(d_j=\max_{I:P_I\ne0}\deg_{X_j}P_I\), and let
+\[
+  \mathcal K_{\lambda,\rho}(P)=
+  \max_{\substack{I,\nu\\ [X^\nu]P_I\ne0}}
+                        \left(\lambda\cdot\nu+\sum_{i\in I}\rho_i\right).
+\]
+Then \(D_H=cM_H+O(H^{\ell-1})\) and the sum of the pivot
+weights is
+\begin{equation}\label{eq:identity-filtration}
+  D_H\bar w_H+
+  M_H\left(\mathcal K_{\lambda,\rho}(P)
+                      -\frac12\sum_j\lambda_jd_j\right)
+     +O(H^{\ell-1}).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The rank-zero case is immediate. Introduce two homogeneous
+variables \(U_{j,0},U_{j,1}\) on each axis \(j\), both of
+multidegree \(e_j\). In multidegree \((H_1,\ldots,H_\ell)\),
+identify \(X^\nu\) with
+\(\prod_j U_{j,0}^{H_j-\nu_j}U_{j,1}^{\nu_j}\).
+The lifts of all the corresponding box spaces of \(A\) form a
+multigraded submodule: multiplication by \(U_{j,0}\) or
+\(U_{j,1}\) represents multiplication by \(1\) or \(X_j\).
+
+Order terms by weight, with ties broken lexicographically by
+the exponent vector in the homogeneous variables and then by
+the coordinate tag \(e_i\in\mathbb Z^p\). For wedge terms
+use the sum of the coordinate tags and of the coordinate costs.
+These comparisons respect addition of exponents and tags.
+In particular the wedge of vectors with different leading
+coordinates has leading term the product of the leading terms:
+that product is nonzero and any other nonzero product is
+strictly smaller. Only finite supports are compared.
+
+The leading monomials of homogeneous members of the submodule
+form monomial ideals \(J_i\) in the respective coordinates.
+In a fixed multidegree the monomials of these ideals are the
+pivot slots, by row reduction. There are at most \(c\) nonzero
+ideals, since distinct leading coordinates give an independent
+set over \(F\). There are at least \(c\): the monomial multiples
+of \(c\) independent polynomial vectors of \(A\) in any
+sufficiently large box \([0,H-C_0]^\ell\), where \(C_0\) is
+fixed, yield \(c(H-C_0+1)^\ell\) independent vectors in \(A_H\),
+whereas each coordinate contributes at most \(M_H\) pivots.
+
+For \(J_i\ne0\), write its monomial gcd as
+\(\prod_{j,\sigma} U_{j,\sigma}^{e_{i,j,\sigma}}\). The shifted
+box in coordinate \(i\) consists of the monomials divisible
+by this gcd. After dividing it out, for every variable some
+monomial generator of the residual ideal has exponent zero
+in that variable. A fixed bound on the exponents of a finite
+generating set shows that monomials omitted from the shifted
+box must lie within bounded distance of at least two distinct
+faces. In sufficiently large multidegrees these faces lie on
+different axes, since the two exponents on an axis sum to a
+fixed large number. Hence for diagonal lengths \(H\) there
+are \(O(H^{\ell-2})\) omissions if \(\ell\ge2\), and none for
+large \(H\) if \(\ell=1\). This gives \(D_H=cM_H+O(H^{\ell-1})\).
+
+We claim
+\begin{equation}\label{eq:identity-face}
+      \sum_{i:J_i\ne0}(e_{i,j,0}+e_{i,j,1})=d_j .
+\end{equation}
+Fix the length on axis \(j\) at a sufficiently large \(H_0\),
+and let the other lengths tend to infinity together. By the
+shifted-box count, the leading coefficient relative to
+\((H+1)^{\ell-1}\) is
+\(c(H_0+1)-\sum_i(e_{i,j,0}+e_{i,j,1})\).
+The omissions restrict at least one of the growing axes and
+thus do not affect the coefficient. For \(\ell=1\) this is
+the exact count at sufficiently large \(H_0\).
+Set \(K_j=K(X_a:a\ne j)\). The same coefficient is the
+\(K_j\)-dimension of \(A\cap K_j[X_j]^p\) in degree at most
+\(H_0\). For the lower bound, clear the denominators in a
+basis of that space and multiply by monomials in the growing
+axes, with their lengths reduced by a fixed amount. For the
+upper bound, project injectively on that space onto as many
+coordinate coefficient slots in \(X_j\) as its dimension.
+Each selected slot of a polynomial vector in the box is
+supported in \([0,H]^{\ell-1}\) on the other axes.
+
+The module \(A\cap K_j[X_j]^p\) is saturated because \(A\)
+is an \(F\)-space. Over the PID \(K_j[X_j]\), it and its
+quotient in \(K_j[X_j]^p\) are free, so the wedge of a
+module basis is primitive. Choose a basis with linearly
+independent leading coefficient vectors. To do so, in a
+dependence of those vectors cancel the leading coefficient
+of a participating row of largest degree by adding shifted
+constant multiples of the other participating rows. The
+operation is unimodular and strictly reduces the sum of row
+degrees, so the process terminates. If the final degrees
+are \(\delta_i\), the degree of a nonzero combination
+\(\sum_i f_i v_i\) is \(\max_i(\deg f_i+\delta_i)\) and the
+degree of the wedge is \(\sum_i\delta_i\), by independence
+of the leading coefficients. The degree-\(H_0\) dimension
+for large \(H_0\) is \(c(H_0+1)-\sum_i\delta_i\).
+The original \(P\) remains primitive over \(K_j[X_j]\) by
+localization, so these two primitive wedges differ by a
+unit in \(K_j[X_j]\) and \(\sum_i\delta_i=d_j\). This proves
+\eqref{eq:identity-face}.
+
+Multihomogenize \(P\) to degree \((d_1,\ldots,d_\ell)\).
+The homogenized tuple is primitive. Indeed, after inverting
+all \(U_{j,0}\), it is the original tuple times a unit
+under the substitution \(X_j=U_{j,1}/U_{j,0}\); no \(U_{j,0}\)
+is a common factor by the definition of \(d_j\).
+For a fixed variable \(U_{j,\sigma}\), choose a homogeneous
+vector in each nonzero leading coordinate realizing the
+minimum exponent \(e_{i,j,\sigma}\) in that leading slot.
+Their wedge is proportional over the homogeneous fraction
+field to the homogenized \(P\), by dehomogenization and
+homogeneity. The scalar is polynomial by primitivity.
+Comparing leading terms, the set of nonzero leading coordinates
+is the leading index of \(P\), and the exponent of
+\(U_{j,\sigma}\) in its leading monomial is at most
+\(\sum_i e_{i,j,\sigma}\). The sum of the two exponents on
+axis \(j\) is \(d_j\), so both inequalities are equalities
+by \eqref{eq:identity-face}.
+
+On the shifted box in coordinate \(i\), the mean weight is
+\[
+      \bar w_H+\rho_i+
+        \frac12\sum_j\lambda_j(e_{i,j,1}-e_{i,j,0}).
+\]
+Center each pivot weight by subtracting \(\bar w_H\).
+The omitted slots shift the centered sum by \(O(H^{\ell-1})\):
+there are \(O(H^{\ell-2})\) of them of centered weight \(O(H)\)
+when \(\ell\ge2\), and none when \(\ell=1\) and \(H\) is large.
+Each shifted box has \(M_H+O(H^{\ell-1})\) slots and a centered
+mean independent of \(H\). The exponent and leading-index
+identities show that the sum of the centered means is
+\(\mathcal K_{\lambda,\rho}(P)-\tfrac12\sum_j\lambda_jd_j\).
+Add back \(D_H\bar w_H\) to obtain \eqref{eq:identity-filtration}.
+\end{proof}
+
+\subsection{Slow rational coefficients}
+
+Use pairwise coprime generators \(B_1,\ldots,B_\ell\ge2\) and
+weights \(w(X^\nu)=\sum_j \nu_j\log B_j\).
+Suppose \(K\) is a field of rational sequences modulo eventual
+equality, indexed by an infinite set of \(N\) tending to infinity.
+Elements may be represented by sequences defined at all but
+finitely many indices. Assume that nonzero elements eventually
+evaluate nonzero and that every element has logarithmic
+rational height \(o(N)\). In particular restriction to any
+infinite subset is injective. Constants \(K=\mathbb Q\) are
+allowed.
+
+The monomial weights are distinct by pairwise coprimality.
+Each nonzero rational coefficient of height \(o(N)\) has
+absolute value between \(e^{-o(N)}\) and \(e^{o(N)}\) at every
+fixed place. Hence at infinity the leading monomial dominates
+and for every nonzero \(f\in K[X_1,\ldots,X_\ell]\),
+\[
+   \log|f(B_1^N,\ldots,B_\ell^N)|=Nw(f)+o(N),
+\]
+with the coefficients evaluated at \(N\) as well. In particular
+evaluation of any fixed finite list of rational functions is
+eventually defined, and it preserves rank of any fixed matrix
+over \(F\) by the criterion of minors. For a subspace \(W\)
+of \(F^p\), its specialization is the kernel of the specialized
+equations defining \(W\); rank stability also makes intersections
+and changes of basis commute with specialization for large \(N\).
+
+\begin{lemma}[Identity-chart descent]\label{lem:identity}
+Let \(z_N\in\mathbb Z^p\setminus\{0\}\) have coordinate bounds
+\(|z_{N,i}|\le \exp((\mu_i+o(1))N)\) for fixed real \(\mu_i\).
+If \(W\subseteq F^p\) has minimal rank among subspaces whose
+specializations contain infinitely many \(z_N\), the entries
+of its primitive polynomial Pl\"ucker vector \(P^W\) satisfy
+\[
+                    w(P^W_J)\le\sum_{i\in J}\mu_i.
+\]
+Here \(w(0)=-\infty\).
+\end{lemma}
+
+\begin{proof}
+Restrict to the infinite set with \(z_N\in W(N)\) and let
+\(A=W^\perp\), with primitive polynomial Pl\"ucker vector
+\(P^A\). Let \(S\) consist of infinity and the primes dividing
+\(\prod_j B_j\), with \(|p'|_{p'}=(p')^{-1}\). At \(v\in S\) set
+\(\lambda_{v,j}=\log|B_j|_v\). In the box \([0,H]^\ell\),
+regard the slots \(X^\nu e_i\) as formal linear forms
+\(X^\nu z_i\). Quotient by \(A_H\), the forms that vanish
+on \(W\). Use weights \(\lambda_v\cdot\nu\) at finite
+places, and \(\lambda_\infty\cdot\nu+\mu_i\) at infinity.
+These bound logarithmic evaluations divided by \(N\) up to
+\(o(1)\), by integrality at the finite places and the caps
+at infinity.
+
+Row reduction at each place using the largest slots as pivots
+leaves the nonpivot monomial slots as a quotient basis: the
+pivot slots can be eliminated and no nonzero relation
+is supported solely on nonpivot slots. The basis weight
+sum is the ambient weight sum minus \eqref{eq:identity-filtration}.
+At any finite \(v\in S\) exactly one generator has negative
+weight and the others have zero weight. Primitivity of \(P^A\)
+means that the corresponding variable does not divide every
+minor, so \(\mathcal K_{\lambda_v,0}(P^A)=0\).
+By the product formula \(\sum_{v\in S}\lambda_{v,j}=0\).
+The ambient monomial terms, the mean terms and the multidegree
+terms thus cancel across places. The sum of the chosen local
+basis weights is
+\[
+   M_H\left(\sum_i\mu_i-
+             \max_{I}\left(w(P^A_I)+\sum_{i\in I}\mu_i\right)\right)
+       +O(H^{\ell-1}).
+\]
+Complementary minors of \(A\) and \(W\) agree up to signs
+and a common scalar in \(K^\times\). If the asserted bound
+fails, we may fix \(H\ge1\) large enough that the displayed
+sum is strictly negative, say at most \(-\eta<0\).
+
+In one monomial quotient basis of dimension \(s\), the
+evaluations form an integer vector \(y_N\ne0\) with
+\(\log\|y_N\|_\infty=O(N)\). If it were zero, all original
+slots would evaluate to zero, including every \(z_i\).
+Take an infinite subsequence on which one \(z_{N,i}\)
+is nonzero. The quotient rows for \(z_i\) and \(X_1z_i\)
+have coefficients in \(K\), and their evaluation ratio is
+\(B_1^N\). Clearing their denominators uses integers of
+logarithmic size \(o(N)\). Applying the cleared rows to a
+primitive integral representative of \([y_N]\) gives
+integers of size at most \(\exp(h([y_N])+o(N))\), where \(h\)
+is logarithmic projective height. Using a common denominator
+for both rows and the rational height of their ratio gives
+\[
+             N\log B_1-o(N)\le h([y_N])=O(N).
+\]
+Thus \(s\ge2\).
+
+Let \(L_{v,j}\) for \(j=1,\ldots,s\) be the local basis
+written in the fixed quotient basis. These are independent
+at each place for all sufficiently late indices. Their
+coefficients are in \(K\), so the moving hyperplanes have
+heights \(o(N)=o(h([y_N]))\). A nonzero \(K\)-linear
+relation among the \(y_N\) coordinates along an infinite
+subsequence would give a nonzero quotient class vanishing
+there. Its lift is a polynomial form outside \(A\), so
+intersecting its kernel with \(W\) would give a proper
+subspace containing those \(z_N\) by rank stability. This
+contradicts minimality. It also excludes infinitely many
+zeros of any selected \(L_{v,j}(y_N)\).
+
+For the moving Subspace Theorem use the full family of these
+hyperplanes, with the chosen \(s\)-element basis at each place
+as an allowed independent subset. The coefficients are
+coherent: any polynomial relation in the coefficient arrays
+is either eventually identically zero or eventually nonzero.
+On every infinite coherent subset, normalized coefficient
+ratios generate a field inside the restriction of \(K\);
+the restriction is injective. The preceding argument therefore
+verifies linear nondegeneracy over that coefficient field on
+every such subset.
+
+The version of the moving Subspace Theorem allowing
+different independent subsets at different places uses
+the local Weil function
+\[
+                \log\frac{\|L\|_v\|y_N\|_v}{|L(y_N)|_v},
+\]
+with maximum norms on the coordinates and the coefficients
+\cite[Theorem~7.7]{Vojta}, \cite{RuVojta}. The sum for
+the selected bases is at least
+\[
+  s h([y_N])+\eta N-o(N).
+\]
+The logarithmic evaluation product is at most
+\(-\eta N+o(N)\) by the sum of weights. The coefficient norms
+have logarithms \(o(N)\). Integrality outside \(S\) gives
+\[
+              \sum_{v\in S}\log\|y_N\|_v\ge h([y_N]).
+\]
+The selected sum is bounded above by the sum of the
+local maxima over the allowed independent subsets. The
+theorem bounds that sum by \((s+\varepsilon)h([y_N])+O(1)\)
+for any fixed \(\varepsilon>0\) at all sufficiently late
+indices. The upper bound \(h([y_N])=O(N)\) gives a contradiction
+for sufficiently small \(\varepsilon\), proving the lemma.
+\end{proof}
+
+\subsection{A gap at one level}
+
+\begin{lemma}[One-level gap]\label{lem:onelevel}
+Let \(b_1,\ldots,b_k\ge2\) be pairwise coprime and set
+\(\kappa_j=\log b_j\). Take \(g_j\ge0\) and \(u\ge0\) with
+\[
+          u+\sum_{i<j}g_i<\kappa_j\qquad(1\le j\le k)
+\]
+in the given order. For any \(C>0\) and fixed
+\(\varepsilon_j\in\{0,1\}\), all sufficiently large \(n\)
+have no nonzero \(a\in\mathbb Z^k\) satisfying
+\[
+  |a_j|\le C e^{g_jn}\quad(1\le j\le k),
+  \qquad
+  \left|\sum_{j=1}^k(b_j^n-\varepsilon_j)a_j\right|
+                                            \le C e^{un}.
+\]
+\end{lemma}
+
+\begin{proof}
+Suppose there are infinitely many counterexamples. Adjoin the
+represented frequency as a new coordinate \(q\); it is an
+integer of cap exponent \(u\), including when it is zero.
+Over \(F=\mathbb Q(X_1,\ldots,X_k)\), let \(W\) have minimal
+rank \(r\) among spaces containing infinitely many augmented
+vectors upon specialization. It lies in the graph of the row
+\(R_j=X_j-\varepsilon_j\), with equation \(q=\sum_j R_j a_j\);
+otherwise intersecting with the graph lowers rank and
+preserves the specialized incidences. Projection to the
+\(a\)-coordinates is injective on \(W\), and \(r\ge1\).
+
+Let \(P\) be the primitive polynomial Pl\"ucker vector of \(W\).
+Write \(P_I\) for its minors using only \(a\)-coordinates,
+and write \(Q_J=(\iota_qP)_J\) for \(|J|=r-1\) using only
+such coordinates. The graph equation gives
+\[
+        Q_J=\sum_{i\notin J}\pm(X_i-\varepsilon_i)P_{J\cup\{i\}} .
+\]
+By Lemma~\ref{lem:identity},
+\[
+      w(P_I)\le\sum_{i\in I}g_i,\qquad
+      w(Q_J)\le u+\sum_{i\in J}g_i .
+\]
+In particular, when \(I,J\subseteq\{1,\ldots,j-1\}\), the
+polynomials on the left have weight less than \(\kappa_j\)
+and hence omit \(X_j\). Starting with \(j=k\), take any
+\(J\subseteq\{1,\ldots,j-1\}\) of size \(r-1\). In the
+contraction identity all terms indexed below \(j\) omit
+\(X_j\), and those indexed above \(j\) vanish by downward
+induction. The term at \(j\), if nonzero, has positive
+\(X_j\)-degree. Hence \(P_{J\cup\{j\}}=0\). Descending in \(j\)
+eliminates all the \(a\)-only minors, contrary to injectivity
+of the projection of \(W\).
+\end{proof}
+
+If \(m=\min_j(\kappa_j-\sum_{i<j}g_i)>0\), the gap applies to
+all \(0\le u<m\) and survives a sufficiently small enlargement
+of the caps \(g_j\). It also applies to a subsystem in the
+induced order, since removing axes can only decrease the sums
+over earlier indices. These strict gaps apply to both power
+and shifted-power frequencies used in the smooth densities.
+\section{Local tube counts and the dimension bound}\label{app:counts}
+
+Here we work in the space of integer numerators. The counts also apply to real denominators when the same dual gap is available. Let \(Q_{i,n}>0\) satisfy \(Q_{i,n}\asymp e^{\kappa_i n}\), with \(\kappa_i>0\), and order the axes by \(t_i=\kappa_i+g_i\), where \(g_i\ge0\). As in Section~\ref{sec:construction}, put \(D_j=\kappa_j-\sum_{i<j}g_i\), \(m=\min_jD_j\), \(T=\max_i t_i\), and \(d=\min_j D_j/t_j\) in the positive range \(m>0\). For a nonempty subsystem \(S\), in the induced order, write
+\[
+ \begin{split}
+ m_S&=\min_{j\in S}\left(\kappa_j-\sum_{\substack{i\in S\\i<j}}g_i\right),\\
+ T_S&=\max_{i\in S}t_i,\qquad D_S=T_S-\sum_{i\in S}g_i .
+ \end{split}
+\]
+Dropping axes only raises the minimum gap, so \(m_S\ge m>0\).
+
+\begin{lemma}[Tube counts]\label{lem:counts}
+Suppose \(m>0\). For each nonempty \(S\) and \(0\le u<m_S\), assume a gap with some \(\eta>0\). For every fixed \(B>0\), the bounds
+\[
+  |h_i|\le B e^{(g_i+\eta)n}\quad(i\in S),\qquad
+  \left|\sum_{i\in S} Q_{i,n}h_i\right|\le B e^{(u+\eta)n}
+\]
+imply \(h=0\) for \(h\in\mathbb Z^S\) and all sufficiently large \(n\). For the two systems of Theorem~\ref{thm:main}, Lemma~\ref{lem:onelevel} gives the gap by choosing \(\eta\) small enough to preserve the strict prefix inequalities.
+
+For fixed positive \(c_i\), arbitrary \(y_{i,n}\), \(0\le u<m_S\), and an interval \(I\) of length \(\ell\ge e^{-un}\), the number of tuples \(a\in\mathbb Z^S\) for which
+\[
+    |Q_{i,n}x-y_{i,n}-a_i|<c_i e^{-g_i n}\quad(i\in S)
+\]
+for some \(x\in I\) is \(\asymp \ell e^{D_S n}\) for all sufficiently large \(n\). The constants are uniform in position and phases. In addition, any nonnegative densities bounded by \(O(e^{(\sum_i g_i)n})\) and supported on the full level windows have mass \(O_r(|I|^r)\) on intervals \(|I|\le1\), uniformly in \(n\) and the phases, for every \(0<r<d\).
+\end{lemma}
+
+\begin{proof}
+Consider the symmetric convex body
+\[
+ K=[-e^{-un},e^{-un}](Q_{i,n})_{i\in S}
+       +\prod_{i\in S}[-e^{-g_i n},e^{-g_i n}].
+\]
+Its width in an integer direction \(h\) is
+\[
+  2\left(e^{-un}\left|\sum_{i\in S}Q_{i,n}h_i\right|
+                   +\sum_{i\in S}e^{-g_i n}|h_i|\right).
+\]
+Take \(\eta\) from the gap assumption. If the width of \(e^{-\eta n}K\) in some nonzero integer direction were bounded, the two gap bounds with a fixed \(B\) would hold. Thus the minimum width in nonzero integer directions tends to infinity. By the flatness theorem \cite{KL}, every translate of \(e^{-\eta n}K\) contains a lattice point for large \(n\). By symmetry its lattice translates cover the space. It contains a measurable fundamental domain for \(\mathbb Z^S\): partition a unit cube by the first covering translate in a fixed enumeration and move each piece into the body by its lattice displacement.
+
+The tube for \(I\) is a translate of
+\[
+    [-\ell/2,\ell/2](Q_{i,n})_{i\in S}
+        +\prod_{i\in S}[-c_i e^{-g_i n},c_i e^{-g_i n}].
+\]
+Its volume is the volume of the transverse box plus the sum of the swept face volumes. Indeed, the added region is swept by the forward-facing facets, whose translated prisms meet only on sets of volume zero. The term from facet \(i\) has size \(\asymp \ell Q_{i,n}\prod_{j\in S\setminus\{i\}}e^{-g_j n}\). The largest term has exponent \(D_S\), and the box term is absorbed since \(u<m_S\le T_S\). Thus the volume is \(\asymp \ell e^{D_S n}\), also after changing segment and box widths by fixed positive factors.
+
+For the upper count, put a translate of the fundamental domain at each witnessing integer point. The disjoint cells, up to null sets, lie in the tube with twice the segment and box widths. For the lower count, cover the tube of half the widths by the translated cells. Their lattice centers lie strictly inside the original tube for large \(n\), since the domain is contained in \(e^{-\eta n}K\) and \(\ell\ge e^{-un}\). Each cell has unit volume, giving the result. The argument allows \(g_i=0\) with any fixed positive transverse width, including widths for which a test is vacuous. For \(|S|=1\) it is the ordinary interval count, with \(m_S=D_S=\kappa_i\).
+
+For the density bound write \(D=D_{\{1,\ldots,k\}}=D_k\). Each full witness contributes mass \(O(e^{-Dn})\) since its parameter interval has length \(O(e^{-Tn})\). Fix \(0<z_0<m\). At lengths \(\ell\ge e^{-z_0n}\), the full count bounds the mass by \(O(\ell)\). At \(e^{-Tn}<\ell=e^{-zn}<e^{-z_0n}\), the axes with \(t_i\le z\) have \(O(1)\) possible numerators: their individual numerator ranges have length \(O(1+e^{(\kappa_i-z)n})\). Let \(S=\{i:t_i>z\}\) and \(G(z)=\sum_{t_i\le z}g_i\). Then \(D_S=D+G(z)\) and
+\[
+   m_S=G(z)+\min_{t_j>z} D_j.
+\]
+Use the suffix count after enlarging \(I\) to length \(e^{-un}\), with \(0\le u\le z\), \(u<m_S\), and \(u\ge\min(z,m_S)-\epsilon\). A fixed finite mesh provides these choices uniformly for \(z_0\le z<T\): include zero and use a positive mesh step smaller than \(\epsilon/2\), stopping below \(m_S\) for each suffix. After multiplying by the mass per full witness, the resulting bound is
+\begin{equation}\label{eq:tube-interpolation}
+  O_\epsilon\big(e^{-(E(z)-\epsilon)n}\big),\qquad
+  E(z)=\min\big\{z-G(z),\,\min_{t_j>z} D_j\big\}.
+\end{equation}
+One has \(E(z)\ge dz\). Indeed, the entries \(D_j\) with \(t_j>z\) are at least \(dt_j\). If \(j\) is the last index with \(t_j\le z\), then \(z-G(z)=D_j+z-t_j\ge dz\), since \(d\le1\). If no terminal has been reached then \(G(z)=0\). When terminals tie, the completed prefix ends at the last index in the tied group, so this identity still includes every completed width. Choose \(\epsilon<z_0(d-r)\) to get the \(r\)-bound from \eqref{eq:tube-interpolation}. Finally, for \(\ell\le e^{-Tn}\), the density bound gives
+\[
+  O\!\left(\ell e^{(\sum_i g_i)n}\right)=O(\ell^r)
+\]
+because \(\sum_i g_i=T-D\le (1-d)T\). This proves the claimed uniform bound at every scale.
+\end{proof}
+
+\subsection{Prefix covers}
+Apply Lemma~\ref{lem:counts} with \(u=0\) to the first \(j\) coordinates on a fixed bounded interval. Enlarge the interval to unit length if necessary. There are \(O(e^{D_j n})\) witnesses on this prefix. The interval for each witness has length \(O(e^{-t_j n})\), and their union covers the full level set there. The sum of the \(s\)-costs over \(n\) is finite whenever \(s>D_j/t_j\). Taking the best prefix gives \(\dim_H\le d\), also along any subsequence. Section~\ref{sec:construction} gives the matching bound in the positive range.
+
+For completeness, the upper bound extends to \(m\le0\) in the coprime systems. For all finite rates, the order-independent expression is
+\[
+  \left[\min_{\varnothing\ne S\subseteq\{1,\ldots,k\}}
+       \left(1-\frac{\sum_{i\in S}g_i}{\max_{i\in S}t_i}\right)\right]_+ .
+\]
+At each terminal it suffices to take the full prefix ending there, since all rates are nonnegative. Thus the expression equals \([\min_jD_j/t_j]_+\), and is continuous also at ties. The sign of \(m\) is likewise the sign of the continuous function \(\min_{S\ne\varnothing}(\max_{i\in S}t_i-\sum_{i\in S}g_i)\). If this function is nonpositive at \(g\), follow the rates \(a g\) from \(a=0\) up to its first zero. From just inside the positive range the weakened tests contain the original tests and their upper dimensions tend to zero. The resulting upper bound holds for arbitrary phases without requiring occupancy of the level sets.
+\begin{thebibliography}{99}
+\raggedright
+\bibitem{BS} S. Baker and T. Sahlsten, \href{https://arxiv.org/abs/2306.01389}{Spectral gaps and Fourier dimension for self-conformal sets with overlaps}, arXiv:2306.01389.
+\bibitem{MTP} V. Beresnevich and S. Velani, \href{https://doi.org/10.4007/annals.2006.164.971}{A mass transference principle and the Duffin--Schaeffer conjecture for Hausdorff measures}, Ann. of Math. (2) \textbf{164} (2006), 971--992.
+\bibitem{Bluhm} C. Bluhm, \href{https://doi.org/10.1090/S0002-9939-00-05276-X}{Liouville numbers, Rajchman measures, and small Cantor sets}, Proc. Amer. Math. Soc. \textbf{128} (2000), 2637--2640.
+\bibitem{BCZ} Y. Bugeaud, P. Corvaja and U. Zannier, \href{https://doi.org/10.1007/s00209-002-0449-z}{An upper bound for the G.C.D.\ of \(a^n-1\) and \(b^n-1\)}, Math. Z. \textbf{243} (2003), 79--84.
+\bibitem{CH} T. Cai and K. Hambrook, \href{https://arxiv.org/abs/2403.19410}{On the exact Fourier dimension of sets of well-approximable matrices}, arXiv:2403.19410.
+\bibitem{EP} F. Ekstr\"om and T. Persson, \href{https://doi.org/10.1112/jlms.12158}{Hausdorff dimension of random limsup sets}, J. Lond. Math. Soc. (2) \textbf{98} (2018), 661--686.
+\bibitem{FN} R. Fraser and T. Nguyen, \href{https://arxiv.org/abs/2409.02854}{Sharp Fourier decay estimates for measures supported on the well-approximable numbers}, arXiv:2409.02854.
+\bibitem{Kahane} J.-P. Kahane, \href{https://doi.org/10.1007/978-3-662-59158-1}{S\'eries de Fourier absolument convergentes}, Ergebnisse der Mathematik \textbf{50}, Springer, 1970.
+\bibitem{KL} R. Kannan and L. Lov\'asz, \href{https://doi.org/10.2307/1971436}{Covering minima and lattice-point-free convex bodies}, Ann. of Math. (2) \textbf{128} (1988), 577--602.
+\bibitem{Kaufman} R. Kaufman, \href{https://doi.org/10.4064/aa-39-3-265-267}{On the theorem of Jarn\'ik and Besicovitch}, Acta Arith. \textbf{39} (1981), 265--267.
+\bibitem{Lyons} R. Lyons, \href{https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0083/LOG_0050.pdf}{The measure of non-normal sets}, Invent. Math. \textbf{83} (1986), 605--616.
+\bibitem{MZ} \'E. Matheron and M. Zelen\'y, \href{https://doi.org/10.4064/fm185-2-1}{Rudin-like sets and hereditary families of compact sets}, Fund. Math. \textbf{185} (2005), 97--116.
+\bibitem{PaZ} V. Pavlenkov and E. Zorin, \href{https://doi.org/10.1017/prm.2025.10060}{Diophantine approximations with restrained denominators. Balance condition on decay and growth rates}, Proc. Roy. Soc. Edinburgh Sect. A (2025), online.
+\bibitem{PR} I. Polasek and E. Rela, \href{https://doi.org/10.1016/j.jmaa.2025.129872}{The exact dimension of Liouville numbers: the Fourier side}, J. Math. Anal. Appl., article 129872.
+\bibitem{PR2} I. Polasek and E. Rela, \href{https://arxiv.org/abs/2602.15267}{Slowly decaying Rajchman measures and a restriction theorem for the Fourier transform at the limit case of zero Fourier dimension}, arXiv:2602.15267.
+\bibitem{PVZZ} A. D. Pollington, S. Velani, A. Zafeiropoulos and E. Zorin, \href{https://doi.org/10.1093/imrn/rnaa307}{Inhomogeneous Diophantine approximation on \(M_0\)-sets with restricted denominators}, Int. Math. Res. Not. IMRN (2022), 8571--8643. Numbered results refer to \href{https://arxiv.org/abs/1906.01151}{arXiv:1906.01151}.
+\bibitem{PZ} M. Pramanik and J. Zhang, \href{https://arxiv.org/abs/2408.03473}{Measures supported on partly normal numbers}, arXiv:2408.03473.
+\bibitem{RuVojta} M. Ru and P. Vojta, \href{https://doi.org/10.1007/s002220050114}{Schmidt's subspace theorem with moving targets}, Invent. Math. \textbf{127} (1997), 51--65.
+\bibitem{Schlickewei} H. P. Schlickewei, \href{https://www.numdam.org/item/CM_1992__82_3_245_0/}{The quantitative subspace theorem for number fields}, Compositio Math. \textbf{82} (1992), 245--273.
+\bibitem{TZ} B. Tan and Q.-L. Zhou, \href{https://arxiv.org/abs/2504.21555}{Quantitative matrix-driven Diophantine approximation on \(M_0\)-sets}, arXiv:2504.21555.
+\bibitem{Tapia} L. Tapia, \href{https://arxiv.org/abs/2602.22512}{Multiplicative Diophantine approximation on planar lines with restricted denominators}, arXiv:2602.22512.
+\bibitem{Vojta} P. Vojta, \href{https://library.slmath.org/books/Book37/files/vojta.pdf}{Nevanlinna theory and Diophantine approximation}, in \emph{Several Complex Variables}, Math. Sci. Res. Inst. Publ. \textbf{37}, Cambridge Univ. Press, 1999, 535--564.
+\bibitem{Diagonal} \emph{Simultaneous shrinking targets on the diagonal in several integer bases}, companion manuscript.
+\bibitem{Quotients} \emph{Rational approximation to power-sum quotients and simultaneous recurrence}, companion manuscript.
+\end{thebibliography}
+\end{document}

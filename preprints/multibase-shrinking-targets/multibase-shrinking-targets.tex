@@ -1,0 +1,1323 @@
+\documentclass[11pt,reqno,a4paper]{amsart}
+\PassOptionsToPackage{expansion=false}{microtype}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,mathtools,amssymb,amsthm,booktabs,microtype}
+\usepackage[a4paper,textwidth=153.5mm,textheight=236mm,centering]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Simultaneous shrinking targets on the diagonal in several integer bases},pdfkeywords={Hausdorff dimension, shrinking targets, diagonal, Subspace Theorem, restricted denominators}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\numberwithin{equation}{section}
+\setlength{\emergencystretch}{1.4em}
+\title[Shrinking targets on the diagonal]{Simultaneous shrinking targets on the diagonal\\ in several integer bases}
+\date{}
+\raggedbottom
+\begin{document}
+\begin{abstract}
+We determine the local Hausdorff dimension of simultaneous shrinking targets for integer radix maps restricted to a scalar diagonal or an algebraic line. For the maps of multiplication by two and three, with common radius of lower exponential order \(\tau\) in base three, each target has dimension \((1-\tau)/(1+\tau)\) when \(0\le\tau<1\), and dimension zero thereafter. This removes the \(abc\) hypothesis in a result of Li, Liao, Velani and Zorin. For radii \(3^{-n\tau}\), a single residual set of transcendental slopes gives binary--ternary zero-target dimension \(\log_3(2)/(1+\tau)\) throughout \(1-\log_3(2)<\tau\le1\). We compute the Hausdorff dimension of the slope sets at each exceptional fiber dimension. For finitely many radices sampled at arbitrary relative speeds, a partition weighted by prime valuations gives the homogeneous dimension. Translations preserve this dimension in coprime bases. In the presence of shared primes the exact formula uses the lengths of intersections of translated grid intervals. In bases two and six, varying a single target coordinate realizes a full interval of dimensions. At dimension zero, both empty and residually occupied sections occur.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+For integers \(b_i\ge2\), the orbit of the diagonal point \((c,\ldots,c)\) under
+\(\operatorname{diag}(b_1,\ldots,b_k)\) has coordinates \(b_i^n c\bmod 1\).
+We ask for the dimension of the set of \(c\) for which all coordinates enter prescribed shrinking intervals at the same times. Even at time \(n\), the preimages in the parameter line can have very different sizes: their widths depend on \(b_i^n\), and their relative positions depend on common divisors of those integers. A translation of the target changes the positions.
+
+Write \(\mathbb T=\mathbb R/\mathbb Z\), let \(\|x\|\) denote distance to the nearest integer, and set
+\[
+ E_{b_1,b_2}(y;\psi)=
+ \{c\in\mathbb R:\ \max_{i=1,2}\|b_i^nc-y_i\|<\psi(n)
+                  \text{ for infinitely many }n\}.
+\]
+Dimension is local: a stated value holds after intersection with every nonempty open interval of the parameter domain. We assign dimension zero to the empty set.
+
+\begin{theorem}[The binary--ternary diagonal]\label{thm:llvz}
+Let \(\psi:\mathbb N\to(0,1]\) and put
+\[\tau=\liminf_{n\to\infty}\frac{-\log\psi(n)}{n\log 3}.\]
+For every \(y\in\mathbb T^2\), the local Hausdorff dimension of
+\(E_{2,3}(y;\psi)\) is
+\[
+ \begin{cases}(1-\tau)/(1+\tau),&0\le\tau<1,\\
+ 0,&1\le\tau\le\infty.\end{cases}
+\]
+For zero target the following two local dimensions hold:
+\[
+\begin{array}{ccl}
+ (b_1,b_2)&\psi(n)&\dim_H E_{b_1,b_2}(0;\psi)\\[2pt]
+ (2,17)&17^{-n/4}&\log 2/(\log 2+\tfrac14\log17)=0.494592\ldots,\\
+ (2,6)&6^{-3n/4}&4\log 2/(7\log 6)=0.221058\ldots .
+\end{array}
+\]
+The first value is below the equality value \(3/5\) asserted after (75) in \cite[p.~67]{LLVZ}; the second exceeds its upper bound \(1/7\).
+\end{theorem}
+
+For \(y=0\) and \(\psi(n)=3^{-n\tau}\), Li--Liao--Velani--Zorin
+\cite[\S5.5, Remark~13]{LLVZ} state the first formula with a proof conditional on \(abc\) above \(1-\log2/\log3\). The unconditional lower bound on the open interval between this threshold and \(1\) is the substantive step. The endpoint \(\tau=1\) already follows from a covering count. The wider discussion of (75) concerns graphs of bi-Lipschitz functions. At \(\tau=1\) the diagonal has dimension zero inside the shrinking target set, whereas for a dense \(G_\delta\) set of slopes the graph \(x\mapsto(x,\theta x)\) meets that set in dimension \(\log_3(2)/2\). The same slopes exceed (75) for every \(1-\log_3(2)<\tau\le1\). Theorem~\ref{thm:exceptional-slopes} gives the exact exceptional spectrum and shows that almost every slope and every positive algebraic slope recover the diagonal value there.
+
+\subsection{Several bases and the homogeneous partition}
+Fix \(v=(v_1,\ldots,v_d)\) with positive real algebraic entries linearly independent over \(\mathbb Q\). The parameter is \(c>0\). At integer time \(u\) let \(Q=e^u\).
+For each of \(k\) integer bases \(B_i\ge2\), choose \(0<\kappa_i<t_i\) and put
+\[
+ n_i=\lfloor\kappa_i u/\log B_i\rfloor,\quad N_i=B_i^{n_i},
+ \qquad w_{pi}=\kappa_i\,\nu_p(B_i)\log p/\log B_i.
+\]
+For each \(i,j\), take a window of physical radius \(r_{ij,u}\asymp Q^{-t_i}\) on the \(cv_j\) axis. Its fractional radius after multiplication by \(N_i\) is \(N_i r_{ij,u}\). For target \(y_{ij}\in\mathbb T\) the symmetric test is
+\[
+ \left|cv_j-\frac{m_{ij}+y_{ij}}{N_i}\right|<r_{ij,u}
+ \qquad(m_{ij}\in\mathbb Z).
+\]
+In the right-sided test the difference lies in \((0,r_{ij,u})\) or \([0,r_{ij,u})\). The same orientation is used on all axes for the homogeneous one-sided conclusions. Write \(E(y)\) for the simultaneous limsup. Equal digit positions correspond to \(\kappa_i=\log B_i\). Repeated bases are allowed.
+
+For nonempty \(A\subseteq\{1,\ldots,k\}\), write
+\[
+ t_A=\max_{i\in A}t_i,\qquad
+ \lambda_A=\sum_p\min_{i\in A}w_{pi},\qquad
+ \gcd_{i\in A}N_i\asymp Q^{\lambda_A}.
+\]
+Choose a partition \(\Pi_-\) minimizing \(\sum_{A\in\Pi}(t_A-\lambda_A)\), taking the fewest blocks in case of equality, and put
+\begin{equation}\label{eq:intro-L}
+ L=\max_{x\in\{t_A:A\in\Pi_-\}}
+      \frac{d}{x}\sum_{\substack{A\in\Pi_-\\ t_A\le x}}(t_A-\lambda_A).
+\end{equation}
+\begin{theorem}[Homogeneous dimension]\label{thm:hom}
+For \(L\le1\) the local dimension of \(E(0)\) is \(1-L\). For \(L>1\) there are no positive parameters in \(E(0)\). These conclusions hold for symmetric and right-sided windows, including the half-open digit convention.
+\end{theorem}
+
+For equal start weights \(1\) and common end weight \(\rho>1\), in dimension \(d\ge2\) the critical value is
+\[
+ \max_{\Pi}\frac{d\sum_{A\in\Pi}\lambda_A}{d|\Pi|-1}.
+\]
+Indeed at a common terminal weight \(1-L\) maximizes
+\(d\sum_A\lambda_A/\rho-(d|\Pi|-1)\).
+Take \(d=2\) and bases \((1024,3072,5)\).
+Here \(\lambda_{\{1,2\}}=\log1024/\log3072=:\ell>4/5\).
+The partition \(\{\{1,2\},\{3\}\}\) gives \(2(1+\ell)/3\), exceeding the singleton threshold \(6/5\). Every other partition has threshold at most one, apart from the singleton partition itself. Thus an intermediate partition determines the cutoff even for multiplicatively independent bases.
+
+\subsection{What changes under translation}
+Index the \(kd\) axes by a single index \(i\), with label \(j(i)\) and direction entry \(a_i=v_{j(i)}\). In the full array each radix denominator occurs once for each label. The labelled formulation below also permits any finite list of axes, with a denominator and one of the independent label values assigned to each axis. The rational-section and counting arguments use precisely this list. We allow distinct \(t_i\) on these copies and arbitrary shifts \(b_i(u)\) in physical coordinates. The level condition is
+\[
+ ca_i\in b_i(u)+N_i^{-1}\mathbb Z+I_{i,u}\quad\text{for every }i,
+ \qquad |I_{i,u}|\asymp Q^{-t_i}.
+\]
+Intervals are open unless an endpoint convention is specified. A fixed fractional target has \(b_i=y_i/N_i\). More generally \(N_i\) may be any integers supported on a fixed finite set of primes with \(p^{\nu_p(N_i)}\asymp Q^{w_{pi}}\), \(\sum_pw_{pi}=\kappa_i\). Minimize the partition cost over blocks having a single label. Formula \eqref{eq:intro-L} now counts the individual labelled blocks, so its multiplicity factor is \(1\).
+
+To compute the dimension, fix any partition of the labelled axes into single-label blocks \(\mathcal P\). At each level choose in each block \(A\) a reference \(r\) and differences \(\delta_i=z_i-z_r\) realized by \(z_i\in b_i+N_i^{-1}\mathbb Z\). The allowed common parameter coordinate relative to \(z_r\) is the interval
+\[
+ J_A(u)=\bigcap_{i\in A}(\delta_i+I_{i,u}).
+\]
+For fixed differences, \(z_r\) runs over a translate of \((\gcd_{i\in A}N_i)^{-1}\mathbb Z\). Use an infinite subsequence of levels with nonempty intersections in all blocks and finite limits \(\sigma_A=\lim -\log |J_A(u)|/u\). Call this profile admissible if every merger of at least two blocks of a common label strictly increases the cost at these exponents, i.e.,
+\[
+ \max_{A\in\mathcal C}\sigma_A-\lambda_{\cup_{A\in\mathcal C}A}
+     >\sum_{A\in\mathcal C}(\sigma_A-\lambda_A)
+\]
+for each such collection \(\mathcal C\). This condition is vacuous if each label has only one block.
+
+\begin{theorem}[Translated targets]\label{thm:profile}
+The local dimension for arbitrary shifts is the supremum over admissible profiles of the positive values
+\[
+ s(\mathcal P,\sigma)=1-
+ \max_{x\in\{\sigma_A\}}\frac1x
+           \sum_{A:\sigma_A\le x}(\sigma_A-\lambda_A),
+\]
+with value zero if no profile gives a positive value. The same assertion holds on every infinite subsequence of levels, taking profiles along its further subsequences. The dimension is bounded above by \((1-L)_+\).
+For pairwise coprime radices with \(d\) equal-weight copies per radix it is, for every target,
+\[
+ \left(1-d\max_{x\in\{t_i:1\le i\le k\}}
+          \frac{\sum_{i:t_i\le x}(t_i-\kappa_i)}{x}\right)_+ .
+\]
+For bases \(2,6\) at common integer times with fractional radii \(9^{-u},3^{-u}\), fixing \(y_2=4/9\) and varying \(y_1\) realizes every local dimension in \([0,\log2/\log18]\). Both an empty set and a dense \(G_\delta\) occur at dimension zero, for each of the two open-window conventions.
+\end{theorem}
+
+Changing endpoint inclusions affects at most countably many parameters, since each axis has countably many endpoints over all levels. The profile uses only differences of grid points and lengths of intervals; its definition requires no limsup point on the line. Fixed algebraic targets retain strict emptiness for \(L>1\), whereas for pairwise multiplicatively independent bases a residual set of real targets has dense sections at arbitrarily small radii (\S\ref{sec:occupancy}). At equality there are homogeneous coprime systems with residual occupancy on a half-line; we also obtain a quantitative near-critical result in matched bases (\S\ref{sec:critical}).
+
+\subsection{Prior work and proof}
+The two-target problem for multiplication by 2 and 3, with separate shrinking functions and a common index, was announced in 2020. Theorem~5 of Liao's 2021 seminar \cite{Liao} gives unconditional bounds for two positive decreasing radius functions and targets on the interval. For fractional radii \(e^{-\alpha n},e^{-\beta n}\) the bounds agree when \(0<\alpha<\log(3/2)\) and \(\beta>0\). The proof outline uses spacing of modular inverses and mass transference. The companion manuscript \emph{The shrinking target problem for matrix transformations of tori: developing a manifold theory} is cited as work in preparation in \cite[ref.~32]{LLVZ} and as a preprint in \cite[ref.~18, preprint version]{LLW}. We attribute to it only statements accessible through these sources and the public lectures.
+
+Li--Li--Wu \cite{LLW} determine dimensions for products of restricted-denominator errors. For the simultaneous maximum, their \S4 retains the gcd in the upper estimate and their Theorem~1.3 gives the equal-position homogeneous two-base formula for common radius of lower order greater than one in the larger base. Huang--Liu \cite[Theorem~7]{HL} obtain fixed-denominator counts near affine subspaces under Diophantine type conditions. Huang \cite[Theorems~3.1(b), 3.2(b)]{Huang} gives shifted upper counts that already yield the one-base upper estimate for an algebraic line in the positive-dimensional range. Here the denominators on different coordinate copies are prescribed powers at the same level. Tapia \cite[\S3.1.1, Lemma~2]{Tapia} gives a covering bound for real denominators that implies our universal upper bound on the fast-range slope fibers. His main results concern inhomogeneous products on planar lines; Hu--Huang--Li--Wu \cite{HHLW} study inhomogeneous targets for invertible matrix sequences with a starting point free in the ambient space. Our higher-dimensional algebraic direction was motivated by simultaneous digit windows in combinatorial prefix problems.
+
+The proof counts grid points in tubes about a parameter interval at every intermediate length. The \(S\)-adic Subspace Theorem forces differences into the rational subspaces with maximal volume in grid units. A dual estimate supplies small fundamental cells when the maximum is strict. In the translated problem a tie or a preferred merger requires a further step: we fix the relative positions within a block and repeat the count on its gcd grid. Each such step reduces the number of axes.
+
+\section{Weighted rational sections}\label{sec:weighted-sections}
+
+Write $V=\mathbb Q^m$ for the space indexed by the $m$ axes and
+$\Gamma=\prod_i N_i^{-1}\mathbb Z$. Write $U_{\mathbb R}$ for the real
+span of a rational subspace $U\le V$ and $\Gamma_U=\Gamma\cap U$.
+Let $\Delta$ be the span over $\mathbb Q$ of the indicator vectors of
+the labels. Since the distinct label values are linearly independent
+over $\mathbb Q$, any rational linear equation vanishing on $a=(a_i)$
+vanishes on every label indicator. Thus $\Delta$ is the smallest
+rational space whose real span contains $a$. The same argument applies
+after projection onto any subset of the axes.
+
+Put $t_*=\max_i t_i$, choose $r$ with $t_r=t_*$, and for
+$0\le z\le t_*$ put
+\[
+ B_u=\prod_i[-Q^{-t_i},Q^{-t_i}],\qquad
+ K_z=[-Q^{-z},Q^{-z}]a+B_u.
+\]
+Up to fixed dilations, $K_z$ is the parallelepiped given by the bounds
+$|y_r/a_r|\le Q^{-z}$ and
+$|y_i-(a_i/a_r)y_r|\le Q^{-t_i}$ for $i\ne r$. In one direction, write
+$y=ca+e$ with $e\in B_u$, and use $t_r\ge t_i$ and $t_r\ge z$. In the
+other direction use $c=y_r/a_r$.
+
+A coordinate basis on $U$ is a set of coordinate forms whose
+restrictions form a basis of $U^*$. Let $h_p(U)$ be the minimum total
+$w_{pi}$-weight of a coordinate basis, and set
+$h(U)=\sum_p h_p(U)$. Let $H(U)$ be the maximum total $t_i$-weight of a
+coordinate basis. For the displayed parallelepiped let $A_z(U)$ be
+the maximum total weight of a basis of restricted real forms, with
+weights $z$ for the reference form and $t_i$ for the other forms.
+Define
+\[
+ P_z(U)=h(U)-A_z(U),\qquad
+ J(z)=\max_{U\le V}P_z(U).
+\]
+The weights and dimensions determine only finitely many possible
+values at each fixed $z$.
+
+\begin{lemma}\label{lem:section-volume}
+For every fixed rational $U$,
+\begin{equation}\label{eq:core-volume}
+ \frac{\operatorname{vol}_{U}(K_z\cap U_{\mathbb R})}
+      {\operatorname{covol}(\Gamma_U)}
+ \asymp Q^{P_z(U)}.
+\end{equation}
+The function $P_z$ is supermodular on rational subspaces. It is
+nonincreasing and $1$-Lipschitz in $z$.
+\end{lemma}
+
+\begin{proof}
+A greedy basis in decreasing order of the real weights spans, at each
+threshold, all forms seen so far. Each omitted form is a fixed linear
+combination of earlier pivots, so the basis bounds give a
+parallelepiped comparable to the section. Its volume is
+$\asymp Q^{-A_z(U)}$. At each grid prime use the same argument in
+increasing order of weights, since the local coordinate bounds are
+$|y_i|_p\ll Q^{w_{pi}}$. With Haar measure normalized by
+$U\cap\mathbb Z^m$, the local section has volume
+$\asymp Q^{h_p(U)}$. Indeed it is the section of the product of
+$N_i^{-1}\mathbb Z_p$ by the $\mathbb Q_p$-span of $U$. This is the
+completion of $\Gamma_U$, by taking the kernel of integer equations
+after clearing denominators and using Smith normal form. Since
+$\Gamma_U$ contains $U\cap\mathbb Z^m$ with finite index in
+$\Gamma_U$, the product of these local indices is the ratio of the
+fixed integer lattice covolume to $\operatorname{covol}(\Gamma_U)$.
+This proves \eqref{eq:core-volume}.
+
+Let $E_p(x)$ be the coordinate subspace supported on $w_{pi}>x$.
+The same greedy scan gives
+$h_p(U)=\int_0^\infty\dim(U\cap E_p(x))\,dx$. For $A_z(U)$ integrate
+the rank of the restrictions of real forms of weight greater than $x$.
+The first integrand is supermodular by the dimension formula. The
+second is submodular because it is the dimension of the image of a
+fixed linear map on $U_{\mathbb R}$. This proves supermodularity.
+Finally, $A_z(U)$ is the maximum of finitely many affine functions
+of $z$ of slopes $0$ or $1$.
+\end{proof}
+
+In particular a maximum of $P_z$ on the subspaces of a fixed rational
+space has a unique largest maximizer, since sums and intersections
+of maximizers are maximizers. The same holds on the subspaces
+containing $\Delta$ and gives a unique smallest maximizer there.
+
+\begin{proposition}\label{prop:section-optimization}
+For $e_A=t_A-\lambda_A$ on $\Pi_-$ put
+$D=t_*-\sum_{A\in\Pi_-}e_A$. Then
+\begin{equation}\label{eq:core-spectrum}
+ J(z)=D+\max_{z\le x\le t_*}
+              \left(\sum_{\substack{A\in\Pi_-\\t_A\le x}}e_A-x\right).
+\end{equation}
+The partition space $W_-$ defined by equality of coordinates within
+each block of $\Pi_-$ is the smallest maximizer of $P_z$ among
+rational spaces containing $\Delta$.
+\end{proposition}
+
+\begin{proof}
+For any rational $U$, let $U(x)$ be its coordinate image on the axes
+with $t_i>x$. For $x<t_*$ these axes include $r$. The difference
+forms at this threshold have kernel equal to the line spanned by
+the projected $a$. Their rank on $U(x)_{\mathbb R}$ is therefore
+$\dim U(x)$ minus one precisely when that line lies in
+$U(x)_{\mathbb R}$. This condition persists as the high axes are
+removed. Let $q$ be the first $x\in[0,t_*)$ for which it holds, or
+$t_*$ if there is none. The high sets, defined using $t_i>x$, are
+constant between terminal exponents and take their new value at
+each exponent. Below $z$ the reference form restores the full
+coordinate rank. Integrating the ranks gives
+\begin{equation}\label{eq:core-rank}
+ P_z(U)=h(U)-H(U)+t_*-\max(z,q).
+\end{equation}
+For $U\supseteq\Delta$ we have $q=0$.
+
+We first optimize $h-H$ on spaces containing $\Delta$. Filter $U$
+by successively setting each label to zero and take the coordinate
+image on that label just before imposing the corresponding zero
+condition. Each image contains its all-ones vector. For any
+coordinate projection with image $Y$ and kernel $K$, the support
+flags show $h(U)\le h(Y)+h(K)$ by mapping $U\cap E_p(x)$ into the
+corresponding support of $Y$. Lifting a coordinate basis on $Y$ and
+adjoining a coordinate basis on $K$ gives a basis on $U$, so
+$H(U)\ge H(Y)+H(K)$. Applying these inequalities along the filter
+bounds $h-H$ above by the sum on the label images.
+
+On one such image take a greedy descending $t_i$-basis. Place each
+coordinate in the layer where its restriction first belongs to the
+span of successive pivots. There are no zero restrictions because
+the image contains the all-ones vector. The largest weight in a
+layer is its pivot weight, since any restriction encountered
+earlier lies in the earlier span. Every transversal of the layers
+is a basis by triangularity. Thus $H$ is the sum of the maximal
+weights in the layers and $h_p$ is at most the sum of their minimal
+$p$-weights. The resulting same-label partition, with $\dim U$
+blocks in total, bounds $h(U)-H(U)$ above by
+$\sum_A(\lambda_A-t_A)$. Equality is realized for each candidate
+partition by taking its space of block-constant vectors. In
+particular the maximum of $P_z$ over spaces containing $\Delta$
+is $D-z$. If $U$ realizes this maximum, its layer partition is
+minimizing. Hence $W_-$ has the least dimension among the
+maximizers, and supermodularity gives its asserted minimality.
+
+For any rational $U$, $U+W_-$ contains $\Delta$. Supermodularity and
+$P_z(U+W_-)\le P_z(W_-)$ give $P_z(U)\le P_z(U\cap W_-)$. We can
+therefore optimize in $W_-$. Its grid in block coordinates has
+denominators $G_A=\gcd_{i\in A}N_i$ and weights $w_{pA}=\min_{i\in A}w_{pi}$. Since
+$a\in (W_-)_{\mathbb R}$, intersecting $K_z$ with $(W_-)_{\mathbb R}$
+amounts to intersecting the error box there, so the block exponents
+are $t_A$. Formula \eqref{eq:core-volume} allows us to compute
+$P_z$ in these coordinates.
+
+Now take $U\le W_-$ and $x=\max(z,q)$ in \eqref{eq:core-rank}.
+Its image $Y$ on blocks with $t_A>x$ contains the corresponding label
+indicators, by rationality and the definition of $q$. For projection
+onto these blocks, $H(U)=H(Y)+H(K)$, where $K$ is the kernel.
+Indeed, a greedy basis uses the high coordinates first, and the
+remaining pivots give a greedy basis on $K$ because restriction to
+$K$ has kernel spanned by the high forms. Also $h(K)\le H(K)$
+by using a single maximum real coordinate basis at every prime
+and $\lambda_A<t_A$. Hence $h(U)-H(U)\le h(Y)-H(Y)$. The
+partition bound on $Y$ is $-\sum_{t_A>x}e_A$, since a merger of
+these blocks cannot improve the original minimizing partition.
+Conversely, for each $x\in[z,t_*]$ take the full coordinate space
+on the high blocks and extend by zero on the other blocks. Its
+$q$ is at most $x$ and its $h-H$ is exactly $-\sum_{t_A>x}e_A$.
+The zero space supplies this comparison when $x=t_*$. These two
+bounds give \eqref{eq:core-spectrum}.
+\end{proof}
+
+The maximum in \eqref{eq:core-spectrum} uses $x=z$ and the terminal
+exponents in the range. Consequently $J(0)=D$ for $L\le 1$ and
+$J(0)>D$ for $L>1$. For $L\ge 1$, some positive terminal exponent
+$z$ satisfies $J(z)=J(0)$. For $L<1$,
+\begin{equation}\label{eq:core-slope}
+ D-J(z)\ge (1-L)z\qquad (0\le z\le t_*),
+\end{equation}
+with equality at a terminal exponent attaining $L$. The function
+$J$ is nonincreasing and $1$-Lipschitz by Lemma~\ref{lem:section-volume}.
+We also use continuity under comparison of exponents. If all $t_i$
+and $z$ change by at most $\eta$, the two segment-plus-box bodies
+contain $Q^{-\eta}$ times one another. Taking volumes in
+\eqref{eq:core-volume} shows that $P_z(U)$ changes by at most
+$\eta\dim U$ and $J(z)$ by at most $m\eta$.
+
+
+\section{Lattice counts and translated covers}\label{sec:translated-counts}
+
+We use the following consequence of Schlickewei's $S$-adic Subspace
+Theorem~\cite{Schlickewei}. Suppose nonzero rational vectors have
+denominators supported on fixed primes, primitive integer
+representatives of height $O(Q^C)$ for fixed $C$, and a product of
+independent linear forms over these primes and infinity of size
+$O(Q^{-\gamma})$ for fixed $\gamma>0$. At each place the forms are
+fixed and have algebraic coefficients. For sufficiently large $u$,
+the vectors lie in finitely many proper rational subspaces. To see
+the normalization, multiplying an $S$-integral vector by a scalar to
+make it primitive integral multiplies the product by at most one.
+At primes outside $S$ the scalar has absolute value at least one,
+so this follows from the product formula. The decay in $Q$ therefore
+implies the required negative power of the primitive height.
+Vectors on zero sets of the forms already lie in proper rational
+subspaces. In dimension one a nonzero $S$-integer has product of
+its absolute values over these places at least one.
+
+\begin{lemma}\label{lem:primal-count}
+Fix $z$, a rational space $W\le V$, and a positive constant $C$.
+Let $U$ be the largest maximizer of $P_z$ among subspaces of $W$.
+For all sufficiently large levels, $\Gamma\cap CK_z\cap W_{\mathbb R}$
+lies in $U$. A centered fixed dilation of the section on any
+fixed rational space $Y$ contains $\gg Q^{P_z(Y)}$ lattice points.
+\end{lemma}
+
+\begin{proof}
+For a fixed $U\subsetneq W'\le W$, take greedy bases on $W'$ in
+decreasing weight order at infinity and increasing weight order
+at each prime. Mark the first pivots that give independent
+restrictions to $U$. They form greedy bases on $U$ because every
+discarded form on $W'$ belongs to the span of earlier retained
+forms. Subtract from each unmarked form a combination of earlier
+marked forms to make it vanish on $U$. These unmarked forms then
+give a quotient basis and keep their original bounds up to fixed
+constants. All coefficients in the real elimination are algebraic.
+For a grid vector in the centered body restricted to
+$W'$, their product on its image in $W'/U$ is bounded by
+\begin{equation}\label{eq:core-primal}
+ O\bigl(Q^{P_z(W')-P_z(U)}\bigr).
+\end{equation}
+Indeed the marked and unmarked weights add to those of the original
+greedy bases, with negative sign at infinity and positive sign at
+the primes. Use fixed rational coordinates on the quotient, scaled
+so that their pullbacks extend to integral linear forms on $V$.
+The vector has bounded real coordinates before projection and
+denominators dividing $\operatorname{lcm}_i N_i=Q^{O(1)}$, so the
+quotient coordinates satisfy the height hypothesis. Since $U$ is
+the largest maximizer, \eqref{eq:core-primal} has strictly negative
+exponent. The Subspace Theorem puts nonzero quotient vectors
+eventually in finitely many proper rational spaces. Repeat on their
+preimages in $W'$, starting with $W'=W$. This descent terminates by
+dimension and excludes nonzero images for sufficiently large $u$.
+
+For the lower count, average the number of lattice points in
+translates of half the centered section. Some translate contains
+at least its volume in lattice units. Subtracting one point in that
+translate puts the resulting points in the centered section.
+Equation \eqref{eq:core-volume} gives the bound.
+\end{proof}
+
+\begin{lemma}\label{lem:dual-cells}
+Fix $z$ and a rational $U$ with $P_z(U)\ge P_z(U')$ for all $U'\le U$.
+For each $\delta>0$, $\Gamma_U$ eventually has a measurable
+fundamental domain contained in $Q^\delta(K_z\cap U_{\mathbb R})$.
+If the inequality is strict for all proper $U'\le U$, the same
+holds for $\delta=-b$ for some $b>0$.
+\end{lemma}
+
+\begin{proof}
+The zero-dimensional case is immediate. Write $T\le U^*$ for any
+fixed nonzero rational space of dual forms, and put $Y=T^\perp\le U$.
+Suppose $f\in T$ belongs to the dual of $\Gamma_U$ and has bounded
+width on $Q^\delta(K_z\cap U_{\mathbb R})$. Expand $f$ in a greedy
+real basis on $U$ with weights $\alpha_j$. Its coefficients are
+$O(Q^{\alpha_j-\delta})$ by testing on the corresponding inner
+parallelepiped. A set of coefficient projections is a basis on $T$
+exactly when the span of the complementary basis forms meets $T$
+trivially. This is equivalent to the complementary forms restricting
+to a basis on $Y$, by the dimension formula for the restriction map
+with kernel $T$. Thus a minimum-weight choice of projections has
+weight sum $A_z(U)-A_z(Y)$. The original greedy basis realizes the
+maximum on $Y$ because its forms span the same restrictions as the
+full list at every threshold.
+
+At each prime choose a rational basis of $U$ consisting of integer
+vectors, adapted to the support flag $U\cap E_p(x)$ and containing
+a basis of $Y$ adapted to its induced flag. Such a basis is obtained
+by extending through the nested flag subspaces, adding the new
+basis vectors of $Y$ at each step first, and clearing denominators.
+For a basis vector $v$, let $w(v)$ be the smallest $w_{pi}$ on its
+support. The sum of $w(v)$ is $h_p(U)$ by the integral of flag
+dimensions, and the sum for the vectors of $Y$ is $h_p(Y)$. If
+$n_p(v)=\min_{i:v_i\ne0}\nu_p(N_i)$, then $p^{-n_p(v)}v\in\Gamma_U$.
+Consequently $|f(v)|_p\le p^{-n_p(v)}\ll Q^{-w(v)}$. Evaluations on
+the basis vectors outside $Y$ are independent on $T$ and contribute
+$h_p(Y)-h_p(U)$ to the product exponent. The resulting product at
+all places is
+\begin{equation}\label{eq:core-dual}
+ O\bigl(Q^{P_z(Y)-P_z(U)-\delta\dim T}\bigr).
+\end{equation}
+The dual vectors are integral on the fixed lattice
+$U\cap\mathbb Z^m$, and the real basis bounds give polynomial height
+in this lattice's dual coordinates.
+
+For $\delta>0$ the exponent is strictly negative for every nonzero
+$T$. In the strict case the finitely many possible values of
+$P_z(Y)$ leave a positive gap for proper $Y$, so a sufficiently
+small $b>0$ makes it negative for $\delta=-b$ as well. Applying
+the Subspace Theorem and descending through the resulting proper
+subspaces of $U^*$ rules out all nonzero dual vectors of any fixed
+bounded width for large $u$. By the flatness theorem~\cite{KL},
+every translate of the dilated body then meets $\Gamma_U$.
+Because the body is symmetric, its lattice translates cover
+$U_{\mathbb R}$. Partition any measurable fundamental domain
+according to the first covering translate in a fixed enumeration
+of the lattice, and move each piece by the corresponding lattice
+vector into the body. This supplies the required domain.
+\end{proof}
+
+It follows that, for fixed $z,W,C$, uniformly in translations, the
+number of points of $\Gamma_W$ in a translate of $C(K_z\cap W_{\mathbb R})$
+is
+\begin{equation}\label{eq:core-count}
+ O_\epsilon\left(Q^{\max_{Y\le W}P_z(Y)+\epsilon}\right).
+\end{equation}
+Indeed, differences of the counted points belong to the centered
+body with multiplier $2C$, so Lemma~\ref{lem:primal-count} puts
+them in the largest maximizing space $U\le W$. Attach the cells
+from Lemma~\ref{lem:dual-cells} to the points in this coset of
+$\Gamma_U$. The cells are disjoint up to boundaries and lie in a
+translate of $(2C+Q^\delta)(K_z\cap U_{\mathbb R})$. Volume comparison
+by \eqref{eq:core-volume}, with $\delta\dim U<\epsilon$, gives
+\eqref{eq:core-count}. The estimate also counts points of a shifted
+grid. For $W=V$ its constant can be made uniform in $z\in[0,t_*]$.
+Use a fixed finite mesh from below, the nesting of $K_z$, and the
+$1$-Lipschitz bound for $J$, reserving part of $\epsilon$ for the
+mesh error.
+
+Let $F_u$ be the set of parameters $c$ satisfying
+$c a_i\in b_i+N_i^{-1}\mathbb Z+I_{i,u}$ on every axis. For upper
+bounds we only need $|I_{i,u}|\ll Q^{-t_i}$. Absorb interval
+midpoints into the shifts so that the windows lie in a fixed
+multiple of the error box. This translates the grid by a common
+vector at that level and preserves the number of cosets modulo
+any fixed subspace. On a fixed compact parameter interval every
+witnessing grid vector lies in a fixed multiple of $K_0$.
+
+\begin{proposition}\label{prop:translated-covers}
+On a fixed compact interval the level hits can be covered by
+\begin{equation}\label{eq:core-cover}
+ O_\epsilon(Q^{J(0)-J(z)+\epsilon})
+ \quad\text{intervals of length }O(Q^{-z})
+\end{equation}
+for any fixed $0<z\le t_*$. For any fixed rational $W\le V$, the
+number of cosets modulo $W_{\mathbb R}$ containing a grid vector
+that witnesses a hit on the compact is
+\begin{equation}\label{eq:core-cosets}
+ O_\epsilon\bigl(Q^{J(0)-P_0(W)+\epsilon}\bigr).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For \eqref{eq:core-cover}, take a maximal set of hit parameters
+separated by a sufficiently large fixed multiple of $Q^{-z}$.
+For each, add to its grid witness the centered lattice points of
+a maximizing section for $P_z$, at least $\gg Q^{J(z)}$ by
+Lemma~\ref{lem:primal-count}. The sums belong to the same shifted
+grid and a fixed multiple of $K_0$. Sums from distinct parameters
+are disjoint because their reference coordinate divided by $a_r$
+is within $O(Q^{-z})$ of the corresponding parameter. Equation
+\eqref{eq:core-count} bounds the total. Maximality gives the
+cover. For \eqref{eq:core-cosets}, take one witness from each
+coset and add the centered lattice points of the section on $W$
+at $z=0$. Sums remain in their corresponding distinct cosets.
+Apply the same total count.
+\end{proof}
+
+By \eqref{eq:core-spectrum} and \eqref{eq:core-slope}, there is
+a positive terminal exponent $z$ for which the quotient
+$(J(0)-J(z))/z$ equals $\max(1-L,0)$. Summing the cover costs
+in \eqref{eq:core-cover} proves the universal dimension upper
+bound, also along any subsequence.
+
+
+\section{Lower bounds and profile descent}\label{sec:profile-descent}
+
+\begin{proposition}\label{prop:singleton-lower}
+Suppose $L<1$, the singleton partition is the unique minimizing
+partition, and the window widths are comparable to $Q^{-t_i}$.
+For arbitrary shifts, the local dimension of the limsup along
+any prescribed infinite sequence of levels is at least $1-L$.
+\end{proposition}
+
+\begin{proof}
+Here $W_-=V$ and $P_0(V)=D$. If a proper $U$ contains $\Delta$,
+minimality of $W_-$ implies $P_0(U)<D$. Otherwise its $q$ in
+\eqref{eq:core-rank} is at least $\min_i t_i$, since all axes remain
+below that threshold. Hence $P_z(U)=P_0(U)$ for small $z>0$, and
+\eqref{eq:core-slope} gives $P_0(U)<D$ again. Lemma~\ref{lem:dual-cells}
+now gives fundamental cells in $Q^{-b}K_0$ for some
+$0<b<\min_i t_i$.
+
+Center the windows by translating the grid. For an interval $S$
+of length $x\ge Q^{-b/2}$ and any fixed $\rho>0$, the tube
+$Sa+\rho B_u$ has volume in lattice units comparable to $xQ^D$.
+Indeed the reference coordinate has range of length
+$O(x+Q^{-t_*})$ and the difference coordinates are bounded by a
+fixed multiple of their radii. For the reverse bound let the
+reference range over $S$ and vary the other coordinates inside
+the error box with zero error in the reference coordinate. This
+gives volume $\asymp xQ^{-\sum_{i\ne r}t_i}$, which is
+$\asymp xQ^D$ in lattice units. The number of grid points in this
+tube is also $\asymp xQ^D$. For the upper bound attach cells to
+its grid points, enlarging $S$ by $Q^{-b}$ at its endpoints and
+$\rho$ by $Q^{-b}$. For the lower bound shrink $S$ and $\rho$ by
+the same amounts. Each point in the shrunken tube is in the cell
+of a grid point in the original tube. Both volume comparisons
+are uniform in $S$ and in the shifts.
+
+Take $\rho$ small enough that a grid point in $Sa+\rho B_u$
+has a witness in $S$ with a fixed proportional margin in every
+window. It supplies a closed hit interval of length
+$r_u=c_0Q^{-t_*}$ about that witness, with fixed $0<c_0<1$.
+If two witnesses come from distinct grid vectors, some grid
+coordinate differs by at least $1/N_i$. Its two errors are
+$O(Q^{-t_i})=o(1/N_i)$. The separation of witnesses is therefore
+$\gg Q^{-\max_i\kappa_i}$, which exceeds $r_u$ by a power.
+
+Fix $0<s<1-L$ and start in a compact interval inside the given
+open interval. At each sufficiently large available level use
+the middle half of every parent interval of length $R$ to obtain
+$\asymp RQ^D$ children as above. Give them equal shares of the
+parent mass $P$. Levels are chosen so the children lie in their
+parents and the gaps between all intervals of a stage exceed
+their common length. The separation just proved gives this
+within parents, and the finitely many gaps between parents are
+fixed when selecting the level.
+
+A test interval of length $Q^{-b/2}\le x\le R$ meets children
+from a given parent of total mass $O((P/R)x)$ by the tube upper
+count, enlarging the test interval by the child length. For
+$r_u\le x<Q^{-b/2}$ put $z=\min(t_*,-\log x/u)$, so that
+$Q^{-z}\asymp x$ and $z\ge b/2$. The grid vectors of intersecting
+children lie in a translate of a fixed multiple of $K_z$.
+The uniform estimate \eqref{eq:core-count} bounds their total
+mass by
+\[
+ O_\epsilon\bigl((P/R)Q^{J(z)-D+\epsilon}\bigr)
+ \ll_\epsilon (P/R)Q^{\epsilon-(b/2)(1-L-s)}x^s
+\]
+using \eqref{eq:core-slope}. Choose
+$\epsilon<(b/2)(1-L-s)$ and the next available level large
+enough to absorb the constant and $P/R$ for every current parent.
+In particular taking $x=r_u$ bounds each new child mass by $r_u^s$.
+Inductively $P\ll R^s$ with a single constant that also covers
+the initial interval. The large-$x$ estimate is then $O(x^s)$
+since $s<1$.
+
+The nested construction yields a probability measure on the
+intersection. For any sufficiently short test interval choose
+the stage whose child length is at most $x$ and whose parent
+length exceeds $x$. The interval meets at most one parent
+because of the gaps. The preceding estimates give mass
+$O(x^s)$ uniformly. The mass distribution principle gives
+dimension at least $s$ for this subset of the limsup, and
+$s\uparrow 1-L$ proves the claim.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:hom}]
+The upper bound follows from \eqref{eq:core-cover}. If $L<1$,
+restrict the grid centers to agree within each block of $\Pi_-$.
+The grid there has denominator $G_A$, and the common anchored
+window on a block has width $\asymp Q^{-t_A}$. Any merger of two
+or more effective axes of one label would strictly raise the
+cost, since an improvement contradicts optimality and a tie
+contradicts the fewest-block rule. Consequently the effective
+singleton partition is the unique minimizer and it has the
+same $L$. Proposition~\ref{prop:singleton-lower} gives the lower
+bound. For $L=1$ the upper bound already gives dimension zero.
+
+If $L>1$, the largest maximizer $U$ of $P_0$ on $V$ lacks
+$\Delta$, because $J(0)>D$ and the best value on spaces
+containing $\Delta$ is $D$. On any fixed compact interval the
+homogeneous centers lie in a fixed multiple of $K_0$, and
+Lemma~\ref{lem:primal-count} puts them eventually in $U$.
+If a fixed $c\ne0$ were a limsup point, its centers would
+converge to $ca\in U_{\mathbb R}$, contradicting the rational
+closure property of $\Delta$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:profile}]
+We give the compression details. For a partition $\mathcal P$
+and a fixed tuple of center differences $\delta_i=y_i-y_{r(A)}$
+within each block $A$, the possible reference centers
+$y_{r(A)}$ form a translate of $G_A^{-1}\mathbb Z$. Indeed two
+lifts with these differences differ by a common grid increment
+within $A$, and every such increment extends a given lift.
+The effective window is $J_A(u)=\bigcap_{i\in A}(\delta_i+I_{i,u})$
+and its width is $h_A(u)$. Two center vectors give the same
+tuple exactly when they differ by an element of the partition
+space. After another compression, take as reference for each
+new block the reference of one constituent block. Differences
+of the new references add to the original differences, and
+intersecting the correspondingly translated $J_A(u)$ gives the
+intersection of the original windows with the summed
+differences. The denominator is the gcd of the constituent
+gcds. Thus repeated compression always gives one tuple for a
+partition of the original axes.
+
+For an admissible profile, take cores of widths
+$Q^{-\sigma_A-\eta}$ in its intersections at all sufficiently
+large levels of the defining sequence. This is possible for
+every fixed $\eta>0$ by convergence of the exponents. For small
+$\eta$ the strict merger inequalities persist. Hence for a
+positive profile value the compressed core problem has a
+strict singleton optimum and positive dimension given by
+Proposition~\ref{prop:singleton-lower} and the upper bound.
+The prefix quotient for the effective exponents is continuous,
+since for finite $v_A>\lambda_A$ it equals
+\[
+ \max_{\varnothing\ne\mathcal S\subseteq\mathcal P}
+      \frac{\sum_{A\in\mathcal S}(v_A-\lambda_A)}
+           {\max_{A\in\mathcal S}v_A}.
+\]
+Indeed at any prescribed maximum exponent the full prefix
+has the largest numerator. Letting $\eta\downarrow0$ gives
+the local lower bound $s(\mathcal P,\sigma)$ in the original
+limsup. It also shows that compatible tuples on $\Pi_-$ with
+$\sigma_A=t_A$ attain the full value when $L<1$.
+
+For the reverse bound fix $s>0$ strictly above all positive
+admissible profile values and fix a compact parameter interval.
+Use interval $s$-content, the infimum of total $s$-powers of
+lengths of countable interval covers with no diameter
+restriction. If the level contents do not decay exponentially,
+one can choose a subsequence on which they are at least
+$Q^{-o(1)}$. We carry this lower bound through successive
+compressions, starting with the singleton partition and the
+original conditions.
+
+At any stage discard levels with an empty window and pass to a
+further subsequence on which $-\log h_A(u)/u$ converges in the
+extended real line for every current block. These exponents
+are bounded below by $t_A-o(1)$. If a limit is infinite, its
+one-axis condition alone covers the level on the compact by
+$O(Q^{\lambda_A})$ intervals of length $O(Q^{-M})$ for any
+fixed $M$ at sufficiently large levels. Taking $sM>\lambda_A$
+contradicts the content lower bound. If all limits are finite,
+calculate $J$ for the current axes using these limiting
+exponents. Should their universal dimension bound be less than
+$s$, there is a fixed $0<z\le\max_A\sigma_A$ with
+$J(0)-J(z)<sz$. The strict inequality persists when the
+exponents decrease by a small fixed $\eta>0$, decreasing
+$z$ by at most $\eta$ if needed. This follows from the volume
+comparison after \eqref{eq:core-slope}. The current windows
+fit into those relaxed widths. Equation \eqref{eq:core-cover}
+then gives an exponentially small $s$-cost, a contradiction.
+
+It follows that for the limiting exponents the minimal
+partition has $L<1$ and $1-L\ge s$. If that partition is
+singleton, every allowed merger strictly raises the cost. This
+sequence therefore defines an admissible profile of value at least
+$s$, again a contradiction. Otherwise let $W$ be the least
+minimizing partition space for those exponents, so that
+$P_0(W)=J(0)$. For the relaxed exponents $\sigma_A-\eta$, the
+difference $J(0)-P_0(W)$ is at most $2m\eta$. Equation
+\eqref{eq:core-cosets} bounds the number of live tuples of this
+partition on the compact by $Q^{o(1)}$, since $\eta$ and the
+counting loss can be arbitrarily small. These are actual
+tuples of differences because cosets correspond to tuples
+and recentering is a common translation. Subadditivity of
+content lets us select at each level one such tuple with
+content still at least $Q^{-o(1)}$. Compress to those tuples.
+This reduces the number of axes and gives a new stage of the
+same kind. The finite descent forces a contradiction.
+
+Thus the original level contents are $O(e^{-cu})$ for some
+$c>0$. Choose covers with exponentially decaying costs.
+Their largest diameters tend to zero, and the sums of their
+tail costs tend to zero. So the limsup on the compact has
+zero $s$-dimensional Hausdorff measure. Compact exhaustion
+and the arbitrary choice of $s$ prove the reverse bound.
+The universal upper bound is already proved. If $L<1$ and
+$\Pi_-$ is singleton, the singleton partition is strictly
+optimal and Proposition~\ref{prop:singleton-lower} gives
+equality for arbitrary shifts.
+\end{proof}
+
+
+\begin{corollary}\label{cor:coprime-dimension}
+Suppose $\lambda_A=0$ for every same-label group $A$ with
+at least two axes, as for pairwise coprime radices. For every
+choice of shifts the local dimension is
+\[
+ \max\left(0,\,
+   1-\max_{x\in\{t_i\}}\frac{\sum_{i:t_i\le x}(t_i-\kappa_i)}{x}
+ \right).
+\]
+\end{corollary}
+
+\begin{proof}
+If the singleton prefix quotient is less than one, merging a
+group of singletons replaces a cost strictly less than its
+largest terminal exponent by that exponent. Hence the singleton
+partition is strictly optimal, and Theorem~\ref{thm:profile}
+applies. If the singleton prefix quotient is at least one,
+then either $\Pi_-$ is singleton or a nonsingleton block
+$A\in\Pi_-$ contributes $e_A=t_A$. In either case $L\ge1$ and
+the translated upper bound gives dimension zero.
+\end{proof}
+
+\section{Two grids and the diagonal theorem}\label{sec:two-grids}
+
+Let the two integer denominators \(N_i=N_i(n)\) satisfy the fixed-prime
+hypotheses of Theorem~\ref{thm:profile}, with starting exponents
+\(\kappa_i>0\). Put
+\[
+  G_n=\gcd(N_1,N_2)\asymp e^{\gamma n},\qquad
+  \mathcal L_n=N_1N_2/G_n,\qquad
+  K=\kappa_1+\kappa_2,\qquad \ell=K-\gamma .
+\]
+Write \(A_n\) for the intersection of the two grids
+\(\xi_{i,n}+N_i^{-1}\mathbb Z\) thickened by open intervals of length
+\(w_{i,n}\ll N_i^{-1}\). A zero length denotes an empty window.
+Absorb the interval midpoints into \(\xi_{i,n}\).
+The possible differences of grid centres are
+\(\xi_{2,n}-\xi_{1,n}+q/\mathcal L_n\), \(q\in\mathbb Z\).
+For each difference, the pairs repeat by simultaneous translation by
+\(G_n^{-1}\mathbb Z\). The largest intersection length is therefore
+\begin{equation}\label{eq:two-grid-overlap}
+  \begin{split}
+    d_n&=\frac{\|\mathcal L_n(\xi_{2,n}-\xi_{1,n})\|}{\mathcal L_n},\\
+    h_n&=\max\!\left\{0,\min\!\left(w_{1,n},w_{2,n},
+                      \frac{w_{1,n}+w_{2,n}}2-d_n\right)\right\},
+  \end{split}
+\end{equation}
+where \(\|v\|\) denotes distance to \(\mathbb Z\). We use
+\(\dim_{\mathrm H}\varnothing=0\).
+For symmetric windows at fractional targets \(y_i\) the phase inside the norm is
+\((N_1/G_n)y_2-(N_2/G_n)y_1\).
+
+\begin{proposition}[Two-grid formula]\label{prop:two-grid-rates}
+Use \(-\log 0=+\infty\), and let \(\mathcal C\) be the set of
+extended-real subsequential limits of
+\[
+  \left(-\frac{\log w_{1,n}}n,-\frac{\log w_{2,n}}n,
+                         -\frac{\log h_n}n\right).
+\]
+For \((t_1,t_2,\eta)\in\mathcal C\), put \(s=\min(t_1,t_2)\) and
+\(r=\max(t_1,t_2)\). Choose \(i\) with \(t_i=s\). Then for every
+nonempty open interval \(J\),
+\begin{equation}\label{eq:two-grid-rates}
+  \dim_{\mathrm H}\bigl(J\cap\limsup_n A_n\bigr)
+  =\sup_{(t_1,t_2,\eta)\in\mathcal C}
+  \begin{cases}
+    0, & r=+\infty,\\[2pt]
+    \displaystyle\min\!\left\{\frac{\kappa_i}{s},\frac{K-s}{r}\right\},
+        & r<\infty,\ s<\ell,\\[6pt]
+    \displaystyle\frac{\gamma}{\eta}, & r<\infty,\ s\ge\ell .
+  \end{cases}
+\end{equation}
+Here \(\gamma/(+\infty)=0\). If \(t_1=t_2<\ell\), then
+\(K-s\le\min(\kappa_1,\kappa_2)\), so either choice of \(i\) gives
+the same value.
+\end{proposition}
+
+\begin{proof}
+On a compact interval there are \(O(G_n)\) pairs for each admissible
+difference and \(O(1+\mathcal L_n(w_{1,n}+w_{2,n}))\) admissible
+differences. Each intersection has length at most \(h_n\).
+For \(q>0\) the \(q\)-cost of a cover is thus bounded, up to a fixed
+constant, by
+\begin{equation}\label{eq:two-grid-cover}
+  B_n(q)=\min\!\left\{
+    N_1w_{1,n}^q,\ N_2w_{2,n}^q,\
+    G_n\bigl(1+\mathcal L_n(w_{1,n}+w_{2,n})\bigr)h_n^q
+  \right\}.
+\end{equation}
+The first two terms come from covering by a single grid.
+The corresponding homogeneous difference count appears in
+\cite[\S\,4, Eqs.~(4.1)--(4.2)]{LLW}.
+
+Suppose \(q\) exceeds the right-hand side of \eqref{eq:two-grid-rates}.
+If \(B_n(q)\) fails to decay exponentially, choose levels \(n_j\) with
+\(B_{n_j}(q)\ge e^{-n_j/j}\) and pass to a further subsequence on
+which the three exponents converge.
+If \(r=\infty\), a single-grid term decays exponentially. For finite
+\(r\) and \(s<\ell\), the \(i\)-th grid term has exponent
+\(\kappa_i-qs+o(1)\) after taking \(n^{-1}\log\), and the last term is
+at most \(e^{n(K-s-qr+o(1))}\) since \(h_n\le\min_i w_{i,n}\).
+At least one of these exponents is negative. For \(s\ge\ell\),
+the parenthetical factor in \eqref{eq:two-grid-cover} is \(e^{o(n)}\),
+including at \(s=\ell\). The last term decays exponentially since
+\(q>\gamma/\eta\). This also holds for \(\eta=\infty\).
+The contradiction gives summable costs with diameters tending to
+zero and proves the upper bound.
+
+For the lower bound take a subsequence realizing
+\((t_1,t_2,\eta)\). If \(r<\infty\) and \(s<\ell\), choose
+\(0<\epsilon<\ell-s\) and take cores of lengths
+\(e^{-n(t_i+\epsilon)}\) in the two intervals. Now
+\(t_i+\epsilon>\kappa_i\), even at zero fractional exponent.
+The cost of merging the axes exceeds the singleton cost by
+\(\ell-s-\epsilon>0\). The singleton lower bound of
+Theorem~\ref{thm:profile} applies on any infinite subsequence and
+gives \(\min\{\kappa_i/(s+\epsilon),(K-s-\epsilon)/(r+\epsilon)\}\).
+Let \(\epsilon\downarrow0\).
+
+If \(s\ge\ell\), \(\gamma>0\) and \(\eta<\infty\), take a difference
+attaining \(h_n\) at the chosen levels. The overlap intervals repeat
+with mesh \(G_n^{-1}\). For \(0<q<\gamma/\eta\), enlarging intervals
+of radius \(h_n/4\) inside the overlaps to radius \((h_n/4)^q\)
+covers \(\mathbb R\) at all sufficiently large chosen levels,
+since \(G_n(h_n/4)^q\to\infty\). In each local application of mass transference we retain only centers in a fixed bounded enlargement of the test interval. There are then finitely many balls per level, with radii tending to zero. The mass transference principle
+\cite[Theorem~2]{BV} gives dimension at least \(q\) locally.
+Letting \(q\uparrow\gamma/\eta\) finishes the proof.
+\end{proof}
+
+For \(N_1=a^n,N_2=b^n\), the condition
+\(\|N_i x-y_i\|<\psi_i(n)\) has \(w_{i,n}=2\psi_i(n)/N_i\) and
+\(\xi_{i,n}=y_i/N_i\). Proposition~\ref{prop:two-grid-rates} allows
+arbitrary \(0\le\psi_i(n)\le1\). Larger radii may be replaced by
+\(1\), since \(\|v\|\le1/2\). For coprime bases the last branch
+vanishes, so only the joint accumulation points of the two
+exponents are needed. For shared primes the overlap exponent can
+affect the dimension. For fixed powers \(w_{i,n}\asymp e^{-nt_i}\)
+with \(s\ge\ell\), the formula simplifies to
+\(\gamma/\bigl(\liminf_n[-\log h_n/n]\bigr)\).
+For any fixed powers at zero shifts, \(h_n=\min_i w_{i,n}\)
+and the result becomes
+\(\min\{\kappa_i/s,\max(\gamma,K-s)/r\}\), the two-grid case of
+Theorem~\ref{thm:hom}.
+If \(\gamma>0\) and \(h_n>0\) infinitely often, the tail unions
+are dense by the shrinking mesh and the limsup is a dense
+\(G_\delta\), even when its dimension is zero. Eventual \(h_n=0\)
+gives an empty limsup.
+
+Separate lower orders can both vanish when the dimension is zero.
+Take \(m_1=2\), \(m_{j+1}=m_j^2\), and on \(m_j\le n<m_{j+1}\)
+alternate which of \(-\log\psi_i(n)\) is \(j m_{j+1}+\sqrt n\),
+giving the other the value \((j-1)m_j+\sqrt n\).
+Both radii decrease and each lower order is zero, by evaluation
+at \(n=m_{j+1}-1\) on its smaller blocks. Every joint limit has
+an infinite coordinate. Taking both radii equal to \(e^{-\sqrt n}\)
+gives the same lower orders and dimension one for \((2,3)\).
+
+\begin{proof}[Proof of Theorem~\ref{thm:llvz}]
+Take \(2\le a<b\), set
+\(\alpha=\log a\), \(\beta=\log b\), \(\gamma=\log\gcd(a,b)\),
+and use a common radius \(\psi(n)\). Write
+\(\tau=\liminf_n[-\log\psi(n)/(n\beta)]\).
+At a finite subsequential limit \(\rho\) of
+\(-\log\psi(n)/(n\beta)\), the physical exponents are
+\(s=\alpha+\rho\beta\) and \(r=(1+\rho)\beta\).
+At the origin \(h_n=\min_i w_{i,n}\), so \(\eta=r\), and
+\eqref{eq:two-grid-rates} gives the contribution
+\begin{equation}\label{eq:two-grid-common}
+  H_{a,b}(\rho)=
+  \min\!\left\{\frac{\alpha}{\alpha+\rho\beta},
+     \frac{\max\{\gamma,(1-\rho)\beta\}}{(1+\rho)\beta}\right\}.
+\end{equation}
+Indeed \(K-s=(1-\rho)\beta\), and when \(s\ge\ell\)
+the second term is \(\gamma/r\le\alpha/s\).
+For arbitrary targets \(\eta\ge r\), so \eqref{eq:two-grid-common}
+is an upper bound, with equality when \(s<\ell\) or \(\gamma=0\).
+The function \(H_{a,b}\) is nonincreasing and has limit zero at
+infinity. Hence the homogeneous dimension is \(H_{a,b}(\tau)\),
+and the same value holds at every target if \(\tau<1-\gamma/\beta\)
+or \(\gamma=0\). The assertion for finite \(\tau\) uses that
+\(\tau\) itself is a subsequential limit. If \(\tau\ge1-\gamma/\beta\),
+the dimension at an arbitrary shift is
+\(\gamma/\bigl(\liminf_n[-\log h_n/n]\bigr)\), by the last branch
+of \eqref{eq:two-grid-rates} and its convention at infinity.
+
+For \((a,b)=(2,3)\) we have \(\gamma=0\) and \(\beta<2\alpha\).
+For \(0\le\tau<1\) the second term in \eqref{eq:two-grid-common}
+is the smaller one, since
+\(\alpha(1+\tau)-(1-\tau)(\alpha+\tau\beta)
+=\tau(2\alpha-\beta+\tau\beta)\ge0\).
+This gives \((1-\tau)/(1+\tau)\) for all targets and all such
+\(\tau\), including \(\tau=0\). For
+\(\tau\ge1\), including \(+\infty\), the dimension is zero.
+The same dimension holds on \([0,1]\) and on its diagonal image,
+since the diagonal map is locally bi-Lipschitz and the endpoints
+are finite. The weak inequalities used for balls in \cite[p.~9, Remark~4]{LLVZ}
+give the same dimension, since equality in a coordinate at a
+fixed level holds at finitely many parameters in \([0,1]\).
+
+In \cite[\S\,5.5, p.~67, Eq.~(75)]{LLVZ}, the target is zero and
+the common positive radius has lower order
+\(\lambda=\liminf_{n\to\infty}[-\log\psi(n)/n]\). For graphs of bi-Lipschitz
+functions, with a nonsingular integer diagonal matrix and
+\(1<\beta_1\le\beta_2\), the printed upper bound is
+\((1-\lambda/\log\beta_2)/(1+\lambda/\log\beta_2)\) for
+\(0\le\lambda\le\log\beta_2\). The accompanying equality is asserted
+unconditionally for \(\lambda\le\log\beta_2-\log\beta_1\) and
+conditionally on the \(abc\) conjecture for rational-slope lines in
+the remaining range. Remark~13 on the same page uses the pure powers
+\(3^{-n\tau}\) on the \((2,3)\) diagonal and invokes \(abc\) when
+\(\tau>1-\log2/\log3\).
+
+For \((a,b)=(2,17)\) and \(\psi(n)=17^{-n/4}\), the lower order
+\((\log17)/4\) lies in the unconditional equality range of (75).
+Since \(\log17>4\log2\), \eqref{eq:two-grid-common} gives
+\[
+  H_{2,17}(1/4)=\frac{\log2}{\log2+\frac14\log17}
+       =0.494592689\ldots <\frac12<\frac35.
+\]
+For \((a,b)=(2,6)\), \(\psi(n)=6^{-3n/4}\) and zero target, the
+gcd term gives
+\[
+  H_{2,6}(3/4)=\frac{4\log2}{7\log6}
+       =0.221058746\ldots >\frac17 ,
+\]
+since \(\log6<4\log2\). The last fraction is the printed upper
+bound. Each contradiction can also be seen directly. For \((2,17)\)
+the binary condition alone is covered on \([0,1]\) by \(O(2^n)\)
+intervals of length \(2^{1-n}17^{-n/4}\), giving the upper bound
+in the first display. For \((2,6)\) every dyadic center \(p/2^n\)
+belongs to both grids. Intervals there of radius \(\tfrac12 6^{-7n/4}\)
+lie in both targets. Raising their radii to any positive power below
+\(4\log2/(7\log6)\) gives full coverage at each sufficiently late
+level; mass transference gives the lower bound.
+Both computations apply to every common radius sequence
+with the respective lower order at the origin. The \((2,17)\)
+value holds for every shift. In the \((2,6)\) example the shift
+\((0,1/2)\) gives \(d_n=(2\cdot6^n)^{-1}\). Since
+\(\tau=3/4>\log3/\log6\), one has
+\(6^n(w_{1,n}+w_{2,n})/2=(3^n+1)\psi(n)\to0\). Thus the shifted
+limsup is empty for every common radius of that lower order.
+\end{proof}
+
+Even at the critical lower order \(\tau=1\) for \((2,3)\),
+the set can be empty or nonempty. With \(\psi(n)=3^{-n}/4\),
+the scaled sum of the two physical radii is
+\(\mathcal L_n(w_{1,n}+w_{2,n})/2=(1+(2/3)^n)/4<1/2\).
+At \(y=(1/2,0)\) the phase in \eqref{eq:two-grid-overlap}
+is a half-integer and there are no overlaps. At the origin
+the only overlaps are centred on the integers and shrink to
+them, so the limsup is \(\mathbb Z\). The same alternatives
+hold when \(3^n\psi(n)\to0\), in particular for \(\tau>1\).
+
+The separate-radius, fixed-target bounds in
+\cite[slide~14]{Liao} use ordinary interval distance, take both radius functions positive and decreasing, and assume
+\(\limsup_n[-\log\psi_1(n)/n]<\log(3/2)\), so the first
+physical radius exceeds \(3^{-n}\) by an exponential factor.
+The bounds coincide for power radii in that range.
+The high-rate proof outline in \cite[slide~20]{Liao} uses the
+\(abc\) conjecture to control the gaps between modular-inverse
+multiples before applying mass transference.
+The homogeneous fast-shrinking formula of
+\cite[Theorem~1.3]{LLW} corresponds to \(\tau>1\) in
+\eqref{eq:two-grid-common}.
+
+\clearpage
+\subsection{Exceptional slopes}\label{sec:exceptional-slopes}
+Fix integers \(2\le a<b\), and write \(\alpha=\log a\), \(\beta=\log b\),
+\(c=\beta-\alpha\). For \(\theta>0\) consider the zero-target set
+\[
+ E_\theta(\gamma)=\{x\in(0,1):\ \|a^n x\|,\ \|b^n\theta x\|<e^{-\gamma n}
+                      \text{ for infinitely many common }n\}.
+\]
+The map \(x\mapsto(x,\theta x)\) preserves Hausdorff dimension, being
+bi-Lipschitz. Write \(d_J(\theta,\gamma)=\dim_{\rm H}(J\cap E_\theta(\gamma))\)
+for a nonempty open interval \(J\subset(0,1)\).
+
+\begin{theorem}[Exceptional slopes]\label{thm:exceptional-slopes}
+Let \(\gamma>c\), \(r=\beta+\gamma\) and \(D=(\beta-\gamma)_+\).
+For every slope, \(d_J(\theta,\gamma)\le\alpha/r\).
+For \(D/r<h\le\alpha/r\), put
+\begin{equation}\label{eq:theta-spectrum}
+                 s(h)=\frac{\alpha+\beta-2rh}{\alpha+\gamma}.
+\end{equation}
+In every nonempty open slope interval \(I\subset(0,\infty)\), both
+\(\{\theta\in I:d_J(\theta,\gamma)\ge h\}\) and
+\(\{\theta\in I:d_J(\theta,\gamma)=h\}\) have dimension \(s(h)\)
+and infinite \(\mathcal H^{s(h)}\) measure.
+
+There is one dense \(G_\delta\) set of slopes attaining \(\alpha/r\)
+for every \(\gamma>c\) and every \(J\). Almost every slope gives \(D/r\)
+simultaneously for every such \(\gamma,J\). For coprime \(a,b\),
+every positive algebraic slope gives \(D/r\), so all the slopes in
+the indicated dense \(G_\delta\) set are transcendental.
+\end{theorem}
+
+\begin{proof}
+We may work on compact subintervals of the positive slope axis, with
+constants uniform there. At level \(n\) put \(A=a^n\), \(B=b^n\),
+\(\eta=e^{cn}\theta\), and \(F=e^{-(\gamma-c)n}\).
+The universal upper bound follows already from Tapia's covering lemma
+\cite[\S3.1.1, Lemma~2]{Tapia}. Its real denominators here are \(A,B\theta\)
+and both fractional radii are \(e^{-\gamma n}\). Its factor
+\(L=\max(1,\log(B\theta)/A)\) is eventually one and
+\(B\theta e^{-\gamma n}=O(A)\). Thus \(O(A)\) intervals of length
+\(O(e^{-rn})\) suffice, giving \(d_J\le\alpha/r\).
+
+\emph{Upper bound on the slope spectrum.}
+A hit gives integers \(p,m\) with
+\(\lvert Ax-p\rvert,\lvert B\theta x-m\rvert<e^{-\gamma n}\).
+The lattice points \((p,p\eta-m)\) therefore lie in the rectangle
+\(\mathcal B=[-2A,2A]\times[-CF,CF]\) for a fixed \(C\). Each point
+contributes at most one interval of length \(O(e^{-rn})\), by the
+second test. If \(\mathcal B\) contains two independent lattice
+points, its count is \(O(AF)\). Indeed their parallelogram in
+\(2\mathcal B\) covers the plane under translations by their
+sublattice. The full lattice, of determinant one, consequently has
+a measurable fundamental cell inside \(2\mathcal B\): partition a
+fundamental domain according to the first available covering
+translate and move the pieces back. The disjoint translates of this
+cell about the counted points fit in \(3\mathcal B\), giving the claim.
+
+Set \(H=rh>D\) and fix \(0<\varepsilon<H-D\). If \(d_J\ge h\),
+infinitely many levels have at least \(e^{(H-\varepsilon)n}\) points
+in \(\mathcal B\), since otherwise the interval costs at any exponent
+strictly between \((H-\varepsilon)/r\) and \(h\) are summable.
+At all such late levels the points lie on one lattice line.
+Its primitive generator can be written \((q,q\eta-p_0)\) with \(q>0\):
+a nonzero vertical vector cannot occur as \(F\to0\). The count of its
+integer multiples yields
+\[
+ q\ll e^{(\alpha-H+\varepsilon)n},\qquad
+ |\theta-e^{-cn}p_0/q|\ll e^{-(\gamma+H-\varepsilon)n}/q .
+\]
+For \(e^{un}\le q<2e^{un}\) there are \(O(e^{(c+2u)n})\) centers on a
+bounded enlargement of the slope interval. There are \(O(n+1)\) dyadic
+groups. The ratio \((c+2u)/(\gamma+H-\varepsilon+u)\) is increasing
+for sufficiently small \(\varepsilon\); the largest \(u\) is at most
+\(\alpha-H+\varepsilon+O(1/n)\). Thus for any exponent greater than
+\(s(h)\) we can choose \(\varepsilon\) small enough that the sum of
+the covering costs decreases exponentially in \(n\). This proves the
+upper bound in \eqref{eq:theta-spectrum}.
+
+\emph{Attainment and critical measure.}
+Put \(v=\alpha-H\) and \(K_n=\lceil n^4 e^{vn}\rceil\).
+On the slope axis take balls of radius
+\(\rho_n=e^{-(\alpha+\gamma)n}/n\) about the points \(e^{-cn}p/q\),
+\(1\le q\le K_n\), \(p\in\mathbb Z\). For a slope in such a ball,
+coarse centers \(jq/A\) have corresponding fine centers \(jp/(B\theta)\).
+On bounded parameter intervals their displacement is \(O(\rho_n)\),
+because the fine center is the coarse center multiplied by
+\(e^{-cn}p/(q\theta)\). Each fine center consequently supports a
+common hit interval of radius \(c_0e^{-rn}\) for some fixed \(c_0>0\)
+and large \(n\). Their spacing is \(O(q/A)=O(n^4 e^{-Hn})\).
+On any infinite sequence of these levels, raising the hit radii to
+any positive power below \(H/r\) gives full coverage of compact
+parameter intervals at every sufficiently late selected level. The
+mass transference principle \cite[Theorem~2]{BV} gives \(d_J\ge h\)
+on the slope limsup, for every \(J\). In each application of the
+principle we keep centers in a bounded enlargement of the interval
+under study, so there are finitely many balls per level.
+
+For a bounded interval \(I_0\) of slopes, \(q\ge1\), \(0<t<1/2\),
+partitioning into periods of length \(1/(qe^{cn})\) gives
+\begin{equation}\label{eq:theta-period}
+ \big|\{\theta\in I_0:\ \|qe^{cn}\theta\|\le t\}\big|
+ \ \le\ 2t\big(|I_0|+2/(qe^{cn})\big).
+\end{equation}
+The slopes with \(\|q\eta\|\le2/K_n\) for some \(1\le q\le K_n/n^2\)
+therefore have measure \(O_{I_0}(n^{-2})\). By Borel--Cantelli and
+Dirichlet approximation, for almost every slope at every sufficiently
+late level there is \(K_n/n^2<q\le K_n\) with \(|q\eta-p|\le1/K_n\).
+The distance to a slope center is at most
+\(n^2 e^{-cn}/K_n^2\le n^{-6}e^{-(c+2v)n}\).
+Now \(s(h)=(c+2v)/(\alpha+\gamma)\in(0,1)\), so this distance is
+less than \(\rho_n^{s(h)}\) eventually. Mass transference on the
+slope axis gives infinite \(\mathcal H^{s(h)}\) measure locally for
+the original limsup. All strict superlevels \(d_J>h\) together have
+zero measure at this exponent: take a countable union over rational
+thresholds above \(h\) and use the strict decrease of \(s\) and the
+universal bound. Removing them proves the exact-level assertion,
+including \(H=\alpha\).
+
+The balls of radius \(e^{-n^2}\) about \(e^{-cn}p\), \(p\in\mathbb Z\),
+have open dense tail unions on the positive slope axis because the
+mesh tends to zero. On the intersection of these unions, the
+preceding fine-center construction with \(q=1\) applies for every
+fixed \(\gamma>c\) on the same subsequence: \(e^{-n^2}<\rho_n\)
+eventually. It gives \(d_J=\alpha/r\) for every \(J\).
+
+\emph{Typical and algebraic slopes.}
+By \eqref{eq:theta-period}, the measure of the slopes in \(I_0\) with
+\(\|q\eta\|<e^{-\varepsilon n}/q\) for some \(q\le e^{2\alpha n}\)
+is \(O_{I_0}(ne^{-\varepsilon n})\). On a single full-measure set,
+for every \(\varepsilon>0\) all sufficiently large \(n\) thus satisfy
+\[
+             \|q\eta\|\ge e^{-\varepsilon n}/q
+             \qquad(1\le q\le e^{2\alpha n}).
+\]
+Here it suffices to intersect over a sequence of positive
+\(\varepsilon\) tending to zero and exhaust the positive axis by
+compact intervals. Two distinct successful coarse numerators differ
+by at least \(e^{-\varepsilon n}/(2CF)\), by the rectangle bound.
+Thus there are \(O(1+Ae^{\varepsilon n}F)\) possible numerators,
+each giving at most one fine interval for large \(n\). Summation
+and then \(\varepsilon\downarrow0\) give \(d_J\le D/r\)
+simultaneously for all \(\gamma>c\).
+
+For the reverse bound only \(0<\delta=\gamma-c<\alpha\) needs proof.
+Choose \(\varepsilon>0\) with \(\delta+3\varepsilon<\alpha\)
+and set \(K=\lceil e^{(\delta+3\varepsilon)n}\rceil\).
+Dirichlet gives a reduced \(p'/q\) with \(q\le K\) and
+\(|q\eta-p'|\le 1/K\). The preceding lower bound forces
+\(q\ge K e^{-\varepsilon n}\). In any run of \(K\) consecutive
+coarse numerators the first \(q\) values of \(p\eta\bmod1\)
+have gaps \(O(1/q+1/K)=o(F)\): starting at the first value,
+compare the increments with those of the \(p'/q\) grid.
+There is consequently a \(p\) with \(\|p\eta\|<c_1F\).
+For \(c_1>0\) sufficiently small, the nearest fine center to \(p/A\)
+is within \(c_1 F/(B\theta)\) of it, leaving a common hit interval
+of radius \(c_0 e^{-rn}\) there. Their gaps on compact parameter
+intervals are \(O(K/A)\). Mass transference gives
+\(d_J\ge(\alpha-\delta-3\varepsilon)/r\); let \(\varepsilon\downarrow0\).
+
+For positive irrational algebraic \(\theta\), apply the labelled
+profile formula of Theorem~\ref{thm:profile} with two axes, one on
+each of the independent labels \(1,\theta\). The singleton blocks
+have starting weights \(\alpha,\beta\) and terminal weights
+\(\alpha+\gamma,\beta+\gamma\). No merger is available, so the
+dimension is
+\[
+ \left[\min\left\{\frac{\alpha}{\alpha+\gamma},
+                  \frac{\beta-\gamma}{\beta+\gamma}\right\}\right]_+
+     =D/r.
+\]
+The last equality uses \(\gamma>\beta-\alpha\). For a positive
+rational slope \(p/q\) in lowest terms, the substitution \(x=qt\)
+gives integer denominators \(qa^n,pb^n\). When \(\gcd(a,b)=1\)
+their gcd divides \(pq\), so Proposition~\ref{prop:two-grid-rates}
+gives the same formula (the two centered widths have exponents
+\(\alpha+\gamma,\beta+\gamma\), and the gcd exponent is zero).
+Since \(D<\alpha\), no positive algebraic slope belongs to the
+residual set for coprime \(a,b\).
+\end{proof}
+
+For \(a=2,b=3\) put \(\gamma=\tau\log3\). On the single residual set
+in \((0,1)\) the dimension of the graph intersection is
+\(\log_3(2)/(1+\tau)\) throughout \(1-\log_3(2)<\tau\le1\).
+The diagonal, almost every slope, and every positive algebraic slope
+give \((1-\tau)/(1+\tau)\) there. In particular the exceptional
+fibers have dimension \(\log_3(2)/2\) for the target at \(\tau=1\).
+These straight-line graphs in the unit square exceed (75) with
+its original binary and ternary bases and disprove the equality
+suggested immediately after Remark~13 in \cite[\S5.5, pp.~67--68]{LLVZ}.
+
+\section{The range of dimensions in bases two and six}\label{sec:sweep}
+At time \(n\) both physical radii in the last assertion of Theorem~\ref{thm:profile} are \(18^{-n}\). Set \(K=2\) for symmetric intervals and \(K=1\) for intervals extending to the right. The differences of the reference points \((a+y_1)/2^n\) and \((b+y_2)/6^n\), in units of \(6^{-n}\), form \(3^ny_1-y_2+\mathbb Z\). For all sufficiently large \(n\) at most one difference gives an intersection. Its length is
+\[
+ h_n=6^{-n}\big(K3^{-n}-\|3^ny_1-y_2\|\big)_+.
+\]
+A positive intersection repeats with period \(2^{-n}\). If positive lengths occur infinitely often, its limsup therefore has local dimension
+\begin{equation}\label{eq:sweep-dim}
+ \limsup_{n:\, h_n>0}\frac{n\log2}{-\log h_n}.
+\end{equation}
+Indeed, on a compact interval one needs \(O(2^n)\) intervals of length \(h_n\) at level \(n\). If \(0<s<s'\) are below \eqref{eq:sweep-dim}, infinitely many \(n\) have \(h_n^{s'}>2^{-n}\). The intervals of radius \((h_n/4)^s\) about their midpoints cover the line at each such late level. The mass transference principle \cite[Theorem~2]{BV} applied to the inner intervals of radius \(h_n/4\) gives the lower bound. The vanishing period also makes the union of every tail of open hit sets dense, irrespective of the decay rate of the positive widths.
+
+Fix \(y_2=4/9\). In the ternary digits of \(y_1\) prescribe the following word starting at position \(n_j+1\):
+\[
+             11\,0^{n_j-3}\,(K-1)\,2^{\ell_j}.
+\]
+Here \(n_1\ge6\), \(\ell_j\ge0\) are integers, \(n_{j+1}>2n_j+\ell_j+6\), and every unspecified digit is zero. The first \(n_j\) digits of the word represent \(4/9+(K-1)3^{-n_j}\). The tail of twos followed by a zero leaves a deficit between \(\frac23 3^{-\ell_j}\) and \(3^{-\ell_j}\) from the all-two tail. Thus
+\[
+             h_{n_j}\asymp18^{-n_j}3^{-\ell_j}.
+\]
+There are no spurious late levels: the \(K3^{-n}\)-neighbourhood of \(4/9\) for \(n\ge4\) lies in the adjacent three-digit cylinders \(110\) and \(102\). The initial pair of ones is the only occurrence of \(11\) in each word. A \(1\) followed by \(0\) has another \(0\) next, including at an isolated terminal \(K-1=1\) followed by a zero. Thus \(102\) never occurs. Taking \(\ell_j/n_j\to\gamma\) gives dimension \(\log2/(\log18+\gamma\log3)\), including zero for \(\gamma=\infty\); in the latter case the limsup is still dense \(G_\delta\). Taking \(y_1=0\) gives eventual disjointness. This proves the spectrum assertion.
+
+\section{Arithmetic and category of the target}\label{sec:occupancy}
+Dimensions are insensitive to countably many endpoints. Occupancy is sensitive to the choice of endpoint, so in this section a fixed target always means windows anchored at \(y_i/N_i\), symmetric or extending to the right. The parameter domain is \((0,\infty)\).
+
+\begin{proposition}\label{prop:alg}
+If \(L>1\) and every fractional target coordinate is a fixed real algebraic number, then \(E(y)=\varnothing\), for either convention and any fixed width constants.
+\end{proposition}
+\begin{proof}
+Work on the individual labelled axes. Choose a terminal \(x\) witnessing \(L>1\) and keep all blocks ending by \(x\). Their partition still minimizes cost, as a cheaper partition would improve the full one. On this subsystem \(t_*=\max_i t_i=x\) and
+\(D=t_*-\min_\Pi\sum_{A\in\Pi}(t_A-\lambda_A)<0\).
+Write \(\Delta\) for the rational closure of the line directed by \(a=(a_i)\). Suppose a fixed \(c>0\) gives infinitely many hits. The rational vectors
+\[
+ X_i=m_i/N_i,\quad V_i=1/N_i,\qquad
+ Z_i=X_i+y_iV_i=ca_i+O(Q^{-t_i})
+\]
+satisfy \((X,V)\to(ca,0)\).
+In any rational space \(R\) carrying an infinite subsequence put
+\(U=\{X:(X,0)\in R\}\) and let \(S'\) be its projection on the \(V\)-coordinates. Then \(U\supseteq\Delta\).
+
+For clarity, let \(h\) be the sum over grid primes of the minimum coordinate-basis weights at those primes, and \(H_s\) the maximum basis weight at infinity with coordinate weights \(s_i\). Use \(w_{pi}\) on both copies in \(R\). The dimension of \(R\) in each finite-prime support flag is bounded by the sum of the corresponding dimensions in \(U,S'\), by projecting the flag. Integrating gives \(h(R)\le h(U)+h(S')\). Also \(h(S')\le H_\kappa(S')\), by using one and the same basis at every prime. At infinity take a maximum \(t\)-basis on \(U\) containing a coordinate \(l\) of weight \(t_*\); this is possible by greedy selection, since \(a_l\ne0\). Lift the selected coordinate forms via \(Z_i\), retaining \(Z_l\) and subtracting \((a_i/a_l)Z_l\) on all the others. Complete them on \(R\) by \(V\)-projections of total weight \(H_\kappa(S')\). Their archimedean product is
+\(O(Q^{t_*-H_t(U)-H_\kappa(S')})\).
+Minimum bases at the grid primes give a factor \(O(Q^{h(R)})\). The partition optimization on spaces containing \(\Delta\) therefore bounds the full product by
+\[
+              O(Q^{t_*+h(U)-H_t(U)})\ll Q^D .
+\]
+Clearing the common \(S\)-unit denominator leaves the product unchanged and gives integral vectors of polynomial height in fixed rational coordinates, up to a fixed denominator. The \(S\)-adic Subspace Theorem \cite{Schlickewei} confines an infinite subsequence to a proper rational subspace of \(R\); in dimension one the product formula suffices. The limit \((ca,0)\) forces the new kernel to contain \(\Delta\) again. Descent gives a contradiction.
+\end{proof}
+
+\begin{proposition}\label{prop:category}
+Let the radices be pairwise multiplicatively independent and let all integer positions \(n_i(u)\to\infty\). For any prescribed positive fractional radii, a residual set of fixed targets in \(\mathbb T^{kd}\) has a dense \(G_\delta\) set of positive parameters for open windows. This holds also for strict right-sided windows. In the power-rate model with \(L>1\), almost every target with respect to Haar measure has an empty section.
+\end{proposition}
+\begin{proof}
+For a nonzero integer Fourier mode \(h=(h_{ij})\), put \(A_i=\sum_jh_{ij}v_j\) and omit zero rows. We claim \(|\sum_i A_iN_i|\to\infty\). Otherwise choose a subsequence on which the sum is bounded and \(N_l=\max_iN_i\) for a fixed \(l\). With just one term the claim is immediate. At infinity take the sum and all coordinates except \(l\), and at every radix prime take all coordinate forms. Their product on the vector \((N_i)\) is \(O(1/N_l)\) by the product formula for \(S\)-units. The Subspace Theorem gives a nontrivial fixed rational relation on infinitely many levels. Pass to a minimal vanishing subsum along a subsequence. The nondegenerate \(S\)-unit equation has finitely many projective solutions \cite[Theorem~1.1]{ESS}; a pair of the powers has a fixed ratio infinitely often. Two occurrences with different exponents would contradict multiplicative independence.
+
+On any bounded open parameter interval the normalized images of \(c\mapsto (cN_iv_j)_{ij}\bmod1\) now converge weakly to Haar measure, by integration of each character. Given open parameter and target regions, some graph point lies in the target region at arbitrarily late levels. A small change of the target center within that region puts this point strictly inside every required interval. Targets admitting such a late hit thus form open dense sets. Intersect over a countable parameter base and all lower cutoffs on time. Every resulting target has open dense unions of all tails of hits, as required.
+
+For the measure assertion take the subsystem of blocks ending by a terminal \(x\) witnessing \(L>1\). Splitting these blocks into singletons cannot decrease total cost, so the sum of \(t_i-\kappa_i\) over the retained axes exceeds \(x\). Cover a bounded parameter interval with \(O(Q^x)\) intervals of length \(Q^{-x}\). Each image in a retained fractional coordinate varies by \(O(Q^{\kappa_i-t_i})\). The Haar measure of targets hit by some parameter in that compact interval is consequently
+\(O(Q^{x-\sum_i(t_i-\kappa_i)})\), summable in \(u\). Borel--Cantelli and compact exhaustion finish the proof.
+\end{proof}
+
+For \(v=(1,\sqrt2)\) in matched coprime bases \(2,3\) with \(t_i=\rho>4/3\), the two propositions give empty sections for every algebraic target and almost every real target. A residual set of targets has dense sections, all of dimension zero. At \(\rho=4/3\) residual-target occupancy still follows; its quantifier leaves the particular target \(0\) undetermined.
+
+\begin{corollary}\label{cor:dichotomy}
+For two multiplicatively independent scalar bases put \(G=\gcd(N_1,N_2)\), \(N'=N_1/G,\ M'=N_2/G\), and suppose the two physical radii are \(O(Q^{-\epsilon}/\operatorname{lcm}(N_1,N_2))\) for fixed \(\epsilon>0\). Among fixed algebraic target pairs, any pair with an irrational coordinate has only finitely many compatible levels. For rational targets, late compatibility is exactly \(M'y_1-N'y_2\in\mathbb Z\). If \(G\asymp Q^\lambda\) with \(\lambda>0\), infinitely many such levels give the homogeneous local dimension \(\lambda/\max(t_1,t_2)\). In particular, every positive intermediate dimension in the spectrum of \S\ref{sec:sweep} requires transcendental \(y_1\).
+\end{corollary}
+\begin{proof}
+Compatibility gives \(|m+M'y_1-N'y_2|\ll Q^{-\epsilon}\) for an integer \(m\). Both \(M',N'\) are \(S\)-units. Use the small form and the coordinates \(M',N'\) at infinity, and all coordinate forms at the radix primes. The product is \(O(Q^{-\epsilon})\) on the integral vector \((m,M',N')\) of polynomial height. An infinite sequence gives a fixed rational relation on a subsequence. Its coefficient of \(m\) is nonzero since \(N'/M'\) cannot recur infinitely often. Eliminate \(m\) to obtain a small linear form in \(M',N'\). Its coefficients differ from \(y_1,-y_2\) by rational numbers. One nonzero coefficient alone is impossible since \(M',N'\ge1\); if both are nonzero the two-dimensional Subspace Theorem, using this form and one coordinate at infinity, gives a fixed ratio on a further subsequence. This proves the irrational assertion. For rational targets the small form must eventually vanish. Exact coincidence gives intervals of full narrower width on a translated mesh \(1/G\), so counting and mass transference give the claimed dimension as in \eqref{eq:sweep-dim}.
+\end{proof}
+
+\section{Critical windows}\label{sec:critical}
+For matched starting sizes use the clock \(Q=B_1^u\),
+\(n_i=\lfloor\log_{B_i} Q\rfloor\), and set \(m=kd\). The critical ratio for pairwise coprime bases and \(d\ge2\) is \(\rho=m/(m-1)\). The parameter set has dimension zero, but the power law alone gives no occupancy criterion. We give results at the exact width and on approach to it.
+
+\begin{proposition}\label{prop:matched}
+At matched critical widths \(r_{ij,u}\asymp Q^{-\rho}\), strict homogeneous right-sided hits occur with a bounded positive parameter at every sufficiently large level. For \(d\ge2\), a fixed positive parameter hitting infinitely often must be transcendental.
+\end{proposition}
+\begin{proof}
+Put \(c=r/(N_1v_1)\). Partition the unit cube of dimension \(m-1\) into \(H^{m-1}\) equal boxes, where \(H=\lceil b^{-1}Q^{1/(m-1)}\rceil\). Apply the pigeonhole principle to \(H^{m-1}+1\) multiples of the vector \(((N_i/N_1)v_j/v_1)_{(i,j)\ne(1,1)}\) modulo one. Their difference gives an integer \(1\le r\le H^{m-1}\), hence \(c\ll_b1\), with all physical errors \(O(bQ^{-\rho})\). A positive displacement of \(c\) by a small fixed multiple of \(Q^{-\rho}\) moves all errors strictly inside the windows if \(b\) is chosen sufficiently small. If \(c>0\) is algebraic, at least one \(cv_j\) is algebraic irrational. Reduced grid denominators \(q\mid N_i\) have fixed prime support, and along any infinite sequence of hits at that coordinate the errors are \(<q^{-1-\epsilon}\) for fixed \(0<\epsilon<\rho-1\) and unbounded \(q\). This contradicts Ridout's theorem \cite{Ridout}.
+\end{proof}
+
+In particular, for \((1,\sqrt2)\) and matched \(2,3\) at \(4/3\), this constructs arbitrarily late intervals, with a parameter depending on the level. Existence of a positive parameter belonging to infinitely many of the exact intervals remains open here.
+
+\begin{proposition}[Occupied homogeneous endpoints]\label{prop:occupied}
+\leavevmode
+\begin{enumerate}
+\item For a single base \(B\), let \(v\) be a positive \(\mathbb Q\)-basis of a degree-\(d\) number field in a real embedding, \(d\ge2\). For any fixed \(\xi>0\) the strict critical windows of physical width \(\xi B^{-nd/(d-1)}\) have dense \(G_\delta\) limsup on a positive half-line. This also holds for matched bases \(1024,3072,5120\) in dimension two at their common critical exponent \(2\log1024/\log5120\).
+\item In direction \((1,\sqrt2)\), take \(Q=2^u\), denominators \(Q\) and \(M=3^{\lfloor6\log_3 Q\rfloor}\), and widths \(Q^{-2}\) and \(Q^{-7}\). The homogeneous limsup has dimension zero, is residually occupied on \((2,\infty)\), and has an empty interval near zero, for both symmetric and strict right-sided windows.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+For the single base use logarithms of absolute values at the archimedean places, counted with local degrees, with the distinguished real place first. The log vectors of squared units form a lattice \(\Lambda\) in the weighted sum-zero hyperplane \(V\), by Dirichlet's unit theorem. Put \(w=\log B\,(1,-1/(d-1),\ldots,-1/(d-1))\).
+The closure of \(\mathbb Zw\) in \(V/\Lambda\) is a compact Lie subgroup, with identity component the image of a vector space \(U\) and finite component group. If every vector of \(U\) had first coordinate zero, \(hw\in U+\Lambda\) for some integer \(h>0\) would give a squared unit of distinguished value \(B^h\), impossible by injectivity of the embedding. Choose \(z\in U\) with \(z_1=1\). Every tail of the forward multiples of \(w\) has the same closure as the cyclic subgroup (positive multiples return arbitrarily near zero). Consequently for each \(t\in[0,\log B]\) there are integers \(n\to\infty\) and squared units \(\varepsilon_n\) with \(\log|\varepsilon_n|-nw\to tz\) in \(V\), where the notation lists all conjugate absolute values. At the distinguished place \(\varepsilon_n/B^n\to e^t\). The other conjugates have absolute values \(O(B^{-n/(d-1)})\), with an eventual constant uniform in the chosen \(t\).
+
+Clear the denominators of the \(v_j\) by \(D_0\in\mathbb N\).
+The traces of \(D_0\varepsilon_nv_j\) are integers within \(O(B^{-n/(d-1)})\) of their distinguished values. Fix a large integer \(h\), set \(n'=n-h\) and \(c_n=D_0\varepsilon_n/B^{n'}\).
+In units of \(B^{-n'd/(d-1)}\) the physical errors are \(O(B^{-h/(d-1)})\). Shifting the parameter by \(\xi B^{-n'd/(d-1)}/(2\max v_j)\) gives strict hits for every large \(h\). The limits of these centers as \(t\) varies fill \([D_0B^h,D_0B^{h+1}]\); their late unions are open and dense on a tail. Baire's theorem proves the first assertion. For the three bases put \(s=\lfloor\log Q/\log5120\rfloor\); their gcd grid has denominator \(G=1024^s\). All sufficiently large \(s\) occur on the matched clock and \(G\asymp Q^{\log1024/\log5120}\). The one-block partition gives critical ratio \(2\log1024/\log5120>4/3\), above all two-block ratios and the singleton ratio \(6/5\). A common-grid hit of width \(\xi G^{-2}\) fits inside all three windows for sufficiently small fixed \(\xi\).
+
+For the second example the two prefix cost ratios for singletons are \(1\) and \(4/7\); merging would increase cost. Thus \(L=1\). Write \(p_h+q_h\sqrt2=(3+2\sqrt2)^h=\eta^h\). The norm shows \(\log_2\eta\) is irrational. Since \(q_h=(\eta^h-\eta^{-h})/(2\sqrt2)\), irrational rotation gives arbitrarily late values of \(q_h/Q\) in every positive open interval. When \(q_h/Q>2\), the parameter \(c_0=q_h/Q+Q^{-2}/2\) has binary errors in units of \(Q^{-2}\) equal to \(1/2\) and \(\sqrt2/2-Q\eta^{-h}\). Here \(0<Q\eta^{-h}<1/(4\sqrt2)\). Thus it has an interior binary interval of length \(\gg Q^{-2}\). The middle half contains \(m'/M\) for a run of \(\asymp Q^4\) consecutive integers \(m'\). In a run of length \(R\) the fractional parts of \(m'\sqrt2\) have mesh \(O(1/R)\): compare a block of \(q_h\asymp R,\ q_h\le R\), with a translate of the \(q_h\)-grid using \(|\sqrt2-p_h/q_h|\ll q_h^{-2}\).
+Choose \(m'\) with fractional part in \((bMQ^{-7},2bMQ^{-7})\) for small fixed \(b>0\). The parameter \(m'/M+bQ^{-7}\) gives strict joint hits, proving density of every tail on \((2,\infty)\).
+Conversely, binary symmetric hits at fixed \(c>0\) force
+\[
+ 1\le |q^2-2p^2|
+ \le (1+\sqrt2)Q^{-1}\big(2\sqrt2 cQ+(1+\sqrt2)/Q\big)
+\]
+for large \(u\), using \(p\) near \(Qc\) and \(q\) near \(Q\sqrt2 c\). This excludes \(c<1/(2\sqrt2(1+\sqrt2))\).
+\end{proof}
+
+At the scalar critical endpoint of Theorem~\ref{thm:llvz} with \(\psi(n)=3^{-n}\) and \(y=0\), put \(N=2^n,M=3^n\). The physical widths are \(1/(NM)\) and \(1/M^2\). In the right-sided convention an intersection requires \(-1<Mp-Nq<N/M\), hence \(Mp=Nq\). The integer common centers are exactly the limsup for the left-closed convention, and the strict right-sided limsup is empty. Symmetric windows also allow \(Mp-Nq=\pm1\); the dimension-zero conclusion does not settle their noninteger occupancy.
+
+\begin{proposition}[Shortened critical windows]\label{prop:short}
+Fix a matched coprime family with \(d\ge2\), and \(A\in\mathbb N,\ A>1\). At the geometric starting times \(u=A^j\), a deletion of \(O(n_i\log\log n_i/\sqrt{\log n_i})\) terminal digits from the critical windows suffices to give a dense \(G_\delta\) set of positive parameters with infinitely many strict hits. Its dimension is zero. This holds for every prescribed sequence of target translations.
+\end{proposition}
+\begin{proof}
+Write \(Q=B_1^{A^j}\), \(\rho=m/(m-1)\), and fix a sufficiently large constant \(C\) depending only on the family. For fixed small \(\sigma>0\) call an index bad if some nonzero \(f\in\bigoplus_i N_i\mathbb Z^d\) satisfies
+\[
+ \|f\|_\infty\le C Q^{\rho-\sigma},
+ \qquad |f\cdot a|\le C Q^{\sigma/2},\qquad a=(v,\ldots,v).
+\]
+We apply the interval theorem of Evertse--Ferretti \cite[Theorem~2.3]{EF}. The archimedean forms \(f\cdot a,f_2,\ldots,f_m\) have respective upper exponents \(\sigma/2,\rho-\sigma,\ldots,\rho-\sigma\) in powers of \(Q\). At each \(p\mid B_i\) use the coordinate forms, with exponent \(-\nu_p(B_i)\log p/\log B_i\) on block \(i\) and zero elsewhere. The bounded floor errors affect only the constant. The sum of all raw exponents is \(S=-(m-3/2)\sigma\).
+Over a fixed Galois field containing the entries of \(a\), apply the inverse of each chosen archimedean embedding to the real coefficients; the complex-conjugate choice gives the same system. For the rational place below each place \(\nu\), subtract the local mean from each raw exponent, then multiply by the local degree fraction and divide by four. These weights have local sum zero, and the sum of local maxima is at most \((\rho+1)/4<1\). With height parameter \(Q^4\), the twisted height is \(O(Q^{S/m})\). Forms and determinants are fixed, so the theorem's small-height condition holds with \(\delta=(m-3/2)\sigma/(8m)\) when \(\sigma\log Q\) exceeds a fixed constant.
+
+The distinguished proper space of the interval theorem maximizes the sum of minimum restricted basis weights divided by codimension, with the least dimension in a tie. Equivariance of the systems under Galois, permuting the places, makes this unique space rational. For a proper nonzero rational \(U\) of rank \(r\), write \(r_i\) for its projection ranks on blocks. Its minimum finite raw weight is \(-\sum_i r_i\le-r\). If evaluation on \(a\) is nonzero on \(U\), include it in an archimedean basis, completing with \(r-1\) coordinates from the given forms. After centering, before division by four, the total is at most
+\[
+  \sigma/2+(r-1)(\rho-\sigma)-r-rS/m
+    =-(m-r)/(m-1)+(3/2)(1-r/m)\sigma<0.
+\]
+If evaluation vanishes, rational independence forces the sum of the blocks to vanish identically. Deleting each block in turn is injective, hence \(\sum_i r_i\ge kr/(k-1)\) for \(k\ge2\); for \(k=1\) this case is impossible. The centered weight is at most \(r(\rho-k/(k-1)-3\sigma/(2m))<0\). The zero space has weight zero, so it is the distinguished space.
+
+The interval theorem hence covers all sufficiently large bad height parameters by \(O(\sigma^{-2}\log(2/\sigma))\) intervals \([P,P^{O(1/\sigma)}]\); the constants depend on the fixed forms and \(m\). Its initial height cutoff \(\max(H_{\mathcal L}^{1/R},m^{1/\delta})\), with \(H_{\mathcal L},R\) fixed, and the condition on \(\sigma\log Q\) omit \(O(\log(2/\sigma))\) geometric indices. Each exceptional interval contains \(O(\log(2/\sigma))\) indices. For \(\sigma_J=C_1\log(2+J)/\sqrt J\), taking \(C_1\) large gives a good index \(j\in[J/2,J]\) for \(\sigma=\sigma_J\) in every sufficiently late batch.
+
+The symmetric tube about a segment in direction \(a\), of parameter radius \(Q^{-\sigma/2}\) and coordinate radii \(bQ^{-\rho+\sigma}\) for small fixed \(b>0\), has width above the flatness constant in every nonzero dual direction at a good index (take \(C\) large compared with \(1/b\)). Every translate meets the grid \cite{KL}. Subtract the target shift from the center of the tube and displace each coordinate box into the interior of its right-sided error interval. Every lattice point obtained in the resulting translate gives a hit within \(O(Q^{-\sigma/2})\) of any prescribed parameter. This tends to zero throughout the batches. For large \(J\), \(\sigma_j\ge\sigma_J\) on the batch, so end positions \(\lfloor(\rho-\sigma_j)n_i\rfloor\) give enough width. The stated deletion follows from \(n_i\asymp A^j\). Every tail union is open and dense. For each fixed \(\epsilon>0\) with \(\rho-\epsilon>1\), the shortened limsup lies inside the ordinary limsup at exponent \(\rho-\epsilon\); its dimension is at most \(m/(\rho-\epsilon)-(m-1)\), which tends to zero.
+\end{proof}
+
+\begin{thebibliography}{99}
+\bibitem{BV} V. Beresnevich and S. Velani, \href{https://doi.org/10.4007/annals.2006.164.971}{A mass transference principle and the Duffin--Schaeffer conjecture for Hausdorff measures}, Ann. of Math. (2) \textbf{164} (2006), 971--992.
+\bibitem{EF} J.-H. Evertse and R. G. Ferretti, \href{https://annals.math.princeton.edu/2013/177-2/p04}{A further improvement of the quantitative Subspace Theorem}, Ann. of Math. (2) \textbf{177} (2013), 513--590.
+\bibitem{ESS} J.-H. Evertse, H. P. Schlickewei and W. M. Schmidt, \href{https://annals.math.princeton.edu/2002/155-3/p04}{Linear equations in variables which lie in a multiplicative group}, Ann. of Math. (2) \textbf{155} (2002), 807--836.
+\bibitem{HHLW} Z.-N. Hu, J. Huang, B. Li and J. Wu, \href{https://arxiv.org/abs/2512.14342}{Dimension theory of inhomogeneous Diophantine approximation with matrix sequences}, arXiv:2512.14342 (2025).
+\bibitem{Huang} J.-J. Huang, \href{https://doi.org/10.1007/s00039-024-00665-y}{Extremal affine subspaces and Khintchine--Jarn\'ik type theorems}, Geom. Funct. Anal. \textbf{34} (2024), 113--163. Numbering as in \href{https://arxiv.org/abs/2208.04255}{arXiv:2208.04255}.
+\bibitem{HL} J.-J. Huang and J. J. Liu, \href{https://doi.org/10.1093/imrn/rnz190}{Simultaneous approximation on affine subspaces}, Int. Math. Res. Not. IMRN (2021), 14905--14921. Numbering as in \href{https://arxiv.org/abs/1811.06531}{arXiv:1811.06531}.
+\bibitem{KL} R. Kannan and L. Lov\'asz, \href{https://doi.org/10.2307/1971436}{Covering minima and lattice-point-free convex bodies}, Ann. of Math. (2) \textbf{128} (1988), 577--602.
+\bibitem{LLW} B. Li, R. Li and Y.-F. Wu, \href{https://doi.org/10.1088/1361-6544/add833}{Multiplicative Diophantine approximation with restricted denominators}, Nonlinearity \textbf{38} (2025), 065012. Numbered results refer to the \href{https://arxiv.org/abs/2409.18635v1}{2024 preprint}.
+\bibitem{LLVZ} B. Li, L. Liao, S. Velani and E. Zorin, \href{https://doi.org/10.1016/j.aim.2023.108994}{The shrinking target problem for matrix transformations of tori: revisiting the standard problem}, Adv. Math. \textbf{421} (2023), 108994.
+\bibitem{Liao} L. Liao, \href{https://www.irif.fr/~numeration/uploads/Main/liao_20210622.pdf}{Simultaneous Diophantine approximation of the orbits of the dynamical systems \(\times2\) and \(\times3\)}, One World Numeration Seminar, 22 June 2021. See also the \href{https://math.fudan.edu.cn/_upload/article/files/04/9a/c1bb972445f8bc251f2393851124/ca9abc61-6a2f-49f7-b4c9-68d95cb87966.pdf}{2020 seminar announcement}.
+\bibitem{Ridout} D. Ridout, \href{https://doi.org/10.1112/S0025579300001182}{Rational approximations to algebraic numbers}, Mathematika \textbf{4} (1957), 125--131.
+\bibitem{Schlickewei} H. P. Schlickewei, \href{https://doi.org/10.1016/0022-314X(77)90073-7}{On linear forms with algebraic coefficients and Diophantine equations}, J. Number Theory \textbf{9} (1977), 381--392.
+\bibitem{Tapia} L. Tapia, \href{https://arxiv.org/abs/2602.22512}{Multiplicative Diophantine approximation on planar lines with restricted denominators}, arXiv:2602.22512 (2026).
+\end{thebibliography}
+\end{document}

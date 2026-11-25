@@ -1,0 +1,2803 @@
+\documentclass[11pt,a4paper,reqno]{amsart}
+\PassOptionsToPackage{expansion=false}{microtype}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,mathtools,amssymb,amsthm,mathrsfs,booktabs,microtype}
+\usepackage[a4paper,textwidth=156mm,textheight=237mm,centering]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Rational approximation to power-sum quotients and simultaneous recurrence},pdfauthor={},pdfkeywords={Subspace Theorem, power sums, rational approximation, linear recurrences, Hausdorff dimension}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+\setcounter{tocdepth}{1}
+\setlength{\emergencystretch}{1.4em}
+\title[Power-sum quotients and simultaneous recurrence]{Rational approximation to power-sum quotients\\and simultaneous recurrence}
+\date{}
+\raggedbottom
+\begin{document}
+\begin{abstract}
+We prove Roth's exponent for quotients of positive integer-root power sums under the hypothesis of Corvaja and Zannier. Every fixed denominator range \(q\le Q^n\) with \(1<Q<2\) is admissible, and \(2\) is the sharp universal boundary. For vectors of \(m\) quotients we characterize the sharp range at exponent \(1+1/m\) by rational-function subspaces. The proof computes the weight of a box of monomial multiples after restriction to a subspace of arbitrary rank. As an application we determine the local Hausdorff dimension of simultaneous recurrence on the diagonal for any number of pairwise coprime bases, separate shrinking radii and level-dependent translations. We also give a scalar cutoff for algebraic linear recurrences at a prescribed embedding, and a cutoff for approximation by polynomials of bounded degree. For the trace ratio of the cubic unit of minimal polynomial \(X^3-X-1\), its real root is the sharp height cutoff for quadratic approximation.
+\end{abstract}
+\maketitle
+\tableofcontents
+
+\section{Introduction}
+Let \(\mathcal E\) be the ring of sequences \(u(n)=\sum_{j=1}^t c_j a_j^n\), with \(c_j\in\mathbb Q\) and positive integers \(a_j\). After combining equal roots and discarding zero coefficients, write \(\ell(u)\) for the largest root and put \(\ell(0)=0\). Corvaja and Zannier \cite[pp.~738--740]{CZ05} proved a Thue-type inequality for the moving rational number \(u(n)/v(n)\). Their denominator exponent and the base of the exponential denominator range may both depend on \(u,v\). In Remark~(v) on p.~740 they asked for Roth's exponent. We obtain it under their original hypothesis.
+\begin{theorem}\label{thm:cz}
+Let \(u,v\in\mathcal E\) be nonzero. Suppose that
+\begin{equation}\label{eq:czhyp}
+                 \ell(u-\zeta v)\ge\ell(v)\qquad(\zeta\in\mathcal E).
+\end{equation}
+For every fixed \(1<Q<2\) and every \(\epsilon>0\), all sufficiently large \(n\) satisfy
+\[
+ \left|\frac{u(n)}{v(n)}-\frac pq\right|\ \ge\ \frac{e^{-\epsilon n}}{q^2}
+ \qquad(p,q\in\mathbb Z,\ 1\le q\le Q^n).
+\]
+The exponent \(2\) is optimal for every such \(Q\), and \(Q=2\) can fail.
+\end{theorem}
+The cutoff for an individual pair can be much larger. Theorem~\ref{thm:scalarcut} computes it by finitely many linear systems over \(\mathbb Q\) and characterizes equality using reduced denominators. In all our cutoff statements the upper bound on height or denominator includes its endpoint unless specified otherwise. Exact approximants count as violations. A conclusion holding eventually is uniform in the approximants for the fixed input sequences and tolerance.
+
+The arithmetic input is Theorem~\ref{thm:descent}. Take the primes in the integer roots as generators, write the orbit as \(X_n=(a_1^n,\ldots,a_d^n)\), and regard the moving targets as rational functions of \(X_n\). Multiplying numerator and denominator coordinates of an approximation by a box of monomials gives a system to which the ordinary \(S\)-adic Subspace Theorem applies. For several targets, a first relation can leave a subspace of dimension greater than one. We compute the weight of the remaining forms on that subspace in terms of its Pl\"ucker coordinates. This gives a descent at each rank and identifies the subspaces whose rescaled lattice covolumes permit exceptional approximations. The resulting criterion at exponent \(1+1/m\) appears in Theorem~\ref{thm:simcut}.
+
+For instance, set \(R_n=((3^n-1)/(2^n-1),(5^n-1)/(2^n-1))\). The estimate \(q^{1/2}\max_i\|qR_{i,n}\|\ge e^{-\epsilon n}\) holds below the exact common denominator. Its sharp exponential cutoff is \(2\). For the dual quantity \(\|h_1R_{1,n}+h_2R_{2,n}\|\) the corresponding coefficient-height cutoff is \(\sqrt2\) (Theorems~\ref{thm:primal} and~\ref{thm:dual}). Here \(\|x\|\) is distance to the nearest integer. These estimates govern returns of one parameter under several multiplying maps: \(b_i^nx\) returns close to \(x+y_{i,n}\) on the circle precisely when \((b_i^n-1)x\) comes close to \(y_{i,n}\). For ordered pairwise coprime bases and a common radius \(e^{-gn}\), the local dimension is
+\[
+              \left[\min_{1\le j\le k}
+              \frac{\log b_j-(j-1)g}{\log b_j+g}\right]_+ ,
+              \qquad [z]_+=\max(z,0).
+\]
+Theorem~\ref{thm:rec} allows separate nonmonotone radii and all moving phases. Common prime factors can change both the dimension and its dependence on the phases.
+
+Two extensions use different heights. The scalar number-field theorem (Theorem~\ref{thm:algcut}) concerns the rational denominator \(q\) at a chosen embedding, including targets formed from polynomial multiples of algebraic powers. Theorems~\ref{thm:polycut}, \ref{thm:ratpower} and~\ref{thm:cubicquad} concern the maximum absolute coefficient of an integral polynomial or of a primitive minimal polynomial. At \(R_n=(3/2)^n\), the exact rational approximant has denominator \(2^n\) and minimal-polynomial height \(3^n\). The two boundaries in this example are therefore distinct even in degree one.
+
+\subsection*{Relation to previous work}
+Corvaja and Zannier \cite[p.~738]{CZ05} recall the exponent-two result for a single rational power. Their Corollary~3 proves divergence of the continued-fraction length for \((b^n-1)/(a^n-1)\) when \(a,b\) are multiplicatively independent. Their later book returns to this example \cite[Exercise~4.47, pp.~165--166]{CZ18}. Fuchs and Heintze \cite[Theorems~2.1 and~2.6]{FH} treat rational approximation to values of algebraic functions over power sums. Their exponent depends on the data, with the denominator range linked to the tolerance. In Theorem~\ref{thm:cz} the same \(Q\) works for every positive tolerance. Kumar and Thangadurai \cite[Theorem~1.1]{KT} treat a vector of fixed algebraic multiples of a common moving group element. The coordinates in Theorem~\ref{thm:simcut} can have different numerator functions.
+
+The outside-\(S\) gcd estimate used below is due to Corvaja and Zannier in two variables \cite{CZgcd}, and to Levin in higher dimensions \cite{Levin}; see the arithmetic formulation in \cite[Theorem~1.13(a)]{LW}. Xiao's estimate \cite{Xiao} also accommodates polynomial factors in the index. The method of passing from moving forms to fixed forms in a larger space has antecedents in the moving-target Subspace Theorem \cite{RV}. Here the coefficient heights may be of the same order as the heights of the approximants.
+
+For a fixed real algebraic target of degree greater than \(d\), Schmidt's theorem yields the bounded-degree approximation exponent \(d+1\), up to an arbitrarily small loss in the power of the height \cite{Schmidt70}. The polynomial-value and root-distance exponents for fixed targets are studied in \cite{Wirsing,BE}. In Section~\ref{sec:higher-degree} the target changes with \(n\), the loss is \(e^{-\epsilon n}\), and the height range is part of the conclusion.
+
+There are two limitations on the bibliographical comparison. We had partial access to the 2008 survey of Corvaja and Zannier \cite{CZ08}. Kumar and Prasad Sena list a separate submitted manuscript \cite{KPsub}; the public research summary \cite[p.~59]{HRI} describes nearest-integer and continued-fraction applications for quotients, but we could not verify its general theorem. Their published result on linear combinations is \cite[Theorem~1.3]{KP}. We leave priority with respect to the unavailable statements open.
+
+
+
+\section{Descent on a power orbit}\label{sec:descent}
+
+Let \(d\geq 1\), let \(a_1,\ldots,a_d\geq 2\) be pairwise coprime
+integers, and put \(X_n=(a_1^n,\ldots,a_d^n)\),
+\(\mathcal P=\mathbb Q[X_1,\ldots,X_d]\), and
+\(F=\operatorname{Frac}(\mathcal P)\). For \(f\in\mathcal P\) put
+\[
+ w(f)=\max_{\alpha\in\operatorname{supp}(f)}
+           \sum_{j=1}^d \alpha_j\log a_j,\qquad w(0)=-\infty .
+\]
+The weights of distinct monomials are distinct by pairwise coprimality.
+In particular \(w(fg)=w(f)+w(g)\), so \(w\) extends to \(F\) by
+\(w(f/g)=w(f)-w(g)\) for \(g\ne 0\). For nonzero \(f\in F\),
+\begin{equation}\label{eq:orbit-weight}
+ \log |f(X_n)|=nw(f)+O_f(1)
+\end{equation}
+at all sufficiently large \(n\). If \(A\subset F^k\) is a subspace,
+its primitive polynomial Pl\"ucker vector is a generator of
+\(\bigwedge^{\dim A} A\) with polynomial entries of polynomial gcd \(1\).
+It exists by clearing denominators and dividing out the gcd, and is
+unique up to \(\mathbb Q^\times\). In dimension zero we use the entry
+\(P_{\varnothing}=1\). For a fixed \(F\)-subspace \(W\), we specialize
+a polynomial basis of the equations defining \(W\) and write \(W(X_n)\)
+for the common kernel. The resulting subspace is independent of the
+basis and has dimension \(\dim_F W\) for all sufficiently large \(n\),
+by \eqref{eq:orbit-weight} applied to the relevant denominators and minors.
+
+\begin{theorem}[Descent]\label{thm:descent}
+Let \(W\subset F^k\) have dimension \(r\geq 1\), put \(c=k-r\), and let
+\(P\) be the primitive polynomial Pl\"ucker vector of \(W^\perp\).
+Let \(S\in\mathrm{GL}_k(F)\) keep a subset of the coordinates \(x_j\) and
+replace each remaining coordinate by
+\[
+ (Sx)_i=x_i-\sum_{\text{\(j\) kept}}\frac{U_{ij}}{V_i}x_j,
+ \qquad U_{ij},V_i\in\mathcal P,\qquad V_i\ne0 .
+\]
+The identity is allowed. Suppose that, on an infinite set of levels
+\(n\), there are nonzero integer vectors \(x_n\in W(X_n)\) with
+\(\max_i |x_{n,i}|\leq e^{Cn}\) for some fixed \(C\), and
+\[
+ |(S(X_n)x_n)_i|\leq \exp\bigl(n(\mu_i+o(1))\bigr)
+\]
+for fixed real numbers \(\mu_i\). Define
+\begin{equation}\label{eq:descent-K}
+ \mathcal B=\sum_{i=1}^k\mu_i,\qquad
+ \mathcal K=\max_{|I|=c}
+    \left\{\sum_{i\in I}\mu_i+
+           w\bigl((\bigwedge^c S^{-T}P)_I\bigr)\right\}.
+\end{equation}
+If \(\mathcal K>\mathcal B\), a fixed proper \(F\)-subspace of \(W\)
+contains \(x_n\) upon specialization for infinitely many of these levels.
+Equivalently, writing \(P^W\) for the primitive polynomial Pl\"ucker
+vector of \(W\), the strict inequality holds if and only if
+\begin{equation}\label{eq:descent-primal}
+ \max_{|J|=r}
+   \left\{w\bigl((\bigwedge^r S P^W)_J\bigr)
+           -\sum_{i\in J}\mu_i\right\}>0.
+\end{equation}
+The maximum in \eqref{eq:descent-primal} equals \(\mathcal K-\mathcal B\).
+\end{theorem}
+
+The equality of the two expressions follows from complementary
+minors: the entries of \(P^W\) are, up to signs and a common rational
+scalar, the complementary entries of \(P\), and \(\det S=1\).
+We prove descent by applying the fixed-form \(S\)-adic Subspace
+Theorem to a finite-dimensional space of polynomial multiples of
+the coordinate forms. The following lemma computes the total weight
+of the relations among these forms.
+
+\subsection{Weights of polynomial relations}
+
+For a real vector \(\lambda=(\lambda_1,\ldots,\lambda_d)\) and coordinate
+costs \(\nu=(\nu_1,\ldots,\nu_k)\), give the monomial \(X^\alpha e_i\)
+weight \(\lambda\cdot\alpha+\nu_i\), where \(e_i\) is the \(i\)-th
+coordinate vector. A polynomial vector has the largest weight of its
+nonzero terms, with weight \(-\infty\) for zero. On a subspace \(L\) of
+a finite-dimensional polynomial space, its pivot weights are the
+jumps, counted with multiplicity, of the dimension of the filtration
+by weight at most \(t\). Write \(\Omega_{\lambda,\nu}(L)\) for their sum.
+
+For a quotient, give each nonzero class the smallest weight of a
+representative. For a filtered space and any subspace, the multiset
+of weights of the space is the union of those of the subspace and
+quotient, by additivity of dimension at each \(t\). We use the same
+definitions for weights specified by other bases. If two weight
+functions on a space differ by at most \(K\) on nonzero vectors,
+their ordered pivot weights differ termwise by at most \(K\), since
+each filtration is contained in the other filtration shifted by \(K\).
+The same comparison holds for the induced quotient weights.
+
+\begin{lemma}[Box filtration]\label{lem:box-filtration}
+Let \(A\subset F^k\) have dimension \(c\), with primitive polynomial
+Pl\"ucker vector \(P\). Let \(\mathcal P_h\) be the polynomials supported
+in \([0,h]^d\) and put
+\[
+ A_h=A\cap\mathcal P_h^k,\qquad D_h=\dim_{\mathbb Q} A_h,\qquad
+ M_h=(h+1)^d,\qquad \overline w_h=\frac h2\sum_{j=1}^d\lambda_j .
+\]
+Write \(d_j=\max_{I:P_I\ne0}\deg_{X_j}P_I\) and set
+\[
+ K_{\lambda,\nu}(P)=
+ \max_{\substack{|I|=c\\P_I\ne0}}
+   \left\{\sum_{i\in I}\nu_i+
+          \max_{\alpha\in\operatorname{supp}(P_I)}\lambda\cdot\alpha\right\}.
+\]
+Then \(D_h=cM_h+O(h^{d-1})\), and
+\begin{equation}\label{eq:box-filtration}
+ \Omega_{\lambda,\nu}(A_h)
+   =D_h\overline w_h+
+     M_h\left(K_{\lambda,\nu}(P)-\frac12\sum_{j=1}^d\lambda_jd_j\right)
+     +O(h^{d-1}).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The assertion is immediate for \(c=0\), so suppose \(c\geq1\).
+Use the multigraded ring in \(2d\) variables \(T_{j,0},T_{j,1}\),
+each of degree \(e_j\) in its pair, where \(e_j\) here denotes the
+\(j\)-th standard multidegree. In degree \((h_1,\ldots,h_d)\)
+identify the monomial
+\(\prod_j T_{j,0}^{h_j-\alpha_j}T_{j,1}^{\alpha_j}\) with \(X^\alpha\).
+The homogeneous lifts of the polynomial vectors of \(A\) in all
+boxes form a multigraded submodule of the free module of rank \(k\).
+Indeed, \(T_{j,0}\) and \(T_{j,1}\) act after dehomogenization by
+multiplication by \(1\) and \(X_j\), respectively.
+
+Order terms first by their weights and then lexicographically by
+the exponent vector in the \(T\)'s and the coordinate tag vector
+\(e_i\in\mathbb Z^k\). On wedge terms use the sum of the tags of the
+participating coordinates and the sum of their costs. This comparison
+is additive, and strict inequalities persist when the same data
+are added to both sides. In particular, if vectors have distinct
+leading coordinates then their wedge has as leading term the
+product of their leading terms, with the corresponding wedge tag.
+That product is nonzero and all other nonzero products are strictly
+smaller. These comparisons are used on finite supports, so no
+well-ordering assumption on the weights is needed.
+
+The leading terms of homogeneous elements generate a monomial
+submodule \(\bigoplus_i J_i e_i\). Each of its monomials is itself
+a leading monomial, by compatibility with monomial multiplication.
+In any fixed multidegree, row reduction in the ordered monomial
+basis shows that these leading monomials give precisely the pivot
+slots, with their filtration weights. There are at most \(c\)
+nonzero \(J_i\), since vectors with distinct leading coordinates
+have a nonzero wedge and are independent over \(F\) after
+dehomogenizing. Conversely, take \(c\) independent polynomial
+vectors of \(A\). Their monomial multiples with exponents in
+\([0,h-M]^d\) lie in \(A_h\) for a fixed \(M\), and are
+\(\mathbb Q\)-linearly independent. Each component contributes at
+most \(M_h\) pivots, so there must be \(c\) nonzero \(J_i\).
+
+For each nonzero \(J_i\), let
+\[
+ M_i=\prod_{j,\sigma}T_{j,\sigma}^{e_{i,j,\sigma}}
+\]
+be the monomial gcd of its monomials. After dividing the ideal by
+\(M_i\), for every variable there is a monomial generator with
+exponent zero in that variable. Fix a finite set of generators,
+and fix a bound on all their exponents. A monomial whose exponents
+are at least this bound except possibly in one variable is divisible
+by a generator. Thus the monomials of the principal ideal \((M_i)\)
+missing from \(J_i\) lie within fixed distances of at least two
+distinct faces of the exponent box. With all lengths sufficiently
+large, these faces must be on different axes, since the exponents
+of \(T_{j,0}\) and \(T_{j,1}\) sum to \(h_j\). The number missing is
+\(O(h^{d-2})\) when all lengths are \(h\) and \(d\geq 2\). When
+\(d=1\) there are no missing monomials for large \(h\). In particular
+the diagonal count is \(D_h=cM_h+O(h^{d-1})\).
+
+We next show that
+\begin{equation}\label{eq:box-face-sum}
+ \sum_{i:J_i\ne0}(e_{i,j,0}+e_{i,j,1})=d_j
+ \qquad (1\leq j\leq d).
+\end{equation}
+Fix \(h_j=H\) sufficiently large and set all other lengths to \(h\).
+The coefficient of \(h^{d-1}\) in the pivot count is
+\(c(H+1)-\sum_{i:J_i\ne0}(e_{i,j,0}+e_{i,j,1})\)
+in the sense that the count equals this coefficient times \(h^{d-1}\)
+plus \(O_H(h^{d-2})\) for \(d\ge2\). Indeed the shifted box in component
+\(i\) has \(H+1-e_{i,j,0}-e_{i,j,1}\) slots on axis \(j\),
+and the two-face omissions restrict at least one other axis.
+For \(d=1\) the count at large \(H\) is exactly the displayed coefficient.
+
+Let \(K_j=\mathbb Q(X_\ell:\ell\ne j)\). The same coefficient is the
+dimension over \(K_j\) of the vectors of \(A\) in \(K_j[X_j]^k\) with
+\(X_j\)-degree at most \(H\). To see the lower bound, clear the fixed
+denominators in a \(K_j\)-basis of these vectors and multiply them
+by monomials in the other variables of degrees at most \(h-O_H(1)\).
+For the upper bound, project injectively on this \(K_j\)-space onto
+as many coordinate coefficient slots in \(X_j\) as its dimension.
+For polynomial vectors in the given box, each such slot is a
+polynomial in the other variables supported in \([0,h]^{d-1}\).
+The two bounds give the claimed coefficient. For \(d=1\) this
+dimension is the original count over \(\mathbb Q\).
+
+The module \(A\cap K_j[X_j]^k\) is saturated, since \(A\) is a vector
+space over \(K_j(X_j)\). Over the principal ideal domain \(K_j[X_j]\),
+it is free of rank \(c\), and its quotient in the ambient module is
+free, being finitely generated and torsion-free. Consequently its
+basis extends to an ambient basis and the wedge of its basis vectors
+is primitive. Choose such a basis with linearly independent leading
+coefficient vectors. To obtain it, in any dependence of the leading
+coefficient vectors choose a participating row of maximal degree.
+Add suitably shifted multiples of the other participating rows to
+that row to cancel its leading coefficient. This is a unimodular
+operation and strictly decreases the sum of row degrees, so it
+terminates. For row degrees \(\delta_i\), the degree of a nonzero
+combination with polynomial coefficients \(f_i\) is then
+\(\max_i(\delta_i+\deg f_i)\). For large \(H\) the dimension is
+\(c(H+1)-\sum_i\delta_i\). The degree of the basis wedge is
+\(\sum_i\delta_i\) because the leading coefficient wedge is nonzero.
+The original \(P\) remains primitive over \(K_j[X_j]\), as localization
+of the polynomial unique factorization domain can only remove
+irreducible common factors. The two primitive generators therefore
+differ by a unit in \(K_j[X_j]\), giving \(\sum_i\delta_i=d_j\).
+This proves \eqref{eq:box-face-sum}.
+
+Multihomogenize \(P\) to degree \((d_1,\ldots,d_d)\).
+The resulting tuple is primitive in the \(T\)-ring. A common
+irreducible factor of its homogeneous entries is multihomogeneous
+and, unless it is one of the \(T_{j,0}\), dehomogenizes to a common
+nonconstant factor of \(P\). None of the \(T_{j,0}\) is a common
+factor by the definition of the respective \(d_j\).
+For each fixed variable \(T_{j,\sigma}\), choose one homogeneous
+form in every nonzero leading component that attains the minimum
+exponent \(e_{i,j,\sigma}\) in its leading term. The wedge of these
+forms is a polynomial multiple of the multihomogenized \(P\):
+dehomogenization gives proportionality, multihomogeneity gives
+proportionality over the fraction field of the \(T\)-ring, and
+primitivity clears any denominator. The leading term of the wedge
+is the product of the chosen leading terms. It is also the product
+of the leading term of \(P\) and that of the scalar multiple, by
+additivity of the comparison. Hence the \(T_{j,\sigma}\)-exponent
+in the leading term of \(P\) is at most \(\sum_i e_{i,j,\sigma}\).
+Since the exponent sum for each pair is \(d_j\), the two bounds are
+equalities by \eqref{eq:box-face-sum}. The same comparison identifies
+the index of the leading term of \(P\) with the set of nonzero leading
+components.
+
+In diagonal degree \(h\), the mean weight in the shifted box of
+component \(i\) is
+\[
+ \overline w_h+\nu_i+
+   \frac12\sum_j\lambda_j(e_{i,j,1}-e_{i,j,0}).
+\]
+Subtract \(\overline w_h\) from the weight of each pivot. The missing
+monomials give an error \(O(h^{d-1})\), since there are
+\(O(h^{d-2})\) of them of centered weight \(O(h)\), and none when
+\(d=1\) and \(h\) is large. Each shifted box has
+\(M_h+O(h^{d-1})\) slots, and its centered mean is constant in \(h\).
+The exponent and coordinate identities just proved show that the
+sum of these centered means is
+\(K_{\lambda,\nu}(P)-\frac12\sum_j\lambda_jd_j\). Adding back
+\(D_h\overline w_h\) gives \eqref{eq:box-filtration}.
+\end{proof}
+
+
+\subsection{Local bases and proof of descent}
+
+\begin{proof}[Proof of Theorem~\ref{thm:descent}]
+Let \(\mathcal S_f\) be the set of primes dividing \(\prod_j a_j\)
+and \(\mathcal S=\mathcal S_f\cup\{\infty\}\). Normalize the finite
+absolute values by \(|p|_p=p^{-1}\), and put
+\(\lambda_{v,j}=\log|a_j|_v\). Then
+\(\sum_{v\in\mathcal S}\lambda_{v,j}=0\) for each \(j\).
+Regard \(\mathcal P_h^k\) as the space of formal forms
+\(\sum_i A'_i x_i\), and set \(A=W^\perp\).
+Work in the quotient \(\mathcal P_h^k/A_h\), whose evaluation
+at \((X_n,x_n)\) is well-defined for large \(n\).
+
+For each \(v\in\mathcal S_f\), take the original basis
+\(X^\alpha x_i\) with weights \(\lambda_v\cdot\alpha\).
+These are upper bounds for the evaluation slopes since \(x_n\)
+is integral. By pairwise coprimality, at \(v\) precisely one generator
+\(a_j\) has a negative weight, and the others have weight zero.
+Some entry of \(P\) has a term with \(X_j\)-exponent zero,
+since \(X_j\) cannot divide all entries of \(P\).
+Thus \(K_{\lambda_v,0}(P)=0\) in \eqref{eq:box-filtration}.
+
+At infinity put \(D_i=X^{-\beta_i}V_i\) in every modified row,
+where \(X^{\beta_i}\) is the leading monomial of \(V_i\), and put
+\(D_i=1\) in every kept row. Thus \(w(D_i)=0\).
+Write \(S'=\operatorname{diag}(D_i)S\).
+In a modified block, replace \(X^\alpha x_i\) by \(X^\alpha(S'x)_i\)
+whenever all terms of the replacement lie in \(\mathcal P_h^k\).
+All but \(O(h^{d-1})\) slots of each block admit the replacement,
+since the Laurent shifts in \(S'\) are fixed. The resulting forms
+constitute a basis. In the modified block the expansion is
+triangular with respect to the monomial weight, with a nonzero
+pivot at \(X^\alpha x_i\), and the only terms in other blocks
+belong to kept coordinates. Give each replaced or kept slot
+weight \(w(X^\alpha)+\mu_i\), and each untouched slot in a modified
+block weight \(w(X^\alpha)+C'\) for a fixed \(C'>C\).
+All these weights bound the evaluations up to \(o(n)\) in the
+logarithm. The ambient sum of weights at infinity differs from the
+original monomial sum by \(M_h\mathcal B+O(h^{d-1})\).
+
+Denote the weight function from this new basis by \(\mathfrak f_h\)
+and the original monomial weight function at infinity by
+\(\mathfrak a(A')=\max_i w(A'_i)\).
+They differ by \(O(1)\) on nonzero vectors, uniformly in \(h\).
+In the forward expansion each term incurs only one of finitely
+many shifts. In the inverse expansion solve for a modified
+monomial from its replacement and recurse only on lower-weight
+monomials in the same block. Along a chain the weights in that
+block decrease, and any terms entering kept blocks incur at most
+one additional bounded shift. Untouched slots terminate the
+recursion. The assigned coordinate costs are also bounded, which
+gives the comparison.
+
+On \(A\) consider the additional weight function
+\[
+ \mathfrak b(A')=\max_i\{\mu_i+w((S'^{-T}A')_i)\}.
+\]
+It differs from \(\mathfrak a\) by a constant bound, since both the
+fixed matrix \(S'^{-T}\) and its inverse have entries of bounded
+weight. Choose a nonzero \(D\in\mathcal P\) with \(DS'^{-T}\)
+polynomial. For a fixed monomial \(X^\ell\) and a fixed integer \(M\)
+large enough, the vectors of \(X^\ell D A_{h-M}\) lie in \(A_h\)
+and their transformed coefficients under \(S'^{-T}\) occupy only
+replaced or kept slots. Indeed, choose \(\ell\) to pad the lower
+faces by more than any fixed replacement shift, and choose \(M\)
+to allow for this padding and all upper shifts and polynomial degrees.
+For such a vector \(A'\), the equality
+\(A'^T x=(S'^{-T}A')^T S'x\) is its expression in the new basis,
+so \(\mathfrak f_h=\mathfrak b\) on this subspace.
+The codimension is \(O(h^{d-1})\) by Lemma~\ref{lem:box-filtration}.
+On the quotient the ordered weights for \(\mathfrak f_h\) and
+\(\mathfrak b\) differ by \(O(1)\), so the two weight sums on
+\(A_h\) differ by \(O(h^{d-1})\).
+
+To compute the difference of the sums for \(\mathfrak b\) and
+\(\mathfrak a\), set \(T=DS'^{-T}\) and use the graph
+\[
+ G=\{(A',TA'):A'\in A\}\subset F^{2k}.
+\]
+The joint box \(G_h=G\cap\mathcal P_h^{2k}\) projects onto a space
+between \(A_{h-M'}\) and \(A_h\) for a fixed \(M'\), since \(T\)
+is polynomial. Its projection thus has codimension \(O(h^{d-1})\)
+in \(A_h\). By the uniform weight comparison on the quotient,
+the difference of the two weight sums changes by \(O(h^{d-1})\)
+upon restriction to this projection.
+On the graph, realize \(\mathfrak a\) by costs zero on the first
+block and a sufficiently negative constant on the second.
+Realize \(\mathfrak b\) by costs \(\mu_i-w(D)\) on the second
+block and a sufficiently negative constant on the first.
+The fixed bounds for \(T\) and \(T^{-1}\) allow the constants
+to be chosen so that the suppressed block has strictly lower
+weight on every nonzero element of the graph in each case.
+
+The primitive polynomial Pl\"ucker vector of \(G\) is
+\((\bigwedge^c\binom{\mathrm{Id}}{T})P\), whose first-block minors
+include the primitive tuple \(P\).
+For the costs realizing \(\mathfrak a\), all leading coordinates
+of graph vectors are in the first block. The proof of
+Lemma~\ref{lem:box-filtration} shows that the leading Pl\"ucker
+coordinate uses only these coordinates. Hence the leading
+Pl\"ucker weight for these costs is \(\max_I w(P_I)\).
+For the costs realizing \(\mathfrak b\), the same argument puts
+the leading Pl\"ucker coordinate in the second block, where the
+minors are the entries of \(D^c(\bigwedge^c S'^{-T})P\).
+The costs cancel the factor \(D^c\) in weight. Also
+\(S'^{-T}=\operatorname{diag}(D_i^{-1})S^{-T}\), so each minor
+has the same weight as its counterpart for \(S^{-T}\).
+The leading Pl\"ucker weight is therefore \(\mathcal K\).
+The assertions also hold when \(c=0\), with both weights zero.
+Subtracting the two box formulas on \(G_h\) cancels the terms
+involving the mean and the multidegrees. Consequently the sum
+of the relation weights at infinity is its original sum for
+\(\mathfrak a\) plus
+\[
+ M_h\bigl(\mathcal K-\max_I w(P_I)\bigr)+O(h^{d-1}).
+\]
+
+At each place, order the chosen ambient basis by weight, refine
+ties by any total order, and row-reduce the relations using the
+largest nonzero slots as pivots. The images of the nonpivot
+slots are a basis of the quotient. In fact pivot slots can be
+eliminated using the relation rows, and no relation is supported
+solely on nonpivot slots. The sum of the weights of the chosen
+forms is the ambient sum minus the relation sum.
+The monomial ambient sums cancel across places by the product
+formula. In \eqref{eq:box-filtration}, the \(D_h\overline w_h\)
+and multidegree terms cancel for the same reason, and the finite
+leading Pl\"ucker weights are zero. The resulting sum of the
+weights of all the chosen local forms is
+\[
+ M_h(\mathcal B-\mathcal K)+O(h^{d-1}).
+\]
+
+Choose \(h\) sufficiently large and fixed to make this sum
+negative. In any basis of the quotient selected from the
+original monomial forms, the evaluations give an integer
+vector of sup norm at most exponential in \(n\).
+It is nonzero: otherwise all original forms would evaluate to
+zero, including the coordinate forms \(x_i\).
+The chosen local forms are fixed rational linear forms in these
+integer coordinates and are independent at each place.
+Their product of absolute values is at most \(e^{-\delta n}\)
+for some \(\delta>0\) and sufficiently large \(n\).
+The rational integer-point form of the \(S\)-adic Subspace
+Theorem \cite[Subspace Theorem]{CZ05} now puts the evaluation
+vectors into finitely many proper rational subspaces, since
+their sup norms are at most \(e^{C_h n}\) with \(C_h>0\).
+Zero values of any of the forms can be included by adjoining
+the kernel of that form. A nonzero rational relation in the
+quotient basis corresponds to a polynomial form outside
+\(A_h\), hence outside \(A\). On an infinite subsequence its
+specialization vanishes at \(x_n\), giving a fixed proper
+\(F\)-subspace of \(W\).
+\end{proof}
+
+\clearpage
+\section{The simultaneous cutoff}\label{sec:simcut}
+
+\subsection{Evaluated greatest common divisors}
+
+\begin{lemma}[Evaluated gcd]\label{lem:evaluated-gcd}
+Let \(F_1,\ldots,F_t\in\mathbb Z[X_1,\ldots,X_d]\) generate a tuple
+of polynomial gcd \(1\) over \(\mathbb Q\).
+Then its positive evaluated gcd \(g_n\) satisfies
+\(\log g_n=o(n)\). In particular, for a polynomial presentation
+\((A_i/B)_{i=1}^m\) with \(B\ne0\) and
+\(\gcd(B,A_1,\ldots,A_m)=1\) over \(\mathbb Q\), the least common
+positive denominator of its value at \(X_n\) satisfies
+\begin{equation}\label{eq:evaluated-denominator}
+ \log\operatorname{den}\bigl((A_i/B)(X_n)_{i=1}^m\bigr)
+   =nw(B)+o(n).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+A nonzero constant entry bounds \(g_n\) by its absolute value.
+For \(d=1\), a polynomial B\'ezout identity over \(\mathbb Q\),
+with denominators cleared, likewise bounds \(g_n\) by a fixed
+nonzero integer. Suppose \(d\ge2\) and all nonzero entries are
+nonconstant. Fix one nonzero entry \(F_0\). For each irreducible
+factor of \(F_0\), the combinations of the tuple divisible by
+that factor form a proper linear subspace of the coefficient
+space over \(\mathbb Q\). Choose a combination \(G_0\) outside
+the finite union of these subspaces, with integral coefficients.
+Then \(F_0,G_0\) are coprime over \(\mathbb Q\), and \(g_n\) divides
+\(\gcd(F_0(X_n),G_0(X_n))\).
+
+For primes outside \(\mathcal S_f\), the torus gcd theorem of
+Corvaja--Zannier and Levin \cite[Theorem~1.13(a)]{LW} bounds
+the logarithmic contribution by \(o(n)\).
+Indeed, the input coordinates are \(\mathcal S\)-units of heights
+\(n\log a_j\), and the exceptional set for each fixed positive
+error consists of finitely many translates of proper algebraic
+subgroups. Each translate imposes a nontrivial character equation
+\((\prod_j a_j^{u_j})^n=b\) with integers \(u_j\) not all zero.
+The base is positive and different from \(1\) by pairwise
+coprimality, so each translate contains at most one orbit point.
+
+For a prime \(p\in\mathcal S_f\), let \(p\mid a_j\).
+Some tuple entry \(H\) is not divisible by \(X_j\), so
+\(H_0=H|_{X_j=0}\ne0\). Its evaluated monomials are \(b_1^n,\ldots,b_l^n\)
+with distinct positive integers \(b_i\) prime to \(p\).
+We show \(\operatorname{ord}_p H_0(X_n)=o(n)\).
+For \(l=1\) the valuation is constant. Otherwise use the \(S\)-adic
+Subspace Theorem on \((b_1^n,\ldots,b_l^n)\), with places
+\(\infty,p\) and all primes dividing the \(b_i\). Take coordinate
+forms at every place except \(p\), where one coordinate is replaced
+by the linear combination for \(H_0\) with nonzero coefficient on
+that coordinate. The forms are independent at each place.
+By the product formula and \(|b_i|_p=1\), their product of
+absolute values is exactly \(|H_0(X_n)|_p\).
+If this were exponentially small infinitely often, the Subspace
+Theorem would give a fixed nonzero rational linear relation
+among the \(b_i^n\) infinitely often. Its largest base with
+nonzero coefficient excludes such a relation.
+Now
+\[
+ H(X_n)\equiv H_0(X_n)\pmod{p^{n\operatorname{ord}_p(a_j)}} ,
+\]
+so their valuations agree eventually, and the \(p\)-contribution
+to \(g_n\) is \(o(n)\). This holds for all the finitely many
+generator primes, proving the gcd estimate at all places.
+For \eqref{eq:evaluated-denominator}, clear fixed coefficient
+denominators in the tuple. For this integral presentation the common denominator is exactly
+\[
+ \frac{|B(X_n)|}{\gcd(B(X_n),A_1(X_n),\ldots,A_m(X_n))}.
+\]
+Now apply \eqref{eq:orbit-weight} and the gcd estimate.
+\end{proof}
+
+
+\subsection{The two cutoff criteria}
+
+Fix \(m\ge1\) and \(R=(U_i/V)_{i=1}^m\in F^m\), where
+\(U_i,V\in\mathcal P\) and \(V\ne0\). Write \(v=w(V)\) and
+\(R_n=R(X_n)\). Denote by \(\operatorname{den}(z)\) the least
+common positive denominator of \(z\in\mathbb Q^m\).
+
+\begin{definition}
+A number \(Q\ge1\) is \emph{admissible} for \(R\) if, for every
+\(\epsilon>0\) and all sufficiently large \(n\),
+\begin{equation}\label{eq:admissible}
+ q^{1+1/m}\max_{1\le i\le m}|R_{i,n}-p_i/q|\ge e^{-\epsilon n}
+ \quad(p\in\mathbb Z^m,\ q\in\mathbb Z,\ 1\le q\le Q^n).
+\end{equation}
+\end{definition}
+
+For a fixed vector \(Z=(A_i/B)_{i=1}^m\in F^m\), take a polynomial
+presentation with \(B\ne0\) and \(\gcd(B,A_1,\ldots,A_m)=1\).
+Let \(E_i=U_iB-VA_i\) and \(q_Z(n)=\operatorname{den}(Z(X_n))\).
+Define
+\begin{equation}\label{eq:line-cutoff}
+ s_{\mathrm{line}}=\min_Z
+   \left\{w(B):\ \frac{w(B)}{m}+\max_i w(E_i)<v\right\}.
+\end{equation}
+The set is nonempty since \(Z=R\) qualifies, and the corresponding
+value is at most \(v\) after reducing the presentation of \(R\).
+
+To define the subspace criterion number the coordinates of
+\((q,p)\) from \(0\) to \(m\) and use the change of coordinates
+\[
+ S(q,p)=(q,p-qR).
+\]
+Let \(W\subset F^{m+1}\) have dimension between \(2\) and \(m\), let
+\(c=m+1-\dim_F W\), and let \(P\) be the primitive polynomial
+Pl\"ucker vector of \(W^\perp\). On coefficient vectors \(S^{-T}\)
+adds \(\sum_i R_i A'_i\) to the \(0\)-th coordinate of \(A'\) and
+keeps the other coordinates. For \(|I|=c\) with \(0\in I\) the
+entries \(C_I=V(\bigwedge^c S^{-T}P)_I\) are polynomial because
+only the \(0\)-th coordinate has changed. For \(0\notin I\) the
+transformed minor is \(P_I\).
+Set
+\begin{equation}\label{eq:subspace-weights}
+ a_c(W)=\max_{\substack{|I|=c\\0\notin I}} w(P_I),\qquad
+ b_c(W)=\max_{\substack{|I|=c\\0\in I}} w(C_I)-v .
+\end{equation}
+Restrict to subspaces on which \(q\) is not identically zero.
+Equivalently, the projection of \(W^\perp\) onto coordinates
+\(1,\ldots,m\) is injective, so \(a_c(W)\) is finite.
+Define
+\begin{equation}\label{eq:subspace-cutoff}
+ s_{\mathrm{sub}}=\min_W
+ \left\{\frac m c\,a_c(W):\
+   \frac m c\,a_c(W)<-\frac{m}{m-c+1}\,b_c(W)\right\}.
+\end{equation}
+An empty minimum is \(+\infty\), in particular when \(m=1\).
+If all \(C_I\) vanish, the right endpoint in the strict
+inequality is \(+\infty\).
+The minima in \eqref{eq:line-cutoff} and \eqref{eq:subspace-cutoff},
+when finite, are attained: polynomial weights are logarithms of
+positive integers and \(c\) ranges over a finite set, so there
+are only finitely many candidate values in any bounded interval.
+
+\begin{theorem}[Sharp simultaneous cutoff]\label{thm:simcut}
+Put \(s_*=\min(s_{\mathrm{line}},s_{\mathrm{sub}})\) and
+\(Q_*=\exp(s_*)\).
+Every \(1\le Q<Q_*\) is admissible and every \(Q>Q_*\) fails.
+If \(s_*<s_{\mathrm{line}}\), the endpoint \(Q_*\) is admissible.
+If \(s_*=s_{\mathrm{line}}\), there is a unique vector \(Z_*\)
+attaining \eqref{eq:line-cutoff}. In this case \(Q_*\) is admissible
+if and only if \(q_{Z_*}(n)>Q_*^n\) for all sufficiently large \(n\).
+\end{theorem}
+
+\begin{proof}
+For any fixed \(Z\ne R\), Lemma~\ref{lem:evaluated-gcd} and
+\eqref{eq:orbit-weight} give
+\begin{multline}\label{eq:line-error}
+ \log\left(q_Z(n)^{1+1/m}\max_i|R_{i,n}-Z_i(X_n)|\right)\\
+   =n\left(\frac{w(B)}m+\max_i w(E_i)-v\right)+o(n).
+\end{multline}
+For \(Z=R\) the approximation error vanishes. Thus every vector satisfying
+\eqref{eq:line-cutoff} gives a counterexample with some fixed
+positive \(\epsilon\) at each sufficiently large level where
+\(q_Z(n)\le Q^n\).
+
+Suppose now that \eqref{eq:admissible} fails for a fixed
+\(\epsilon>0\) at infinitely many levels. Pass to a subsequence
+on which \(n^{-1}\log q\to s\in[0,\log Q]\), and choose a fixed
+\(F\)-subspace \(W\) of smallest dimension whose specializations
+contain infinitely many of the corresponding points \((q,p)\).
+Restrict to those points. They have exponentially bounded
+coordinates by \eqref{eq:orbit-weight} and the error inequality.
+Apply Theorem~\ref{thm:descent} with
+\(\mu_0=s\) and \(\mu_i=-s/m-\epsilon\) for \(1\le i\le m\).
+Minimality gives \(\mathcal K\le\mathcal B=-m\epsilon\),
+so \(W\) is proper because the full space has \(\mathcal K=0\).
+
+If \(\dim_F W=1\), its generator has nonzero \(0\)-th
+coordinate since \(q>0\) on the sequence. The ratios \(p_i/q\)
+are the specializations \(Z_i(X_n)\) of a fixed \(Z\).
+Here \(q_Z(n)\mid q\), and \eqref{eq:evaluated-denominator}
+gives \(w(B)\le s\). Multiplying the approximation error
+by \(q_Z(n)^{1+1/m}\) still gives a bound by \(e^{-\epsilon n}\).
+By \eqref{eq:line-error}, or by exactness when \(Z=R\),
+the strict condition in \eqref{eq:line-cutoff} holds.
+
+If \(2\le\dim_F W\le m\), let \(\mathcal K_0(s)\) be the maximum
+in \eqref{eq:descent-K} with the same \(s\) and with \(\epsilon=0\).
+Every summand changes by at most \(c\epsilon\). Consequently
+\begin{equation}\label{eq:subspace-slope}
+ \mathcal K_0(s)
+   =\max\left\{a_c(W)-\frac{c}{m}s,\
+                b_c(W)+\frac{m-c+1}{m}s\right\}
+   \le -(m-c)\epsilon <0 .
+\end{equation}
+In particular \(s\) is strictly inside the interval with
+endpoints in \eqref{eq:subspace-cutoff}.
+These two cases exclude failure whenever \(\log Q<s_*\).
+At \(Q=Q_*\), any infinite sequence of violations must have a
+subsequence for which the minimal exceptional subspace is a line.
+
+Conversely, let \(W\) satisfy \eqref{eq:subspace-cutoff} and
+take \(s\) strictly inside its interval. Then \(s>0\), since
+\(a_c(W)\ge0\). Choose \(\eta>0\) so small that
+\(\mathcal K_0(s)+m\eta<0\). For all sufficiently large \(n\)
+put \(W_n=W(X_n)\) and rescale by
+\[
+ T_n(q,p)=\big(e^{-sn}q,\ e^{(s/m+\eta)n}(p-qR_n)\big).
+\]
+The lattice \(W_n\cap\mathbb Z^{m+1}\) is saturated.
+A basis of it extends to a basis of \(\mathbb Z^{m+1}\), since the
+quotient is torsion-free, so its wedge is a primitive integral
+Pl\"ucker vector. After scaling \(P\) to have integral coefficients,
+this wedge is the signed complementary vector of \(P(X_n)\)
+divided by the positive gcd of its integer entries, up to an
+overall sign. Its Euclidean norm is the covolume in \(W_n\).
+Under \(T_n\), the complementary-minor identity shows that
+the new covolume equals
+\[
+ |\det T_n|\,
+ \frac{\big\|(\bigwedge^c T_n^{-T})P(X_n)\big\|_2}
+      {\gcd_I P_I(X_n)} .
+\]
+In particular the gcd contributes a factor at most \(1\);
+by Lemma~\ref{lem:evaluated-gcd} its logarithm is also \(o(n)\).
+The determinant has logarithmic slope \(m\eta\), and inverse
+scaling of the error coordinates only decreases the exponents
+of the annihilator minors from their values at \(\eta=0\).
+By \eqref{eq:orbit-weight} and \eqref{eq:subspace-slope} the
+covolume is at most \(\exp(n(\mathcal K_0(s)+m\eta)+O(1))\).
+Minkowski's convex body theorem in the lattice span gives a
+nonzero point in the unit cube for all sufficiently large \(n\):
+the section of the cube contains the Euclidean unit ball in
+that span, of volume bounded below in the given dimension.
+The point cannot come from \(q=0\), since then each integer
+\(p_i\) would have absolute value at most \(e^{-(s/m+\eta)n}<1\).
+Changing sign if necessary gives \(1\le q\le e^{sn}\) and
+\[
+ q^{1+1/m}\max_i|R_{i,n}-p_i/q|
+     =q^{1/m}\max_i|qR_{i,n}-p_i|\le e^{-\eta n}.
+\]
+This proves failure when \(\log Q>s_{\mathrm{sub}}\) by choosing
+\(s<\log Q\) inside the interval of a minimizing subspace.
+If \(\log Q>s_{\mathrm{line}}\), a minimizing vector gives
+failure by \eqref{eq:evaluated-denominator} and
+\eqref{eq:line-error}. Together these cover every \(Q>Q_*\).
+
+For uniqueness, suppose two distinct vectors satisfy
+\eqref{eq:line-cutoff} at its minimum. Their denominators have
+the same leading monomial by distinctness of monomial weights.
+Scale the two tuples by nonzero rational constants to cancel this
+term upon subtraction. If the difference denominator is nonzero,
+it has smaller weight, and each cross-multiplied error of the
+difference tuple has weight at most the maximum of the old error
+weights. Removing the tuple's polynomial gcd weakly decreases
+both the denominator and error weights. The resulting vector
+would satisfy \eqref{eq:line-cutoff} at a smaller weight.
+If the difference denominator vanishes, a nonzero difference
+numerator gives an error divisible by \(V\) of weight at least
+\(v\). Both old error weights are strictly less than \(v\),
+a contradiction. Thus \(Z_*\) is unique. A counterexample
+sequence at \(Q=Q_*\) can only come from such a minimizing
+line, by the strict subspace bound and \(w(B)\le s\le s_*\).
+Every occurrence of this line has \(q_{Z_*}(n)\mid q\).
+Conversely, if \(q_{Z_*}(n)\le Q_*^n\) infinitely often, the
+line gives failure as above. This proves both endpoint claims.
+\end{proof}
+
+\begin{corollary}[Integral form of the endpoint test]\label{cor:cutoff-gcd}
+Suppose \(s_*=s_{\mathrm{line}}\), and choose the tuple for \(Z_*\)
+with integer coefficients of joint content \(1\) and positive leading
+coefficient \(h\) of \(B\). Let
+\(g_n=\gcd(B(X_n),A_1(X_n),\ldots,A_m(X_n))>0\).
+For all sufficiently large \(n\), the condition
+\(q_{Z_*}(n)\le Q_*^n\) is equivalent to \(g_n\ge h+1\) if the
+highest lower term of \(B\) has positive coefficient, and to
+\(g_n\ge h\) if it has negative coefficient or there is no lower term.
+\end{corollary}
+
+\begin{proof}
+The ratio \(B(X_n)/Q_*^n\) is eventually positive and tends to \(h\).
+Its difference from \(h\) is eventually of the sign of the highest
+lower term, or zero in the absence of lower terms.
+The endpoint condition is \(g_n\ge B(X_n)/Q_*^n\).
+Since \(h\) and \(g_n\) are integers, the stated alternatives follow.
+\end{proof}
+
+\begin{remark}[Bounded supports]\label{rem:cutoff-supports}
+The upper bound \(s_{\mathrm{line}}\le v\) restricts the supports
+needed for both criteria. In \eqref{eq:line-cutoff} it bounds
+\(w(B)\), and the equations \(VA_i=U_iB-E_i\) bound each \(w(A_i)\).
+For a subspace candidate at most \(v\), the pure minors have weight
+at most \(cv/m\) and the \(C_I\) have weight at most \(v\).
+Each mixed minor \(P_I\) has bounded weight because \(VP_I\)
+is \(C_I\) minus a linear combination of the pure minors with
+coefficients \(\pm U_i\).
+When \(m=2\), one has \(c=1\) and these tests reduce to finitely
+many rational linear systems on the bounded supports with specified
+leading weights. A nonconstant common factor of a feasible tuple
+can be removed, lowering the associated threshold while preserving
+the strict test. In higher rank the minors must also satisfy the
+Pl\"ucker relations over \(F\).
+\end{remark}
+
+\begin{remark}[A plane obstruction]\label{rem:plane-obstruction}
+Take \(X_n=(2^n,3^n)\), with variables \(X,Y\), and use
+\[
+ R_1=\frac{Y-1}{X-1},\qquad R_2=\frac{2Y-1}{X-1}.
+\]
+The plane \(p_2-2p_1=0\) has \(a_1=0\) and \(C_{\{0\}}=1\),
+so its interval in \eqref{eq:subspace-cutoff} is
+\(0<s<\log2\). A vector with \(w(B)<\log2\) would have constant
+denominator, and its first component could not approximate \(R_1\)
+with exponentially small error since \(R_1\) has leading base
+\(3/2\), different from the positive integer leading bases of
+nonzero polynomials in \(X,Y\). Thus \(s_{\mathrm{line}}>0\).
+Theorem~\ref{thm:simcut} gives admissibility exactly at \(Q=1\).
+\end{remark}
+
+\begin{proposition}[Optimal exponent]\label{prop:optimal-exponent}
+If \(Q>1\) is admissible, the estimate \eqref{eq:admissible}
+fails with \(1+1/m\) replaced by any \(\kappa<1+1/m\).
+\end{proposition}
+
+\begin{proof}
+Set \(L=\lfloor Q^{n/m}\rfloor\) and partition the unit \(m\)-cube
+into \(L^m\) subcubes of side \(1/L\). Two of the \(L^m+1\)
+points \(jR_n\bmod\mathbb Z^m\), \(0\le j\le L^m\), lie in the
+same subcube. Their difference gives \(1\le q\le L^m\le Q^n\)
+and \(p\in\mathbb Z^m\) with \(\max_i|qR_{i,n}-p_i|\le L^{-1}\).
+Thus \(q^{\kappa-1}\max_i|qR_{i,n}-p_i|\) is at most
+\(L^{-1+\max(0,m(\kappa-1))}\), which decays exponentially in \(n\).
+\end{proof}
+
+
+\section{Ratios of shifted powers}\label{sec:shifted-powers}
+
+Let \(2\le a<b_1<\cdots<b_m\) be pairwise coprime, with \(m\ge1\).
+Put
+\begin{equation}\label{eq:shifted-ratios}
+ R_n=(R_{i,n})_{i=1}^m,\qquad
+ R_{i,n}=\frac{b_i^n-1}{a^n-1},\qquad d_n=\operatorname{den}(R_n).
+\end{equation}
+The exact common denominator is
+\begin{equation}\label{eq:shifted-denominator}
+ d_n=\frac{a^n-1}{\gcd(a^n-1,b_1^n-1,\ldots,b_m^n-1)}
+     =\exp\bigl(n\log a+o(n)\bigr).
+\end{equation}
+The asymptotic follows from Lemma~\ref{lem:evaluated-gcd} applied
+to \(X-1,Y_1-1,\ldots,Y_m-1\), where \(X,Y_i\) are the variables
+for \(a,b_i\). It also follows from the two-base bound of
+Bugeaud--Corvaja--Zannier \cite{BCZ}, because the gcd in the
+denominator of \eqref{eq:shifted-denominator} divides the gcd
+of the first two entries.
+
+\begin{theorem}[Weighted primal estimate]\label{thm:primal}
+For every \(\epsilon>0\) and all sufficiently large \(n\), for
+every integer \(1\le q<d_n\) and every \(t_i\ge0\) with
+\(\sum_i t_i=n^{-1}\log q\), one has
+\begin{equation}\label{eq:weighted-primal}
+ \max_{1\le i\le m} e^{nt_i}\|qR_{i,n}\|\ge e^{-\epsilon n},
+\end{equation}
+where \(\|u\|\) denotes distance to the nearest integer.
+In particular the cutoff in \eqref{eq:admissible} is \(Q_*=a\),
+with failure at equality.
+\end{theorem}
+
+\begin{proof}
+Suppose that \eqref{eq:weighted-primal} fails infinitely often for a
+fixed \(\epsilon>0\). Choose nearest integers \(p_i\) and pass to a
+subsequence on which \(n^{-1}\log q\to s\) and the weight parameters
+converge to \(t_1,\ldots,t_m\), using the same notation for their
+limits. These satisfy \(0\le t_i\), \(\sum_i t_i=s\le v=\log a\).
+Here \(V=X-1\), \(U_i=Y_i-1\).
+As in the cutoff proof take a fixed minimal-dimensional \(W\)
+containing infinitely many of the points \((q,p)\) upon specialization
+and restrict to those points. The coordinates are exponentially
+bounded since \(q<d_n\) and the \(p_i\) are nearest to \(qR_{i,n}\).
+Use \(\mu_0=s\) and \(\mu_i=-t_i-\epsilon\) in
+Theorem~\ref{thm:descent}. Minimality gives
+\(\mathcal K\le\mathcal B=-m\epsilon\), so \(W\) is proper.
+
+If \(W\) has dimension at least two, then \(1\le c\le m-1\).
+For a pure minor \(P_I\), with \(0\notin I\), the inequality
+\(\mathcal K\le-m\epsilon\) gives
+\[
+ w(P_I)\le\sum_{i\in I}t_i-(m-c)\epsilon<v .
+\]
+Every pure minor is constant because all nonconstant monomials
+have weight at least \(v\). At least one such \(P_I\) is nonzero
+since \(q\) is nonzero on the sequence. Choose \(j\in I\) and
+put \(J=\{0\}\cup(I\setminus\{j\})\).
+In the mixed numerator \(C_J\) of \eqref{eq:subspace-weights},
+setting \(X=1\) kills the term \(VP_J\); what remains is a
+constant linear combination of the \(Y_i-1\), with nonzero
+\(Y_j\)-coefficient \(\pm P_I\). Thus \(w(C_J)\ge\log b_j>v\),
+since setting \(X=1\) cannot increase the weight.
+The contribution of \(J\) to \(\mathcal K\) is
+\[
+ w(C_J)-v+s-\sum_{i\in J\setminus\{0\}}t_i-(c-1)\epsilon
+   >-(c-1)\epsilon,
+\]
+contradicting \(\mathcal K\le-m\epsilon\).
+
+If \(W\) has dimension one, \(p_i/q=Z_i(X_n)\) for a fixed
+\(Z=(A_i/B)_{i=1}^m\) in the reduced polynomial presentation
+of \eqref{eq:line-cutoff}. Since \(q_Z(n)\mid q\),
+Lemma~\ref{lem:evaluated-gcd} gives \(w(B)\le s\le v\).
+Thus \(B\) is constant or linear in \(X\), with rational
+coefficients. For each nonzero \(E_i=U_iB-VA_i\),
+\eqref{eq:orbit-weight} gives
+\[
+ \log|q(R_{i,n}-Z_i(X_n))|
+       =n(s+w(E_i)-v-w(B))+o(n).
+\]
+Its slope is negative by the assumed bound with \(t_i\ge0\).
+Since \(s\ge w(B)\), this forces \(w(E_i)<v\). Hence each
+\(E_i\) is constant or zero. The identity
+\(E_i|_{X=1}=B(1)(Y_i-1)\) gives \(B(1)=0\), then every
+\(E_i=0\). Thus \(Z=R\), which implies \(d_n\mid q\) and
+contradicts \(q<d_n\).
+
+Taking all \(t_i=(\log q)/(mn)\) gives the estimate for
+\eqref{eq:admissible} throughout \(1\le q<d_n\).
+By \eqref{eq:shifted-denominator}, \(Q^n<d_n\) eventually
+for every \(Q<a\). Exact approximation at \(q=d_n\le a^n-1\)
+proves failure at \(Q=a\) and above.
+\end{proof}
+
+\begin{theorem}[Dual estimate and cutoff]\label{thm:dual}
+Write \(H=\max_i|k_i|\) for nonzero \(k\in\mathbb Z^m\).
+For every \(\epsilon>0\) and all sufficiently large \(n\), each
+such \(k\) with \(k\cdot R_n\notin\mathbb Z\) satisfies
+\begin{equation}\label{eq:dual-estimate}
+ H^m\|k\cdot R_n\|\ge e^{-\epsilon n}.
+\end{equation}
+The smallest \(H\) of a nonzero \(k\) with \(k\cdot R_n\in\mathbb Z\)
+is \(\exp(n(\log a)/m+o(n))\). With exact values included,
+\eqref{eq:dual-estimate} holds for all \(1\le H\le Q^n\) at
+each \(1\le Q<a^{1/m}\), and fails at \(Q=a^{1/m}\) and above.
+\end{theorem}
+
+\begin{proof}
+The lattice
+\(\Lambda_n=\{(q,p-qR_n): (q,p)\in\mathbb Z^{m+1}\}\)
+has covolume one. For \(1\le T<d_n\) scale it by
+\(\operatorname{diag}(T^{-1},T^{1/m},\ldots,T^{1/m})\).
+Fix \(\eta>0\). Uniformly in \(T\) and all sufficiently large
+\(n\), the first successive minimum of the scaled lattice
+in the unit cube is at least \(e^{-\eta n}\).
+Indeed, a vector with \(|q|>T\) has first coordinate of
+absolute value greater than \(1\).
+If \(1\le |q|\le T\), use \eqref{eq:weighted-primal} with
+equal weights for \(|q|\) and use \(T^{1/m}\ge|q|^{1/m}\).
+At \(q=0\), a nonzero vector has an integer residual of
+sup norm at least \(1\) before scaling.
+The scaled lattice still has covolume one. Minkowski's second
+theorem therefore bounds the last minimum by
+\(C_m e^{m\eta n}\) for a positive constant \(C_m\).
+A nonzero dual lattice vector has a nonzero integral pairing
+with at least one of \(m+1\) independent primal lattice vectors
+of sup norm at most \(C_m e^{m\eta n}\). Its sup norm is
+therefore at least \(c_m e^{-m\eta n}\) for some \(c_m>0\).
+The dual vectors are precisely
+\[
+ \bigl(T(\ell+k\cdot R_n),T^{-1/m}k\bigr),
+       \qquad (\ell,k)\in\mathbb Z^{m+1}.
+\]
+
+Set \(v=\log a\) and choose \(0<\delta<\min(v/m,\epsilon/m)\).
+For \(H\le e^{(v/m-\delta)n}\), take
+\(T=H^m e^{(m^2+1)\eta n}\) with \(\eta>0\) so small that
+\((m^2+1)\eta<m\delta\) and
+\((m^2+m+1)\eta<\epsilon\).
+By \eqref{eq:shifted-denominator}, \(1\le T<d_n\) eventually.
+The last \(m\) coordinates of the dual vector have sup norm
+\(e^{-(m+1/m)\eta n}<c_m e^{-m\eta n}\) for all large \(n\).
+Choosing \(\ell\) to minimize its first coordinate now gives
+\[
+ H^m\|k\cdot R_n\|\ge c_m e^{-(m^2+m+1)\eta n}.
+\]
+This both proves \eqref{eq:dual-estimate} in this range and
+excludes exact values. For \(H>e^{(v/m-\delta)n}\), a nonexact
+value is at least \(1/d_n\) from the nearest integer. Since
+\(d_n\le e^{vn}\), this yields \(H^m\|k\cdot R_n\|>e^{-m\delta n}\).
+
+The lattice of \(k\in\mathbb Z^m\) with \(k\cdot R_n\in\mathbb Z\)
+has index \(d_n\), since the image of \(k\mapsto k\cdot R_n\bmod
+\mathbb Z\) is the cyclic subgroup of order \(d_n\)
+generated by the coordinates of \(R_n\). The cube of sup norm
+at most \(a^{n/m}\) has volume \(2^m a^n>2^m d_n\).
+Minkowski's convex body theorem gives a nonzero vector of this
+lattice in the cube. Together with the exclusion of exact
+values for every fixed \(\delta>0\) in the smaller range, this
+proves the asymptotic for the least \(H\) and failure at
+\(Q=a^{1/m}\). For a fixed \(Q<a^{1/m}\) one can take \(\delta\)
+small enough that \(\log Q<v/m-\delta\).
+\end{proof}
+
+\begin{corollary}\label{cor:binary-ternary-quinary}
+For \(R_n=((3^n-1)/(2^n-1),(5^n-1)/(2^n-1))\), the sharp
+primal exponent is \(3/2\), with cutoff \(2\), and the dual
+coefficient cutoff is \(\sqrt{2}\). Each cutoff fails at equality.
+\end{corollary}
+
+\begin{proof}
+Apply Theorems~\ref{thm:primal} and~\ref{thm:dual} with
+\((a,b_1,b_2)=(2,3,5)\), and Proposition~\ref{prop:optimal-exponent}
+with any \(1<Q<2\).
+\end{proof}
+
+\begin{proposition}[Weighted covering]\label{prop:weighted-covering}
+Fix \(\eta>0\). For all sufficiently large \(n\), let
+\(t_i\ge0\), \(\sum_i t_i=s\), and \(1\le e^{sn}<d_n\).
+For every \(q_0\in\mathbb R\) and \(y\in\mathbb R^m\), there is
+\(q\in\mathbb Z\) such that
+\[
+ |q-q_0|\ll_m e^{(s+m\eta)n},\qquad
+ \|qR_{i,n}-y_i\|\ll_m e^{(-t_i+m\eta)n}\quad(1\le i\le m).
+\]
+The constants are uniform in the weights and shifts.
+\end{proposition}
+
+\begin{proof}
+Scale \(\Lambda_n\) by
+\(\operatorname{diag}(e^{-sn},e^{nt_1},\ldots,e^{nt_m})\),
+a map of determinant one.
+For \(1\le |q|\le e^{sn}\) and \(s>0\), apply the weighted
+primal bound with \(t_i\) multiplied by \(\log|q|/(ns)\).
+These new weights are no larger and sum to \(n^{-1}\log|q|\).
+When \(s=0\) and \(|q|=1\), the weights are already zero.
+Vectors with \(|q|>e^{sn}\) or with \(q=0\) and \(p\ne0\)
+have sup norm at least one after scaling.
+Thus the first minimum in the cube is at least \(e^{-\eta n}\).
+As in Theorem~\ref{thm:dual}, the last minimum is
+\(O_m(e^{m\eta n})\). A parallelepiped spanned by \(m+1\)
+independent lattice vectors of this size covers the space
+under translations by the sublattice they generate, so the
+scaled lattice has covering radius \(O_m(e^{m\eta n})\)
+in the sup norm. Apply this bound to the image of
+\((q_0,-y)\), then undo the scaling.
+\end{proof}
+
+\section{The scalar exponent and its sharp range}\label{sec:scalar}
+Use all primes occurring in the roots as orbit generators \(a_j\), so every term corresponds to a monomial in \(X_j=a_j^n\). For constants take one auxiliary prime if necessary. Write \(R=U/V\) in reduced form over \(\mathbb Q[X_1,\ldots,X_d]\). For a polynomial \(P\ne0\) let \(L(P)=\exp w(P)\), its largest integer monomial base, and set \(L(0)=0\).
+\begin{theorem}\label{thm:scalarcut}
+The sharp scalar cutoff, with exponent two, is the positive integer
+\begin{equation}\label{eq:scalarmin}
+   Q_*=\min_{\substack{Z=A/B\\ B\ne0,\ (A,B)=1}}
+      \{L(B):\ L(B)L(UB-VA)<L(V)\}.
+\end{equation}
+It is at most \(L(V)\) and the minimizing function \(Z_*\) is unique. The endpoint \(Q_*\) is admissible if and only if \(\operatorname{den}Z_*(X_n)>Q_*^n\) for all sufficiently large \(n\). A finite list of rational linear feasibility problems determines \(Q_*\) and \(Z_*\).
+\end{theorem}
+\begin{proof}
+In dimension one the exact function is a candidate and the only proper subspaces of the two-dimensional coefficient space that can contain an approximant are lines. Thus Theorem~\ref{thm:simcut} gives \eqref{eq:scalarmin} and the stated endpoint test. More explicitly, if \(UB-VA\ne0\), the exponential growth rate of
+\(\operatorname{den}(Z(X_n))^2|R(X_n)-Z(X_n)|\)
+is the logarithm of \(L(B)L(UB-VA)/L(V)\). Distinct bad fractions of the same denominator growth rate cannot both approximate \(R\) this well: their distance at every large level is at least the reciprocal of the product of their reduced denominators.
+
+Enumerate the finitely many monomial bases \(b\le L(V)\) in increasing order. In \(B\) allow monomials of base at most \(b\) and set its coefficient of base \(b\) to one. In \(A\) allow bases at most \(b\max(1,L(U)/L(V))\). This suffices since a qualifying function eventually has \(|A(X_n)/B(X_n)|\le |R(X_n)|+1\). Set to zero the coefficients in \(UB-VA\) of all monomials of base \(m\) with \(bm\ge L(V)\). These are affine linear equations over \(\mathbb Q\). A common nonconstant factor of a feasible pair can be cancelled, decreasing \(b\) and preserving feasibility at the reduced denominator base. The first consistent system therefore supplies the reduced minimizer.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:cz}]
+A denominator of base one is constant. A candidate of base one would give a polynomial \(\zeta\) in the prime powers with \(R(X_n)-\zeta(X_n)\) tending to zero. This contradicts \eqref{eq:czhyp}, which is unchanged by multiplying or dividing both representatives by their common polynomial factor. Thus \(Q_*\ge2\). The function \((3/2)^n\) satisfies \eqref{eq:czhyp}, and its exact denominator \(2^n\) gives failure at \(Q=2\).
+For optimality of the exponent, Dirichlet's theorem with \(K=\lfloor Q^n\rfloor\) gives \(1\le q\le K\) with \(q|R_n-p/q|\le1/K\). For each \(k<2\) this implies
+\(q^k|R_n-p/q|\le K^{-\min(1,2-k)}\),
+which violates the corresponding lower bound for a sufficiently small fixed \(\epsilon>0\).
+\end{proof}
+
+For \(7^n/(2^n+1)\) and \(7^n/(2^n-1)\) the cutoff equals two: the leading base \(7/2\) excludes polynomial approximation and the exact denominator polynomial has base two. In the first case \(7\nmid 2^n+1\), since \(2\) has odd order modulo \(7\), so the endpoint holds. In the second case the reduced denominator is at most \(2^n-1\), giving failure. An earlier \emph{nonexact} approximant can also decide the cutoff. For \(R_n=(15^n+2^n)/10^n\) the reduced denominator is \(10^n\), whereas \(Z_n=3^n/2^n\) gives \(2^{2n}|R_n-Z_n|=(4/5)^n\). Here again the leading base \(3/2\) excludes denominator base one.
+
+\begin{proposition}\label{prop:exceptions}
+With the roots, the number of terms, \(1<Q<2\), and \(\epsilon>0\) fixed, the number of exceptional indices in Theorem~\ref{thm:cz} is unbounded as the coefficients vary. The exceptional rational approximants can be distinct and nonexact.
+\end{proposition}
+\begin{proof}
+For any \(L\ge1\), take an integer \(C>((3/2)e^\epsilon)^L\) and put \(u(n)=C4^n+3^n,\ v(n)=C2^n\). In \(u(n)/v(n)=2^n+C^{-1}(3/2)^n\), no integer-root power sum cancels the term of base \(3/2\), so \eqref{eq:czhyp} holds. For every \(1\le n\le L\), the integer \(p=2^n\) has positive error less than \(e^{-\epsilon n}\). In the lifted coordinates these violations already satisfy one fixed relation, \(p=2^nq\). A bound on the number of exceptional subspaces, as in the quantitative Subspace Theorem \cite{EF}, therefore does not by itself bound the number of indices.
+\end{proof}
+
+\section{Scalar approximation at a fixed embedding}
+\label{sec:algscalar}
+
+Let \(u(n)\) and \(v(n)\) be finite sums of terms \(P(n)\gamma^n\),
+where \(P\) has algebraic coefficients and \(\gamma\) is a nonzero
+algebraic number. Such terms include the contributions of repeated
+characteristic roots of a linear recurrence. A zero characteristic
+root contributes only to an initial segment, which can be discarded.
+Fix an embedding of the data in \(\mathbb C\), and set \(R_n=u(n)/v(n)\)
+at the levels where \(v(n)\ne0\). All errors below use the ordinary
+complex modulus at this embedding.
+
+\begin{definition}
+A real number \(Q\ge1\) is admissible if, for every \(\epsilon>0\),
+all sufficiently large defined levels satisfy
+\begin{equation}\label{eq:alg-admissibility}
+ q^2|R_n-p/q|\ge \exp(-\epsilon n)
+ \qquad(p,q\in\mathbb Z,\ 1\le q\le Q^n).
+\end{equation}
+For \(z\in\mathbb Q\), let \(\operatorname{den}(z)\) be its positive
+reduced denominator, with \(\operatorname{den}(0)=1\).
+\end{definition}
+
+It suffices to test reduced fractions, since reducing preserves the
+target \(p/q\) and decreases the left side. For real \(R_n\) with
+infinitely many defined levels, the exponent \(2\) is optimal whenever
+\(Q>1\) is admissible. Indeed, with \(J=\lfloor Q^n\rfloor\),
+Dirichlet's theorem gives \(1\le q\le J\) and
+\(q|R_n-p/q|\le J^{-1}\). For any \(\kappa<2\) this yields
+\(q^\kappa|R_n-p/q|\le J^{-\min(1,2-\kappa)}\).
+
+\subsection{The character ring and the cutoff}
+
+Identify the prescribed embedding with the inclusion of the data in
+\(\mathbb C\). Let \(K\subset\mathbb C\) be a finite Galois extension of
+\(\mathbb Q\) containing the data and write
+\(G=\operatorname{Gal}(K/\mathbb Q)\). Choose \(m\ge1\) killing the
+torsion of the multiplicative group generated by the roots and all
+their conjugates. Their \(m\)-th powers generate a \(G\)-stable
+torsion-free group \(\Lambda\). For a residue \(0\le r<m\) put
+\(n=r+mk\). There are \(U,V\) in the ring
+\[
+ \mathcal A=K[T][\Lambda],\qquad
+ P[k]=\sum_{\gamma}P_\gamma(k)\gamma^k
+ \quad\text{for } P=\sum_\gamma P_\gamma(T)[\gamma],
+\]
+such that \(U[k]=u(r+mk)\) and \(V[k]=v(r+mk)\).
+Indeed, the summand \(P(n)\gamma^n\) becomes
+\(\gamma^r P(r+mT)[\gamma^m]\). The character notation satisfies
+\([\gamma][\delta]=[\gamma\delta]\). The action of \(G\) fixes \(T\) and
+sends \(c[\gamma]\) to \(\sigma(c)[\sigma\gamma]\). Evaluation commutes
+with this action. Omit residues with \(V=0\).
+
+Let \(M_K\) be the set of places of \(K\). Use absolute values
+normalized for the product formula, with local degree divided by
+\([K:\mathbb Q]\). At an archimedean place \(v\) represented by
+\(\sigma_v:K\hookrightarrow\mathbb C\), write
+\(|x|_v=|\sigma_v(x)|^{t_v}\), where \(t_v=1/[K:\mathbb Q]\) for real
+places and \(2/[K:\mathbb Q]\) for complex places. Thus
+\(\sum_{v\mid\infty}t_v=1\). Fix a finite set \(S\) containing the
+archimedean places and every finite place at which some basis element
+of \(\Lambda\) is a nonunit, and write \(S_f\) for its finite places.
+For \(P\in\mathcal A\) let its support be the characters with
+\(P_\gamma(T)\ne0\). Define
+\[
+ w_v(P)=\max_{\gamma\in\operatorname{supp}P}\log|\gamma|_v,\qquad
+ \rho(P)=\max_{\gamma\in\operatorname{supp}P}\log|\gamma|.
+\]
+The weights of zero are \(-\infty\).
+
+For \(Z\in\operatorname{Frac}(\mathcal A)^G\), choose a coprime
+representation \(Z=A/B\) in \(\mathcal A\), with \(0=0/1\). In
+particular the reduction cancels common factors in \(K[T]\).
+For the current residue define
+\begin{align}
+ D(Z)&=\sum_{v\mid\infty}w_v(B)
+       +\sum_{v\in S_f}\max\{w_v(A),w_v(B)\}, \label{eq:alg-D}\\
+ e(Z)&=\rho(UB-VA)-\rho(V)-\rho(B). \label{eq:alg-e}
+\end{align}
+Since \(\mathcal A\) is a Laurent polynomial ring over \(K[T]\), its
+units are \(c[\gamma]\) with \(c\in K^\times\). Multiplying both
+members of the pair by such a unit leaves \(D\) unchanged by the
+product formula, and leaves \(e\) unchanged by cancellation of the
+common weight. Enlarging \(S\) leaves \(D\) unchanged. Evaluation of
+\(Z\) gives rational numbers wherever defined.
+
+\begin{theorem}\label{thm:algcut}
+On each residue with \(V\ne0\), let
+\begin{equation}\label{eq:alg-variational}
+ d_r=\inf\{D(Z):Z\in\operatorname{Frac}(\mathcal A)^G,\
+                       2D(Z)+e(Z)<0\},
+ \qquad
+ Q_*=\min_{r:\,V\ne0}\exp(d_r/m).
+\end{equation}
+Use \(+\infty\) for an empty infimum or minimum. Each finite \(d_r\)
+is attained by a unique function \(Z_r\).
+Every \(1\le Q<Q_*\) is admissible, and every \(Q>Q_*\) is
+inadmissible. If \(Q_*<\infty\), then \(Q_*\) is admissible if and
+only if, on each residue with \(\exp(d_r/m)=Q_*\),
+\begin{equation}\label{eq:alg-endpoint}
+ \operatorname{den}(Z_r[k])>Q_*^{\,r+mk}
+ \qquad\text{for all sufficiently large }k.
+\end{equation}
+If every \(d_r\) is infinite, every finite \(Q\ge1\) is
+admissible. If there are no defined residues, admissibility is
+vacuous.
+\end{theorem}
+
+\subsection{Orbit evaluation}
+
+\begin{lemma}\label{lem:alg-orbit}
+A nonzero \(P\in\mathcal A\) has only finitely many zeros on the
+orbit. If \(Z\in\operatorname{Frac}(\mathcal A)\) has rational values
+at infinitely many levels, then \(Z\) is \(G\)-invariant.
+\end{lemma}
+
+\begin{proof}
+The sequence \(P[k]\) satisfies a linear recurrence. By the
+Skolem--Mahler--Lech theorem \cite{LechSML}, infinitely many zeros
+would give a full infinite arithmetic progression of zeros. On
+\(k=a+b\ell\), \(b\ge1\), the distinct characters in \(P\) have
+distinct \(b\)-th powers by torsion-freeness. The corresponding
+polynomial multiples of the exponentials in \(\ell\) are linearly
+independent. Indeed, if \(E\) is the forward shift, \(E-\lambda\)
+lowers polynomial degree on terms with base \(\lambda\) and
+preserves degree with nonzero leading coefficient on terms with a
+different base. A product of powers of these operators can isolate
+any one base of the alleged relation. This contradicts the existence
+of the progression. For the second assertion, the cross numerator
+of \(Z-\sigma Z\) vanishes at infinitely many levels for every
+\(\sigma\in G\) and therefore vanishes in \(\mathcal A\).
+\end{proof}
+
+We use the number-field Subspace Theorem \cite{Schlickewei} in
+the normalized form of \cite[proof of Lemma~1]{CZ04}. Write
+\(\|\mathbf x\|_v=\max_i|x_i|_v\) and
+\(H(\mathbf x)=\prod_{v\in M_K}\|\mathbf x\|_v\) for the
+multiplicative projective height. For \(N\ge2\), take \(N\) independent
+\(K\)-linear forms \(L_{v,i}\) at each \(v\in S\). Nonzero vectors
+satisfying
+\[
+ \prod_{v\in S}\prod_{i=1}^{N}
+     \frac{|L_{v,i}(\mathbf x)|_v}{\|\mathbf x\|_v}
+     < H(\mathbf x)^{-N-\delta}
+ \qquad(\delta>0)
+\]
+are contained in finitely many proper \(K\)-linear subspaces.
+For vectors integral outside \(S\),
+\(\prod_{v\in S}\|\mathbf x\|_v\ge H(\mathbf x)\). In particular,
+if \(H(\mathbf x)\le \exp(Ck)\) for \(C>0\), the unnormalized form
+product being at most \(\exp(-ck)\), with fixed \(c>0\), suffices
+by taking \(0<\delta<c/C\).
+
+\begin{lemma}[Local weights]\label{lem:localweight}
+For \(P\in\mathcal A\setminus\{0\}\) and any fixed place \(v\),
+\begin{equation}\label{eq:alg-localweight}
+ \log |P[k]|_v=k w_v(P)+o(k).
+\end{equation}
+At the specified embedding,
+\(\log|P[k]|=k\rho(P)+o(k)\). In particular a nonzero exponential
+polynomial whose characters all have ordinary modulus \(1\) at that
+embedding has logarithmic modulus \(o(k)\).
+\end{lemma}
+
+\begin{proof}
+Enlarge \(S\) to include \(v\). Expand \(P\) into its distinct
+monomials \(T^j[\gamma]\) and use their values
+\(x_{j,\gamma}=k^j\gamma^k\) as coordinates, for \(k\ge1\).
+At \(v\) replace the coordinate form of one maximal-weight monomial
+by the form evaluating to \(P[k]\). The coefficient of the pivot
+monomial is nonzero, so the forms are independent. Use coordinate
+forms elsewhere. The product of the original coordinate forms over
+\(S\) is at most a fixed power of \(k\) by the product formula for the
+characters and \(\prod_{w\in S}|k|_w\le k\). The replacement changes
+the product by
+\[
+ \frac{|P[k]|_v}{|k|_v^j\exp(k w_v(P))}.
+\]
+At a fixed place \(|k|_v^{-j}\) is bounded by a fixed power of \(k\).
+An exponential deficit in \eqref{eq:alg-localweight} along infinitely
+many \(k\) would therefore give an exponentially small form product.
+The coordinates are integral outside \(S\) and their logarithmic
+height is \(O(k)\). The Subspace Theorem would give a fixed nonzero
+linear relation among the coordinates at infinitely many \(k\),
+contrary to Lemma~\ref{lem:alg-orbit}. With one coordinate the
+conclusion follows directly. The upper estimate follows by bounding
+the finitely many terms by \(\exp(k w_v(P))k^{O(1)}\), and division by
+the local normalization exponent gives the assertion for ordinary
+modulus.
+\end{proof}
+
+\begin{lemma}\label{lem:alg-slopes}
+If \(Z\in\operatorname{Frac}(\mathcal A)^G\), then \(D(Z)\ge0\) and
+\[
+ \log\operatorname{den}(Z[k])=kD(Z)+o(k).
+\]
+If \(Z\ne U/V\), then
+\(\log|R_{r+mk}-Z[k]|=ke(Z)+o(k)\). For \(Z=U/V\) the error is zero
+and \(e(Z)=-\infty\).
+\end{lemma}
+
+\begin{proof}
+Choose a basis \(\gamma_1,\ldots,\gamma_d\) of \(\Lambda\), so
+that \(\mathcal A=K[T,X_1^{\pm1},\ldots,X_d^{\pm1}]\).
+Multiply the reduced pair by a common monomial in the \(X_i\) to
+make its entries ordinary polynomials with no common coordinate
+factor. They are then coprime in \(K[T,X_1,\ldots,X_d]\).
+Enlarge \(S\) so their coefficients are \(S\)-integers. For this
+pair,
+\begin{equation}\label{eq:alg-offS}
+ -\sum_{v\notin S}\log\max(|A[k]|_v,|B[k]|_v)=o(k).
+\end{equation}
+In rank zero this follows from a polynomial B\'ezout identity
+over \(K\), after including the coefficient places of the identity.
+It is immediate when one component is a nonzero constant that is
+an \(S\)-unit. Otherwise, in positive rank apply Xiao's
+almost-unit gcd estimate \cite[preprint, Corollary~3.4 and the proof of
+Theorem~4.2]{Xiao} to
+\(\mathbf y_k=(k,\gamma_1^k,\ldots,\gamma_d^k)\). In Xiao's almost-unit condition the sum of the logarithmic
+local heights of \(\mathbf y_k\) and its coordinatewise inverse
+outside \(S\) is \(O(\log k)\), since only the coordinate \(k\)
+can contribute. The affine height \(h([1:\mathbf y_k])\) and the
+largest coordinate height are both comparable to \(k\), since
+\(h(\gamma_i^k)=k h(\gamma_i)\) and \(h(\gamma_i)>0\) by
+Northcott's theorem and torsion-freeness. Thus the almost-unit
+condition holds eventually for every fixed positive tolerance. A proper exceptional closed subset of the torus is cut
+out, in particular, by some nonzero Laurent polynomial. Clearing
+negative powers of \(T\) and applying Lemma~\ref{lem:alg-orbit}
+shows that the orbit eventually avoids it. For every \(\eta>0\)
+Xiao's estimate bounds the nonnegative left side of
+\eqref{eq:alg-offS} by \(\eta\max_i h(y_{k,i})\) eventually.
+Here \(h\) denotes absolute logarithmic height.
+
+Combining \eqref{eq:alg-offS} with Lemma~\ref{lem:localweight}
+gives
+\[
+ h([A[k]:B[k]])=
+ k\sum_{v\in S}\max\{w_v(A),w_v(B)\}+o(k).
+\]
+For \(z\in\mathbb Q\),
+\(h([z:1])=\log\operatorname{den}(z)+\log^+|z|\).
+Since \(Z[k]\) is rational, \(\log^+|Z[k]|\) equals
+\(\sum_{v\mid\infty}\log^+|Z[k]|_v\). Subtracting this sum leaves
+the archimedean weights \(w_v(B)\), giving \eqref{eq:alg-D}.
+The case \(Z=0\) has denominator one. The assertion about \(e(Z)\)
+follows by evaluating \((UB-VA)/(VB)\) at the specified embedding
+and applying Lemma~\ref{lem:localweight}.
+\end{proof}
+
+\subsection{A finite list at each ceiling and error}
+
+\begin{lemma}\label{lem:alg-finite}
+Fix a residue with \(V\ne0\), \(Q\ge1\), and \(\epsilon>0\).
+There is a finite set of functions in
+\(\operatorname{Frac}(\mathcal A)^G\) such that every violation of
+\eqref{eq:alg-admissibility} at a sufficiently large level on the
+residue satisfies \(p/q=Z[k]\) for one of those functions.
+\end{lemma}
+
+\begin{proof}
+Include \(Z=0\) to account for \(p=0\). For \(p\ne0\) consider two
+copies, multiplied by \(p\) and by \(q\), of the monomials
+\(T^\ell[\gamma^{\mathbf j}]\) evaluated at \(k\). Here
+\(\gamma^{\mathbf j}=\prod_{i=1}^d\gamma_i^{j_i}\) and
+\((\ell,\mathbf j)\in\{0,\ldots,h\}^{d+1}\), a box with
+\(M=(h+1)^{d+1}\) indices.
+
+At each archimedean place set
+\(U_v=\sigma_v^{-1}U\) and \(V_v=\sigma_v^{-1}V\), using the
+semilinear action on both coefficients and characters.
+Since \(K\) is Galois, \(\sigma_v\) is an automorphism of \(K\).
+As \(\sigma_v\) commutes with evaluation,
+\(\sigma_v(U_v[k]/V_v[k])=R_{r+mk}\) at the prescribed embedding.
+Thus the forms at all archimedean places measure the same complex
+error.
+
+Order the monomials by local character weight, then by \(T\)-degree,
+then lexicographically by the character exponents. This order on
+the exponent vectors is translation invariant. Let \(a_v\) be the
+largest monomial of \(V_v\) in this order. For each box monomial \(b\)
+for which both translated supports of \((b/a_v)U_v\) and
+\((b/a_v)V_v\) fit in the box, replace the \(p\)-coordinate form at
+\(b\) by the form evaluating to
+\[
+ (b/a_v)[k]\bigl(p V_v[k]-q U_v[k]\bigr).
+\]
+Here the monomial \(b/a_v\) may contain negative exponents before
+multiplication, and its evaluation is defined for \(k\ge1\).
+Keep the other forms and all \(q\)-coordinate forms. The
+\(p\)-block is triangular in the given order with nonzero diagonal,
+so the forms are independent. The translated supports impose only
+fixed-width exclusions at the boundary of the box. There are
+\(I_v=M-O(h^d)\) replacements. At every finite place of \(S\) keep
+all coordinate forms.
+
+The quotient \(|V_v[k]/a_v[k]|_v\) is \(O(k^C)\) for a fixed \(C\)
+because \(a_v\) has maximal local character weight. Thus each
+replacement changes the local form product by a factor at most
+\(O(k^C)(|p-qR_{r+mk}|/|p|)^{t_v}\).
+In the unmodified product over \(S\) the characters cancel by
+the product formula, powers of \(k\) cost \(k^{O_h(1)}\), and
+\(\prod_{v\in S}|pq|_v\le |p|q\).
+Writing \(I=\sum_{v\mid\infty}t_v I_v=M-O(h^d)\), the modified
+product is at most
+\begin{equation}\label{eq:alg-boxprod}
+ O\bigl(k^{C_h}\bigr)(|p|q)^{M-I}
+       \bigl(q|p-qR_{r+mk}|\bigr)^I.
+\end{equation}
+For exceptional fractions, \(\log(|p|q)=O(k)\) with a constant
+independent of \(h\), because \(q\le Q^{r+mk}\),
+\(|p|\le q|R_{r+mk}|+1\), and the local weight lemma gives
+\(|R_{r+mk}|\le\exp(O(k))\). Also
+\(q|p-qR_{r+mk}|<\exp(-\epsilon(r+mk))\). Choose \(h\) large
+enough that the negative exponential contribution in
+\eqref{eq:alg-boxprod} dominates the boundary contribution.
+For that fixed \(h\), \eqref{eq:alg-boxprod} is exponentially
+small in \(k\), including when the error vanishes.
+
+The coordinate vector is integral outside \(S\), with logarithmic
+height \(O_h(k)\). Apply the Subspace Theorem and choose a fixed
+nonzero relation for each of the resulting subspaces. Each relation
+is \(pB[k]=qA[k]\) for fixed \(A,B\in\mathcal A\) with
+\((A,B)\ne(0,0)\). If \(B=0\), Lemma~\ref{lem:alg-orbit} makes
+this relation impossible at large levels. Otherwise \(B[k]\ne0\)
+eventually. Discard the finitely many levels accounted for by any
+relation used only finitely often. Every remaining quotient \(A/B\)
+takes rational values at infinitely many levels and hence is
+invariant by Lemma~\ref{lem:alg-orbit}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:algcut}]
+Call an invariant function an obstruction on the residue when
+\(2D(Z)+e(Z)<0\). For a nonexact function,
+Lemma~\ref{lem:alg-slopes} gives
+\[
+ \log\bigl(\operatorname{den}(Z[k])^2|R_{r+mk}-Z[k]|\bigr)
+   = k(2D(Z)+e(Z))+o(k).
+\]
+Thus a function on the finite list of Lemma~\ref{lem:alg-finite}
+can occur in infinitely many violations for fixed \(\epsilon\) only
+if it is an obstruction, since \(q\ge\operatorname{den}(Z[k])\).
+Conversely each obstruction gives violations at its reduced
+denominators for some fixed \(\epsilon>0\) whenever they fit the
+ceiling and \(k\) is sufficiently large. Both statements include the
+exact function when it is invariant.
+
+To show attainment, fix an upper bound \(D_0\) for the slopes of
+interest. Choose \(C\ge0\) such that
+\(\log^+|R_{r+mk}|\le Ck+o(k)\), using
+Lemma~\ref{lem:localweight}, or \(C=0\) if \(U=0\).
+Every obstruction satisfies \(|Z[k]|\le |R_{r+mk}|+1\) eventually.
+Its projective height slope is therefore at most \(D_0+C\).
+Translate the joint support of its reduced pair by the inverse of
+one of its characters to make it contain \(1\). The height slope
+\(\sum_{v\in S}\max\{w_v(A),w_v(B)\}\) is unchanged. At each place
+its local summand is now nonnegative and bounds
+\(\log^+|\gamma|_v\) for every character \(\gamma\) in the
+translated support. Thus \(h(\gamma)\le D_0+C\).
+Northcott's finiteness theorem \cite[Lemma~2]{Northcott1950}
+gives finitely many possible characters in \(K\), hence finitely
+many possible supports and slopes within the bound. The \(T\)-degrees
+do not enter \eqref{eq:alg-D}.
+
+Two distinct obstructions of the same slope \(D\) have distinct
+rational values for all sufficiently large \(k\), by
+Lemma~\ref{lem:alg-orbit}. Rational separation then bounds the
+distance of these values below by
+\(\exp(-2Dk+o(k))\). On the other hand, the triangle inequality and
+the strict obstruction inequalities bound their distance above by
+\(O(\exp(-(2D+\eta)k))\) for some \(\eta>0\). This also applies if
+one function is exact. It proves uniqueness at each obstruction
+slope. In particular a nonempty obstruction set has a minimum
+attained by a unique function.
+
+For a function of slope \(D\), its reduced denominator exceeds
+\(Q^{r+mk}\) eventually if \(D>m\log Q\), and is smaller eventually
+if \(D<m\log Q\). Below the stated cutoff the finite list precludes
+infinitely many violations at any fixed error tolerance. Above
+the cutoff the minimizing function on one residue gives violations.
+At a finite cutoff every higher-slope obstruction is eventually
+excluded. The minimizing function on each minimizing residue gives
+violations for a fixed tolerance if its reduced denominator fits
+infinitely often, and otherwise is eventually excluded. These
+observations prove \eqref{eq:alg-endpoint}, including the factor
+\(Q_*^r\).
+\end{proof}
+
+\begin{corollary}\label{cor:alg-rational}
+On a residue where \(R_{r+mk}\) takes rational values infinitely
+often, \(U/V\) is invariant, \(d_r\le D(U/V)\), and
+\eqref{eq:alg-admissibility} with the range replaced by
+\(1\le q<\operatorname{den}(R_{r+mk})\) holds if and only if
+\(d_r=D(U/V)\).
+\end{corollary}
+
+\begin{proof}
+Invariance follows from Lemma~\ref{lem:alg-orbit}, and the exact
+function is an obstruction. Write \(D_R=D(U/V)\).
+If \(d_r<D_R\), the minimizing obstruction has reduced
+denominator strictly below the exact denominator eventually and
+gives violations. If \(d_r=D_R\), any distinct fixed invariant
+function \(Z\) has, by rational separation,
+\[
+ 2D(Z)+e(Z)\ge D(Z)-D_R.
+\]
+Consequently every distinct obstruction would have \(D(Z)<D_R\),
+which is impossible. The range under consideration is eventually
+contained in any fixed exponential ceiling with \(m\log Q>D_R\).
+Lemma~\ref{lem:alg-finite} now allows only the exact function at
+infinitely many violations, and its reduced denominator exceeds
+every denominator in this range.
+\end{proof}
+
+\begin{remark}[Zero slope]\label{rem:alg-zero}
+The identity
+\[
+ D(Z)=\sum_{v\in S}w_v(B)
+       +\sum_{v\in S_f}\max\{0,w_v(A)-w_v(B)\}
+\]
+shows that \(D=0\) precisely when the denominator has one character
+and, after division by it, every numerator character is an
+algebraic integer. Indeed the first sum is nonnegative by the
+product formula and bounds below the height of the ratio of any
+two denominator characters. Distinct characters have a ratio of
+positive height, by torsion-freeness and Northcott. After division
+by the denominator character the remaining finite-place conditions
+are exactly integrality of the numerator characters. The polynomial
+factor in the denominator may be retained. A rational polynomial
+and a constant clear the \(K(T)\)-coefficient denominators of
+the resulting sum, so multiplying its rational values by that
+polynomial gives integers at all sufficiently large \(k\).
+In particular \(\operatorname{den}(Z[k])=O(k^C)\) for some \(C\).
+The endpoint at \(Q=1\) requires the actual denominator. For example,
+\(R_n=1/n+\sqrt{2}\,2^{-n}\) has zero-slope obstruction \(1/n\),
+whose denominator is \(n\). Thus the cutoff is \(1\) and \(Q=1\)
+is admissible.
+\end{remark}
+
+\begin{remark}
+If \(U/V\) differs from its complex conjugate on a residue, let
+\(\tau\in G\) be ordinary complex conjugation. For rational \(Z[k]\),
+\[
+ 2|R_{r+mk}-Z[k]|\ge |R_{r+mk}-\overline{R_{r+mk}}|.
+\]
+The right side has exponential rate
+\(\rho(U\tau V-\tau U\,V)-\rho(V)-\rho(\tau V)\) by
+Lemma~\ref{lem:localweight}. Hence \(2D(Z)\) for every obstruction
+is strictly smaller than the negative of that rate. The support
+bound in the proof of Theorem~\ref{thm:algcut} then applies to all
+obstructions on such a residue.
+\end{remark}
+
+\subsection{Fibonacci and cubic trace quotients}
+
+\begin{proposition}\label{prop:fib-scalar}
+For \(R_n=F_{n+1}/F_n\), with \(F_0=0,F_1=1\) and
+\(F_{n+2}=F_{n+1}+F_n\), the cutoff is
+\(\varphi=(1+\sqrt5)/2\) and the endpoint is inadmissible.
+The bound \eqref{eq:alg-admissibility} holds throughout
+\(1\le q<F_n\) at sufficiently large \(n\).
+\end{proposition}
+
+\begin{proof}
+Consecutive Fibonacci numbers are coprime by the Euclidean
+algorithm, so \(F_n\) is the exact denominator. Binet's formula
+with \(\psi=-1/\varphi\) gives \(F_n\sim\varphi^n/\sqrt5\) and
+\(|R_n-\varphi|\ll\varphi^{-2n}\).
+The integral polynomial \(X^2-X-1\) does not vanish at \(p/q\),
+so \(|(p/q-\varphi)(p/q-\psi)|\ge q^{-2}\). For
+\(|p/q-\varphi|\le1\) this gives a constant \(c>0\) with
+\(q^2|p/q-\varphi|\ge c\), and the inequality also holds outside
+that neighborhood after decreasing \(c\).
+For \(q\le c_1\varphi^n\), with \(c_1>0\) sufficiently small,
+the triangle inequality gives \(q^2|R_n-p/q|\ge c/2\).
+For \(c_1\varphi^n<q<F_n\), rational separation gives
+\(q^2|R_n-p/q|\ge q/F_n\gg1\). This proves the full
+strict-denominator bound and admissibility for \(Q<\varphi\).
+The exact rational value fits at \(Q=\varphi\) for all sufficiently
+large \(n\), since \(F_n<\varphi^n\).
+\end{proof}
+
+\begin{proposition}[The cubic Pisot trace ratio]\label{prop:cubic-scalar}
+Let \(\theta>1\) be the real root of \(X^3-X-1\), with other
+roots \(\beta,\gamma=\overline\beta\), and put
+\(T_n=\theta^n+\beta^n+\gamma^n\) and \(R_n=T_{n+1}/T_n\).
+Then the cutoff is \(\theta\), its endpoint is inadmissible,
+and the bound \eqref{eq:alg-admissibility} holds throughout
+\(1\le q<\operatorname{den}(R_n)\) at sufficiently large \(n\).
+Moreover
+\[
+ T_n=\theta^n\bigl(1+O(\theta^{-3n/2})\bigr),\qquad
+ R_n-\theta=O(\theta^{-3n/2}),
+ \qquad \beta/\gamma\text{ is not a root of unity}.
+\]
+\end{proposition}
+
+\begin{proof}
+The cubic is irreducible by the rational root test. Its discriminant
+is \(-23\), so its splitting field \(K\) has group \(S_3\) and
+it has one real root and a conjugate pair. The real root is greater
+than \(1\), the root product is \(1\), and all roots are algebraic
+units. Hence \(|\beta|=|\gamma|=\theta^{-1/2}\). Traces are
+integers. The estimates for \(T_n\) and \(R_n-\theta\) follow by
+separating the real-root term in \(T_n\) and in \(T_{n+1}-\theta T_n\).
+
+Write \(\alpha_1=\theta,\alpha_2=\beta,\alpha_3=\gamma\).
+There are three complex places in \(K\), indexed so that at place
+\(i\) the root \(\alpha_i\) has ordinary modulus \(\theta\)
+and the other two have modulus \(\theta^{-1/2}\).
+With \(\bar a=(a_1+a_2+a_3)/3\), the normalized weights are
+\[
+ \log\left|\prod_{j=1}^3\alpha_j^{a_j}\right|_i
+ =\tfrac12(\log\theta)(a_i-\bar a).
+\]
+If a product is torsion all three weights vanish, so all \(a_i\)
+are equal and the product is \(1\). This proves the assertion on
+\(\beta/\gamma\) and identifies the character lattice with
+\[
+ L=\{a-\bar a(1,1,1):a\in\mathbb Z^3\}.
+\]
+Equivalently, \(L\) consists of the centered triples whose pairwise
+differences are integers. We can take \(m=1\).
+
+Consider a nonzero invariant function \(Z=A/B\) with the pair
+reduced in \(K[T][\Lambda]\). For each \(\sigma\in S_3\),
+coprimality and invariance give
+\((\sigma A,\sigma B)=c_\sigma[\delta_\sigma](A,B)\), where
+\(c_\sigma\in K^\times\) and \(\delta_\sigma\in L\) in additive
+lattice notation. If \(b\) is the barycenter of the denominator
+support, then \(\delta_\sigma=\sigma b-b\).
+For the transposition of coordinates \(i,j\), the third coordinate
+of \(\sigma b-b\) is zero. Since this triple belongs to \(L\),
+its \(i\)-th coordinate \(b_j-b_i\) is an integer. Hence all
+differences of the coordinates of \(b\) are integers, and the
+coordinates sum to zero. Thus \(b\in L\).
+Translate the common pair by the character with vector \(-b\).
+The supports are now permutation invariant, and the Galois action
+on the pair is multiplication by \(c_\sigma\) alone. These constants
+satisfy \(c_{\sigma\tau}=c_\sigma\sigma(c_\tau)\). By multiplicative
+Hilbert 90 \cite[Chapter~II, Proposition~1.22]{Hilbert90Milne}, one can rescale the pair by a
+constant so that both polynomials are invariant. The same
+normalization applies with \(K[T]\)-coefficients, since the common
+units are constants times characters.
+
+Let \(M\) be the largest first coordinate of the translated
+denominator support. The maxima in the other two coordinates
+equal \(M\), and \(M\in\frac13\mathbb Z_{\ge0}\) because \(L\) is
+centered. With all characters units, \eqref{eq:alg-D} becomes
+\(D(Z)=\frac32(\log\theta)M\). Thus the only slopes below
+\(\log\theta\) are \(0\) and \(\tfrac12\log\theta\).
+
+An obstruction converges exponentially to \(\theta\), by the
+error estimate for \(R_n-\theta\) and Lemma~\ref{lem:alg-slopes}.
+In slope zero the normalized denominator support is \(\{0\}\),
+since every coordinate of each support point is at most zero.
+Boundedness of \(Z[k]\) and Lemma~\ref{lem:localweight} force the
+largest first coordinate of the numerator support to be at most
+zero. Permutation invariance gives this bound in every coordinate.
+Thus \(A,B\in\mathbb Q[T]\). A bounded rational function in
+\(\mathbb Q(T)\) has a rational limit as \(k\to\infty\), which
+excludes convergence to \(\theta\). The zero function is also
+excluded by that convergence.
+
+For the other slope, \(M=1/3\). A centered triple in \(L\) with
+maximum coordinate \(\le1/3\) is either zero or a permutation of
+\((-2/3,1/3,1/3)\). To see this, a nonzero triple has maximum
+\(1/3\), and every coordinate differs from \(1/3\) by a nonnegative
+integer with the three differences summing to \(1\).
+The three nonzero triples correspond to the inverse-root
+characters, and all three occur in \(B\) by permutation
+invariance. Boundedness and the local weight lemma give the same
+coordinate bound for \(A\), first at coordinate \(1\) and then at
+the others by permutation invariance.
+
+At the specified embedding the characters \([\beta^{-1}]\)
+and \([\gamma^{-1}]\) are precisely the possible characters of
+largest weight \(\tfrac12\log\theta\). Exponential convergence
+forces the coefficients of both to vanish in \(A-\theta B\).
+Indeed, if either survived, Lemma~\ref{lem:localweight} would
+give exponential rate zero for \((A-\theta B)[k]/B[k]\), even
+with tied weights. Let \(a_2(T),b_2(T)\) be the coefficients
+of \([\beta^{-1}]\). Then \(a_2=\theta b_2\) and \(b_2\ne0\).
+Both coefficients are fixed by the transposition that fixes
+\(\beta\) and exchanges \(\theta\) with \(\gamma\).
+Applying that transposition gives \(a_2=\gamma b_2\), a
+contradiction. This excludes every obstruction below \(\log\theta\).
+
+Since the exact rational value has denominator at most
+\(|T_n|\), its slope is at most \(\log\theta\), and it is an
+obstruction. Theorem~\ref{thm:algcut} and
+Corollary~\ref{cor:alg-rational} give the cutoff and the
+strict-denominator bound. Finally write
+\(\beta=\theta^{-1/2}e^{i\omega}\). If \(\omega/(2\pi)\) were
+rational then \(\beta/\gamma=e^{2i\omega}\) would be torsion.
+By density of the irrational rotation, \(\cos(n\omega)<0\)
+infinitely often. At those sufficiently large levels
+\(0<T_n=\theta^n+2\operatorname{Re}(\beta^n)<\theta^n\), so the exact
+rational value fits the ceiling at \(Q=\theta\) and violates
+\eqref{eq:alg-admissibility}.
+\end{proof}
+
+\begin{remark}\label{rem:cubic-localweight}
+For the cubic roots of Proposition~\ref{prop:cubic-scalar}, any
+nonzero Laurent polynomial \(L_0\) over the splitting field satisfies
+\(\log|L_0((\beta/\gamma)^n)|=o(n)\). This is
+Lemma~\ref{lem:localweight} on the cyclic group generated by
+\(\beta/\gamma\): its distinct powers are distinct characters
+and all have ordinary modulus \(1\) at the prescribed embedding.
+\end{remark}
+
+\section{Simultaneous dynamical recurrence on the diagonal}\label{sec:rec}
+Let \(b_1,\ldots,b_k\ge2\) be pairwise coprime integers and \(N_i(n)=b_i^n-1\). For \(0<\psi_i(n)\le1\) and arbitrary \(y_{i,n}\in\mathbb R\), let \(E\) consist of those \(x\in\mathbb R\) for which
+\begin{equation}\label{eq:rectests}
+                   \|N_i(n)x-y_{i,n}\|<\psi_i(n)\qquad (1\le i\le k)
+\end{equation}
+at infinitely many common indices. At zero phase these are returns of \(b_i^nx\bmod1\) to the starting point \(x\bmod1\). Allowing the starting coordinates to vary separately gives an ambient torus problem; see, for example, \cite{ambient}. Here every coordinate has the same starting parameter.
+\begin{theorem}\label{thm:rec}
+Put \(\kappa_i=\log b_i\). At \(g=(g_1,\ldots,g_k)\in[0,\infty)^k\) define \(t_i=\kappa_i+g_i\) and
+\begin{equation}\label{eq:recformula}
+ d(g)=\left[1-\max_{\varnothing\ne S\subseteq\{1,\ldots,k\}}
+        \frac{\sum_{i\in S}g_i}{\max_{i\in S}t_i}\right]_+.
+\end{equation}
+Set \(d(g)=0\) if any coordinate is infinite. For every nonempty open interval \(J\),
+\[
+             \dim_H(J\cap E)=\sup_{g\in\mathcal C}d(g),
+\]
+where \(\mathcal C\) is the joint cluster set in \([0,\infty]^k\) of the vectors \((-n^{-1}\log\psi_i(n))_{i=1}^k\). Each symmetric test may also be replaced by a one-sided open interval of fractional length \(\psi_i(n)\). More generally one may take \(N_i(n)=F_i(b_i^n)\) for nonconstant \(F_i\in\mathbb Z[X_i]\) with positive leading coefficients, using \(\kappa_i=(\deg F_i)\log b_i\).
+\end{theorem}
+
+\begin{lemma}\label{lem:recdual}
+In the polynomial case of Theorem~\ref{thm:rec}, order the axes arbitrarily. If \(u,g_i\ge0\) and
+\begin{equation}\label{eq:recdens}
+               u+\sum_{i<j}g_i<\kappa_j\qquad(1\le j\le k),
+\end{equation}
+then for each fixed \(C>0\) and all sufficiently large \(n\) there is no \(0\ne h\in\mathbb Z^k\) with \(|h_i|\le C e^{g_i n}\) and \(|\sum_iN_i(n)h_i|\le C e^{un}\).
+\end{lemma}
+\begin{proof}
+Use \(X_{i,n}=b_i^n\) and monomial weights \(w(X_i)=\log b_i\). From an infinite sequence of counterexamples choose a subspace \(W\) over \(\mathbb Q(X_1,\ldots,X_k)\) of minimal rank \(r\) whose specializations contain infinitely many of the vectors. On this subsequence let \(P\) be a primitive polynomial Pl\"ucker vector of \(W\), so \(P_I\) is indexed by \(r\)-element coordinate sets. The identity chart in Theorem~\ref{thm:descent} gives \(w(P_I)\le\sum_{i\in I}g_i\). For \(|J|=r-1\), contract \(P\) with the row \(L=(F_i(X_i))_i\), giving
+\[
+                     L_J=\sum_{i\notin J}\pm F_i(X_i)P_{J\cup i}.
+\]
+Take any \(l\notin J\). Replace coordinate \(h_l\) by \(Lh/F_l\), leaving the other coordinates fixed. The \(J\cup\{l\}\) minor is now \(\pm L_J/F_l\) and the new coordinate has cap exponent \(u-\kappa_l\). The same descent theorem gives \(w(L_J)\le u+\sum_{j\in J}g_j\), since a strict violation in either chart would decrease the rank.
+
+For \(I,J\subseteq[k-1]\) both bounds are strictly less than \(\kappa_k\), by \eqref{eq:recdens}. Hence those polynomials have \(X_k\)-degree below \(\deg F_k\). In \(L_J\) every term with index below \(k\) retains this degree bound. The remaining term \(F_k(X_k)P_{J\cup k}\) must vanish. This eliminates every minor containing \(k\). Descending through the remaining indices eliminates all minors by the same argument, contrary to \(r\ge1\).
+\end{proof}
+
+\subsection{Counting and dimension}
+First take fixed power radii \(e^{-g_i n}\). Fixed positive factors in the widths do not change any estimate below. Order the indices by \(t_1\le\cdots\le t_k\), and set
+\[
+           D_j=\kappa_j-\sum_{i<j} g_i,\qquad D=D_k,\qquad m_0=\min_jD_j .
+\]
+At a terminal \(t_j\), the largest numerator in \eqref{eq:recformula} includes every coordinate ending by that terminal. Among indices with the same \(t_j\), the last index minimizes \(D_j/t_j\). Thus \mbox{\(d(g)=[\min_j D_j/t_j]_+\)}. Assume first that \(m_0>0\). On each nonempty subsystem \(S\) keep the induced order, and denote its corresponding minimum, last count exponent and last terminal by \(m_S,D_S,t_S\). In particular \(m_S>0\).
+
+For \(0\le u<m_S\) consider in \(\mathbb R^S\) the symmetric body
+\[
+ K_S(u)=[-e^{-un},e^{-un}](N_i(n))_{i\in S}
+                  +\prod_{i\in S}[-e^{-g_i n},e^{-g_i n}].
+\]
+Its width in an integral direction \(h\) is
+\(2(e^{-un}|\sum_{i\in S}N_i h_i|+\sum_{i\in S}e^{-g_i n}|h_i|)\).
+The strict inequalities in Lemma~\ref{lem:recdual} persist after increasing \(u\) and each \(g_i\) by a sufficiently small \(\eta>0\). Thus the minimum integral width of \(e^{-\eta n}K_S(u)\) tends to infinity. By the flatness theorem \cite{KL}, every translate of this smaller body contains a lattice point for all large \(n\). Its lattice translates cover the space, so it contains a measurable fundamental domain: partition the unit cube according to the first covering translate in an enumeration and translate each piece back.
+
+Fix positive transverse constants and an interval of parameter length \(v\ge e^{-un}\) in a bounded range. Sweep the transverse box of those constant multiples of \(e^{-g_i n}\) along the image of the interval under \(x\mapsto(N_i(n)x)_{i\in S}\), translating by the phases. Its volume is \(\asymp v e^{D_S n}\): the box volume is augmented by the sum of the coordinate displacements times their transverse face volumes, and the largest swept term has terminal \(t_S\). Here \(u<m_S\le t_S\). The lattice-point count is likewise \(\asymp v e^{D_S n}\), uniformly in position and phases. For the upper bound attach fundamental cells and enlarge the segment and box by fixed factors; for the lower bound shrink both by fixed factors and cover the shrunken body by cells whose lattice points belong to the original one. The exponentially smaller cell fits the margins in both comparisons.
+
+Apply this count to the first \(j\) coordinates on a bounded parameter interval, using \(u=0\) and, if necessary, enlarging that interval to a unit interval. There are \(O(e^{D_jn})\) integer tuples witnessing a hit and each contributes an interval of length \(O(e^{-t_jn})\). Summing the best prefix cover over the levels proves the upper dimension bound for fixed positive \(m_0\).
+
+For the lower bound, use any prescribed infinite sequence of levels. In a parent interval of length \(R\), count the witnesses in a tube over its middle half, with transverse widths reduced by a sufficiently small fixed factor. Center one-sided targets at their midpoints. Each witness yields a common interior interval of length \(c e^{-t_kn}\) about its root on an axis ending at \(t_k\): the displacement from a witnessing parameter is at most a small multiple of \(e^{-t_kn}\), which fits inside the other physical windows. The selected centers at distance \(O(e^{-t_k n})\) from any one point have bounded multiplicity, since every numerator varies there by \(O(1)\). For large \(n\) one may therefore keep \(\asymp R e^{Dn}\) children in the parent with gaps at least their lengths.
+
+We bound the number of these children meeting an interval of length \(e^{-zn}\) with \(0\le z<t_k\). Enlarge the test interval by \(O(e^{-t_kn})\). The axes ending by \(z\) each have \(O(1)\) possible numerators. Put \(S=\{i:t_i>z\}\), \(G=\sum_{i\notin S}g_i\); thus \(D_S=D+G\). In the remaining coordinates apply the tube upper bound after enlarging the length to \(e^{-un}\), with \(u\le\min(z,m_S)\) and strictly below \(m_S\). For every \(\delta>0\) this gives the bound
+\begin{equation}\label{eq:reclocal}
+ O_\delta\big(e^{(D-E(z)+\delta)n}\big),\qquad
+ E(z)=\min\big\{z-G,\ \min_{t_j>z}D_j\big\}.
+\end{equation}
+Indeed \(m_S=G+\min_{t_j>z}D_j\). A fixed mesh of choices for \(u\) from below, including zero and leaving a small margin at \(m_S\), makes the estimate uniform in \(z\). The first entry \(z-G\) in \eqref{eq:reclocal} is at least \(d(g)z\). At the last terminal by \(z\) its value is the corresponding \(D_j\); until the next terminal it grows with slope one. Below the first terminal \(G=0\). The other entries satisfy \(D_j\ge d(g)t_j\). For coarse lengths \(v\ge e^{-z_0n}\), with \(0<z_0<m_0\) fixed, the full tube count gives the stronger bound \(O(v e^{Dn})\).
+
+Fix \(0<s<d(g)\). Choose sparse generations from the prescribed levels, dividing each parent mass \(P\) equally among its children. Use an initial fixed normalization and the induction hypothesis \(P\le C_0R^s\). In lengths \(e^{-z_0n}\le v\le R\) the mass meeting a test interval from this parent is \(O((P/R)v)=O(v^s)\). For \(e^{-t_kn}\le v< e^{-z_0n}\), \eqref{eq:reclocal} bounds it by \(O_\delta((P/R)e^{\delta n}v^{d(g)})\). Take \(\delta<z_0(d(g)-s)/2\) and then \(n\) sufficiently large for the finite parent generation. At lengths from \(c e^{-t_kn}\) to \(e^{-t_kn}\), bounded multiplicity applies. Each child mass is \(O((P/R)e^{-Dn})\le C_0(c e^{-t_kn})^s\) at sufficiently late levels, since \(D\ge d(g)t_k>s t_k\). This preserves the induction. An interval no longer than the previous parent length meets a bounded number of parents. The resulting measure gives the claimed lower bound in every open interval by the mass distribution principle.
+
+To conclude the proof of Theorem~\ref{thm:rec}, note that \eqref{eq:recformula} is continuous for finite rates. So is
+\(m_0=\min_{S\ne\varnothing}(\max_{i\in S}t_i-\sum_{i\in S}g_i)\).
+When \(m_0\le0\), move along the segment from \(0\) to \(g\) to the first vanishing of \(m_0\) and use the upper covers just inside the positive range. They cover the prescribed tests and have dimensions tending to zero. For arbitrary radii any finite joint limit gives a lower bound along a subsequence by increasing all limiting exponents slightly. For the upper bound fix \(s>\sup_{\mathcal C}d\). Near every finite cluster vector, enlarge the windows to slightly weaker powers so that one of the upper covers has exponentially decreasing \(s\)-cost. Coordinates of rate zero can use a full-width test. If the vector is on or beyond the zero-dimensional boundary, use the preceding scaling argument and then weaken positive rates slightly to cover a neighborhood. Near an infinite coordinate the single-grid cover has exponentially decreasing cost for any \(s>0\). A finite subcover of the compact cluster set contains all sufficiently late levels; summing in \(n\) finishes the proof.
+
+\subsection{Three bases and the effect of shared primes}
+For \(2,3,5\) and common \(g\), Theorem~\ref{thm:rec} gives
+\[
+ \left[\min\left\{\frac{\log 2}{\log 2+g},
+                  \frac{\log 3-g}{\log 3+g},
+                  \frac{\log 5-2g}{\log 5+g}\right\}\right]_+ .
+\]
+At \(g=\log 2\) the last term gives \(\log(5/4)/\log 10\). At \(g=\tfrac12\log 5\) the dimension is zero although each of the three pairs still has positive dimension.
+
+\begin{proposition}\label{prop:shared}
+Let \(1<c<a\) be integers and \(b=ac\). Put \(\kappa=\log c,\ \alpha=\log a,\ \beta=\log b\). If \(\kappa<g<\alpha\), the two recurrence tests for \(a,b\), with common radius \(e^{-gn}\), have local dimension
+\[
+                   \min\left\{\frac{\kappa}{g},\frac{\beta-g}{\beta+g}\right\}
+\]
+for all phases, including one-sided windows.
+\end{proposition}
+\begin{proof}
+Write \(N=a^n-1,\ M=b^n-1,\ D'=c^n-1,\ \delta=e^{-gn}\). The identity \(M=c^nN+D'\) forces every hit to lie within \(O(\delta)\) of the roots of \(D'x=y_{2,n}-c^n y_{1,n}\bmod1\). There are \(O(e^{\kappa n})\) such clusters on a fixed compact interval. Each contains \(O(N\delta+1)\) first-grid centers, each supporting \(O(1)\) fine intervals of length \(O(\delta/M)\), since \(M\delta/N\to0\). These two covers give the upper bounds.
+
+Inside a small concentric subcluster of radius \(c_0\delta\) take first-grid centers \(x_i\) for the midpoint of the first window, using midpoint phases in the cluster equation. Their displacement to a nearest fine center for the second midpoint is \(O(c_0D'\delta/M)=O(c_0\delta/N)\). Hence each supports a common interior interval of length comparable to \(\delta/M\). Inside the middle half of a fixed parent of length \(R\), at all sufficiently late levels there are \(\asymp R e^{\kappa n}\) full subclusters, each with \(\asymp e^{(\alpha-g)n}\) separated children at mesh comparable to \(e^{-\alpha n}\). Give equal mass to the children and write \(P\) for the parent mass. Between the child and parent scales, an interval of length \(v\) has mass from this parent at most a constant times \(P/R\) multiplied respectively by
+\[
+ \begin{cases}
+ v,&v\ge e^{-\kappa n},\\
+ e^{-\kappa n},& e^{-gn}\le v<e^{-\kappa n},\\
+ v e^{(g-\kappa)n},&e^{-\alpha n}\le v<e^{-gn},\\
+ e^{-(\beta-g)n},&v<e^{-\alpha n}.
+ \end{cases}
+\]
+The first two estimates count clusters and the last two count children within a cluster. For \(s\) below both asserted bounds the second and fourth estimates have strict slack relative to \(v^s\); for the third use \(v^{1-s}\le e^{-(1-s)gn}\). The sparse-generation argument above gives a measure with the desired \(s\)-bound.
+\end{proof}
+For \((a,b)=(81,162)\) at radius \(8^{-n}\), Proposition~\ref{prop:shared} gives \(1/3\). The coprime expression is strictly larger: its second fraction exceeds \(1/3\) because \(162>8^2\), and its first does because \(81^2>8\).
+
+For bases \((2,3,6)\) take fractional rates \(g_1=\log6,\ g_2=\log(3/2),\ g_3=g_2/2\). Writing \(N_b=b^n-1\), the identity \(N_6=3^nN_2+N_3\) implies at each zero-phase hit of the first two tests that
+\[
+                \|N_6x\|\le 2^{-n}+(2/3)^n=o((2/3)^{n/2}).
+\]
+The third zero-phase test is eventually automatic. Equation~\eqref{eq:recformula} on the first two axes gives \(\log(4/3)/\log12\). Shifting only the third target by \(1/2\) makes every sufficiently late intersection empty. All three pairs are multiplicatively independent and have subexponential recurrence gcd by \cite{BCZ}. For general shared-prime bases with overlapping scales, a dimension formula accounting for these joint phase constraints remains open.
+
+\section{Polynomial values and algebraic approximants}
+\label{sec:higher-degree}
+
+For \(0\ne P=\sum_i a_i Z^i\in\mathbb Z[Z]\), write
+\(H(P)=\max_i|a_i|\). For an algebraic number \(\alpha\), let
+\(P_\alpha\) be its primitive integral minimal polynomial and set
+\(H(\alpha)=H(P_\alpha)\). Thus a reduced rational \(p/q\) with
+\(q>0\) has height \(\max(|p|,q)\). For an integer \(d\ge1\) and
+\(Q\ge1\), the two bounds considered here are
+\begin{align}
+  |P(R_n)|H(P)^d &\ge \exp(-\epsilon n)
+  &&(0\ne P,\ \deg P\le d,\ H(P)\le Q^n), \label{eq:higher-poly}\\
+  |R_n-\alpha|H(\alpha)^{d+1} &\ge \exp(-\epsilon n)
+  &&(\deg\alpha\le d,\ H(\alpha)\le Q^n). \label{eq:higher-root}
+\end{align}
+Each is required for every \(\epsilon>0\) and all sufficiently large
+\(n\), uniformly over the indicated approximants. Exact hits are
+included unless explicitly excluded. A cutoff of \(1\) can therefore
+occur with failure at \(Q=1\). Theorem~\ref{thm:algcut} treats
+rational approximants with a denominator ceiling.
+
+\begin{lemma}[Evaluation near a root]\label{lem:higher-transfer}
+Let \(\alpha\) have degree \(e\le d\). If \(|z-\alpha|\le1\), then
+\[
+ |P_\alpha(z)|\ll_d
+ H(\alpha)(1+|z|)^{e-2}|z-\alpha|.
+\]
+\end{lemma}
+
+\begin{proof}
+If \(a\) is the leading coefficient and the roots are
+\(\alpha=\alpha_1,\ldots,\alpha_e\), Jensen's formula and the
+quadratic mean on the unit circle give
+\[
+ |a|\prod_j\max(1,|\alpha_j|)
+ \le \Big(\sum_i |[Z^i]P_\alpha|^2\Big)^{1/2}
+ \le \sqrt{e+1}\,H(\alpha).
+\]
+In the factorization of \(P_\alpha(z)\), use
+\(|z-\alpha_j|\le(1+|z|)\max(1,|\alpha_j|)\) for \(j\ge2\).
+The remaining factor \(\max(1,|\alpha|)\) from the displayed
+product is at least \((1+|z|)/3\), since \(|z-\alpha|\le1\).
+\end{proof}
+
+\subsection{Positive integer roots}
+
+Let \(k\ge1\), let \(s_1,\ldots,s_k>1\) be pairwise coprime integers,
+and put \(X_n=(s_1^n,\ldots,s_k^n)\) and
+\(F=\mathbb Q(X_1,\ldots,X_k)\). Quotients of power sums with
+positive integer roots and rational coefficients have this form
+by choosing the primes in the roots as generators. For a
+nonzero polynomial \(G\) in the \(X_i\), put
+\[
+ w(G)=\max_{\boldsymbol a\in\operatorname{supp}G}
+       \sum_{i=1}^k a_i\log s_i .
+\]
+Set \(w(0)=-\infty\) and extend \(w\) to \(F^\times\) by subtraction.
+Distinct monomials have distinct weights. In particular,
+\(\log |G(X_n)|=nw(G)+O_G(1)\) for every \(G\in F^\times\)
+and all sufficiently large \(n\).
+
+Fix \(R=U/V\in F^\times\), with \(U,V\) coprime polynomials,
+and let \(R_n=R(X_n)\). For \(\eta\in\mathbb R\), call \(Q\ge1\)
+\emph{admissible} if for every \(\epsilon>0\), eventually
+\begin{equation}\label{eq:higher-scaled}
+ |P(R_n)|H(P)^d\ge \exp((\eta-\epsilon)n)
+ \qquad(0\ne P,\ \deg P\le d,\ H(P)\le Q^n).
+\end{equation}
+If \(R=0\), the polynomial \(Z\) obstructs admissibility for
+all \(\eta\), already at \(Q=1\). For \(R\ne0\) let
+\(L=(1,R,\ldots,R^d)\). For each subspace
+\(0\ne W\subset F^{d+1}\) of dimension \(l\), take a Pl\"ucker
+vector \(\Pi\in\bigwedge^l F^{d+1}\) of \(W\) with polynomial
+coordinates having no common nonconstant factor. It is unique
+up to a nonzero rational factor. Define
+\begin{equation}\label{eq:higher-DE}
+ D(W)=\max_{|I|=l} w(\Pi_I),\qquad
+ E(W)=\max_{|J|=l-1} w((\iota_L\Pi)_J),
+\end{equation}
+where \(\iota_L\) denotes contraction by the covector \(L\).
+In particular \(E(W)=-\infty\) when \(L\) annihilates \(W\).
+
+\begin{theorem}[Sharp polynomial cutoff]\label{thm:polycut}
+For \eqref{eq:higher-scaled}, define
+\begin{equation}\label{eq:higher-min}
+ g_*=\min_{0\ne W\subset F^{d+1}}
+ \left\{\frac{D(W)}{l}:
+   E(W)+(d-l+1)\frac{D(W)}{l}<\eta,\quad l=\dim W\right\}.
+\end{equation}
+The minimum is attained. Every \(1\le Q<\exp(g_*)\) is
+admissible and every \(Q>\exp(g_*)\) fails. At \(Q=\exp(g_*)\),
+admissibility is equivalent to the following condition for every
+minimizing \(W\). For all sufficiently large \(n\), the lattice
+\(W(X_n)\cap\mathbb Z^{d+1}\) has no nonzero vector of sup norm
+at most \(\exp(g_* n)\).
+\end{theorem}
+
+\begin{proof}
+Write \(W_n=W(X_n)\). The ranks of the fixed rational-function
+matrices used to define \(W_n\) stabilize because their nonzero
+minors are eventually nonzero upon evaluation. Clear fixed
+rational denominators in \(\Pi\). The basis wedge of
+\(W_n\cap\mathbb Z^{d+1}\) is, up to sign, \(\Pi(X_n)\)
+divided by the gcd of its coordinates. Indeed the lattice is
+saturated, so an integral basis extends to a basis of
+\(\mathbb Z^{d+1}\), and its wedge is primitive.
+
+The gcd is \(\exp(o(n))\) by Lemma~\ref{lem:evaluated-gcd}.
+
+For real \(g\) and \(\delta>0\), send the lattice into
+\(\mathbb R^{d+2}\) by
+\begin{equation}\label{eq:higher-map}
+ {\bf a}\longmapsto
+ \big((e^{-gn}a_i)_{i=0}^d,\ 
+             e^{(dg+\delta-\eta)n}L(X_n){\bf a}\big).
+\end{equation}
+Its covolume in its \(l\)-dimensional real span is the
+Euclidean norm of the image of the basis wedge. The minors
+using only the coefficient rows have maximum weight
+\(D-lg\) after scaling. The minors using the evaluation row
+have maximum weight \(E+(d-l+1)g+\delta-\eta\).
+Consequently the logarithmic covolume divided by \(n\)
+converges to
+\begin{equation}\label{eq:higher-covol}
+ \max\{D-lg,\ E+(d-l+1)g+\delta-\eta\}.
+\end{equation}
+
+Suppose \eqref{eq:higher-scaled} fails for some \(\epsilon>0\).
+Pass to an infinite sequence of violating coefficient vectors
+\({\bf a}_n\) such that \(\log H(P)/n\to g\le\log Q\).
+Fix \(0<\delta<\epsilon\). On this sequence the coefficient
+coordinates have exponents at most \(g+o(1)\), and the
+evaluation has exponent at most \(\eta-dg-\delta+o(1)\).
+Start with \(W=F^{d+1}\). Theorem~\ref{thm:descent} in
+complementary-minor form gives a proper subspace of the
+current \(W\) on a further infinite sequence whenever
+\eqref{eq:higher-covol} is positive, as follows. For \(D>lg\)
+use its identity chart and the coefficient bounds. For a
+positive term from a mixed minor with index set \(J\) on the
+coefficient rows, choose \(j\notin J\). In the square chart
+replace coordinate \(a_j\) by \(L{\bf a}/R^j\), retaining the
+other coordinates. This is a permitted replacement with
+pivot coefficient \(1\). The \((J\cup\{j\})\)-minor of
+the transformed wedge is, up to sign,
+\((\iota_L\Pi)_J/R^j\). The exponent bound for the
+replacement coordinate is \(\eta-dg-\delta-w(R^j)+o(1)\),
+so the same normalization cancels from the difference
+between the minor weight and the sum of the coordinate
+bounds. One may enlarge the bounds by a fixed small
+positive amount in either chart, preserving the positive
+difference and absorbing the \(o(1)\) errors.
+
+At each step the dimension strictly decreases, and
+\({\bf a}_n\ne0\) excludes the zero space. At termination
+\[
+ D\le lg,\qquad E+(d-l+1)g\le\eta-\delta .
+\]
+Since \(d-l+1\ge0\), this gives a subspace feasible in
+\eqref{eq:higher-min} with slope at most \(g\). In particular
+no violation is possible when \(\log Q<g_*\).
+
+For the converse, take a feasible \(W\) with \(D/l<\log Q\).
+Choose \(D/l<g<\log Q\) close enough to \(D/l\), and then
+\(\delta>0\) small enough, so that both terms in
+\eqref{eq:higher-covol} are strictly negative. The unit cube
+of \(\mathbb R^{d+2}\) intersects the real image of \(W_n\)
+in a centrally symmetric convex body containing its
+\(l\)-dimensional Euclidean unit ball. Its volume thus
+exceeds \(2^l\) times the lattice covolume for all large \(n\).
+Minkowski's theorem supplies a nonzero lattice point in the
+cube. The corresponding polynomial has \(H(P)\le e^{gn}\)
+and \(|P(R_n)|\le e^{(\eta-dg-\delta)n}\). Its normalized
+value is at most \(e^{(\eta-\delta)n}\), contradicting
+admissibility for every \(0<\epsilon<\delta\).
+
+The exact kernel of \(L\) is always feasible. Its dimension
+is \(d\), and its Pl\"ucker coordinates are, up to signs,
+\(V^d,UV^{d-1},\ldots,U^d\). They have no common nonconstant
+factor, so its slope is \(\max\{w(U),w(V)\}\).
+The monomials of bounded weight form a finite set and
+\(1\le l\le d+1\). Hence there are only finitely many slopes
+at or below this exact-kernel slope, and the minimum is attained.
+
+Finally, if \(\log Q=g_*\) and a violation occurs infinitely
+often, the descent gives a fixed feasible \(W\) with
+\(g_*\le D/l\le g\le g_*\). Thus a minimizing \(W\) contains
+lattice points within the endpoint ceiling at infinitely many
+levels. Conversely, fix a minimizing \(W\) and an index
+set \(I\) with \(w(\Pi_I)=D\). Cramer's rule expresses
+\(L|_W\) as a combination of the coordinate functions
+indexed by \(I\), with coefficients of the form
+\[
+ \pm\frac{(\iota_L\Pi)_{I\setminus\{j\}}}{\Pi_I}
+ \qquad(j\in I).
+\]
+Each has weight at most \(E-D\), and if \(E=-\infty\)
+the evaluation vanishes on \(W_n\). Any lattice point of
+height \(H(P)\le e^{g_*n}\) in \(W_n\) therefore has
+\[
+ |P(R_n)|H(P)^d
+ \ll_W e^{(E-D+(d+1)g_*)n}
+ =e^{(E+(d-l+1)g_*)n}.
+\]
+The exponent is strictly less than \(\eta\), with the
+estimate interpreted as zero when \(E=-\infty\).
+Such points at infinitely many levels violate admissibility
+at the endpoint. Eventuality in the lattice criterion is
+for each fixed minimizing subspace.
+\end{proof}
+
+\begin{corollary}[Linear systems in degree two]\label{cor:higher-linear}
+For \(d=2\) and \(\eta=0\), finitely many rational linear
+systems determine the cutoff in Theorem~\ref{thm:polycut}.
+\end{corollary}
+
+\begin{proof}
+For \(l=1,2,3\), every nonzero element of
+\(\bigwedge^l F^3\) is decomposable. For \(l=2\), this follows,
+for example, by identifying \(\bigwedge^2 F^3\) with
+\((F^3)^*\) using a volume form and taking the wedge of a
+basis of the kernel. Enumerate \(D\) among the monomial
+weights with \(D/l\le\max\{w(U),w(V)\}\). Allow as unknowns
+all coefficients of monomials of weight at most \(D\) in
+each coordinate of \(\Pi\). Multiplying \(\iota_L\Pi\)
+by \(V^2\) gives polynomial coordinates linear in these
+unknowns. The required weight inequality is equivalent to
+vanishing of all their coefficients at weights at least
+\[
+  2w(V)-(3-l)D/l.
+\]
+A solution has \(w(\Pi)=D\) precisely when one of its
+weight-\(D\) coefficients is nonzero. Testing this is a
+linear-algebra calculation on the solution space. All
+weight comparisons reduce to comparisons of integer
+powers of monomial bases.
+
+If a feasible polynomial tuple has a nonconstant common
+factor of weight \(u>0\), cancellation decreases \(D\) by
+\(u\) and decreases \(E\) by \(u\) when it is finite. It
+therefore preserves the strict feasibility inequality
+and lowers the slope. Thus the least feasible slope from
+the systems equals the minimum over primitive tuples.
+The endpoint still uses the lattice condition of
+Theorem~\ref{thm:polycut}.
+\end{proof}
+
+\begin{remark}
+For \(d\ge2\), set \(\eta=(d-2)\max\{0,w(R)\}\).
+Lemma~\ref{lem:higher-transfer} gives
+\eqref{eq:higher-root} at every admissible \(Q\) for this
+choice of \(\eta\). For \(|R_n-\alpha|\le1\) the loss
+from the factor \((1+|R_n|)^{e-2}\) is \(O(e^{\eta n})\),
+and any fixed multiplicative constant is absorbed by
+applying \eqref{eq:higher-scaled} with a smaller tolerance.
+Distances greater than \(1\) already satisfy the bound.
+The lattice construction in Theorem~\ref{thm:polycut}
+proves sharpness for polynomial values. A sharp
+root-distance cutoff would additionally require
+control of the roots of the constructed polynomials.
+\end{remark}
+
+
+\subsection{Powers of a rational number}
+
+\begin{theorem}\label{thm:ratpower}
+Let \(a>b\ge1\) be coprime and put \(t_n=(a/b)^n\). For
+each integer \(e\ge1\) and every \(\epsilon>0\), eventually
+\begin{equation}\label{eq:higher-ratpoly}
+ |P(t_n)|H(P)^e\ge t_n^e e^{-\epsilon n}
+ \qquad(P\in\mathbb Z[Z],\ \deg P=e,\ P(t_n)\ne0).
+\end{equation}
+For every algebraic \(\alpha\ne t_n\) of degree \(e\)
+with \(|t_n-\alpha|\le1\), eventually
+\begin{equation}\label{eq:higher-ratroot}
+ |t_n-\alpha|H(\alpha)^{e+1}\ge t_n^2 e^{-\epsilon n}.
+\end{equation}
+Both estimates are uniform without a height ceiling.
+For every fixed \(d\ge1\), the cutoffs in
+\eqref{eq:higher-poly} and \eqref{eq:higher-root} are \(a\),
+with failure at \(Q=a\) from exact hits. In particular,
+the two cutoffs for \((3/2)^n\) are \(3\).
+\end{theorem}
+
+\begin{proof}
+Write \(A=a^n\), \(B=b^n\) and \(t=A/B\).
+If \(P(t)\ne0\), then \(|P(t)|\ge B^{-e}\).
+Thus a violation of \eqref{eq:higher-ratpoly} satisfies
+\(H(P)<Ae^{-\epsilon n/e}\). Suppose such violations occur
+infinitely often. Among rational linear subspaces of the
+coefficient space containing the violating polynomials on
+infinite subsequences, choose one of least dimension.
+Choose a reduced echelon basis \(f_1,\ldots,f_s\) of this
+subspace by eliminating coefficients from degree \(e\)
+downward. The leading degrees are distinct, the leading
+coefficients are \(1\), and the coefficients at the other
+basis pivots are zero. For \(P=\sum_i z_i f_i\),
+the \(z_i\) are therefore integral and \(|z_i|\le H(P)\).
+On a further infinite subsequence, all \(z_i\ne0\),
+by minimality of the dimension. Let \(p\) be the index
+with \(\deg f_p=e\). If \(s=1\), then
+\(|P(t)|/t^e\gg |z_p|\ge1\) eventually, a contradiction.
+We show that \(s\ge2\) also contradicts minimality.
+
+Take an integer \(h\ge e\) and the coordinate vector
+\((z_i t^j)_{1\le i\le s,\,0\le j\le h}\).
+At the real place replace the coordinate forms of block
+\(p\) for \(e\le j\le h\) by \(t^{j-e}P(t)\), viewed as
+fixed rational linear forms in these coordinates. They
+are triangular on block \(p\) with pivot \(1\), because
+\(f_p\) is monic of degree \(e\). At the primes dividing
+\(ab\), retain the coordinate forms. If \(I=h-e+1\),
+the product over all chosen places is bounded by
+\begin{align*}
+ &\left(\prod_i|z_i|\right)^{h+1-I}
+ \left(|P(t)|t^{-e}\prod_{i\ne p}|z_i|\right)^I\\
+ &\qquad \le H(P)^{s(h+1-I)}e^{-\epsilon n I}.
+\end{align*}
+Here the product formula cancels the powers of \(t\),
+the finite-place factors from \(z_i\) are at most \(1\),
+and \(s-1\le e\). The vector is integral outside the
+chosen places and has height at most exponential in \(n\)
+for fixed \(h\). Taking \(\epsilon I>se\log a\) makes the
+product exponentially small. The \(S\)-adic Subspace
+Theorem \cite{Schlickewei} gives a nontrivial
+relation on a further infinite subsequence,
+\[
+                 \sum_i z_i C_i(t)=0
+\]
+with fixed polynomials \(C_i\in\mathbb Z[Z]\), not all zero.
+Here and below the unnormalized form-product conclusion
+follows from the normalized theorem because the local
+sup-norm product over the chosen places is at least the
+projective height for vectors integral outside them.
+
+If the formal combination \(\sum_i z_i C_i(Z)\) is
+nonzero at one of these levels, remove its maximal
+power of \(Z\). The rational root theorem then forces
+its first nonzero coefficient to be a nonzero multiple
+of \(A\). Its coefficients are \(O(H(P))=o(A)\), a
+contradiction at all large levels. Thus the combination
+vanishes formally on the subsequence. Coefficient
+comparison imposes a fixed proper rational linear
+restriction on \((z_i)\), contradicting minimality.
+This proves \eqref{eq:higher-ratpoly}.
+
+For \(\alpha\ne t\) with \(|t-\alpha|\le1\), apply
+Lemma~\ref{lem:higher-transfer} and
+\eqref{eq:higher-ratpoly} to \(P_\alpha\). Since \(t\to
+\infty\), their combination yields
+\(\lvert t-\alpha\rvert H(\alpha)^{e+1}
+ \gg_e t^2 e^{-\epsilon n/2}\), which implies
+\eqref{eq:higher-ratroot}. Distances greater than \(1\)
+already satisfy \eqref{eq:higher-root}. Nonzero constant
+polynomials satisfy \eqref{eq:higher-poly} directly.
+Finitely many choices of \(e\le d\) give uniform bounds
+in both forms with the exponents in
+\eqref{eq:higher-poly}--\eqref{eq:higher-root}.
+
+If \(P(t)=0\), the rational root theorem after removing
+any factor \(Z\) gives \(H(P)\ge A\). The polynomial
+\(BZ-A\) has height \(A\) and achieves an exact hit.
+Likewise \(t\) is the exact algebraic approximant and
+has height \(A\). This proves the cutoffs.
+\end{proof}
+
+\begin{remark}
+For a positive rational less than \(1\), its powers
+converge exponentially to \(0\). The height-one
+approximants \(Z\) and \(0\) violate
+\eqref{eq:higher-poly} and \eqref{eq:higher-root} even
+with exact hits excluded. For the constant sequence
+\(t_n=1\), exact hits occur at height one, and the
+unrestricted estimates with exact hits excluded follow
+from integrality and Lemma~\ref{lem:higher-transfer}.
+Replacing the base by its negative preserves the
+estimates by changing the signs of the polynomial
+variable and the approximant on the odd levels.
+\end{remark}
+
+\begin{corollary}[Optimal nonexact exponents for rational powers]
+\label{cor:higher-rat-exponents}
+Under the hypotheses of Theorem~\ref{thm:ratpower}, fix
+a degree \(e\ge1\). Without a height ceiling, the least
+exponents on the height in normalized lower bounds of
+the form \(e^{-\epsilon n}\) are
+\begin{align*}
+  \kappa_e &= e\frac{\log b}{\log a}
+       &&\text{for nonzero polynomial values},\\
+  \tau_e &= \max\!\left\{1,\ e+1-2\frac{\log(a/b)}{\log a}\right\}
+       &&\text{for nonzero root distances}.
+\end{align*}
+\end{corollary}
+
+\begin{proof}
+Write \(A,B,t\) as in the preceding proof. For \(H(P)\le A\),
+divide \eqref{eq:higher-ratpoly} by
+\(H(P)^{e-\kappa_e}\le t^e\). For \(H(P)>A\), use
+\(|P(t)|\ge B^{-e}\) and \(A^{\kappa_e}=B^e\).
+This proves the polynomial bound.
+
+If \(b>1\), B\'ezout's identity gives an integral polynomial
+of degree at most \(e\) with \(B^eP(t)=1\), since \(A^e\)
+and \(B^e\) are coprime. For each \(i=0,\ldots,e-1\)
+in succession, add an integral multiple of \(Z^i(BZ-A)\)
+to make the \(i\)-th coefficient at most \(A/2\) in
+absolute value. Previous coefficients and \(P(t)\) are
+preserved. The value at \(t\) then gives
+\[
+   |a_e|\le \frac{A}{2(t-1)}+B^{-e}t^{-e}.
+\]
+Thus \(H(P)\le A\) for large \(n\). The degree is \(e\),
+since \(P(t)=B^{-e}\) in lowest terms, and the value
+identity implies primitivity. When \(b=1\), instead take
+\(P=Z^{e-1}(Z-A)+1\), of degree \(e\), with height at most
+\(A\) and value \(1\). In both cases
+\eqref{eq:higher-ratpoly} implies
+\(\log H(P)=n\log a+o(n)\). The value is \(B^{-e}\),
+so for every \(\kappa<\kappa_e\) these examples have
+\(\log(|P(t)|H(P)^\kappa)/n\to(\kappa-\kappa_e)\log a<0\).
+
+For the root bound, distances greater than \(1\) are
+immediate since \(\tau_e\ge1\). If \(|t-\alpha|\le1\)
+and \(H(\alpha)\le A\), use \eqref{eq:higher-ratroot}
+and \(H(\alpha)^{e+1-\tau_e}\le t^2\).
+If \(H(\alpha)>A\), rational evaluation of \(P_\alpha\)
+and Lemma~\ref{lem:higher-transfer} give
+\begin{align*}
+ |t-\alpha|H(\alpha)^{\tau_e}
+ &\gg_e t^{2-e}B^{-e}H(\alpha)^{\tau_e-1}\\
+ &\ge t^{2-e}B^{-e}A^{\tau_e-1}
+   = A^{\tau_e-e+1}B^{-2}\ge1 .
+\end{align*}
+A fixed constant is absorbed by the exponential tolerance.
+
+For \(e=1\) and \(a\le b^2\), take a solution of
+\(Aq-Bp=1\) with \(B\le q<2B\). Then \(p/q\) is reduced,
+\(H(p/q)\asymp A\), and \(|t-p/q|\asymp B^{-2}\).
+This shows sharpness of \(\tau_1=2\log b/\log a\) in this
+case. If \(a>b^2\), then \(\tau_1=1\). For each \(n\),
+the same congruence admits arbitrarily large \(q\), with
+\(H(p/q)\asymp t q\) and \(|t-p/q|=1/(Bq)\).
+Thus any exponent below \(1\) fails with unrestricted
+heights.
+
+For \(e\ge2\), fix a prime \(p\nmid ab\).
+Start with a B\'ezout polynomial as above with \(B^eP(t)=1\).
+In the coefficient reductions, choose the multiple of
+\(Z^i(BZ-A)\) in a prescribed residue class modulo \(p^2\)
+for \(i=0\) and modulo \(p\) for \(1\le i<e\).
+This arranges \(a_0\equiv p\pmod{p^2}\) and
+\(a_i\equiv0\pmod p\) for \(1\le i<e\), with
+\(|a_i|\ll_p A\) for \(i<e\), since \(p\nmid A\).
+The value identity gives \(a_e A^e\equiv1\pmod p\) and
+\(|a_e|\ll_{e,p} A/t\). The polynomial is primitive
+by the value identity and irreducible by Eisenstein's
+criterion. Adding \(p^2Z^{e-1}(BZ-A)\) preserves all
+these properties and changes the derivative at \(t\)
+by \(p^2 A t^{e-2}\). One of the two choices therefore
+has \(|P'(t)|\gg_p A t^{e-2}\).
+
+On \(|z-t|\le1\), the coefficient bounds give
+\(|P''(z)|\ll_{e,p} A t^{e-3}\). At
+\(z=t-2P(t)/P'(t)\), the value predicted by the linear
+Taylor terms is \(-P(t)\). The remainder divided by
+\(P(t)\) is \(O_{e,p}(B^{-e}/(A t^{e-1}))=o(1)\).
+Consequently the real interval between \(z\) and \(t\)
+contains a root \(\alpha\) of degree \(e\) with
+\[
+ |t-\alpha|\ll_{e,p} A^{-(e-1)}B^{-2},\qquad
+ H(\alpha)=H(P)\ll_{e,p} A .
+\]
+Since \(\tau_e=e-1+2\log b/\log a\) for \(e\ge2\),
+any nonnegative smaller exponent gives an exponentially
+small normalized distance. Negative exponents also fail
+because \(H(\alpha)\ge1\) and the distances themselves
+decay exponentially.
+\end{proof}
+
+
+\subsection{The cubic Pisot trace ratio}
+
+Let \(h(Z)=Z^3-Z-1\) have roots \(\theta>1\) and
+\(\beta,\gamma=\bar\beta\), and put
+\[
+ T_n=\theta^n+\beta^n+\gamma^n,\qquad R_n=T_{n+1}/T_n
+\]
+for all sufficiently large \(n\). The \(T_n\) are integers.
+We use the splitting field and character lattice of
+Proposition~\ref{prop:cubic-scalar}. Write \(K\) for the
+splitting field, \(x_1=x,x_2=y,x_3=z\) for the characters
+with values \(\theta^n,\beta^n,\gamma^n\), and
+\(\lambda=\log\theta\). In particular \(xyz=1\), the
+permutation group \(S_3\) acts on these characters, and
+their lattice identifies with the centered integer
+triples \((a_i-\bar a)_{i=1}^3\). For a Laurent polynomial,
+\(w\) denotes the maximum of its monomial weights at the
+embedding with dominant root \(\theta\), using the
+ordinary complex modulus. Thus
+\[
+ w(x)=\lambda,\qquad w(y)=w(z)=-\lambda/2 .
+\]
+Use \(w(0)=-\infty\) and extend by subtraction to rational
+functions. All character values are units. Let
+\begin{gather*}
+ \mathcal A=K[x^{\pm1},y^{\pm1},z^{\pm1}]/(xyz-1),\\
+ V=x+y+z,\qquad U=\theta x+\beta y+\gamma z,\qquad R=U/V.
+\end{gather*}
+Brackets \([n]\) denote evaluation on this orbit. For each
+of the three complex places \(v\) of \(K\), use the
+product-formula normalized absolute value and monomial
+weights \(w_v\). For an invariant function, \(w_v=w/3\)
+at every such place. Nonzero Laurent polynomials and
+rational functions have the local growth rates of
+Lemma~\ref{lem:localweight}.
+
+\begin{theorem}\label{thm:cubicquad}
+For the cubic trace ratio and \(d=2\), the cutoffs in
+\eqref{eq:higher-poly} and \eqref{eq:higher-root} are
+both \(\theta\), with failure at equality.
+With exact hits excluded, both estimates hold uniformly
+without a height ceiling.
+\end{theorem}
+
+\begin{lemma}\label{lem:higher-cubic-local}
+For every fixed \(C>0\), \eqref{eq:higher-poly} holds for
+\(d=2\) and \(H(P)\le C\theta^{n/2}\).
+\end{lemma}
+
+\begin{proof}
+The roots satisfy \(|\beta|=|\gamma|=\theta^{-1/2}\).
+In particular \(T_n/\theta^n=1+O(\theta^{-3n/2})\) and
+\begin{equation}\label{eq:higher-cubic-err}
+ R_n-\theta=\frac{s_n}{T_n},\qquad
+ s_n=(\beta-\theta)\beta^n+(\gamma-\theta)\gamma^n,\qquad
+ R_n-\theta=O(\theta^{-3n/2}).
+\end{equation}
+For a nonzero polynomial \(P\) of degree at most two,
+the algebraic integer \(P(\theta)\) has nonzero integral
+norm. Since \(|P(\beta)|,|P(\gamma)|\ll H(P)\), this gives
+\(|P(\theta)|\gg H(P)^{-2}\). Also
+\(\lvert P(R_n)-P(\theta)\rvert\ll H(P)\theta^{-3n/2}\).
+Consequently any \(\epsilon\)-violation of the polynomial
+bound has \(H(P)\gg\theta^{n/2}\) and
+\(\theta^n|P(R_n)|=O(e^{-\epsilon n})\).
+
+Represent \(Z^nP\bmod h\) by an integral polynomial
+\(B_n\) of degree at most two. It is nonzero since
+\(Z\) is a unit in \(\mathbb Z[Z]/(h)\). At \(\beta,\gamma\)
+its values are \(O(H(P)\theta^{-n/2})\). At \(\theta\) its
+value is
+\(O(\theta^n|P(R_n)|+H(P)\theta^{-n/2})\).
+All three values are bounded under the height ceiling.
+Interpolation in the fixed roots bounds the integral
+coefficients. On any infinite sequence of violations
+we can thus fix \(B=B_n\ne0\) on a subsequence.
+
+For \(u\in\{\theta,\beta,\gamma\}\) let \(\ell_u\)
+be the quadratic Lagrange polynomial taking value \(1\)
+at \(u\) and \(0\) at the other two roots. Interpolating
+\(P\) with values \(u^{-n}B(u)\) and using
+\eqref{eq:higher-cubic-err} gives
+\begin{align*}
+ \theta^nP(R_n)
+  = B(\theta)
+  &+\ell_\beta'(\theta)B(\beta)\frac{s_n}{\beta^n}
+   +\ell_\gamma'(\theta)B(\gamma)\frac{s_n}{\gamma^n}\\
+  &+O_B(\theta^{-3n/2}).
+\end{align*}
+For the term at \(\theta\), use
+\(\ell_\theta(R_n)=1+O(\theta^{-3n/2})\).
+In the other terms, the second-order errors in
+\(\ell_u(R_n)\) are \(O(\theta^{-3n})\), and the
+multipliers \((\theta/u)^n\) have modulus
+\(\theta^{3n/2}\). The factor \(\theta^n/T_n\)
+in the first-order terms introduces an error of the
+same size \(O_B(\theta^{-3n/2})\).
+
+The terms before the error form a Laurent polynomial
+in \((\beta/\gamma)^n\), with both nonconstant
+coefficients nonzero. Indeed \(\ell_\beta'(\theta)\)
+and \(\ell_\gamma'(\theta)\) are nonzero because their
+zeros at \(\theta\) are simple, and \(B\) cannot vanish
+at a root of the irreducible cubic \(h\). The ratio
+\(\beta/\gamma\) is not a root of unity by the character
+lattice, and has modulus \(1\). Lemma~\ref{lem:localweight}
+gives logarithmic size \(o(n)\) for this nonzero Laurent
+polynomial, contrary to the exponentially small
+\(\theta^nP(R_n)\) and error term. This proves the lemma.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:cubicquad}]
+Suppose there are infinitely many violations of
+\eqref{eq:higher-poly} for some \(Q<\theta\) and a fixed
+positive tolerance. Divide each \(P\) by its content,
+which only decreases the normalized absolute value
+and the height. On a subsequence, with \(s\in[0,\lambda)\)
+and \(\delta>0\), the primitive coefficient vectors
+\({\bf a}_n=(a_0,a_1,a_2)\) satisfy
+\begin{equation}\label{eq:higher-cubic-size}
+ \log H(P)/n\ \longrightarrow\ s,\qquad
+ |P(R_n)|\le \exp((-2s-\delta)n).
+\end{equation}
+We first show how to obtain formal relations among
+these vectors and how to descend inside a plane.
+
+Write \(F_K=\operatorname{Frac}(\mathcal A)\).
+Use either the whole space \(F_K^3\) or a fixed plane
+of relation \(A\cdot{\bf a}=0\), assumed to contain the
+vectors after evaluation on the subsequence. In the
+plane case assume the relation normal
+\(A=(A_0,A_1,A_2)\) is a primitive, componentwise invariant
+Laurent tuple. Here primitive means that its nonzero
+components have no common nonunit Laurent factor.
+Define for the plane
+\begin{equation}\label{eq:higher-cubic-k}
+ k_A=\max\!\left\{
+    w(A_0)-2s-\delta,\ 
+    s+\max_{i=1,2} w(A_i-R^i A_0)
+ \right\}.
+\end{equation}
+We claim that a new formal relation holds on a further
+infinite subsequence in the whole-space case, and also in
+the plane case if \(k_A>-\delta\). In the plane case
+the new relation is independent of \(A\) over \(F_K\).
+
+To prove the claim, use the forms \(X^\mu a_i\),
+\(0\le i\le2\), for \(\mu\in[0,H]^2\) in a fixed
+basis of the character lattice. The notation \(X^\mu\)
+here denotes a character, and \(M=(H+1)^2\) counts
+the shifts. Put \(W_i=U^iV^{2-i}\) for \(i=0,1,2\).
+At a complex place \(v\), take the leading monomial
+\(X^{\mu_0}\) of \(W_0=V^2\) by \(w_v\), breaking
+ties by a translation-invariant lexicographic order.
+Replace each form \(X^\mu a_0\) for which the shifted
+supports fit inside the box by
+\[
+                  X^{\mu-\mu_0}\sum_i W_i a_i .
+\]
+There are \(M+O(H)\) such slots. The change of basis
+is triangular on block \(0\) with nonzero pivots,
+and does not change blocks \(1\) and \(2\).
+Assign weights \(w_v(X^\mu)+(-2s-\delta)/3\) to
+the replacements, \(w_v(X^\mu)+s/3\) to the retained
+forms, and use the maximum of the weights of the
+nonzero basis terms as the weight of a form.
+The weights bound the logarithms of evaluations
+divided by \(n\), up to \(o(1)\), by
+\eqref{eq:higher-cubic-size} and
+\(w_v(X^{-\mu_0}V^2)=0\). This also bounds the
+evaluation of any fixed linear combination of
+these forms.
+
+The old basis with weights \(w_v(X^\mu)\) and the
+new weighted basis give weights differing by \(O(1)\)
+on every nonzero form, uniformly in \(H\). In the
+forward expansion all support shifts are fixed.
+For inverse expansion the substitutions remain
+triangular on block \(0\), moving only to smaller
+monomials there, with weight never increasing
+within that block. Each such step introduces
+terms in the other blocks with a fixed bound on
+their weight increase. Those blocks require no
+further substitution. The fixed additions to
+basis weights therefore preserve the uniform bound.
+
+In the plane case the relation space inside the box
+is exactly the span of \(X^\nu A\) for \(\nu\) in a
+rectangle of \(M+O(H)\) slots with fixed margins.
+Indeed a Laurent tuple in the \(F_K\)-span of \(A\)
+is a Laurent multiple of \(A\), by primitivity and
+unique factorization. The minimum and maximum
+exponents of each individual character coordinate
+add under multiplication of Laurent polynomials.
+Applying this in both directions of both axes gives
+the rectangle condition on all monomials of the
+multiplier. In a rectangle shrunk by another fixed
+margin, consider the relation forms
+\(X^{\nu-\mu_0}W_0 A\). The margin ensures their
+supports fit, and all shifted slots needed for
+replacing the block-\(0\) terms fit as well. These
+forms span a subspace of codimension \(O(H)\) in
+the relation space. Under the old weights their
+leading pivots are distinct translates, with
+weights \(w_v(X^\nu)+w_v(A)\). Under the new basis
+the block-\(0\) factors are the coefficients of
+\(X^\nu A_0\) on the replacement slots; the other
+blocks have factors
+\[
+              X^{\nu-\mu_0}(W_0 A_i-W_i A_0).
+\]
+Their leading pivots translate with \(\nu\).
+Since each \(A_i-R^i A_0\) is invariant and
+\(w_v(X^{-\mu_0}W_0)=0\), the new weights are
+\(w_v(X^\nu)+k_A/3\).
+Distinct pivots in both calculations follow by
+ordering basis terms first by weight and then
+by a translation-invariant order on monomials
+and block indices.
+
+For clarity, the increasing list of weights of
+a filtered space is given by the jumps of the
+dimension of its weight sublevels, counted with
+multiplicity. A subspace receives the induced
+filtration, and its quotient receives the
+filtration by minimum weight among lifts.
+The lists for a subspace and the quotient
+together give the list for the whole space,
+by additivity of dimensions at each sublevel.
+Two weights at uniformly bounded distance
+give ordered lists at bounded distance termwise,
+also on an induced quotient. Consequently the
+\(O(H)\) boundary dimensions of the relation space
+contribute only \(O(H)\) to the change of
+its weight sum. The interior forms give the
+change computed above. Before replacement, the
+weight sum of the relation space is the sum of
+the shifted weights \(w_v(X^\nu)+w_v(A)\) on the
+full rectangle, since the shifts have distinct
+leading pivots. Summing over the complex places
+cancels all monomial weights by the product
+formula and the unit property. It follows that
+the sum of the new relation weights over those
+places is \(M k_A+O(H)\).
+
+The ambient weight sum over the same places
+is \(-M\delta+O(H)\), again by cancellation of
+the monomial weights. Choose a basis in the
+quotient at each place by taking classes of
+ambient basis forms in order of increasing
+weight and skipping dependent classes.
+Its total weight is the ambient sum minus the
+relation sum. In the whole-space case the
+relation sum is zero. In the plane case the
+total quotient weight over the places is
+\(M(-\delta-k_A)+O(H)\). In either case of the
+claim it is negative for large fixed \(H\).
+Use a fixed basis of the quotient selected
+from the \emph{original} monomial-coordinate
+classes to form the evaluation vector.
+It has algebraic integer entries, is nonzero
+since \({\bf a}_n\ne0\), and has height at most
+exponential in \(n\). The chosen local bases
+give a product exponentially small in \(n\).
+The number-field Subspace Theorem
+\cite{Schlickewei} gives a fixed nonzero
+linear equation on these quotient coordinates
+on a further infinite subsequence. As a formal
+relation it is outside the previous relation
+space by the choice of a quotient basis.
+This proves the claim.
+
+All relations can be intersected with their
+Galois conjugates because the coefficient vectors
+are rational and evaluation commutes with the
+Galois action. The resulting coefficient spaces
+are invariant, and the ranks of the resulting
+formal systems stabilize on evaluation, by
+Lemma~\ref{lem:localweight} on nonzero minors.
+After one relation we therefore have a line
+or a plane, since the zero space cannot contain
+these vectors. For an invariant line or relation
+normal, a primitive Laurent representative
+is componentwise invariant after a common
+unit rescaling. To see that the normalization
+in Proposition~\ref{prop:cubic-scalar} applies to
+tuples, take the union of the supports for its
+translation step. Primitivity makes the Galois
+multipliers common Laurent units, and the
+barycenter of the union gives the same lattice
+translation as for a pair. The remaining common
+scalar cocycle is removed by Hilbert's Theorem~90.
+In particular the maximum weight of a nonzero
+invariant tuple is a nonnegative integer multiple
+of \(\lambda/2\).
+
+Suppose the vectors lie on an invariant line
+with such a representative \(A\), and let
+\(D=\max_i w(A_i)\). Its primitive integral
+specialization has logarithmic height
+\(Dn+o(n)\). Here is the gcd justification.
+Clear denominators of the coefficients by a fixed
+integer, so the evaluated coordinates are rational
+algebraic integers. A nonzero coordinate and a
+fixed linear combination avoiding its irreducible
+factors form a coprime Laurent pair. After a common
+monomial shift the pair consists of coprime
+polynomials. The shift is a unit on the orbit
+at all finite places. Off a fixed finite set of
+places the torus gcd theorem
+\cite[Theorem~1.13(a)]{LW} gives
+logarithmic gcd \(o(n)\), as the orbit meets each
+exceptional coset finitely often by its torsion-free
+character lattice. At the finitely many remaining
+primes every character is a unit, so
+Lemma~\ref{lem:localweight} gives logarithmic gcd
+\(o(n)\) there too. At the chosen embedding the
+maximum coordinate has logarithmic size \(Dn+o(n)\)
+by the same local-weight lemma. This proves the
+height assertion. Since the vectors are primitive,
+\eqref{eq:higher-cubic-size} now gives \(D=s<\lambda\)
+and hence \(D\le\lambda/2\). The fixed Laurent
+representative has coordinates \(O(\theta^{n/2})\)
+at evaluation by the triangle inequality, so
+the primitive vectors also have
+\(H(P)\ll\theta^{n/2}\), contrary to
+Lemma~\ref{lem:higher-cubic-local}.
+
+It remains to show that every invariant plane
+produced above satisfies \(k_A>-\delta\).
+Suppose instead \(k_A\le-\delta\). Then \(A_0\ne0\):
+otherwise each nonzero \(A_i\) would have
+\(w(A_i)\le-s-\delta<0\), which is impossible
+for an invariant Laurent polynomial. Since
+\(w(R)=0\) and \(w(A_0)\ge0\), the inequalities
+in \eqref{eq:higher-cubic-k} give
+\begin{equation}\label{eq:higher-cubic-support}
+ D=\max_i w(A_i)=w(A_0)\le2s<2\lambda,\qquad
+ w(A_m-R^m A_0)\le-s-\delta\quad(m=1,2).
+\end{equation}
+Thus \(D\le3\lambda/2\). A centered exponent triple
+\({\bf c}\) has ordinary weight \(3\lambda c_1/2\).
+Since every permutation is in the joint support
+whenever \({\bf c}\) is, all its coordinates are
+at most \(1\). The only allowed orbits are
+\[
+  1,\quad x_i,\quad x_i^{-1},\quad x_i^{-2},\quad
+  x_i^{-3},\quad x_i/x_j\ (i\ne j).
+\]
+Indeed the coordinates of a centered triple sum
+to zero and have common fractional part \(0\),
+\(1/3\), or \(2/3\). For fractional part \(0\)
+the possible triples up to permutation are
+\((0,0,0),(1,0,-1),(1,1,-2)\).
+For fractional part \(1/3\) the only possibility
+is \((1/3,1/3,-2/3)\).
+For fractional part \(2/3\), the possibilities
+are \((2/3,-1/3,-1/3)\) and
+\((2/3,2/3,-4/3)\).
+
+Use the first-order expansion at the chosen embedding
+\begin{equation}\label{eq:higher-cubic-expansion}
+ R^m=\theta^m+
+  m\theta^{m-1}\bigl((\beta-\theta)y/x+(\gamma-\theta)z/x\bigr)
+  +O_w(-3\lambda)\qquad(m=1,2),
+\end{equation}
+where \(O_w(u)\) denotes a rational function of
+weight at most \(u\). This follows by using
+\(w(y/x)=w(z/x)=-3\lambda/2\) in
+\(R=(\theta+\beta y/x+\gamma z/x)/(1+y/x+z/x)\).
+After multiplication by \(A_0\), the remainder
+has weight at most \(-3\lambda/2\). Thus every
+comparison of Laurent coefficients below is made
+at weights exceeding the remainder.
+
+All positive-weight coefficients of \(A_m\) must
+agree with those of \(\theta^m A_0\), because the
+first-order correction times \(A_0\) has weight
+at most zero. In particular this applies to \(y^{-j}\)
+for \(1\le j\le3\). Each coefficient there is fixed
+by the stabilizer of \(\beta\), so lies in
+\(\mathbb Q(\beta)\), which does not contain \(\theta\).
+Indeed equality of the two cubic fields would
+make \(\mathbb Q(\beta)=\mathbb Q(\theta)\) real.
+The comparison with \(m=1\) forces the \(A_0\)
+coefficient to vanish, and both comparisons
+force the \(A_m\) coefficients to vanish. Galois
+invariance removes all three inverse-root orbits.
+
+Write \(c_{ij}\) for the coefficient of \(x_i/x_j\)
+in \(A_0\). At \(x/y,x/z\) the positive-weight
+comparison gives coefficients \(\theta^m c_{1j}\)
+in \(A_m\). Conjugating gives coefficients
+\(\alpha_i^m c_{ij}\) throughout the ratio orbit,
+where \((\alpha_1,\alpha_2,\alpha_3)=(\theta,\beta,\gamma)\).
+At \(y/z\), of weight zero, comparison in
+\eqref{eq:higher-cubic-expansion} gives
+\[
+ (\beta^m-\theta^m)c_{23}
+ -m\theta^{m-1}(\beta-\theta)c_{13}=0
+ \qquad(m=1,2).
+\]
+The term from \(z/x\) would require \(xy/z^2=z^{-3}\)
+in \(A_0\), which was already excluded. For \(m=1\)
+we get \(c_{23}=c_{13}\), and then \(m=2\) gives
+\((\beta-\theta)^2c_{23}=0\). Invariance removes
+the whole ratio orbit.
+
+Only \(1,x,y,z\) can now appear, so \(D\le\lambda\)
+and the first-order corrections times \(A_0\)
+have strictly negative weight. Comparison at
+weight zero forces the constant coefficients
+to vanish, since they are rational and
+\(\theta\) is irrational. A nonzero direct-root
+orbit would have \(D=\lambda\) and hence
+\(s\ge\lambda/2\). Comparing at \(x\) and then
+conjugating gives coefficients \(\alpha_i^m c_i\)
+in \(A_m\), where \(c_i\) is the coefficient
+of \(x_i\) in \(A_0\). At \(y\), of weight
+\(-\lambda/2>-s-\delta\), comparison gives
+\[
+ (\beta^m-\theta^m)c_2
+ -m\theta^{m-1}(\beta-\theta)c_1=0
+ \qquad(m=1,2).
+\]
+The term from \(z/x\) would require \(xy/z=z^{-2}\),
+already excluded. These two equations force
+\(c_1=c_2=0\), which rules out a nonzero direct-root
+orbit. We have contradicted \(A_0\ne0\).
+Thus the plane descends to a line, already
+excluded, and the polynomial bound holds at
+every \(Q<\theta\). The root bound follows by
+Lemma~\ref{lem:higher-transfer} since \(R_n\)
+is bounded.
+
+At the endpoint, exact hits occur infinitely
+often within the height ceiling. The recurrence
+\(T_{n+3}=T_{n+1}+T_n\) starts with \(3,0,2\).
+The triples modulo \(2\), starting at \(n=0\),
+cycle through
+\[
+ 100,\ 001,\ 010,\ 101,\ 011,\ 111,\ 110 .
+\]
+In particular \(T_n,T_{n+1}\) are both even when
+\(n\equiv1\pmod7\). For large such \(n\) the
+reduced height of \(R_n\) is at most
+\(T_{n+1}/2=(\theta/2+o(1))\theta^n<\theta^n\),
+where \(\theta<2\). The primitive linear
+polynomial of \(R_n\) has the same height.
+These exact hits also give failure at every \(Q>\theta\).
+
+Finally, if \(P(R_n)\ne0\) and \(\deg P\le2\),
+rational evaluation gives
+\[
+ |P(R_n)|\ge \operatorname{den}(R_n)^{-2}
+             \ge |T_n|^{-2},
+\]
+where \(\operatorname{den}\) denotes the reduced
+positive denominator. Any nonexact violation
+with tolerance \(\epsilon>0\) therefore has
+\(H(P)<|T_n|e^{-\epsilon n/2}\).
+This fits a fixed ceiling \(Q^n\) with \(1<Q<\theta\)
+for large \(n\), and is impossible by the bound
+just proved. Lemma~\ref{lem:higher-transfer} gives
+the unrestricted root bound for \(\alpha\ne R_n\).
+\end{proof}
+
+\begin{proposition}[Height-one failures]\label{prop:higher-height-one}
+For \(R_n=F_{n+1}/F_n\), where \(F_n\) are the Fibonacci
+numbers, both bounds fail at \(Q=1\) for every \(d\ge2\).
+For the cubic trace ratio above, both fail at \(Q=1\)
+for every \(d\ge3\). The failures persist with exact
+hits excluded.
+\end{proposition}
+
+\begin{proof}
+For the Fibonacci ratio let
+\(\varphi=(1+\sqrt5)/2\) and \(\psi=-1/\varphi\).
+Binet's formula gives \(F_{n+1}-\varphi F_n=\psi^n\),
+so \(0<|R_n-\varphi|\ll\varphi^{-2n}\). The number
+\(\varphi\) and its minimal polynomial \(Z^2-Z-1\)
+both have height \(1\), and the polynomial value
+at \(R_n\) is \(O(\varphi^{-2n})\) by factorization.
+For the cubic ratio use \(\theta\) and \(h=Z^3-Z-1\),
+also both of height \(1\). Equation
+\eqref{eq:higher-cubic-err} and boundedness of \(R_n\)
+give \(|R_n-\theta|,|h(R_n)|\ll\theta^{-3n/2}\).
+The rational targets cannot equal these irrational
+approximants or be zeros of their minimal polynomials.
+In each case take any positive tolerance smaller
+than the rate of exponential decay.
+\end{proof}
+
+\begin{thebibliography}{99}
+\bibitem{BCZ} Y.~Bugeaud, P.~Corvaja and U.~Zannier, \href{https://doi.org/10.1007/s00209-002-0449-z}{An upper bound for the G.C.D.\ of \(a^n-1\) and \(b^n-1\)}, Math. Z. \textbf{243} (2003), 79--84.
+
+\bibitem{BE} Y.~Bugeaud and J.-H.~Evertse, \href{https://www.numdam.org/item/ASNSP_2009_5_8_2_333_0/}{Approximation of complex algebraic numbers by algebraic numbers of bounded degree}, Ann. Sc. Norm. Super. Pisa Cl. Sci. (5) \textbf{8} (2009), 333--368.
+
+\bibitem{CZ04} P.~Corvaja and U.~Zannier, \href{https://doi.org/10.1007/BF02392563}{On the rational approximations to the powers of an algebraic number: solution of two problems of Mahler and Mend\`es France}, Acta Math. \textbf{193} (2004), 175--191.
+
+\bibitem{CZgcd} P.~Corvaja and U.~Zannier, \href{https://arxiv.org/abs/math/0311030}{A lower bound for the height of a rational function at \(S\)-unit points}, Monatsh. Math. \textbf{144} (2005), 203--224.
+
+\bibitem{CZ05} P.~Corvaja and U.~Zannier, \href{https://doi.org/10.5802/jtnb.517}{On the length of the continued fraction for values of quotients of power sums}, J. Th\'eor. Nombres Bordeaux \textbf{17} (2005), 737--748.
+
+\bibitem{CZ08} P.~Corvaja and U.~Zannier, \href{https://doi.org/10.1007/978-3-211-74280-8_8}{Applications of the Subspace Theorem to certain Diophantine problems: a survey of some recent results}, in \emph{Diophantine Approximation: Festschrift for Wolfgang Schmidt}, Dev. Math. \textbf{16}, Springer, Vienna, 2008, 161--174.
+
+\bibitem{CZ18} P.~Corvaja and U.~Zannier, \href{https://doi.org/10.1017/9781108348096}{\emph{Applications of Diophantine Approximation to Integral Points and Transcendence}}, Cambridge Tracts in Mathematics \textbf{212}, Cambridge University Press, 2018.
+
+\bibitem{EF} J.-H.~Evertse and R.~G.~Ferretti, \href{https://annals.math.princeton.edu/2013/177-2/p04}{A further improvement of the quantitative Subspace Theorem}, Ann. of Math. (2) \textbf{177} (2013), 513--590.
+
+\bibitem{FH} C.~Fuchs and S.~Heintze, \href{https://doi.org/10.5802/jtnb.1247}{Approximation of values of algebraic elements over the ring of power sums}, J. Th\'eor. Nombres Bordeaux \textbf{35} (2023), 63--86.
+
+\bibitem{HRI} Harish-Chandra Research Institute, \href{https://www.hri.res.in/~anlweb/Academic-Report-2024-25.pdf}{\emph{Academic Report 2024--25}}, research summary of G.~Prasad, p.~59.
+
+\bibitem{ambient} Z.~Hu and B.~Li, \href{https://doi.org/10.1007/s10473-025-0422-1}{Hausdorff dimension of recurrence sets for matrix transformations of tori}, Acta Math. Sci. Ser. B \textbf{45} (2025), 1659--1673. \href{https://arxiv.org/abs/2402.04810}{Author preprint}.
+
+\bibitem{KL} R.~Kannan and L.~Lov\'asz, \href{https://annals.math.princeton.edu/1988/128-3/p06}{Covering minima and lattice-point-free convex bodies}, Ann. of Math. (2) \textbf{128} (1988), 577--602.
+
+\bibitem{KP} V.~Kumar and G.~Prasad, \href{https://doi.org/10.1515/forum-2024-0441}{On the rational approximation to linear combinations of powers}, Forum Math. \textbf{38} (2026), 1027--1041.
+
+\bibitem{KPsub} V.~Kumar and G.~Prasad Sena, \emph{Thue--Roth's type inequality beyond the \(S\)-units}, revised manuscript submitted to Ann. Sc. Norm. Super. Pisa Cl. Sci., listed on \href{https://sites.google.com/view/veekeshkumar/publications}{V.~Kumar's publications page}; see also \cite{HRI}.
+
+\bibitem{KT} V.~Kumar and R.~Thangadurai, \href{https://doi.org/10.1112/mtk.12161}{On simultaneous approximation of algebraic numbers}, Mathematika \textbf{68} (2022), 1153--1175.
+
+\bibitem{LechSML} C. Lech,
+\href{https://doi.org/10.1007/BF02590997}{A note on recurring series},
+Ark. Mat. \textbf{2} (1953), no.~5, 417--421.
+
+\bibitem{Levin} A.~Levin, \href{https://doi.org/10.1007/s00222-018-0831-z}{Greatest common divisors and Vojta's conjecture for blowups of algebraic tori}, Invent. Math. \textbf{215} (2019), 493--533.
+
+\bibitem{LW} A.~Levin and J.~T.-Y.~Wang, \href{https://doi.org/10.1515/crelle-2019-0033}{Greatest common divisors of analytic functions and Nevanlinna theory on algebraic tori}, J. Reine Angew. Math. \textbf{767} (2020), 77--107, published online in 2019.
+
+\bibitem{Hilbert90Milne} J. S. Milne,
+\href{https://www.jmilne.org/math/CourseNotes/CFT.pdf}{Class Field Theory},
+course notes, version~4.03, 2020.
+
+\bibitem{Northcott1950} D. G. Northcott,
+\href{https://doi.org/10.2307/1969504}{Periodic points on an algebraic variety},
+Ann. of Math. (2) \textbf{51} (1950), no.~1, 167--177.
+
+\bibitem{RV} M.~Ru and P.~Vojta, \emph{Schmidt's Subspace Theorem with moving targets}, Invent. Math. \textbf{127} (1997), 51--65.
+
+\bibitem{Schlickewei} H.~P.~Schlickewei, \href{https://www.numdam.org/item/CM_1992__82_3_245_0/}{The quantitative subspace theorem for number fields}, Compositio Math. \textbf{82} (1992), 245--273.
+
+\bibitem{Schmidt70} W.~M.~Schmidt, \href{https://doi.org/10.1007/BF02392334}{Simultaneous approximation to algebraic numbers by rationals}, Acta Math. \textbf{125} (1970), 189--201.
+
+\bibitem{Wirsing} E.~Wirsing, \href{https://doi.org/10.1515/crll.1961.206.67}{Approximation mit algebraischen Zahlen beschr\"ankten Grades}, J. Reine Angew. Math. \textbf{206} (1961), 67--77.
+
+\bibitem{Xiao} Z.~Xiao, \href{https://doi.org/10.1007/s00209-024-03453-4}{Greatest common divisors for polynomials in almost units and applications to linear recurrence sequences}, Math. Z. \textbf{306} (2024), Paper No.~61. \href{https://arxiv.org/abs/2110.01751v3}{Author's preprint}.
+
+\end{thebibliography}
+\end{document}
