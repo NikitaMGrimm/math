@@ -8,7 +8,11 @@
   <meta name="citation_title" content="Simultaneous shrinking targets on the diagonal in several integer bases">
   <meta name="citation_date" content="2026/11/25">
   <meta name="citation_pdf_url" content="https://nikitamgrimm.github.io/math/preprints/multibase-shrinking-targets/multibase-shrinking-targets.pdf">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="../../style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  <script defer src="../../math.js"></script>
 </head>
 <body>
   <main>
@@ -18,28 +22,38 @@
     </header>
 
     <div class="actions">
-      <a class="btn" href="multibase-shrinking-targets.pdf">Download PDF (21 pp)</a>
+      <a class="btn btn-primary" href="multibase-shrinking-targets.pdf">Download PDF (21 pp)</a>
       <a class="btn" href="multibase-shrinking-targets.tex">LaTeX source (.tex)</a>
       <a class="btn" href="https://github.com/NikitaMGrimm/math/tree/main/preprints/multibase-shrinking-targets">GitHub folder</a>
     </div>
 
     <h2>Abstract</h2>
-    <p>We determine the local Hausdorff dimension of simultaneous shrinking targets for integer radix maps restricted to a scalar diagonal or an algebraic line. For multiplication by two and three, with common radius of lower exponential order &tau; in base three, each target has dimension (1&minus;&tau;)/(1+&tau;) when 0 &le; &tau; &lt; 1, and dimension zero thereafter. This removes the <em>abc</em> hypothesis in a result of Li, Liao, Velani, and Zorin (<em>Adv. Math.</em> 2023, &sect;5.5, Remark 13). Explicit counterexamples refute both sides of printed Eq. (75) at (2, 17) and (2, 6).</p>
-    <p>For radii 3<sup>&minus;n&tau;</sup>, a single residual set of transcendental slopes gives binary&ndash;ternary zero-target dimension log<sub>3</sub>(2)/(1+&tau;) throughout 1 &minus; log<sub>3</sub>(2) &lt; &tau; &le; 1, refuting the all-bi-Lipschitz suspicion at &tau; = 1; we compute the Hausdorff dimension of the slope sets at each exceptional fiber dimension. For finitely many radices sampled at arbitrary relative speeds, a partition weighted by prime valuations gives the homogeneous dimension. Translations preserve this dimension in coprime bases; for shared primes, the exact formula uses intersections of translated grid intervals, with bases (2, 6) realizing a full interval of dimensions as a single target coordinate varies.</p>
+    <div class="abstract">
+      <p>We determine the local Hausdorff dimension of simultaneous shrinking targets for integer radix maps restricted to a scalar diagonal or an algebraic line. For multiplication by two and three, with common radius \(\psi(n) \le 1\) of lower exponential order \(\tau = \liminf_{n\to\infty} (-\log\psi(n))/(n\log 3)\), each target \(y \in \mathbb{T}^2\) has dimension \((1-\tau)/(1+\tau)\) when \(0 \le \tau &lt; 1\), and dimension zero thereafter. This removes the \(abc\) hypothesis in a result of Li, Liao, Velani, and Zorin (<em>Adv. Math.</em> 2023, §5.5, Remark 13). Explicit counterexamples refute both sides of printed Eq. (75) at \((2,17)\) and \((2,6)\).</p>
+      <p>For radii \(3^{-n\tau}\), a single residual set of transcendental slopes gives binary–ternary zero-target dimension \(\log_3(2)/(1+\tau)\) throughout \(1 - \log_3(2) &lt; \tau \le 1\), refuting the all-bi-Lipschitz suspicion at \(\tau = 1\); we compute the Hausdorff dimension of the slope sets at each exceptional fiber dimension. For finitely many radices sampled at arbitrary relative speeds, a partition weighted by prime valuations gives the homogeneous dimension. Translations preserve this dimension in coprime bases; for shared primes, the exact formula uses intersections of translated grid intervals, with bases \((2,6)\) realizing a full interval of dimensions as a single target coordinate varies.</p>
+    </div>
 
-    <h2>Status, attribution &amp; open questions</h2>
+    <h2>Main Formulas</h2>
+    <div class="formula-block">
+      $$\dim_H E_{2,3}(y;\psi) = \begin{cases} \dfrac{1-\tau}{1+\tau}, &amp; 0 \le \tau &lt; 1, \\[8pt] 0, &amp; \tau \ge 1, \end{cases} \qquad \forall\, y \in \mathbb{T}^2.$$
+    </div>
+
+    <h2>Status, Attribution &amp; Open Questions</h2>
     <ul>
-      <li><strong>Verification:</strong> Independent adversarial LLM full-manuscript audit passed on the delivered TeX/PDF pair (byte-identical rebuilds). Not yet human peer-reviewed or formalized in Lean 4.</li>
+      <li><strong>Verification:</strong> Independent adversarial LLM full-manuscript audit passed on the delivered TeX/PDF pair (clean 3-pass <code>pdflatex</code> build). Not yet human peer-reviewed or formalized in Lean 4.</li>
       <li><strong>Prior art &amp; priority notes:</strong> Liao's 2021 seminar slides already prove slow-shrinking two-target bounds; Tapia's Lemma 2 implies the universal slope upper bound; LLVZ's cited manifold manuscript remains a priority uncertainty.</li>
-      <li><strong>Open:</strong> Matched homogeneous critical occupancy on the algebraic line of direction (1, &radic;2) in bases (2, 3) at critical exponent &rho; = 4/3.</li>
+      <li><strong>Open:</strong> Matched homogeneous critical occupancy on the algebraic line of direction \((1, \sqrt{2})\) in bases \((2,3)\) at critical exponent \(\rho = 4/3\).</li>
     </ul>
 
     <h2>SHA-256</h2>
     <pre>c000e0c7317642cc752897ecf0758faa401ab4d41d39f2085ce60b8d8bc4ae94  multibase-shrinking-targets.tex
 16bf5b6514c0a47f2fdb4ad1796a17682dc4812f7e71019becd0a6857bdf1b6b  multibase-shrinking-targets.pdf</pre>
 
-    <h2>BibTeX</h2>
-    <pre>@misc{Grimm2026MultibaseShrinkingTargets,
+    <div class="section-head">
+      <h2>BibTeX</h2>
+      <button class="copy-btn" type="button" data-copy-target="bibtex">Copy BibTeX</button>
+    </div>
+    <pre id="bibtex">@misc{Grimm2026MultibaseShrinkingTargets,
   title        = {Simultaneous shrinking targets on the diagonal in several integer bases},
   author       = {Nikita Maximilian Grimm},
   year         = {2026},
